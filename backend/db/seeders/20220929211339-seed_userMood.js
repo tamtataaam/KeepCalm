@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     /**
@@ -9,19 +11,40 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('Conditions', [
+    await queryInterface.bulkInsert('UserMoods', [
       {
-        condition: 'Deep depression',
+        userId: 1,
+        moodId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        condition: 'Neutral',
+        userId: 1,
+        moodId: 4,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        condition: 'Extra exided',
+        userId: 1,
+        moodId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 2,
+        moodId: 3,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 2,
+        moodId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 2,
+        moodId: 5,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -35,6 +58,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Conditions', null, {});
+    await queryInterface.bulkDelete('UserMoods', null, {});
   },
 };
