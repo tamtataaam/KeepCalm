@@ -9,22 +9,22 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('FavoriteExercises', [
+    await queryInterface.bulkInsert('Articles', [
       {
-        userId: 1,
-        exerciseId: 2,
+        title: 'Article 1',
+        content: 'Lorem ipsum',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        userId: 1,
-        exerciseId: 4,
+        title: 'Article 2',
+        content: 'Lorem ipsum',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        userId: 1,
-        exerciseId: 1,
+        title: 'Article 3',
+        content: 'Lorem ipsum',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -38,6 +38,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('FavoriteExercises', null, {});
+    await queryInterface.bulkDelete('Articles', null, {});
   },
 };

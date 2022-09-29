@@ -10,18 +10,22 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false,
+        // allowNull: false,
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       articleId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        allowNull: false,
+        // allowNull: false,
         references: {
           model: 'Articles',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       createdAt: {
         allowNull: false,

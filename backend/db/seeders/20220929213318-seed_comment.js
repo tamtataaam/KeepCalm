@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     /**
@@ -9,22 +11,25 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('FavoriteExercises', [
+    await queryInterface.bulkInsert('Comments', [
       {
         userId: 1,
-        exerciseId: 2,
+        articleId: 2,
+        commentText: 'Comment 1',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: 1,
-        exerciseId: 4,
+        articleId: 1,
+        commentText: 'Comment 1',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: 1,
-        exerciseId: 1,
+        articleId: 2,
+        commentText: 'Comment 2',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -38,6 +43,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('FavoriteExercises', null, {});
+    await queryInterface.bulkDelete('Comments', null, {});
   },
 };
