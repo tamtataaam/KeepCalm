@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({
       WelcomeTestScore,
+      // Condition,
       Article,
       Comment,
       Like,
@@ -19,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       UserDiary,
     }) {
       User.hasMany(WelcomeTestScore, { foreignKey: 'userId' });
+      // User.belongsToMany(Condition, {
+      //   through: WelcomeTestScore,
+      //   foreignKey: 'userId',
+      //   otherKey: 'conditionId',
+      // });
       User.belongsToMany(Article, {
         through: Comment,
         foreignKey: 'userId',
@@ -63,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      iaAdmin: {
+      isAdmin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
