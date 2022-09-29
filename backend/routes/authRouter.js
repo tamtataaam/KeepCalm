@@ -119,3 +119,14 @@ authRouter.delete('/logout', (req, res) => {
     res.json({ message: 'success' });
   });
 });
+
+authRouter.get('/', (req, res) => {
+  const { user } = req.session;
+  if (user) {
+    res.json({ isUser: true, user });
+  } else {
+    res.json({ isUser: false });
+  }
+});
+
+module.exports = authRouter;
