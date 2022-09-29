@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Conditions', {
@@ -10,6 +9,7 @@ module.exports = {
       },
       condition: {
         type: Sequelize.TEXT,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
