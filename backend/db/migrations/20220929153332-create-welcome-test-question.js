@@ -8,14 +8,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      questionId: {
-        type: Sequelize.INTEGER
-      },
-      answerVariant: {
+      question: {
         type: Sequelize.TEXT
-      },
-      answerPoint: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
