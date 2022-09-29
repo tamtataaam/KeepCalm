@@ -1,7 +1,4 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class FavoriteExercise extends Model {
     /**
@@ -9,16 +6,48 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      // define association here
+    static associate({ User, Exercise }) {
+      FavoriteExercise.belongsTo(User, { foreignKey: 'userId' });
+      FavoriteExercise.belongsTo(Exercise, { foreignKey: 'exerciseId' });
     }
   }
-  FavoriteExercise.init({
-    userId: DataTypes.INTEGER,
-    exerciseId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'FavoriteExercise',
-  });
+  FavoriteExercise.init(
+    {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        references: {
+          model: 'Users',
+        },
+      },
+      exerciseId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        references: {
+          model: 'Exercises',
+        },
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+    },
+    {
+      sequelize,
+      modelName: 'FavoriteExercise',
+    }
+  );
   return FavoriteExercise;
 };
