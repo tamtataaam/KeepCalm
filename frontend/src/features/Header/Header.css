@@ -1,0 +1,38 @@
+header{
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    top: -10px;
+    left: -10px;
+    text-shadow: -1px -1px #000;
+    user-select: none;
+    padding: .8em 2em;
+    outline: none;
+    background-size: 200% 100%, auto;
+    background-position: 200% 0, 0 0;
+    /* box-shadow: rgba(4, 4, 4, 0.282) 0 1px 0.5px; */
+  }
+
+  .logo-nav{
+    position: relative;
+    text-decoration:none;
+    left: 1%;
+    top: 12px;
+    font-size: 300%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #D1512D;
+}
+
+.avatar-nav{
+    margin: 0 15px;
+ 
+}
+
+.button-nav{
+    position: relative;
+    display: flex;
+    left: 75%;
+    bottom: 30px;
+    color: black;
+}
+

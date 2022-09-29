@@ -9,6 +9,7 @@ const testDatabaseConnection = require('./src/testDatabaseConnection');
 const apiRouter = require('./routes/apiRouter');
 const authRouter = require('./routes/authRouter');
 
+
 const app = express();
 const httpServer = http.createServer(app);
 const wsServer = new socketIO.Server(httpServer);
@@ -18,6 +19,7 @@ serverConfig(app);
 
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);
+
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {
