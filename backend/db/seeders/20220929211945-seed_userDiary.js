@@ -9,25 +9,46 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('WelcomeTestScores', [
+    await queryInterface.bulkInsert('UserDiaries', [
       {
         userId: 1,
-        conditionId: 1,
-        testScore: 2,
+        title: 'Day 1',
+        content: 'Lorem ipsum',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: 1,
-        conditionId: 2,
-        testScore: 4,
+        title: 'Day 2',
+        content: 'Lorem ipsum',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 1,
+        title: 'Day 3',
+        content: 'Lorem ipsum',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 1,
+        title: 'Day 4',
+        content: 'Lorem ipsum',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: 2,
-        conditionId: 3,
-        testScore: 6,
+        title: 'Day 1',
+        content: 'Lorem ipsum',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 2,
+        title: 'Day 2',
+        content: 'Lorem ipsum',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -41,6 +62,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('WelcomeTestScores', null, {});
+    await queryInterface.bulkDelete('UserDiaries', null, {});
   },
 };

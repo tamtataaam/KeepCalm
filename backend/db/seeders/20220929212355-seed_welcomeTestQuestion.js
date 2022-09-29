@@ -9,25 +9,19 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('WelcomeTestScores', [
+    await queryInterface.bulkInsert('WelcomeTestQuestions', [
       {
-        userId: 1,
-        conditionId: 1,
-        testScore: 2,
+        question: 'question: 1',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        userId: 1,
-        conditionId: 2,
-        testScore: 4,
+        question: 'question: 2',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        userId: 2,
-        conditionId: 3,
-        testScore: 6,
+        question: 'question: 3',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -41,6 +35,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('WelcomeTestScores', null, {});
+    await queryInterface.bulkDelete('WelcomeTestQuestions', null, {});
   },
 };
