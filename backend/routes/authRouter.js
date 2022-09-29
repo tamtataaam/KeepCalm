@@ -64,3 +64,58 @@ authRouter.post('/registration', async (req, res) => {
   }
 });
 
+authRouter.post('/login', async (req, res) => {
+  if (req.body.email.length < 1 || req.body.password.length < 1) {
+    return res.json({ message: 'Заполните все поля' });
+  }
+
+  if (req.body.email.length > 4 && req.body.password.length > 7) {
+    let user;
+    try {
+      user = await User.findOne({
+        where: { email: req.body.email },
+      });
+      if (!user) {
+        res.json({ message: 'Неверный email и/или пароль' });
+        return;
+      }
+    } catch (error) {
+      res.json({ error: error.message });
+      return;
+    }
+    try {
+      const compPass = await bcrypt.compare(req.body.password, user.password);
+      if (!compPass) {
+        res.json({ message: 'Неверный email и/или пароль' });
+        return;
+      }
+    } catch (error) {
+      res.json({ error: error.message });
+      return;
+    }
+
+    req.session.user = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      secretWord: user.secretWord,
+      status: user.status,
+    };
+
+    res.json({ user: req.session.user });
+  } else {
+    res.json({ message: 'Слишком короткий email и/или пароль' });
+  }
+});
+
+authRouter.delete('/logout', (req, res) => {
+  req.session.destroy((error) => {
+    if (error) {
+      res.json({ error: 'Не удалось выйти' });
+      return;
+    }
+    res.clearCookie('user_sid');
+    res.json({ message: 'success' });
+  });
+});
