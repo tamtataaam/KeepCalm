@@ -8,10 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ User, Condition }) {
       WelcomeTestScore.belongsTo(User, {
-        // onDelete: null,
-        // onUpdate: 'cascade',
         foreignKey: 'userId',
-        // hooks: true,
       });
       WelcomeTestScore.belongsTo(Condition, { foreignKey: 'conditionId' });
     }

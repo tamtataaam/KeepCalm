@@ -9,19 +9,23 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         primaryKey: true,
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       exerciseId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         primaryKey: true,
         references: {
           model: 'Exercises',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       createdAt: {
         allowNull: false,

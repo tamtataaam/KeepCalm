@@ -9,25 +9,25 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('WelcomeTestScores', [
+    await queryInterface.bulkInsert('Chats', [
       {
         userId: 1,
-        conditionId: 1,
-        testScore: 20,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userId: 1,
-        conditionId: 2,
-        testScore: 40,
+        title: 'chat for cat lovers',
+        telegramUrl: 'https://t.me/+tn5fmQT1LcswNmQy',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: 2,
-        conditionId: 3,
-        testScore: 60,
+        title: 'chat for meditaion',
+        telegramUrl: 'https://t.me/+tn5fmQT1LcswNmQy',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 2,
+        title: 'chat for different things',
+        telegramUrl: 'https://t.me/+tn5fmQT1LcswNmQy',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -41,6 +41,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('WelcomeTestScores', null, {});
+    await queryInterface.bulkDelete('Chats', null, {});
   },
 };

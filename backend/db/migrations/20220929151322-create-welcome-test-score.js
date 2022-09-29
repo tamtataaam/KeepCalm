@@ -13,15 +13,17 @@ module.exports = {
         references: {
           model: 'Users',
         },
-        onDelete: null,
+        onDelete: 'cascade',
         onUpdate: 'cascade',
       },
       conditionId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         references: {
           model: 'Conditions',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       testScore: {
         type: Sequelize.INTEGER,
