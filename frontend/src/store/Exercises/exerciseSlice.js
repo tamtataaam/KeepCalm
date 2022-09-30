@@ -4,6 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   exercises: [],
+  error: null,
 };
 
 export const loadAsyncExercises = createAsyncThunk(

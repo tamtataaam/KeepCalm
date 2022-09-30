@@ -2,19 +2,19 @@
 /* eslint-disable react/jsx-indent */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './Exercises.css';
+
+import style from './Exercises.module.scss';
+
+import ExerciseItem from './ExerciseItem';
 
 function Exercises() {
   const { exercises } = useSelector((store) => store.exersices);
 
   return (
-    <div>
+    <div className={style.exercises_container}>
       {exercises.length
         ? exercises.map((exercise) => (
-            <div key={exercise.id}>
-              {exercise.title}
-              <img src={exercise.imageUrl} alt="..." />
-            </div>
+            <ExerciseItem key={exercise.id} exercise={exercise} />
           ))
         : null}
     </div>
