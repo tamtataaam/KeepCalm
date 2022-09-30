@@ -23,24 +23,26 @@ module.exports = exercisesRouter
   .post('/favorite', async (req, res) => {
     try {
       const { userId, exerciseId } = req.body;
-      console.log(userId, exerciseId);
       const findFavorite = await FavoriteExercise.findOne({
         where: { userId, exerciseId },
       });
       if (findFavorite) {
-        const deleteFavorite = await FavoriteExercise.destroy({
-          where: {
-            userId,
-            exerciseId,
-          },
-        });
-        res.json({ userId, exerciseId, status: false });
+        if (findFavorite.status) {
+          findFavorite.status = false;
+          await findFavorite.save();
+          res.json(findFavorite);
+        } else {
+          findFavorite.status = true;
+          await findFavorite.save();
+          res.json(findFavorite);
+        }
       } else {
         const favoriteExercise = await FavoriteExercise.create({
           userId,
           exerciseId,
+          status: true,
         });
-        res.json({ favoriteExercise, status: true });
+        res.json(favoriteExercise);
       }
     } catch (error) {
       res.status(500).send(`${error.message}`);

@@ -90,7 +90,6 @@ const userSlice = createSlice({
         state.helpMessage = action.error.message;
       })
       .addCase(logUser.fulfilled, (state, action) => {
-        // console.log(action.payload);
         state.isUser = true;
         state.data.id = action.payload.id;
         state.data.name = action.payload.name;

@@ -6,7 +6,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   allExercises: [],
   favoriteExercise: [],
-  status: false,
+  favoriteExerciseActual: {},
   oneExerciseInfo: null,
   error: null,
 };
@@ -80,13 +80,15 @@ const exercisesSlice = createSlice({
       })
       .addCase(addToFavoriteAsync.fulfilled, (state, action) => {
         if (action.payload.status) {
-          state.favoriteExercise.push(action.payload.favoriteExercise);
+          state.favoriteExercise.push(action.payload);
+          state.favoriteExerciseActual = action.payload;
+          console.log('add in', state);
         } else {
-          state.favoriteExercise.filter(
-            (favorite) =>
-              favorite.userId !== action.payload.userId &&
-              favorite.exerciseId !== action.payload.exerciseId
+          state.favoriteExercise = state.favoriteExercise.filter(
+            (favorite) => favorite.id !== action.payload.id
           );
+          state.favoriteExerciseActual = action.payload;
+          console.log('delete from', state);
         }
       });
   },

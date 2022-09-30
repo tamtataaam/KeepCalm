@@ -15,8 +15,6 @@ import Logout from '@mui/icons-material/Logout';
 import style from './Header.module.scss';
 
 function Header() {
-  // const userId = useSelector((store) => store.user.isUser);
-  // console.log(userId);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {

@@ -18,19 +18,26 @@ module.exports = (sequelize, DataTypes) => {
       },
       userId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         primaryKey: true,
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       exerciseId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         primaryKey: true,
         references: {
           model: 'Exercises',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      },
+      status: {
+        type: DataTypes.BOOLEAN,
       },
       createdAt: {
         allowNull: false,

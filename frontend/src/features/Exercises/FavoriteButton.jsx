@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable operator-linebreak */
 /* eslint-disable react/jsx-curly-newline */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -6,7 +8,9 @@ import { addToFavoriteAsync } from '../../store/Exercises/exerciseSlice';
 function FavoriteButton({ exercise }) {
   // const userId = 1;
   const userId = useSelector((store) => store.user.data.id);
-  console.log(userId);
+  const { favoriteExerciseActual } = useSelector((store) => store.exercises);
+
+  console.log(favoriteExerciseActual);
   const dispatch = useDispatch();
   return (
     <button
@@ -15,7 +19,12 @@ function FavoriteButton({ exercise }) {
         dispatch(addToFavoriteAsync({ userId, exerciseId: exercise.id }))
       }
     >
-      Add to fav
+      {!favoriteExerciseActual.status &&
+      favoriteExerciseActual.exerciseId === exercise.id ? (
+        <>Add to fav</>
+      ) : (
+        <>Delete from fav</>
+      )}
     </button>
   );
 }
