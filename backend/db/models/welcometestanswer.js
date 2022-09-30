@@ -14,9 +14,37 @@ module.exports = (sequelize, DataTypes) => {
   }
   WelcomeTestAnswer.init(
     {
-      questionId: DataTypes.INTEGER,
-      answerVariant: DataTypes.INTEGER,
-      answerPoint: DataTypes.INTEGER,
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      questionId: {
+        type: DataTypes.INTEGER,
+        // allowNull: false,
+        references: {
+          model: 'WelcomeTestQuestions',
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      },
+      answerVariant: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      answerPoint: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
     },
     {
       sequelize,

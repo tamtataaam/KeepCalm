@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({
       WelcomeTestScore,
-      // Condition,
+      Condition,
       Article,
       Comment,
       Like,
@@ -19,12 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       Exercise,
       UserDiary,
     }) {
-      User.hasMany(WelcomeTestScore, { foreignKey: 'userId' });
-      // User.belongsToMany(Condition, {
-      //   through: WelcomeTestScore,
-      //   foreignKey: 'userId',
-      //   otherKey: 'conditionId',
-      // });
+      User.belongsToMany(Condition, {
+        through: WelcomeTestScore,
+        foreignKey: 'userId',
+        otherKey: 'conditionId',
+      });
       User.belongsToMany(Article, {
         through: Comment,
         foreignKey: 'userId',
