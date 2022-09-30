@@ -14,7 +14,6 @@ import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
 import ArticlesPage from './ArticlesPage/ArticlesPage';
 import './App.css';
 
-
 function App() {
   // Alinas's part start
   const dispatch = useDispatch();
