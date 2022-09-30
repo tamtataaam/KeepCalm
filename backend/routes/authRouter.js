@@ -42,9 +42,9 @@ authRouter.post('/registration', async (req, res) => {
 
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({
-      password: hash,
-      email,
       name,
+      email,
+      password: hash,
       isAdmin: false,
       secretWord: '',
       status: true,
