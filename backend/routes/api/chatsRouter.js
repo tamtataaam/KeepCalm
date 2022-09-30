@@ -1,12 +1,12 @@
-const exercisesRouter = require('express').Router();
+const chatsRouter = require('express').Router();
 
 const { Chat } = require('../../db/models');
 
-module.exports = exercisesRouter
+module.exports = chatsRouter
   .get('/', async (req, res) => {
     try {
-      const allExercises = await Chat.findAll();
-      res.json(allExercises);
+      const allChats = await Chat.findAll();
+      res.json(allChats);
     } catch (error) {
       res.status(500).send(`${error.message}`);
     }
@@ -14,8 +14,8 @@ module.exports = exercisesRouter
   .get('/:id', async (req, res) => {
     try {
       const { id } = req.params;
-      const oneExercise = await Chat.findByPk(id);
-      res.json(oneExercise);
+      const oneChat = await Chat.findByPk(id);
+      res.json(oneChat);
     } catch (error) {
       res.status(500).send(`${error.message}`);
     }
