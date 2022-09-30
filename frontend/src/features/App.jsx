@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
+import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
@@ -10,6 +11,7 @@ import Login from './Login/Login';
 import Main from './Main/Main';
 import Exercises from './Exercises/Exercises';
 import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
+import ArticlesPage from './ArticlesPage/ArticlesPage';
 import './App.css';
 
 
@@ -18,6 +20,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAsyncExercises());
+    dispatch(loadAsyncArticles());
   }, []);
   // Alinas's part end
   return (
@@ -29,8 +32,8 @@ function App() {
         <Route path="/exercises" element={<Exercises />} />
         <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/articles" element={<ArticlesPage />} />
         <Route path="/login" element={<Login />} />
-
 
         {/* <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />

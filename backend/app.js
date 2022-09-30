@@ -10,6 +10,7 @@ const testDatabaseConnection = require('./src/testDatabaseConnection');
 const authRouter = require('./routes/authRouter');
 const userMoodrout = require('./routes/api/userMood');
 const exercisesRouter = require('./routes/api/exercisesRouter');
+const articlesRouter = require('./routes/api/articlesRouter');
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -22,6 +23,7 @@ serverConfig(app);
 app.use('/auth', authRouter);
 app.use('/mood', userMoodrout);
 app.use('/exercises', exercisesRouter);
+app.use('/articles', articlesRouter);
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {
