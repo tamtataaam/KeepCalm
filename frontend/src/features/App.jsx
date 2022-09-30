@@ -5,6 +5,7 @@ import UserPage from './UserPage/UserPage';
 
 import Main from './Main/Main';
 import './App.css';
+import Exercises from './Exercises/Exercises';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route path="/:login" element={<UserPage />} />
         <Route path="home" element={<Main />} />
+        <Route path="/exercises" element={<Exercises />} />
         {/* <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/notfound" element={<Error404 />} />
