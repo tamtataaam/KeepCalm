@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
+import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
@@ -17,13 +18,14 @@ import ChatsPage from './Chats/ChatsPage';
 import OneArticlePage from './ArticlesPage/OneArticlePage';
 import './App.css';
 
-
 function App() {
   // Alinas's part start
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAsyncExercises());
     dispatch(loadAsyncArticles());
+    dispatch(loadSmiley());
+    dispatch(addSmiley());
     dispatch(loadChats());
   }, []);
   // Alinas's part end
