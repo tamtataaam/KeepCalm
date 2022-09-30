@@ -1,12 +1,17 @@
+/* eslint-disable max-len */
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Article from './Article';
 
 function ArticlesPage() {
-  // const articles = useSelector((store) => store.articles);
-  // console.log(articles);
+  const articles = useSelector((store) => store.articles);
+  const { articles } = useSelector((store) => store.articles);
 
   return (
-    <h4>123</h4>
+    <>
+      <h3>Статьи</h3>
+      {articles && articles.map((article) => <Article key={article.id} article={article} />)}
+    </>
   );
 }
 
