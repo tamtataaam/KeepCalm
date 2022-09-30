@@ -1,5 +1,5 @@
 const userMoodrout = require('express').Router();
-const { Mood, UserMood } = require('../../db/models');
+const { Mood } = require('../../db/models');
 
 userMoodrout.get('/', async (req, res) => {
   try {
