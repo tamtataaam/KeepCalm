@@ -1,19 +1,19 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import './Header.css';
+import style from './Header.module.scss';
 
 function Header() {
   return (
-    <header>
+    <header className={style.header}>
       <div>
-        <a className="logo-nav" href="/">
+        <a className={style.logo_nav} href="/">
           KeepCalm
         </a>
       </div>
-      <div className="button-nav">
+      <div className={style.button_nav}>
         <Button>Саня</Button>
-        <Avatar className="avatar-nav" alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+        <Avatar className={style.avatar_nav} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
         <Button>Выйти</Button>
       </div>
     </header>

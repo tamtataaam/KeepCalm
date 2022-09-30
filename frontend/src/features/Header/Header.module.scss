@@ -1,19 +1,23 @@
+body{
+    margin: 0;
+
 header{
-    position: fixed;
+    position: relative;
     height: 80px;
-    width: 100%;
+    width: 95.1%;
     top: -10px;
-    left: -10px;
-    text-shadow: -1px -1px #000;
-    user-select: none;
+    background-color: #8E97FD;
+    border-bottom: 1px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     padding: .8em 2em;
     outline: none;
     background-size: 200% 100%, auto;
     background-position: 200% 0, 0 0;
-    /* box-shadow: rgba(4, 4, 4, 0.282) 0 1px 0.5px; */
-  }
+    box-shadow: rgba(4, 4, 4, 0.282) 0 1px 0.5px;
 
-  .logo-nav{
+
+  .logo_nav{
     position: relative;
     text-decoration:none;
     left: 1%;
@@ -23,16 +27,17 @@ header{
     color: #D1512D;
 }
 
-.avatar-nav{
+.avatar_nav{
     margin: 0 15px;
  
 }
 
-.button-nav{
+.button_nav{
     position: relative;
     display: flex;
-    left: 75%;
+    right: -80%;
     bottom: 30px;
     color: black;
-}
-
+        };
+    };
+}; 
