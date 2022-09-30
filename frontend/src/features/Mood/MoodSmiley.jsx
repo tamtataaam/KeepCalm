@@ -12,10 +12,12 @@ function Mood() {
   const moodSm = useSelector((prev) => prev.mood.moodSmiley);
   // console.log(moodSm);
   return (
-    <div>
+    <div className="smile_container">
       {moodSm.map((el) => (
-        <div className="smile_container">
-          <img className="smile_img" src={el.moodUrl} alt="фото_эмодзи" />
+        <div>
+          <div>
+            <img className="smile_img" src={el.moodUrl} alt="фото_эмодзи" />
+          </div>
           <div>{el.mood}</div>
         </div>
       ))}
