@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logUser, disableHelpMessage } from '../../store/userSlice/userSlice';
 
-function Login() {
+function Login({ setLogin }) {
   const dispatch = useDispatch();
   const isUser = useSelector((state) => state.user.isUser);
   const helpMessage = useSelector((state) => state.user.helpMessage);
@@ -78,6 +78,12 @@ function Login() {
             Войти
           </button>
         </form>
+        <div>
+          Если ты не зареган, ну хули
+          {' '}
+          <button type="button" onClick={() => setLogin((login) => !login)}>Зарегайся</button>
+          , Ёпта!
+        </div>
       </div>
     </div>
   );

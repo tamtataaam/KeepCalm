@@ -18,7 +18,6 @@ import OneArticlePage from './ArticlesPage/OneArticlePage';
 import './App.css';
 
 
-
 function App() {
   // Alinas's part start
   const dispatch = useDispatch();
