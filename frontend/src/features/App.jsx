@@ -14,7 +14,6 @@ import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
 import ArticlesPage from './ArticlesPage/ArticlesPage';
 import './App.css';
 
-
 function App() {
   // Alinas's part start
   const dispatch = useDispatch();
@@ -34,7 +33,6 @@ function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/articles" element={<ArticlesPage />} />
         <Route path="/login" element={<Login />} />
-
         {/* <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/notfound" element={<Error404 />} />

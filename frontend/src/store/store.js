@@ -6,7 +6,7 @@ import articlesSlice from './articlesSlice/articlesSlice';
 
 const store = configureStore({
   reducer: {
-    exersices: exercisesSlice,
+    exercises: exercisesSlice,
     user: userSliceReducer,
     mood: moodSliceReducer,
     articles: articlesSlice,
