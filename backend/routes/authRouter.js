@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
@@ -5,14 +6,14 @@ const { User } = require('../db/models');
 authRouter.post('/registration', async (req, res) => {
   try {
     const {
-      name, email, password, repeatPass,
+      name, email, password, repeatPassword,
     } = req.body;
 
     if (
       name.length < 1
       || email.length < 1
       || password.length < 1
-      || repeatPass.length < 1
+      || repeatPassword.length < 1
     ) {
       return res.json({ message: 'Заполните все поля' });
     }
@@ -22,7 +23,7 @@ authRouter.post('/registration', async (req, res) => {
     if (password.length < 7) {
       return res.json({ message: 'Минимальная длина пароля - 8 символов' });
     }
-    if (password !== repeatPass) {
+    if (password !== repeatPassword) {
       return res.json({ message: 'Пароли не совпадают' });
     }
     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
@@ -41,9 +42,9 @@ authRouter.post('/registration', async (req, res) => {
 
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({
-      password: hash,
-      email,
       name,
+      email,
+      password: hash,
       isAdmin: false,
       secretWord: '',
       status: true,
