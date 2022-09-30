@@ -11,6 +11,7 @@ const authRouter = require('./routes/authRouter');
 const userMoodrout = require('./routes/api/userMood');
 const exercisesRouter = require('./routes/api/exercisesRouter');
 const articlesRouter = require('./routes/api/articlesRouter');
+const chatsRouter = require('./routes/api/chatsRouter');
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -24,6 +25,7 @@ app.use('/auth', authRouter);
 app.use('/mood', userMoodrout);
 app.use('/exercises', exercisesRouter);
 app.use('/articles', articlesRouter);
+app.use('/chats', chatsRouter);
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {

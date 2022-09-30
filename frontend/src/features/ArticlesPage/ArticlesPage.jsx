@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Article from './Article';
 
 function ArticlesPage() {
+  const articles = useSelector((store) => store.articles);
   const { articles } = useSelector((store) => store.articles);
 
   return (
