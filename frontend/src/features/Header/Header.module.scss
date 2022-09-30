@@ -1,16 +1,13 @@
 body{
-    margin: 0;
+    margin: 0px ;
 
 header{
-    position: relative;
     height: 80px;
-    width: 95.1%;
-    top: -10px;
+    width: 100%;
     background-color: #8E97FD;
     border-bottom: 1px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding: .8em 2em;
     outline: none;
     background-size: 200% 100%, auto;
     background-position: 200% 0, 0 0;
@@ -20,24 +17,33 @@ header{
   .logo_nav{
     position: relative;
     text-decoration:none;
-    left: 1%;
-    top: 12px;
-    font-size: 300%;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #D1512D;
+    left: 20%;
+    top: 20px;
+    font-size: 200%;
+    font-weight: bold;
+    font-family: 'Nunito';
+    color: #EBEAEC;
 }
 
 .avatar_nav{
     margin: 0 15px;
  
 }
+.nav_btn{
+    position: relative;
+    text-decoration:none;
+    color: #EBEAEC;
+    top: 7px;
+    font-size: 20px;
+
+}
 
 .button_nav{
-    position: relative;
+    position: absolute;
     display: flex;
-    right: -80%;
-    bottom: 30px;
+    top: 21px;
     color: black;
+   right: 30%;
         };
     };
 }; 

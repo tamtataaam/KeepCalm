@@ -3,6 +3,15 @@ const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 
+authRouter.get('/', (req, res) => {
+  const { user } = req.session;
+  if (user) {
+    res.json({ isUser: true, user });
+  } else {
+    res.json({ isUser: false });
+  }
+});
+
 authRouter.post('/registration', async (req, res) => {
   try {
     const {
@@ -119,15 +128,6 @@ authRouter.delete('/logout', (req, res) => {
     res.clearCookie('user_sid');
     res.json({ message: 'success' });
   });
-});
-
-authRouter.get('/', (req, res) => {
-  const { user } = req.session;
-  if (user) {
-    res.json({ isUser: true, user });
-  } else {
-    res.json({ isUser: false });
-  }
 });
 
 module.exports = authRouter;
