@@ -8,12 +8,12 @@ import style from './Exercises.module.scss';
 import ExerciseItem from './ExerciseItem';
 
 function Exercises() {
-  const { exercises } = useSelector((store) => store.exersices);
+  const { allExercises } = useSelector((store) => store.exersices);
 
   return (
     <div className={style.exercises_container}>
-      {exercises.length
-        ? exercises.map((exercise) => (
+      {allExercises.length
+        ? allExercises.map((exercise) => (
             <ExerciseItem key={exercise.id} exercise={exercise} />
           ))
         : null}
