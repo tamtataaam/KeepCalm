@@ -1,0 +1,7 @@
+.smile_container {
+  display: flex;
+}
+.smile_img {
+  width: 400px;
+  height: 200px;
+}
