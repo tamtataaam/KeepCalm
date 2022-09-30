@@ -46,7 +46,7 @@ function Registration() {
   return (
     <div className="registration_container">
       <div className="registration_form_div">
-        <form className="registration_form" onSubmit={regSubmit} style={{ marginTop: '100px' }}>
+        <form className="registration_form" onSubmit={regSubmit}>
           <h4>Регистрация</h4>
 
           <label htmlFor="nameInput">Имя</label>

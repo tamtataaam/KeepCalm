@@ -31,7 +31,6 @@ export const oneExerciseAsyncInfo = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
-
       return data;
     }
   }

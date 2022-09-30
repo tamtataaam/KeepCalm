@@ -6,11 +6,12 @@ import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
 import Registration from './Registration/Registration';
-
+import Login from './Login/Login';
 import Main from './Main/Main';
-import './App.css';
 import Exercises from './Exercises/Exercises';
 import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
+import './App.css';
+
 
 function App() {
   // Alinas's part start
@@ -28,6 +29,8 @@ function App() {
         <Route path="/exercises" element={<Exercises />} />
         <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+
 
         {/* <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />

@@ -2,6 +2,7 @@ const exercisesRouter = require('express').Router();
 
 const { Exercise } = require('../../db/models');
 
+
 module.exports = exercisesRouter
   .get('/', async (req, res) => {
     try {

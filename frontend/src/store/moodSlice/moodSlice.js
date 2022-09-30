@@ -5,16 +5,21 @@ const initialState = {
   error: null,
 };
 
-const loadSmiley = createAsyncThunk('mood/smiley', () =>
-  fetch('/mood')
-    .then((response) => response.json())
-    .then((body) => {
-      if (body.error) {
-        throw new Error(body.error);
-      }
-      return body.data;
-    })
-);
+const loadSmiley = createAsyncThunk('mood/loadSmiley', async () => {
+  const res = await fetch('/mood', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+  const data = await res.json();
+
+  if (data.error) {
+    throw new Error(data.error);
+  } else {
+    return data.data;
+  }
+});
 
 const moodSlice = createSlice({
   name: 'mood',
@@ -25,7 +30,6 @@ const moodSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(loadSmiley.fulfilled, (state, action) => {
-        console.log(action);
         state.moodSmiley = action.payload;
       });
   },
