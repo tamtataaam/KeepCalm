@@ -5,7 +5,8 @@ import './mood.css';
 
 function Mood() {
   const dispatch = useDispatch();
-
+  const userIdmoodId = useSelector((prev) => prev.mood);
+  console.log(userIdmoodId);
   const moodSm = useSelector((prev) => prev.mood.moodSmiley);
 
   const getSmiley = (id) => dispatch(addSmiley(id));
