@@ -110,7 +110,6 @@ authRouter.post('/login', async (req, res) => {
       // secretWord: user.secretWord,
       // status: user.status,
     };
-    console.log(user);
     res.json(user);
   } else {
     res.json({ message: 'Слишком короткий email и/или пароль' });

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadSmiley, addSmiley } from '../../store/moodSlice/moodSlice';
@@ -5,8 +7,8 @@ import './mood.css';
 
 function Mood() {
   const dispatch = useDispatch();
-  const userIdmoodId = useSelector((prev) => prev.mood);
-  console.log(userIdmoodId);
+  // const userIdmoodId = useSelector((prev) => prev.mood);
+  // console.log(userIdmoodId);
   const moodSm = useSelector((prev) => prev.mood.moodSmiley);
 
   const getSmiley = (id) => dispatch(addSmiley(id));

@@ -15,8 +15,8 @@ import Main from './Main/Main';
 import Exercises from './Exercises/Exercises';
 import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
 import ArticlesPage from './ArticlesPage/ArticlesPage';
-import ChatsPage from './Chats/ChatsPage';
 import OneArticlePage from './ArticlesPage/OneArticlePage';
+import ChatsPage from './Chats/ChatsPage';
 import './App.css';
 
 function App() {
@@ -34,9 +34,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<Main />} />
         <Route path="/lk/:login" element={<UserPage />} />
-        <Route path="home" element={<Main />} />
-        <Route path="mood" element={<Mood />} />
+        <Route path="/mood" element={<Mood />} />
         <Route path="/exercises" element={<Exercises />} />
         <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
         <Route path="/registration" element={<Registration />} />

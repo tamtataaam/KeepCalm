@@ -16,7 +16,7 @@ import style from './Header.module.scss';
 
 function Header() {
   const user = useSelector((store) => store.user.isUser);
-  console.log(user);
+  // console.log(user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
