@@ -25,7 +25,6 @@ const moodSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(loadSmiley.fulfilled, (state, action) => {
-        console.log(action);
         state.moodSmiley = action.payload;
       });
   },

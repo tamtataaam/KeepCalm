@@ -11,9 +11,42 @@ const initialState = {
   error: null,
 };
 
+const loadUser = createAsyncThunk(
+  'user/loadUser',
+  () => fetch('/auth')
+    .then((response) => response.json())
+    .then((body) => {
+      if (!body.isUser) {
+        throw new Error(body.isUser);
+      }
+      return body.user;
+    }),
+);
+
 const regUser = createAsyncThunk(
   'user/regUser',
   (data) => fetch('/auth/registration', {
+    method: 'post',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      if (body.message) {
+        throw new Error(body.message);
+      }
+      return body.user;
+    }),
+);
+
+const logUser = createAsyncThunk(
+  'user/logUser',
+  (data) => fetch('/auth/login', {
     method: 'post',
     headers: {
       'Content-type': 'application/json',
@@ -42,21 +75,32 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(loadUser.rejected, (state) => {
+        state.isUser = false;
+      })
+      .addCase(loadUser.fulfilled, (state, action) => {
+        state.isUser = true;
+        state.data = action.payload;
+      })
       .addCase(regUser.rejected, (state, action) => {
         state.helpMessage = action.error.message;
       })
       .addCase(regUser.fulfilled, (state, action) => {
         state.isUser = true;
         state.data = action.payload;
+      })
+      .addCase(logUser.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(logUser.fulfilled, (state, action) => {
+        state.isUser = true;
+        state.data = action.payload;
       });
   },
 });
 
-// Экспорт reducer-функции
 export default userSlice.reducer;
 
-// Экспорт action creator-функций
 export const { disableHelpMessage } = userSlice.actions;
 
-// Экспорт action creator-функций (thunk)
-export { regUser };
+export { loadUser, regUser, logUser };
