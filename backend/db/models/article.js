@@ -1,4 +1,5 @@
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Article extends Model {
     /**
@@ -35,6 +36,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
+      img: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
@@ -48,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Article',
       tableName: 'Articles',
-    }
+    },
   );
   return Article;
 };

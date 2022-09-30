@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
+import { loadChats } from '../store/chatsSlice/chatsSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
@@ -13,6 +14,8 @@ import Main from './Main/Main';
 import Exercises from './Exercises/Exercises';
 import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
 import ArticlesPage from './ArticlesPage/ArticlesPage';
+import ChatsPage from './Chats/ChatsPage';
+import OneArticlePage from './ArticlesPage/OneArticlePage';
 import './App.css';
 
 function App() {
@@ -23,6 +26,7 @@ function App() {
     dispatch(loadAsyncArticles());
     dispatch(loadSmiley());
     dispatch(addSmiley());
+    dispatch(loadChats());
   }, []);
   // Alinas's part end
   return (
@@ -35,7 +39,9 @@ function App() {
         <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/articles/:id" element={<OneArticlePage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/chats" element={<ChatsPage />} />
 
         {/* <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />

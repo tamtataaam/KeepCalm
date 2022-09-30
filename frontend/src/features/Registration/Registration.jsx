@@ -1,11 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineEyeInvisible, AiOutlineEye, AiTwotoneLock } from 'react-icons/ai';
+import { HiUserCircle } from 'react-icons/hi';
+import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { regUser, disableHelpMessage } from '../../store/userSlice/userSlice';
+import styleReg from './Registration.module.scss';
 
-function Registration() {
+function Registration({ setLogin }) {
   const dispatch = useDispatch();
   const isUser = useSelector((state) => state.user.isUser);
   const helpMessage = useSelector((state) => state.user.helpMessage);
@@ -44,15 +47,15 @@ function Registration() {
   };
 
   return (
-    <div className="registration_container">
-      <div className="registration_form_div">
-        <form className="registration_form" onSubmit={regSubmit}>
+    <div className={styleReg.registration_container}>
+      <div className={styleReg.registration_form_div}>
+        <form className={styleReg.registration_form} onSubmit={regSubmit}>
           <h4>Регистрация</h4>
 
-          <label htmlFor="nameInput">Имя</label>
+          <HiUserCircle className={styleReg.icon_user} />
           <input type="text" name="name" id="nameInput" placeholder="Имя" required />
-
-          <label htmlFor="emailInput">Email</label>
+          <br />
+          <MdOutlineAlternateEmail className={styleReg.icon_email} />
           <input
             type="email"
             name="email"
@@ -63,8 +66,8 @@ function Registration() {
             required
           />
 
-          <label htmlFor="passwordInput">Пароль</label>
           <div className="password_input">
+            <AiTwotoneLock className={styleReg.icon_lock} />
             <input
               type={state ? 'text' : 'password'}
               name="password"
@@ -74,13 +77,13 @@ function Registration() {
               title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
               required
             />
-            <button type="button" onClick={toggleBtn} className="password_button">
+            <button type="button" onClick={toggleBtn} className={styleReg.password_button}>
               { state ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
             </button>
           </div>
 
-          <label htmlFor="repeatPasswordInput">Повторите пароль</label>
           <div className="password_input">
+            <AiTwotoneLock className={styleReg.icon_lock} />
             <input
               type={state2 ? 'text' : 'password'}
               name="repeatPassword"
@@ -88,14 +91,21 @@ function Registration() {
               placeholder="Повторите пароль"
               required
             />
-            <button type="button" onClick={toggleBtn2} className="password_button">
+            <button type="button" onClick={toggleBtn2} className={styleReg.password_button}>
               { state2 ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
             </button>
           </div>
 
           { helpMessage && <div className="helpText">{helpMessage}</div>}
-          <button className="registration_button" type="submit">Зарегистрироваться</button>
+          <button className={styleReg.registration_button} type="submit">Зарегистрироваться</button>
         </form>
+        <div>
+          Так ты зареган?
+          Лол, тада залогайся, дуралей
+          {' '}
+          <button type="button" onClick={() => setLogin((login) => !login)}>Зарегайся</button>
+          , Ёпта!
+        </div>
       </div>
     </div>
   );

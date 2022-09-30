@@ -1,0 +1,23 @@
+.chats_container {
+  display: flex;
+  justify-content: space-around;
+  width: 1000px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.chat_card {
+  outline: 1px #808aff solid;
+  background-color: #808aff;
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  border-radius: 15%;
+}
+
+// .exercise_img {
+//   max-width: 200px;
+//   border-radius: 15%;
+// }
