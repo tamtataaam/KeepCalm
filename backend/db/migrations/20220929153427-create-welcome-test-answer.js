@@ -9,10 +9,12 @@ module.exports = {
       },
       questionId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         references: {
           model: 'WelcomeTestQuestions',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       answerVariant: {
         type: Sequelize.INTEGER,

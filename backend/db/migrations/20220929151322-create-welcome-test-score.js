@@ -9,17 +9,21 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       conditionId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        // allowNull: false,
         references: {
           model: 'Conditions',
         },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
       },
       testScore: {
         type: Sequelize.INTEGER,

@@ -6,9 +6,9 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({User,Article}) {
-     Like.belongsTo(User,{foreignKey:'userId'})
-     Like.belongsTo(Article,{foreignKey:'articleId'})
+    static associate({ User, Article }) {
+      Like.belongsTo(User, { foreignKey: 'userId' });
+      Like.belongsTo(Article, { foreignKey: 'articleId' });
     }
   }
   Like.init(
@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
       },
       userId: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         references: {
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       articleId: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         references: {
@@ -37,12 +37,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      }}
+        type: DataTypes.DATE,
+      },
+    },
     {
       sequelize,
       modelName: 'Like',
