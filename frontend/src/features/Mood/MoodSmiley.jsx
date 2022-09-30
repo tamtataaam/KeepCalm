@@ -1,21 +1,25 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadSmiley } from '../../store/moodSlice/moodSlice';
+import { loadSmiley, addSmiley } from '../../store/moodSlice/moodSlice';
 import './mood.css';
 
 function Mood() {
   const dispatch = useDispatch();
+  const userIdmoodId = useSelector((prev) => prev.mood);
+  console.log(userIdmoodId);
+  const moodSm = useSelector((prev) => prev.mood.moodSmiley);
+
+  const getSmiley = (id) => dispatch(addSmiley(id));
   useEffect(() => {
     dispatch(loadSmiley());
   }, []);
-
-  const moodSm = useSelector((prev) => prev.mood.moodSmiley);
-  // console.log(moodSm);
   return (
-    <div>
+    <div className="smile_container">
       {moodSm.map((el) => (
-        <div className="smile_container">
-          <img className="smile_img" src={el.moodUrl} alt="фото_эмодзи" />
+        <div>
+          <div onClick={() => getSmiley(el.id)}>
+            <img className="smile_img" src={el.moodUrl} alt="фото_эмодзи" />
+          </div>
           <div>{el.mood}</div>
         </div>
       ))}

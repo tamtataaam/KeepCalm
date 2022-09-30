@@ -1,6 +1,6 @@
 const exercisesRouter = require('express').Router();
-
 const { Exercise, FavoriteExercise } = require('../../db/models');
+
 
 module.exports = exercisesRouter
   .get('/', async (req, res) => {

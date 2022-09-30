@@ -1,0 +1,64 @@
+.registration_form{
+  position: relative;
+  left: 50px;
+
+}
+input{
+border: 1px solid  rgb(83, 82, 82);
+border-radius: 10px;
+width: 350px;
+height: 30px;
+margin: 5px ;
+box-shadow: 1px -1px 1px -1px rgba(0, 0, 0, 0.412);
+padding-left: 30px;
+}
+.registration_button{
+    position: relative;
+    left: 18%;
+    margin: 15px 0;
+    border: none;
+    background-color: #8E97FD ;
+    border-radius: 15px;
+    width: 200px;
+    height: 30px;
+}
+.registration_button:hover{
+    width: 205px;
+    height: 31px;
+    box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
+}
+.password_button{
+    background-color: white;
+    position: relative;
+    border: none;
+    top: 5px;
+    right: 49px;
+    height: 30px;
+    border-bottom-right-radius: 10px ;
+    border-top-right-radius: 10px;
+    font-size: 22px;
+}
+.icon_user{
+    position: relative;
+    top:6px;
+    left: 33px;
+    height: 22px;
+    width: 22px;
+    color: rgb(104, 109, 109);
+}
+.icon_email{
+    position: relative;
+    top:6px;
+    left: 33px;
+    height: 22px;
+    width: 22px;
+    color: rgb(104, 109, 109);
+}
+.icon_lock{
+    position: relative;
+    top:6px;
+    left: 33px;
+    height: 22px;
+    width: 22px;
+    color: rgb(104, 109, 109);
+}
