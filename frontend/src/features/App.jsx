@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 
@@ -8,6 +10,12 @@ import './App.css';
 import Exercises from './Exercises/Exercises';
 
 function App() {
+  // Alinas's part start
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadAsyncExercises());
+  }, []);
+  // Alinas's part end
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

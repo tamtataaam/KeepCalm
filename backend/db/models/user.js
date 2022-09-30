@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       Exercise,
       UserDiary,
     }) {
-      User.hasMany(WelcomeTestScore, { foreignKey: 'userId' });
       User.belongsToMany(Condition, {
         through: WelcomeTestScore,
         foreignKey: 'userId',

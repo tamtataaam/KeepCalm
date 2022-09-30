@@ -3,7 +3,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  todos: [],
+  exercises: [],
 };
 
 export const loadAsyncExercises = createAsyncThunk(
@@ -15,12 +15,13 @@ export const loadAsyncExercises = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
-      return data.exercises;
+      console.log(data);
+      return data.exercise;
     }
   }
 );
 
-const exerciseSlice = createSlice({
+const exercisesSlice = createSlice({
   name: 'exercises',
   initialState,
   reducers: {},
@@ -36,5 +37,4 @@ const exerciseSlice = createSlice({
   },
 });
 
-export default exerciseSlice.reducer;
-export const { initExercises } = exerciseSlice.actions;
+export default exercisesSlice.reducer;
