@@ -15,8 +15,6 @@ userMoodrout
     try {
       const { user } = req.session;
       const { smiley } = req.body;
-    //   console.log(user.id);
-    //   console.log(smiley);
       const newSmiley = await UserMood.create({
         userId: user.id,
         moodId: smiley,

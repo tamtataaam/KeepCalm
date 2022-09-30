@@ -1,7 +1,10 @@
 import React from 'react';
 import LineChart from 'react-linechart';
+import { useSelector } from 'react-redux';
 
 function userPage() {
+  const userIdmoodId = useSelector((prev) => prev);
+  console.log(userIdmoodId);
   const data = [
     {
       color: 'steelblue',
