@@ -5,7 +5,7 @@ userMoodrout.get('/', async (req, res) => {
   try {
     // const { user } = req.session;
     const moodSmile = await Mood.findAll();
-    res.json({ data: moodSmile });
+    return res.json({ data: moodSmile });
   } catch (error) {
     res.json({ error: error.message });
   }
