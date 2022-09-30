@@ -6,9 +6,9 @@ import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
 import Registration from './Registration/Registration';
-
-
+import Login from './Login/Login';
 import Main from './Main/Main';
+
 import './App.css';
 import Exercises from './Exercises/Exercises';
 
@@ -27,7 +27,7 @@ function App() {
         <Route path="mood" element={<Mood />} />
         <Route path="/exercises" element={<Exercises />} />
         <Route path="/registration" element={<Registration />} />
-        
+        <Route path="/login" element={<Login />} />
         {/* <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/notfound" element={<Error404 />} />
