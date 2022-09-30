@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'FavoriteExercise',
+      tableName: 'FavoriteExercises',
     }
   );
   return FavoriteExercise;

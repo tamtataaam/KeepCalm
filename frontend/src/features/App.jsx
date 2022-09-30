@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
+import { loadUser } from '../store/userSlice/userSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
@@ -20,6 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(loadAsyncExercises());
     dispatch(loadAsyncArticles());
+    dispatch(loadUser());
   }, []);
   // Alinas's part end
   return (

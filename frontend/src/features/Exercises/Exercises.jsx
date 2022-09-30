@@ -7,6 +7,7 @@ import style from './Exercises.module.scss';
 
 import ExerciseItem from './ExerciseItem';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import FavoriteButton from './FavoriteButton';
 
 function Exercises() {
   const { allExercises } = useSelector((store) => store.exercises);
@@ -15,7 +16,13 @@ function Exercises() {
     <div className={style.exercises_container}>
       {allExercises.length ? (
         allExercises.map((exercise) => (
-          <ExerciseItem key={exercise.id} exercise={exercise} />
+          <div key={exercise.id}>
+            <FavoriteButton
+              className={style.favorite_button}
+              exercise={exercise}
+            />
+            <ExerciseItem exercise={exercise} />
+          </div>
         ))
       ) : (
         <LoadingPage />

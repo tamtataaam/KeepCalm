@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 // import Button from '@mui/material/Button';
@@ -10,9 +11,12 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
+// import { useSelector } from 'react-redux';
 import style from './Header.module.scss';
 
 function Header() {
+  // const userId = useSelector((store) => store.user.isUser);
+  // console.log(userId);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -29,8 +33,12 @@ function Header() {
         </a>
       </div>
       <div className={style.button_nav}>
-        <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-          <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>Sanya</Typography>
+        <Box
+          sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
+        >
+          <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>
+            Sanya
+          </Typography>
           <Tooltip title="Account settings">
             <IconButton
               onClick={handleClick}
@@ -80,9 +88,7 @@ function Header() {
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
           <MenuItem>
-            <Avatar />
-            {' '}
-            Мой аккаунт
+            <Avatar /> Мой аккаунт
           </MenuItem>
           <Divider />
           <MenuItem>

@@ -11,21 +11,19 @@ const initialState = {
   error: null,
 };
 
-const loadUser = createAsyncThunk(
-  'user/loadUser',
-  () => fetch('/auth')
+const loadUser = createAsyncThunk('user/loadUser', () =>
+  fetch('/auth')
     .then((response) => response.json())
     .then((body) => {
       if (!body.isUser) {
         throw new Error(body.isUser);
       }
       return body.user;
-    }),
+    })
 );
 
-const regUser = createAsyncThunk(
-  'user/regUser',
-  (data) => fetch('/auth/registration', {
+const regUser = createAsyncThunk('user/regUser', (data) =>
+  fetch('/auth/registration', {
     method: 'post',
     headers: {
       'Content-type': 'application/json',
@@ -41,12 +39,11 @@ const regUser = createAsyncThunk(
         throw new Error(body.message);
       }
       return body.user;
-    }),
+    })
 );
 
-const logUser = createAsyncThunk(
-  'user/logUser',
-  (data) => fetch('/auth/login', {
+const logUser = createAsyncThunk('user/logUser', (data) =>
+  fetch('/auth/login', {
     method: 'post',
     headers: {
       'Content-type': 'application/json',
@@ -61,8 +58,8 @@ const logUser = createAsyncThunk(
       if (body.message) {
         throw new Error(body.message);
       }
-      return body.user;
-    }),
+      return body;
+    })
 );
 
 const userSlice = createSlice({
@@ -93,8 +90,11 @@ const userSlice = createSlice({
         state.helpMessage = action.error.message;
       })
       .addCase(logUser.fulfilled, (state, action) => {
+        // console.log(action.payload);
         state.isUser = true;
-        state.data = action.payload;
+        state.data.id = action.payload.id;
+        state.data.name = action.payload.name;
+        state.data.email = action.payload.email;
       });
   },
 });

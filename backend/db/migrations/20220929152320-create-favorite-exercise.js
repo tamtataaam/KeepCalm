@@ -9,7 +9,6 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        // allowNull: false,
         primaryKey: true,
         references: {
           model: 'Users',
@@ -19,7 +18,6 @@ module.exports = {
       },
       exerciseId: {
         type: Sequelize.INTEGER,
-        // allowNull: false,
         primaryKey: true,
         references: {
           model: 'Exercises',
