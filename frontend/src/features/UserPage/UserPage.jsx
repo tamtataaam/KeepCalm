@@ -15,7 +15,7 @@ function userPage() {
   return (
     <div>
       {' '}
-      <LineChart width={800} height={400} data={data} />
+      <LineChart width={600} height={400} data={data} />
     </div>
   );
 }

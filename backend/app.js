@@ -8,6 +8,7 @@ const testDatabaseConnection = require('./src/testDatabaseConnection');
 
 // const apiRouter = require('./routes/apiRouter');
 const authRouter = require('./routes/authRouter');
+const userMoodrout = require('./routes/api/userMood');
 const exercisesRouter = require('./routes/api/exercisesRouter');
 
 const app = express();
@@ -19,6 +20,7 @@ serverConfig(app);
 
 // app.use('/api', apiRouter);
 app.use('/auth', authRouter);
+app.use('/mood', userMoodrout);
 app.use('/exercises', exercisesRouter);
 
 wsServer.on('connection', (socket) => {
