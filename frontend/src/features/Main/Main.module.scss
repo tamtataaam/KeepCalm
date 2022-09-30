@@ -1,0 +1,31 @@
+.main_img_div{
+    position: relative;
+    justify-content:center ;
+    left: 0;
+    top: 50px;
+}
+.welcome_text{
+z-index: 1;
+position: absolute;
+left: 270px;
+width: 388px;
+height: 56px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 46px;
+// line-height: 28px;
+text-align: center;
+color: #8E97FD;
+}
+.main_photo_ellipse{
+    position: absolute;
+    max-width: 700px;
+    top: 40px;
+}
+.main_photo{ 
+    position: absolute;
+    left: 200px;
+    top:150px;
+    max-width: 400px;
+}
