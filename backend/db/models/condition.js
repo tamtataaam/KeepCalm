@@ -7,13 +7,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ WelcomeTestScore, Recommendation, User }) {
-      Condition.hasOne(WelcomeTestScore, { foreignKey: 'conditionId' });
+      Condition.hasMany(WelcomeTestScore, { foreignKey: 'conditionId' });
       Condition.hasMany(Recommendation, { foreignKey: 'conditionId' });
-      // Condition.belongsToMany(User, {
-      //   through: WelcomeTestScore,
-      //   foreignKey: 'conditionId',
-      //   otherKey: 'userId',
-      // });
+      Condition.belongsToMany(User, {
+        through: WelcomeTestScore,
+        foreignKey: 'conditionId',
+        otherKey: 'userId',
+      });
     }
   }
 
