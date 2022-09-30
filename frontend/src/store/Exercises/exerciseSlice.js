@@ -15,8 +15,8 @@ export const loadAsyncExercises = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
-      console.log(data);
-      return data.exercise;
+      // console.log(data);
+      return data;
     }
   }
 );
@@ -30,10 +30,10 @@ const exercisesSlice = createSlice({
       .addCase(loadAsyncExercises.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(
-        loadAsyncExercises.fulfilled,
-        (state, action) => (state.exercises = action.payload)
-      );
+      .addCase(loadAsyncExercises.fulfilled, (state, action) => {
+        state.exercises = action.payload;
+        // console.log(state.exercises);
+      });
   },
 });
 
