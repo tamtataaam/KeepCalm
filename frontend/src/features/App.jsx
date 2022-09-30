@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
+import { loadUser } from '../store/userSlice/userSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
 import Layout from './Layout/Layout';
@@ -24,6 +25,7 @@ function App() {
   useEffect(() => {
     dispatch(loadAsyncExercises());
     dispatch(loadAsyncArticles());
+    dispatch(loadUser());
     dispatch(loadSmiley());
     dispatch(addSmiley());
     dispatch(loadChats());

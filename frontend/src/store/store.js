@@ -7,7 +7,7 @@ import chatsSliceReducer from './chatsSlice/chatsSlice';
 
 const store = configureStore({
   reducer: {
-    exersices: exercisesSlice,
+    exercises: exercisesSlice,
     user: userSliceReducer,
     mood: moodSliceReducer,
     articles: articlesSlice,
