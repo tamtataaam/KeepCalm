@@ -1,13 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import LoadingPage from '../LoadingPage/LoadingPage';
 import OneNote from './OneNote';
 import FormAddNote from './FormAddNote';
 import style from './UserDiary.module.scss';
 
 function UserDiary() {
   const { allnotes } = useSelector((store) => store.userDiary);
-
   return (
     <div className={style.all_page_container}>
       <div className={style.diary_notes_container}>
@@ -18,7 +16,7 @@ function UserDiary() {
             </div>
           ))
         ) : (
-          <LoadingPage />
+          <h1>Добавь свою первую запись ....</h1>
         )}
       </div>
       <div className={style.form_add_notes_container}>
