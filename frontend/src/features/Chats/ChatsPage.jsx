@@ -15,7 +15,6 @@ function ChatsPage() {
         ))
         : null}
     </div>
-    // <div>хуй</div>
   );
 }
 
