@@ -56,7 +56,7 @@ function App() {
             <Route path="/articles/:id" element={<OneArticlePage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/chats" element={<ChatsPage />} />
-            <Route path="/chats/addchat" element={<AddChatPage />} />
+            <Route path="/addchat" element={<AddChatPage />} />
             <Route path="/userdiary" element={<UserDiary />} />
           </Route>
         </Routes>
