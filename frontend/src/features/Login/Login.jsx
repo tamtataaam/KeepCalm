@@ -45,7 +45,7 @@ function Login({ setLogin }) {
     <div className="login_container">
       <div className="login_form_div">
         <form className={style.login_form} onSubmit={logSubmit}>
-          <h2>Вход</h2>
+          <h2 className={style.h2}>Вход</h2>
 
           <div>
             <MdOutlineAlternateEmail className={style.icon_email} />
@@ -82,7 +82,7 @@ function Login({ setLogin }) {
           <button className={style.login_button} type="submit">
             Войти
           </button>
-          <div>
+          <div className={style.link}>
             Нет аккаунта?
             {' '}
             <Link to={1} onClick={() => setLogin((login) => !login)}>Зарегистрируйся</Link>

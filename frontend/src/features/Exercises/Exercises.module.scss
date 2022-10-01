@@ -9,17 +9,18 @@
 }
 
 .exercise_card {
-  outline: 1px #808aff solid;
-  background-color: #808aff;
-  display: flex;
-  flex-direction: column;
-  max-width: fit-content;
-  border-radius: 15%;
+  // outline: 1px #808aff solid;
+  // background-color: #808aff;
+  // display: flex;
+  // flex-direction: column;
+  // max-width: fit-content;
+  // border-radius: 15%;
 }
 
 .exercise_img {
-  max-width: 200px;
-  border-radius: 15%;
+  // max-width: 200px;
+  // border-radius: 15%;
+  width: 200px;
 }
 .exercise_container_main_for_individual {
   display: flex;
@@ -53,4 +54,21 @@
 }
 .diary_discription {
   width: 300px;
+}
+
+
+.h1 {
+  font-family: 'Nunito';
+  font-size: 40px;
+  color: #3F414E;
+  margin-bottom: 5px;
+  // margin-left: 550px;
+}
+
+.h2 {
+  font-family: 'Nunito';
+  font-size: 30px;
+  color: #A1A4B2;
+  margin-top: 5px;
+  // margin-left: 550px;
 }
