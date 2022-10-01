@@ -9,15 +9,25 @@
 }
 
 .chat_card {
+  height: 150px;
+  width: 300px;
   outline: 1px #808aff solid;
   background-color: #808aff;
   display: flex;
   flex-direction: column;
-  max-width: fit-content;
-  border-radius: 15%;
+  justify-content: center;
+  border-radius: 50%;
 }
 
-// .exercise_img {
-//   max-width: 200px;
-//   border-radius: 15%;
-// }
+.chat_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: x-large;
+}

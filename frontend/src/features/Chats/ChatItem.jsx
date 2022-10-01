@@ -10,7 +10,7 @@ function ChatItem({ chat }) {
       className={style.chat_card}
       id={chat.id}
     >
-      <div>
+      <div className={style.chat_info}>
         <a
           href={`${chat.telegramUrl}`}
           target="_blank"
