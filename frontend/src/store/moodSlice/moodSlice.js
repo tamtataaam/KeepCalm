@@ -37,6 +37,10 @@ const addSmiley = createAsyncThunk('mood/addSmiley', async (smiley) => {
   return data.data;
   // }
 });
+// const loadSmileyUserLk = createAsyncThunk(
+//   'mood/loadSmileyUserLk',
+//   async () => {}
+// );
 
 const moodSlice = createSlice({
   name: 'mood',
