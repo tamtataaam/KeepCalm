@@ -49,6 +49,10 @@
   margin: 0;
 }
 
+.buttons_container {
+  display: flex;
+}
+
 .delete_button {
   cursor: pointer;
   left: 18%;

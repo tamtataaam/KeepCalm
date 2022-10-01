@@ -32,7 +32,9 @@ function OneNote({ note }) {
 
         <div
           className={style.note}
-          style={flag ? { display: 'none' } : { display: 'inline' }}
+          style={
+            flag || !flagChange ? { display: 'none' } : { display: 'inline' }
+          }
         >
           Текст: {note.content}
         </div>
@@ -48,6 +50,7 @@ function OneNote({ note }) {
         onClick={() => {
           dispatch(deleteOneNoteAsync({ noteId: note.id, userId }));
         }}
+        style={!flagChange ? { display: 'none' } : { display: 'inline' }}
       >
         Удалить
       </button>

@@ -35,20 +35,22 @@ function ChangeForm({ note, flagChange, setFlagChange }) {
         value={changeInputContent}
         onChange={(event) => setChangeInputContent(event.target.value)}
       />
-      <div>
-        <button type="submit" className={style.save_changes_button}>
-          Сохранить изменения
-        </button>
-      </div>
-      <div>
-        <button
-          style={flagChange ? { display: 'none' } : { display: 'inline' }}
-          type="button"
-          className={style.save_changes_button}
-          onClick={() => setFlagChange((prev) => !prev)}
-        >
-          Выйти
-        </button>
+      <div className={style.buttons_container}>
+        <div>
+          <button type="submit" className={style.save_changes_button}>
+            Сохранить изменения
+          </button>
+        </div>
+        <div>
+          <button
+            style={flagChange ? { display: 'none' } : { display: 'inline' }}
+            type="button"
+            className={style.save_changes_button}
+            onClick={() => setFlagChange((prev) => !prev)}
+          >
+            Выйти
+          </button>
+        </div>
       </div>
     </form>
   );
