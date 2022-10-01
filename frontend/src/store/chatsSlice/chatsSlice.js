@@ -20,20 +20,6 @@ export const loadChats = createAsyncThunk(
   }
 );
 
-// export const oneExerciseAsyncInfo = createAsyncThunk(
-//   'oneExerciseInfo/oneExerciseAsyncInfo',
-//   async (exerciseId) => {
-//     const response = await fetch(`/exercises/${exerciseId}`);
-//     if (response.status >= 400) {
-//       const { error } = await response.json();
-//       throw error;
-//     } else {
-//       const data = await response.json();
-//       return data;
-//     }
-//   }
-// );
-
 const chatsSlice = createSlice({
   name: 'chats',
   initialState,
@@ -46,12 +32,6 @@ const chatsSlice = createSlice({
       .addCase(loadChats.fulfilled, (state, action) => {
         state.allChats = action.payload;
       });
-    // .addCase(oneExerciseAsyncInfo.rejected, (state, action) => {
-    //   state.error = action.error.message;
-    // })
-    // .addCase(oneExerciseAsyncInfo.fulfilled, (state, action) => {
-    //   state.oneExerciseInfo = action.payload;
-    // });
   },
 });
 
