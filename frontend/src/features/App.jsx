@@ -17,6 +17,7 @@ import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
 import ArticlesPage from './ArticlesPage/ArticlesPage';
 import OneArticlePage from './ArticlesPage/OneArticlePage';
 import ChatsPage from './Chats/ChatsPage';
+import AddChatPage from './Chats/AddChatPage';
 import './App.css';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path="/articles/:id" element={<OneArticlePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/chats" element={<ChatsPage />} />
+        <Route path="/chats/addchat" element={<AddChatPage />} />
 
         {/* <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
