@@ -24,10 +24,24 @@ function FormAddNote() {
     >
       <h2>Добавить новую запись</h2>
       <div>Введи название</div>
-      <input type="text" name="title" placeholder="добавить название" />
+      <input
+        type="text"
+        name="title"
+        placeholder="добавить название"
+        required
+        autoComplete="off"
+      />
       <div>Введи текст</div>
-      <input className={style.input} name="content" />
-      <button type="submit"> добавить</button>
+      <input
+        className={style.input}
+        name="content"
+        required
+        autoComplete="off"
+      />
+      <button type="submit" className={style.delete_button}>
+        {' '}
+        добавить
+      </button>
     </form>
   );
 }
