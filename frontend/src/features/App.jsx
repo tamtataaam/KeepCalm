@@ -59,8 +59,8 @@ function App() {
             <Route path="/chats" element={<ChatsPage />} />
             <Route path="/chats/addchat" element={<AddChatPage />} />
             <Route path="/userdiary" element={<UserDiary />} />
-            <Route path="/meditation" element={<Meditation />} />
           </Route>
+          <Route path="/meditation" element={<Meditation />} />
         </Routes>
       ) : (
         <Routes>
