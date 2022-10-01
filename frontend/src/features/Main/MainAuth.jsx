@@ -8,7 +8,7 @@ function MainAuth() {
   const [login, setLogin] = useState(false);
 
   return (
-    <>
+    <div className={style.container}>
       <div className={style.main_img_div}>
         <h3 className={style.welcome_text}>Добро пожаловать в KeepCalm</h3>
         <img className={style.main_photo_ellipse} src="Ellipse@48.png" alt="Ellipse-Main" />
@@ -19,7 +19,7 @@ function MainAuth() {
           ? <Login setLogin={setLogin} />
           : <Registration setLogin={setLogin} />}
       </div>
-    </>
+    </div>
   );
 }
 export default MainAuth;

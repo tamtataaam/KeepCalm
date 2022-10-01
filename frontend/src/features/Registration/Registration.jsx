@@ -4,7 +4,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye, AiTwotoneLock } from 'react-icons/
 import { HiUserCircle } from 'react-icons/hi';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { regUser, disableHelpMessage } from '../../store/userSlice/userSlice';
 import styleReg from './Registration.module.scss';
 
@@ -34,7 +34,7 @@ function Registration({ setLogin }) {
 
   useEffect(() => {
     if (isUser) {
-      navigate('/');
+      navigate('/exercises');
     }
   }, [isUser, navigate]);
 
@@ -50,23 +50,27 @@ function Registration({ setLogin }) {
     <div className={styleReg.registration_container}>
       <div className={styleReg.registration_form_div}>
         <form className={styleReg.registration_form} onSubmit={regSubmit}>
-          <h4>Регистрация</h4>
+          <h2>Регистрация</h2>
 
-          <HiUserCircle className={styleReg.icon_user} />
-          <input type="text" name="name" id="nameInput" placeholder="Имя" required />
-          <br />
-          <MdOutlineAlternateEmail className={styleReg.icon_email} />
-          <input
-            type="email"
-            name="email"
-            id="emailInput"
-            placeholder="Email"
-            pattern="^\S+@\S+\.\S+$"
-            title="Почта должна быть указана в формате email@mail.com"
-            required
-          />
+          <div>
+            <HiUserCircle className={styleReg.icon_user} />
+            <input type="text" name="name" id="nameInput" placeholder="Имя" required />
+          </div>
 
-          <div className="password_input">
+          <div>
+            <MdOutlineAlternateEmail className={styleReg.icon_email} />
+            <input
+              type="email"
+              name="email"
+              id="emailInput"
+              placeholder="Email"
+              pattern="^\S+@\S+\.\S+$"
+              title="Почта должна быть указана в формате email@mail.com"
+              required
+            />
+          </div>
+
+          <div>
             <AiTwotoneLock className={styleReg.icon_lock} />
             <input
               type={state ? 'text' : 'password'}
@@ -82,7 +86,7 @@ function Registration({ setLogin }) {
             </button>
           </div>
 
-          <div className="password_input">
+          <div>
             <AiTwotoneLock className={styleReg.icon_lock} />
             <input
               type={state2 ? 'text' : 'password'}
@@ -98,14 +102,12 @@ function Registration({ setLogin }) {
 
           { helpMessage && <div className="helpText">{helpMessage}</div>}
           <button className={styleReg.registration_button} type="submit">Зарегистрироваться</button>
+          <div>
+            Уже есть аккаунт?
+            {' '}
+            <Link to={1} onClick={() => setLogin((login) => !login)}>Войди</Link>
+          </div>
         </form>
-        <div>
-          Так ты зареган?
-          Лол, тада залогайся, дуралей
-          {' '}
-          <button type="button" onClick={() => setLogin((login) => !login)}>Зарегайся</button>
-          , Ёпта!
-        </div>
       </div>
     </div>
   );
