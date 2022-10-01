@@ -19,6 +19,7 @@ usersRouter.get('/', async (req, res) => {
     const allSmilesfilter = idArr.map((el) => smales.filter((e) => el === e.id));
     const smilesUsers = allSmilesfilter.flat();
     // const allSmiley = smilesUsers.map((el) => el);
+    console.log(smilesUsers);
     res.json({ data: smilesUsers });
   } catch (error) {
     res.json(error.message);
