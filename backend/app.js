@@ -10,6 +10,7 @@ const testDatabaseConnection = require('./src/testDatabaseConnection');
 const authRouter = require('./routes/authRouter');
 const userMoodrout = require('./routes/api/userMood');
 const exercisesRouter = require('./routes/api/exercisesRouter');
+const favoriteExercisesRouter = require('./routes/api/favoriteExerciseRouter');
 const articlesRouter = require('./routes/api/articlesRouter');
 const chatsRouter = require('./routes/api/chatsRouter');
 
@@ -24,6 +25,7 @@ serverConfig(app);
 app.use('/auth', authRouter);
 app.use('/mood', userMoodrout);
 app.use('/exercises', exercisesRouter);
+app.use('/allfavorite', favoriteExercisesRouter);
 app.use('/articles', articlesRouter);
 app.use('/chats', chatsRouter);
 

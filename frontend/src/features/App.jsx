@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loadAsyncExercises } from '../store/exercisesSlice/exerciseSlice';
+import {
+  loadAsyncExercises,
+  loadAllFavoriteExrcisesAsync,
+} from '../store/exercisesSlice/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
@@ -25,6 +28,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAsyncExercises());
+    dispatch(loadAllFavoriteExrcisesAsync());
     dispatch(loadAsyncArticles());
     dispatch(loadUser());
     dispatch(loadSmiley());

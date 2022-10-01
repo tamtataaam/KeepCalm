@@ -9,8 +9,8 @@ function FavoriteButton({ exercise }) {
   // const userId = 1;
   const userId = useSelector((store) => store.user.data.id);
   const { favoriteExerciseActual } = useSelector((store) => store.exercises);
-  const { favoriteExercise } = useSelector((store) => store.exercises);
-  console.log(favoriteExercise);
+  // const { favoriteExercise } = useSelector((store) => store.exercises);
+  // console.log(favoriteExercise);
   const dispatch = useDispatch();
   return (
     <button
