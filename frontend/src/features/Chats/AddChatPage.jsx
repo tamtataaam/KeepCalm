@@ -2,7 +2,7 @@
 import React from 'react';
 import style from './Chats.module.scss';
 
-function AddChat() {
+function AddChatPage() {
   return (
     <div className={style.addchat_container}>
       <form>
@@ -14,4 +14,4 @@ function AddChat() {
   );
 }
 
-export default AddChat;
+export default AddChatPage;

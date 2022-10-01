@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import React from 'react';
-=======
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useEffect } from 'react';
->>>>>>> ce32f0f5ff51d28fadd0bd79f5616e9fbf6325c6
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addSmiley } from '../../store/moodSlice/moodSlice';
 import './mood.css';

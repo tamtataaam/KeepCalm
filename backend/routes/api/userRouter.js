@@ -16,9 +16,7 @@ usersRouter.get('/', async (req, res) => {
       where: { id: { [Op.in]: idArr } },
       raw: true,
     });
-    const allSmilesfilter = idArr.map((el) =>
-      smales.filter((e) => el === e.id)
-    );
+    const allSmilesfilter = idArr.map((el) => smales.filter((e) => el === e.id));
     const smilesUsers = allSmilesfilter.flat();
     // const allSmiley = smilesUsers.map((el) => el);
     res.json({ data: smilesUsers });

@@ -3,37 +3,27 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
-import { useDispatch } from 'react-redux';
-import {
-  loadAsyncExercises,
-  loadAllFavoriteExrcisesAsync,
-} from '../store/exercisesSlice/exerciseSlice';
-import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
+import { loadAsyncExercises } from '../store/exercisesSlice/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
-<<<<<<< HEAD
-import { loadSmiley } from '../store/moodSlice/moodSlice';
-=======
 import { loadUser } from '../store/userSlice/userSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
->>>>>>> ce32f0f5ff51d28fadd0bd79f5616e9fbf6325c6
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
 import Registration from './Registration/Registration';
 import Login from './Login/Login';
+// import Main from './Main/Main';
 import Exercises from './Exercises/Exercises';
 import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
 import ArticlesPage from './ArticlesPage/ArticlesPage';
 import OneArticlePage from './ArticlesPage/OneArticlePage';
 import ChatsPage from './Chats/ChatsPage';
 import MainAuth from './Main/MainAuth';
+import './App.css';
 import AddChatPage from './Chats/AddChatPage';
 import UserDiary from './UserDiary/UserDiary';
-
-import './App.css';
-
+import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -42,33 +32,10 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAsyncExercises());
-    dispatch(loadAllFavoriteExrcisesAsync());
-    dispatch(loadUserDiaryNotesAsync());
     dispatch(loadAsyncArticles());
+    dispatch(loadUserDiaryNotesAsync());
     dispatch(loadUser());
     dispatch(loadSmiley());
-<<<<<<< HEAD
-  }, []);
-  // Alinas's part end
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/lk" element={<UserPage />} />
-        <Route path="home" element={<Main />} />
-        <Route path="mood" element={<Mood />} />
-        <Route path="/exercises" element={<Exercises />} />
-        <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/articles" element={<ArticlesPage />} />
-        <Route path="/login" element={<Login />} />
-
-        {/* <Route path="/registration" element={<Registration />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/notfound" element={<Error404 />} />
-        <Route path="*" element={<Error404 />} /> */}
-      </Route>
-    </Routes>
-=======
     dispatch(addSmiley());
     dispatch(loadChats());
   }, []);
@@ -79,16 +46,18 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             {/* <Route index element={<Main />} /> */}
-            {/* <Route index element={<Exercises />} /> */}
+            <Route index element={<Exercises />} />
             <Route path="/lk" element={<UserPage />} />
             <Route path="/mood" element={<Mood />} />
             <Route path="/exercises" element={<Exercises />} />
             <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
+            <Route path="/registration" element={<Registration />} />
             <Route path="/articles" element={<ArticlesPage />} />
             <Route path="/articles/:id" element={<OneArticlePage />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/chats" element={<ChatsPage />} />
-            <Route path="/userdiary" element={<UserDiary />} />
             <Route path="/chats/addchat" element={<AddChatPage />} />
+            <Route path="/userdiary" element={<UserDiary />} />
           </Route>
         </Routes>
       ) : (
@@ -101,7 +70,6 @@ function App() {
         </Routes>
       )}
     </>
->>>>>>> ce32f0f5ff51d28fadd0bd79f5616e9fbf6325c6
   );
 }
 
