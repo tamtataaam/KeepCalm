@@ -1,15 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  allChats: [],
-  chatInfo: null,
+  allnotes: [],
   error: null,
 };
 
-export const loadChats = createAsyncThunk(
-  'chats/loadChats',
+export const loadUserDiaryNotesAsync = createAsyncThunk(
+  'allnotes/loadUserDiaryArticlesAsync',
   async () => {
-    const response = await fetch('/chats');
+    const response = await fetch('/diarynotes');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -20,19 +19,19 @@ export const loadChats = createAsyncThunk(
   }
 );
 
-const chatsSlice = createSlice({
-  name: 'chats',
+const userDiarySlice = createSlice({
+  name: 'allExercises',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(loadChats.rejected, (state, action) => {
+      .addCase(loadUserDiaryNotesAsync.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(loadChats.fulfilled, (state, action) => {
-        state.allChats = action.payload;
+      .addCase(loadUserDiaryNotesAsync.fulfilled, (state, action) => {
+        state.allnotes = action.payload;
       });
   },
 });
 
-export default chatsSlice.reducer;
+export default userDiarySlice.reducer;

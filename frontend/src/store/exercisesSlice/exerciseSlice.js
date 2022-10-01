@@ -38,11 +38,24 @@ export const oneExerciseAsyncInfo = createAsyncThunk(
     }
   }
 );
+export const loadAllFavoriteExrcisesAsync = createAsyncThunk(
+  'favoriteExercise/loadAllFavoriteExrcisesAsync',
+  async () => {
+    const response = await fetch('/allfavorite');
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
 
 export const addToFavoriteAsync = createAsyncThunk(
   'favoriteExercise/addToFavoriteAsync',
   async ({ userId, exerciseId }) => {
-    const response = await fetch('/exercises/favorite', {
+    const response = await fetch('/allfavorite', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId, exerciseId }),
@@ -74,6 +87,12 @@ const exercisesSlice = createSlice({
       })
       .addCase(oneExerciseAsyncInfo.fulfilled, (state, action) => {
         state.oneExerciseInfo = action.payload;
+      })
+      .addCase(loadAllFavoriteExrcisesAsync.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadAllFavoriteExrcisesAsync.fulfilled, (state, action) => {
+        state.favoriteExercise = action.payload;
       })
       .addCase(addToFavoriteAsync.rejected, (state, action) => {
         state.error = action.error.message;

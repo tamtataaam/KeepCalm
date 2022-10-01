@@ -3,13 +3,14 @@
 /* eslint-disable react/jsx-curly-newline */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToFavoriteAsync } from '../../store/Exercises/exerciseSlice';
+import { addToFavoriteAsync } from '../../store/exercisesSlice/exerciseSlice';
 
 function FavoriteButton({ exercise }) {
   // const userId = 1;
   const userId = useSelector((store) => store.user.data.id);
   const { favoriteExerciseActual } = useSelector((store) => store.exercises);
-
+  // const { favoriteExercise } = useSelector((store) => store.exercises);
+  // console.log(favoriteExercise);
   const dispatch = useDispatch();
   return (
     <button

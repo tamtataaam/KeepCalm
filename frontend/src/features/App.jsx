@@ -4,6 +4,12 @@ import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
+import { useDispatch } from 'react-redux';
+import {
+  loadAsyncExercises,
+  loadAllFavoriteExrcisesAsync,
+} from '../store/exercisesSlice/exerciseSlice';
+import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
@@ -19,7 +25,11 @@ import ArticlesPage from './ArticlesPage/ArticlesPage';
 import OneArticlePage from './ArticlesPage/OneArticlePage';
 import ChatsPage from './Chats/ChatsPage';
 import MainAuth from './Main/MainAuth';
+import AddChatPage from './Chats/AddChatPage';
+import UserDiary from './UserDiary/UserDiary';
+
 import './App.css';
+
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -28,6 +38,8 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAsyncExercises());
+    dispatch(loadAllFavoriteExrcisesAsync());
+    dispatch(loadUserDiaryNotesAsync());
     dispatch(loadAsyncArticles());
     dispatch(loadUser());
     dispatch(loadSmiley());
@@ -49,6 +61,8 @@ function App() {
             <Route path="/articles" element={<ArticlesPage />} />
             <Route path="/articles/:id" element={<OneArticlePage />} />
             <Route path="/chats" element={<ChatsPage />} />
+            <Route path="/userdiary" element={<UserDiary />} />
+            <Route path="/chats/addchat" element={<AddChatPage />} />
           </Route>
         </Routes>
       ) : (
