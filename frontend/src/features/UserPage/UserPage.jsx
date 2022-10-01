@@ -5,8 +5,18 @@ import { useSelector } from 'react-redux';
 function userPage() {
   const userIdmoodId = useSelector((prev) => prev.mood.moodSmileyGraphFromBD);
   const moodOfUser = userIdmoodId.map((el) => el.data.map((e) => e.id));
-  const moodOfUserDate = userIdmoodId.map((el) =>
-    el.data.map((e) => e.createdAt)
+  const moodOfUserDate = userIdmoodId.map(
+    (el) =>
+      el.data.map((e) => {
+        const timeInMilesec = Date.parse(e.createdAt);
+        const data = new Date(timeInMilesec);
+        const dataDateNum = data.getDate();
+        const dataMonth = data.getMonth() + 1;
+        const dataYear = data.getFullYear();
+
+        return `${dataDateNum}/${dataMonth}/${dataYear}`;
+      })
+    // return el;
   );
   console.log(moodOfUserDate);
 
