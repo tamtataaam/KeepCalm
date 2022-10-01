@@ -30,7 +30,7 @@ app.use('/exercises', exercisesRouter);
 app.use('/allfavorite', favoriteExercisesRouter);
 app.use('/articles', articlesRouter);
 app.use('/chats', chatsRouter);
-app.use('/diarynotes', userDiaryRouter);
+app.use('/userdiary', userDiaryRouter);
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {

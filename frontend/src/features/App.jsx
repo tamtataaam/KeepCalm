@@ -31,8 +31,6 @@ import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice'
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
-
-  // Alinas's part start
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAsyncExercises());
@@ -44,7 +42,7 @@ function App() {
     dispatch(loadChats());
     dispatch(loadSmileyUserLk());
   }, []);
-  // Alinas's part end
+
   return (
     <>
       {isUser ? (

@@ -8,7 +8,43 @@ const initialState = {
 export const loadUserDiaryNotesAsync = createAsyncThunk(
   'allnotes/loadUserDiaryArticlesAsync',
   async () => {
-    const response = await fetch('/diarynotes');
+    const response = await fetch('/userdiary');
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
+
+export const deleteOneNoteAsync = createAsyncThunk(
+  'allnotes/deleteOneNoteAsync',
+  async ({ noteId, userId }) => {
+    const response = await fetch(`/userdiary/${noteId}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId }),
+    });
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
+
+export const addOneNoteAsync = createAsyncThunk(
+  'allnotes/addOneNoteAsync',
+  async ({ title, content, userId }) => {
+    const response = await fetch('/userdiary/newnote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, content, userId }),
+    });
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -20,7 +56,7 @@ export const loadUserDiaryNotesAsync = createAsyncThunk(
 );
 
 const userDiarySlice = createSlice({
-  name: 'allExercises',
+  name: 'allnotes',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -30,6 +66,22 @@ const userDiarySlice = createSlice({
       })
       .addCase(loadUserDiaryNotesAsync.fulfilled, (state, action) => {
         state.allnotes = action.payload;
+      })
+      .addCase(deleteOneNoteAsync.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteOneNoteAsync.fulfilled, (state, action) => {
+        if (action.payload.data) {
+          state.allnotes = state.allnotes.filter(
+            (note) => note.id !== Number(action.payload.id)
+          );
+        }
+      })
+      .addCase(addOneNoteAsync.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addOneNoteAsync.fulfilled, (state, action) => {
+        state.allnotes = state.allnotes.push(action.payload);
       });
   },
 });
