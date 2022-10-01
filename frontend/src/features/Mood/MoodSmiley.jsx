@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadSmiley, addSmiley } from '../../store/moodSlice/moodSlice';
+import { addSmiley } from '../../store/moodSlice/moodSlice';
 import './mood.css';
 
 function Mood() {
@@ -10,9 +10,9 @@ function Mood() {
   const moodSm = useSelector((prev) => prev.mood.moodSmiley);
 
   const getSmiley = (id) => dispatch(addSmiley(id));
-  useEffect(() => {
-    dispatch(loadSmiley());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(loadSmiley());
+  // }, []);
   return (
     <div className="smile_container">
       {moodSm.map((el) => (

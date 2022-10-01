@@ -4,7 +4,6 @@ const { Mood, UserMood } = require('../../db/models');
 userMoodrout
   .get('/', async (req, res) => {
     try {
-      // const { user } = req.session;
       const moodSmile = await Mood.findAll();
       return res.json({ data: moodSmile });
     } catch (error) {

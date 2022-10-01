@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
-import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
+import { loadSmiley } from '../store/moodSlice/moodSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
@@ -22,13 +22,12 @@ function App() {
     dispatch(loadAsyncExercises());
     dispatch(loadAsyncArticles());
     dispatch(loadSmiley());
-    dispatch(addSmiley());
   }, []);
   // Alinas's part end
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/lk/:login" element={<UserPage />} />
+        <Route path="/lk" element={<UserPage />} />
         <Route path="home" element={<Main />} />
         <Route path="mood" element={<Mood />} />
         <Route path="/exercises" element={<Exercises />} />
