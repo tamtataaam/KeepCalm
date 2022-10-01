@@ -21,7 +21,7 @@ function ChatsPage() {
       {isUser
         ? (
           <div className={style.addchat_button_container}>
-            <button type="button" onClick={() => navigate('/chats/addchat')}>Создать чат</button>
+            <button type="button" onClick={() => navigate('/addchat')}>Создать чат</button>
           </div>
         )
         : null }

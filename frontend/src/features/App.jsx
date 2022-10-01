@@ -6,7 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadAsyncExercises } from '../store/exercisesSlice/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
-import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
+import {
+  loadSmiley,
+  addSmiley,
+  loadSmileyUserLk,
+} from '../store/moodSlice/moodSlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
@@ -24,11 +28,10 @@ import './App.css';
 import AddChatPage from './Chats/AddChatPage';
 import UserDiary from './UserDiary/UserDiary';
 import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
+import Meditation from './Meditation/Meditation';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
-
-  // Alinas's part start
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAsyncExercises());
@@ -38,8 +41,9 @@ function App() {
     dispatch(loadSmiley());
     dispatch(addSmiley());
     dispatch(loadChats());
+    dispatch(loadSmileyUserLk());
   }, []);
-  // Alinas's part end
+
   return (
     <>
       {isUser ? (
@@ -50,15 +54,19 @@ function App() {
             <Route path="/lk" element={<UserPage />} />
             <Route path="/mood" element={<Mood />} />
             <Route path="/exercises" element={<Exercises />} />
-            <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
+            <Route
+              path="/exercises/:id"
+              element={<ExerciseFullInformation />}
+            />
             <Route path="/registration" element={<Registration />} />
             <Route path="/articles" element={<ArticlesPage />} />
             <Route path="/articles/:id" element={<OneArticlePage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/chats" element={<ChatsPage />} />
-            <Route path="/chats/addchat" element={<AddChatPage />} />
+            <Route path="/addchat" element={<AddChatPage />} />
             <Route path="/userdiary" element={<UserDiary />} />
           </Route>
+          <Route path="/meditation" element={<Meditation />} />
         </Routes>
       ) : (
         <Routes>

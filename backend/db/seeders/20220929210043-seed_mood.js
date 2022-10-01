@@ -11,20 +11,8 @@ module.exports = {
      */
     await queryInterface.bulkInsert('Moods', [
       {
-        mood: 'Супер',
-        moodUrl: '1.svg',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        mood: 'Хорошо',
-        moodUrl: '2.svg',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        mood: 'Так себе',
-        moodUrl: '3.svg',
+        mood: 'Ужасно',
+        moodUrl: '5.svg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -35,8 +23,20 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        mood: 'Ужасно',
-        moodUrl: '5.svg',
+        mood: 'Так себе',
+        moodUrl: '3.svg',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        mood: 'Хорошо',
+        moodUrl: '2.svg',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        mood: 'Супер',
+        moodUrl: '1.svg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
