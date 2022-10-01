@@ -1,11 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineEyeInvisible, AiOutlineEye, AiTwotoneLock } from 'react-icons/ai';
+import { MdOutlineAlternateEmail } from 'react-icons/md';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logUser, disableHelpMessage } from '../../store/userSlice/userSlice';
+import style from './Login.module.scss';
 
-function Login() {
+function Login({ setLogin }) {
   const dispatch = useDispatch();
   const isUser = useSelector((state) => state.user.isUser);
   const helpMessage = useSelector((state) => state.user.helpMessage);
@@ -31,7 +33,7 @@ function Login() {
 
   useEffect(() => {
     if (isUser) {
-      navigate('/');
+      navigate('/exercises');
     }
   }, [isUser, navigate]);
 
@@ -42,22 +44,25 @@ function Login() {
   return (
     <div className="login_container">
       <div className="login_form_div">
-        <form className="login_form" onSubmit={logSubmit}>
-          <h4>Вход</h4>
-          <label htmlFor="emailInput">Email</label>
-          <input
-            className="font_caption"
-            type="email"
-            name="email"
-            id="emailInput"
-            placeholder="Email"
-            pattern="^\S+@\S+\.\S+$"
-            title="Почта должна быть указана в формате email@mail.com"
-            required
-          />
+        <form className={style.login_form} onSubmit={logSubmit}>
+          <h2>Вход</h2>
 
-          <label htmlFor="passwordInput">Пароль</label>
+          <div>
+            <MdOutlineAlternateEmail className={style.icon_email} />
+            <input
+              className="font_caption"
+              type="email"
+              name="email"
+              id="emailInput"
+              placeholder="Email"
+              pattern="^\S+@\S+\.\S+$"
+              title="Почта должна быть указана в формате email@mail.com"
+              required
+            />
+          </div>
+
           <div className="password_input">
+            <AiTwotoneLock className={style.icon_lock} />
             <input
               className="font_caption"
               type={state ? 'text' : 'password'}
@@ -68,16 +73,27 @@ function Login() {
               title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
               required
             />
-            <button type="button" onClick={toggleBtn} className="password_button">
+            <button type="button" onClick={toggleBtn} className={style.password_button}>
               { state ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
             </button>
           </div>
 
           {helpMessage && <div className="helpText">{helpMessage}</div>}
-          <button className="login_button font_button" type="submit">
+          <button className={style.login_button} type="submit">
             Войти
           </button>
+          <div>
+            Нет аккаунта?
+            {' '}
+            <Link to={1} onClick={() => setLogin((login) => !login)}>Зарегистрируйся</Link>
+          </div>
         </form>
+        {/* <div>
+          Если ты не зареган, ну хули
+          {' '}
+          <button type="button" onClick={() => setLogin((login) => !login)}>Зарегайся</button>
+          , Ёпта!
+        </div> */}
       </div>
     </div>
   );

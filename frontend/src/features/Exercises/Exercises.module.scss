@@ -21,3 +21,36 @@
   max-width: 200px;
   border-radius: 15%;
 }
+.exercise_container_main_for_individual {
+  display: flex;
+  justify-content: center;
+  width: 1000px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.exercise_container_button_individual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.exercise_container_individual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  outline: 1px #808aff solid;
+  background-color: #808aff;
+  border-radius: 15%;
+}
+.exercise_img_individual {
+  width: 500px;
+}
+
+.diary_buttons {
+  display: flex;
+}
+.diary_discription {
+  width: 300px;
+}

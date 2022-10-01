@@ -11,7 +11,15 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      description: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       content: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      img: {
         type: Sequelize.TEXT,
         allowNull: false,
       },
@@ -25,7 +33,7 @@ module.exports = {
       },
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.dropTable('Articles');
   },
 };

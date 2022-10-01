@@ -14,15 +14,13 @@ authRouter.get('/', (req, res) => {
 
 authRouter.post('/registration', async (req, res) => {
   try {
-    const {
-      name, email, password, repeatPassword,
-    } = req.body;
+    const { name, email, password, repeatPassword } = req.body;
 
     if (
-      name.length < 1
-      || email.length < 1
-      || password.length < 1
-      || repeatPassword.length < 1
+      name.length < 1 ||
+      email.length < 1 ||
+      password.length < 1 ||
+      repeatPassword.length < 1
     ) {
       return res.json({ message: 'Заполните все поля' });
     }
@@ -106,14 +104,13 @@ authRouter.post('/login', async (req, res) => {
 
     req.session.user = {
       id: user.id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      secretWord: user.secretWord,
-      status: user.status,
+      // name: user.name,
+      // email: user.email,
+      // isAdmin: user.isAdmin,
+      // secretWord: user.secretWord,
+      // status: user.status,
     };
-
-    res.json({ user: req.session.user });
+    res.json(user);
   } else {
     res.json({ message: 'Слишком короткий email и/или пароль' });
   }

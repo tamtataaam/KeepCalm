@@ -1,3 +1,11 @@
+.container{
+    display: flex;
+    bottom: 200px;
+    min-height: 600px;
+    // margin-left: 100px;
+    // margin-top: 50px;
+}
+
 .main_img_div{
     position: relative;
     justify-content:center ;
@@ -5,18 +13,18 @@
     top: 50px;
 }
 .welcome_text{
-z-index: 1;
-position: absolute;
-left: 270px;
-width: 388px;
-height: 56px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 46px;
-// line-height: 28px;
-text-align: center;
-color: #8E97FD;
+    z-index: 1;
+    position: absolute;
+    left: 270px;
+    width: 388px;
+    height: 56px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 46px;
+    // line-height: 28px;
+    text-align: center;
+    color: #8E97FD;
 }
 .main_photo_ellipse{
     position: absolute;
@@ -28,4 +36,16 @@ color: #8E97FD;
     left: 200px;
     top:150px;
     max-width: 400px;
+}
+.form_box{
+    position: absolute;
+    justify-content: center;
+    margin-top: 100px;
+    min-width: 500px;
+    height: 400px;
+    left: 800px;
+    // bottom: 200px;
+    border-radius: 5px;
+    // box-shadow:  -2px 3px 2px 2px  rgba(51, 50, 50, 0.327);
+    box-shadow: -2px 8px 20px rgba(11, 70, 84, 0.15);
 }

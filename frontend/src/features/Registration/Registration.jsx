@@ -1,11 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineEyeInvisible, AiOutlineEye, AiTwotoneLock } from 'react-icons/ai';
+import { HiUserCircle } from 'react-icons/hi';
+import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { regUser, disableHelpMessage } from '../../store/userSlice/userSlice';
+import styleReg from './Registration.module.scss';
 
-function Registration() {
+function Registration({ setLogin }) {
   const dispatch = useDispatch();
   const isUser = useSelector((state) => state.user.isUser);
   const helpMessage = useSelector((state) => state.user.helpMessage);
@@ -31,7 +34,7 @@ function Registration() {
 
   useEffect(() => {
     if (isUser) {
-      navigate('/');
+      navigate('/exercises');
     }
   }, [isUser, navigate]);
 
@@ -44,27 +47,31 @@ function Registration() {
   };
 
   return (
-    <div className="registration_container">
-      <div className="registration_form_div">
-        <form className="registration_form" onSubmit={regSubmit}>
-          <h4>Регистрация</h4>
+    <div className={styleReg.registration_container}>
+      <div className={styleReg.registration_form_div}>
+        <form className={styleReg.registration_form} onSubmit={regSubmit}>
+          <h2>Регистрация</h2>
 
-          <label htmlFor="nameInput">Имя</label>
-          <input type="text" name="name" id="nameInput" placeholder="Имя" required />
+          <div>
+            <HiUserCircle className={styleReg.icon_user} />
+            <input type="text" name="name" id="nameInput" placeholder="Имя" required />
+          </div>
 
-          <label htmlFor="emailInput">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="emailInput"
-            placeholder="Email"
-            pattern="^\S+@\S+\.\S+$"
-            title="Почта должна быть указана в формате email@mail.com"
-            required
-          />
+          <div>
+            <MdOutlineAlternateEmail className={styleReg.icon_email} />
+            <input
+              type="email"
+              name="email"
+              id="emailInput"
+              placeholder="Email"
+              pattern="^\S+@\S+\.\S+$"
+              title="Почта должна быть указана в формате email@mail.com"
+              required
+            />
+          </div>
 
-          <label htmlFor="passwordInput">Пароль</label>
-          <div className="password_input">
+          <div>
+            <AiTwotoneLock className={styleReg.icon_lock} />
             <input
               type={state ? 'text' : 'password'}
               name="password"
@@ -74,13 +81,13 @@ function Registration() {
               title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
               required
             />
-            <button type="button" onClick={toggleBtn} className="password_button">
+            <button type="button" onClick={toggleBtn} className={styleReg.password_button}>
               { state ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
             </button>
           </div>
 
-          <label htmlFor="repeatPasswordInput">Повторите пароль</label>
-          <div className="password_input">
+          <div>
+            <AiTwotoneLock className={styleReg.icon_lock} />
             <input
               type={state2 ? 'text' : 'password'}
               name="repeatPassword"
@@ -88,13 +95,18 @@ function Registration() {
               placeholder="Повторите пароль"
               required
             />
-            <button type="button" onClick={toggleBtn2} className="password_button">
+            <button type="button" onClick={toggleBtn2} className={styleReg.password_button}>
               { state2 ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
             </button>
           </div>
 
           { helpMessage && <div className="helpText">{helpMessage}</div>}
-          <button className="registration_button" type="submit">Зарегистрироваться</button>
+          <button className={styleReg.registration_button} type="submit">Зарегистрироваться</button>
+          <div>
+            Уже есть аккаунт?
+            {' '}
+            <Link to={1} onClick={() => setLogin((login) => !login)}>Войди</Link>
+          </div>
         </form>
       </div>
     </div>
