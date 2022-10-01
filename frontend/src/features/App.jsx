@@ -5,6 +5,7 @@ import {
   loadAsyncExercises,
   loadAllFavoriteExrcisesAsync,
 } from '../store/exercisesSlice/exerciseSlice';
+import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
@@ -29,6 +30,7 @@ function App() {
   useEffect(() => {
     dispatch(loadAsyncExercises());
     dispatch(loadAllFavoriteExrcisesAsync());
+    dispatch(loadUserDiaryNotesAsync());
     dispatch(loadAsyncArticles());
     dispatch(loadUser());
     dispatch(loadSmiley());

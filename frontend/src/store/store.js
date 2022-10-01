@@ -4,6 +4,7 @@ import userSliceReducer from './userSlice/userSlice';
 import moodSliceReducer from './moodSlice/moodSlice';
 import articlesSlice from './articlesSlice/articlesSlice';
 import chatsSliceReducer from './chatsSlice/chatsSlice';
+import userDiarySlice from './userDiarySlice/userDiarySlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     mood: moodSliceReducer,
     articles: articlesSlice,
     chats: chatsSliceReducer,
+    userDiary: userDiarySlice,
   },
 });
 

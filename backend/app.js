@@ -13,6 +13,7 @@ const exercisesRouter = require('./routes/api/exercisesRouter');
 const favoriteExercisesRouter = require('./routes/api/favoriteExerciseRouter');
 const articlesRouter = require('./routes/api/articlesRouter');
 const chatsRouter = require('./routes/api/chatsRouter');
+const userDiaryRouter = require('./routes/api/userDiaryRouter');
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -28,6 +29,7 @@ app.use('/exercises', exercisesRouter);
 app.use('/allfavorite', favoriteExercisesRouter);
 app.use('/articles', articlesRouter);
 app.use('/chats', chatsRouter);
+app.use('/diarynotes', userDiaryRouter);
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {
