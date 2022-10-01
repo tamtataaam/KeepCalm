@@ -63,7 +63,23 @@
   color: white;
 }
 .delete_button:hover {
-  font-size: 18px;
+  box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
+  background-color: #6e76ce;
+}
+.save_changes_button {
+  cursor: pointer;
+  left: 18%;
+  margin: 15px 0;
+  font-size: 14px;
+  border: none;
+  background-color: #8e97fd;
+  border-radius: 20px;
+  width: 130px;
+  height: 40px;
+  transition: 0.4s;
+  color: white;
+}
+.save_changes_button:hover {
   box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
   background-color: #6e76ce;
 }

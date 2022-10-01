@@ -32,4 +32,21 @@ module.exports = userDiaryRouter
     } catch (error) {
       res.status(500).send(`${error.message}`);
     }
+  })
+  .put('/note', async (req, res) => {
+    try {
+      const { userId, noteId, changeInputTitle, changeInputContent } = req.body;
+      const note = await UserDiary.findOne({
+        where: {
+          userId,
+          id: noteId,
+        },
+      });
+      note.title = changeInputTitle;
+      note.content = changeInputContent;
+      await note.save();
+      res.json(note);
+    } catch (error) {
+      res.status(500).send(`${error.message}`);
+    }
   });
