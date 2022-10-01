@@ -12,7 +12,7 @@ function FormAddNote() {
   return (
     <form
       onSubmit={(event) => {
-        // event.preventDefault();
+        event.preventDefault();
         dispatch(
           addOneNoteAsync({
             title: event.target.title.value,

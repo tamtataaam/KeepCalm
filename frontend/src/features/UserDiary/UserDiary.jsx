@@ -1,11 +1,16 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadUserDiaryNotesAsync } from '../../store/userDiarySlice/userDiarySlice';
 import OneNote from './OneNote';
 import FormAddNote from './FormAddNote';
 import style from './UserDiary.module.scss';
 
 function UserDiary() {
+  const dispatch = useDispatch();
   const { allnotes } = useSelector((store) => store.userDiary);
+  useEffect(() => {
+    dispatch(loadUserDiaryNotesAsync());
+  }, [allnotes]);
 
   return (
     <div className={style.all_page_container}>
