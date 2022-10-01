@@ -6,7 +6,7 @@ import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { regUser, disableHelpMessage } from '../../store/userSlice/userSlice';
-import styleReg from './Registration.module.scss';
+import style from './Registration.module.scss';
 
 function Registration({ setLogin }) {
   const dispatch = useDispatch();
@@ -47,18 +47,18 @@ function Registration({ setLogin }) {
   };
 
   return (
-    <div className={styleReg.registration_container}>
-      <div className={styleReg.registration_form_div}>
-        <form className={styleReg.registration_form} onSubmit={regSubmit}>
-          <h2>Регистрация</h2>
+    <div className={style.registration_container}>
+      <div className={style.registration_form_div}>
+        <form className={style.registration_form} onSubmit={regSubmit}>
+          <h2 className={style.h2}>Регистрация</h2>
 
           <div>
-            <HiUserCircle className={styleReg.icon_user} />
+            <HiUserCircle className={style.icon_user} />
             <input type="text" name="name" id="nameInput" placeholder="Имя" required />
           </div>
 
           <div>
-            <MdOutlineAlternateEmail className={styleReg.icon_email} />
+            <MdOutlineAlternateEmail className={style.icon_email} />
             <input
               type="email"
               name="email"
@@ -71,7 +71,7 @@ function Registration({ setLogin }) {
           </div>
 
           <div>
-            <AiTwotoneLock className={styleReg.icon_lock} />
+            <AiTwotoneLock className={style.icon_lock} />
             <input
               type={state ? 'text' : 'password'}
               name="password"
@@ -81,13 +81,13 @@ function Registration({ setLogin }) {
               title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
               required
             />
-            <button type="button" onClick={toggleBtn} className={styleReg.password_button}>
+            <button type="button" onClick={toggleBtn} className={style.password_button}>
               { state ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
             </button>
           </div>
 
           <div>
-            <AiTwotoneLock className={styleReg.icon_lock} />
+            <AiTwotoneLock className={style.icon_lock} />
             <input
               type={state2 ? 'text' : 'password'}
               name="repeatPassword"
@@ -95,14 +95,14 @@ function Registration({ setLogin }) {
               placeholder="Повторите пароль"
               required
             />
-            <button type="button" onClick={toggleBtn2} className={styleReg.password_button}>
+            <button type="button" onClick={toggleBtn2} className={style.password_button}>
               { state2 ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
             </button>
           </div>
 
           { helpMessage && <div className="helpText">{helpMessage}</div>}
-          <button className={styleReg.registration_button} type="submit">Зарегистрироваться</button>
-          <div>
+          <button className={style.registration_button} type="submit">Зарегистрироваться</button>
+          <div className={style.link}>
             Уже есть аккаунт?
             {' '}
             <Link to={1} onClick={() => setLogin((login) => !login)}>Войди</Link>

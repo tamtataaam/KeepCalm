@@ -9,7 +9,6 @@ function ExerciseItem({ exercise }) {
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       key={exercise.id}
-      className={style.exercise_card}
       id={exercise.id}
       onClick={() => {
         navigate(`/exercises/${exercise.id}`);
@@ -17,8 +16,8 @@ function ExerciseItem({ exercise }) {
     >
       <div>
         {' '}
-        <img className={style.exercise_img} src={exercise.imageUrl} alt="..." />
-        <h3>{exercise.title}</h3>
+        <img className={style.exercise_img} src={exercise.imageUrl} alt={exercise.title} />
+        {/* <h3>{exercise.title}</h3> */}
       </div>
     </div>
   );
