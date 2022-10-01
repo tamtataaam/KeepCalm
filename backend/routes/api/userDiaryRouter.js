@@ -4,7 +4,11 @@ const { UserDiary } = require('../../db/models');
 module.exports = userDiaryRouter
   .get('/', async (req, res) => {
     try {
-      const allnotes = await UserDiary.findAll({ order: [['id', 'DESC']] });
+      const { user } = req.session;
+      const allnotes = await UserDiary.findAll({
+        where: { userId: user.id },
+        order: [['id', 'DESC']],
+      });
       res.json(allnotes);
     } catch (error) {
       res.status(500).send(`${error.message}`);
@@ -13,8 +17,18 @@ module.exports = userDiaryRouter
   .delete('/:id', async (req, res) => {
     try {
       const { id } = req.params;
-      const data = await UserDiary.destroy({ where: { id } });
-      res.json({ data, id });
+      const { userId } = req.body;
+      await UserDiary.destroy({ where: { id, userId } });
+      res.json({ id });
+    } catch (error) {
+      res.status(500).send(`${error.message}`);
+    }
+  })
+  .post('/newnote', async (req, res) => {
+    try {
+      const { title, content, userId } = req.body;
+      const newnote = await UserDiary.create({ title, content, userId });
+      res.json(newnote);
     } catch (error) {
       res.status(500).send(`${error.message}`);
     }

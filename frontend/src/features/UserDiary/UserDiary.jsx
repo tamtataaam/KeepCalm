@@ -6,6 +6,7 @@ import style from './UserDiary.module.scss';
 
 function UserDiary() {
   const { allnotes } = useSelector((store) => store.userDiary);
+
   return (
     <div className={style.all_page_container}>
       <div className={style.diary_notes_container}>

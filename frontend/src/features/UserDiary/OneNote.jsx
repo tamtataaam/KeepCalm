@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteOneNoteAsync } from '../../store/userDiarySlice/userDiarySlice';
 
 import style from './UserDiary.module.scss';
 
 function OneNote({ note }) {
   const dispatch = useDispatch();
+  const userId = useSelector((store) => store.user.data.id);
   return (
     <>
       <div key={note.id} id={note.id} className={style.note}>
@@ -16,7 +17,7 @@ function OneNote({ note }) {
       <button
         type="button"
         onClick={() => {
-          dispatch(deleteOneNoteAsync(note.id));
+          dispatch(deleteOneNoteAsync({ noteId: note.id, userId }));
         }}
       >
         Удалить

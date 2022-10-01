@@ -21,9 +21,29 @@ export const loadUserDiaryNotesAsync = createAsyncThunk(
 
 export const deleteOneNoteAsync = createAsyncThunk(
   'allnotes/deleteOneNoteAsync',
-  async (noteId) => {
+  async ({ noteId, userId }) => {
     const response = await fetch(`/userdiary/${noteId}`, {
       method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId }),
+    });
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
+
+export const addOneNoteAsync = createAsyncThunk(
+  'allnotes/addOneNoteAsync',
+  async ({ title, content, userId }) => {
+    const response = await fetch('/userdiary/newnote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, content, userId }),
     });
     if (response.status >= 400) {
       const { error } = await response.json();
@@ -56,6 +76,12 @@ const userDiarySlice = createSlice({
             (note) => note.id !== Number(action.payload.id)
           );
         }
+      })
+      .addCase(addOneNoteAsync.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addOneNoteAsync.fulfilled, (state, action) => {
+        state.allnotes = state.allnotes.push(action.payload);
       });
   },
 });

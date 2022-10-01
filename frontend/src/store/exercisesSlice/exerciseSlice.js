@@ -101,13 +101,11 @@ const exercisesSlice = createSlice({
         if (action.payload.status) {
           state.favoriteExercise.push(action.payload);
           state.favoriteExerciseActual = action.payload;
-          // console.log('add in', state);
         } else {
           state.favoriteExercise = state.favoriteExercise.filter(
             (favorite) => favorite.id !== action.payload.id
           );
           state.favoriteExerciseActual = action.payload;
-          // console.log('delete from', state);
         }
       });
   },
