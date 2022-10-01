@@ -15,6 +15,7 @@ function ChatItem({ chat }) {
           href={`${chat.telegramUrl}`}
           target="_blank"
           rel="noreferrer"
+          className={style.tg_link}
         >
           {chat.title}
         </a>

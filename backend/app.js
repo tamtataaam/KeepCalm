@@ -6,12 +6,13 @@ const socketIO = require('socket.io');
 const serverConfig = require('./config/server.config');
 const testDatabaseConnection = require('./src/testDatabaseConnection');
 
-// const apiRouter = require('./routes/apiRouter');
 const authRouter = require('./routes/authRouter');
 const userMoodrout = require('./routes/api/userMood');
 const exercisesRouter = require('./routes/api/exercisesRouter');
 const favoriteExercisesRouter = require('./routes/api/favoriteExerciseRouter');
 const articlesRouter = require('./routes/api/articlesRouter');
+const userLkRouter = require('./routes/api/userRouter');
+
 const chatsRouter = require('./routes/api/chatsRouter');
 const userDiaryRouter = require('./routes/api/userDiaryRouter');
 
@@ -22,7 +23,7 @@ const PORT = process.env.PORT ?? 4000;
 
 serverConfig(app);
 
-// app.use('/api', apiRouter);
+app.use('/lk', userLkRouter);
 app.use('/auth', authRouter);
 app.use('/mood', userMoodrout);
 app.use('/exercises', exercisesRouter);

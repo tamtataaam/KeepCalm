@@ -11,26 +11,37 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
+import { logoutUser } from '../../store/userSlice/userSlice';
 import style from './Header.module.scss';
 
 function Header() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user.isUser);
   // console.log(user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const logout = () => {
+    dispatch(logoutUser());
+    navigate('/');
+  };
+
   return (
     <header className={style.header}>
       <div>
-        <a className={style.logo_nav} href="/">
+        <Link className={style.logo_nav} to="/">
           KeepCalm
-        </a>
+        </Link>
       </div>
       {!user
         ? (
@@ -91,13 +102,13 @@ function Header() {
               transformOrigin={{ horizontal: 'right', vertical: 'top' }}
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-              <MenuItem>
+              <MenuItem onClick={() => navigate('/lk')}>
                 <Avatar />
                 {' '}
                 Мой аккаунт
               </MenuItem>
               <Divider />
-              <MenuItem>
+              <MenuItem onClick={logout}>
                 <ListItemIcon>
                   <Logout fontSize="small" />
                 </ListItemIcon>

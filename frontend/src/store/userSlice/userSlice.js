@@ -62,6 +62,20 @@ const logUser = createAsyncThunk('user/logUser', (data) =>
     })
 );
 
+const logoutUser = createAsyncThunk(
+  'user/logoutUser',
+  () => fetch('/auth/logout', {
+    method: 'delete',
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.message;
+    }),
+);
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -94,6 +108,17 @@ const userSlice = createSlice({
         state.data.id = action.payload.id;
         state.data.name = action.payload.name;
         state.data.email = action.payload.email;
+      })
+      .addCase(logoutUser.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.isUser = false;
+        state.data = {
+          id: null,
+          name: null,
+          email: null,
+        };
       });
   },
 });
@@ -102,4 +127,4 @@ export default userSlice.reducer;
 
 export const { disableHelpMessage } = userSlice.actions;
 
-export { loadUser, regUser, logUser };
+export { loadUser, regUser, logUser, logoutUser };
