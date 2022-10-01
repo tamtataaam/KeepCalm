@@ -24,6 +24,7 @@ import './App.css';
 import AddChatPage from './Chats/AddChatPage';
 import UserDiary from './UserDiary/UserDiary';
 import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
+import Meditation from './Meditation/Meditation';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -58,6 +59,7 @@ function App() {
             <Route path="/chats" element={<ChatsPage />} />
             <Route path="/chats/addchat" element={<AddChatPage />} />
             <Route path="/userdiary" element={<UserDiary />} />
+            <Route path="/meditation" element={<Meditation />} />
           </Route>
         </Routes>
       ) : (
