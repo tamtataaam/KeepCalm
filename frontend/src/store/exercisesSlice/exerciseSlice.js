@@ -38,6 +38,19 @@ export const oneExerciseAsyncInfo = createAsyncThunk(
     }
   }
 );
+export const loadAllFavoriteExrcisesAsync = createAsyncThunk(
+  'favoriteExercise/loadAllFavoriteExrcisesAsync',
+  async () => {
+    const response = await fetch('/exercises/allfavorite');
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
 
 export const addToFavoriteAsync = createAsyncThunk(
   'favoriteExercise/addToFavoriteAsync',

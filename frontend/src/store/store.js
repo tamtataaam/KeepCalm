@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import exercisesSlice from './Exercises/exerciseSlice';
+import exercisesSlice from './exercisesSlice/exerciseSlice';
 import userSliceReducer from './userSlice/userSlice';
 import moodSliceReducer from './moodSlice/moodSlice';
 import articlesSlice from './articlesSlice/articlesSlice';

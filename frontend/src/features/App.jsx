@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
+import { loadAsyncExercises } from '../store/exercisesSlice/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
@@ -18,6 +18,7 @@ import ArticlesPage from './ArticlesPage/ArticlesPage';
 import OneArticlePage from './ArticlesPage/OneArticlePage';
 import ChatsPage from './Chats/ChatsPage';
 import './App.css';
+import UserDiary from './UserDiary/UserDiary';
 
 function App() {
   // Alinas's part start
@@ -44,6 +45,7 @@ function App() {
         <Route path="/articles/:id" element={<OneArticlePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/chats" element={<ChatsPage />} />
+        <Route path="/userdiary" element={<UserDiary />} />
 
         {/* <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
