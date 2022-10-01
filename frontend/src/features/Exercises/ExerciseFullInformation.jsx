@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { oneExerciseAsyncInfo } from '../../store/Exercises/exerciseSlice';
+import { oneExerciseAsyncInfo } from '../../store/exercisesSlice/exerciseSlice';
 import style from './Exercises.module.scss';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
@@ -31,16 +31,39 @@ function ExerciseFullInformation() {
                 src={oneExerciseInfo.imageUrl}
                 alt="..."
               />
-              <div>{oneExerciseInfo.description}</div>
+              <div className={style.diary_discription}>
+                {oneExerciseInfo.description}
+              </div>
             </div>
-            <button
-              type="button"
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              back to all exercises
-            </button>
+            {oneExerciseInfo.id !== 1 ? (
+              <button
+                type="button"
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
+                back to all exercises
+              </button>
+            ) : (
+              <div className={style.diary_buttons}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigate(-1);
+                  }}
+                >
+                  back to all exercises
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigate('/userdiary');
+                  }}
+                >
+                  Go to your Diary
+                </button>
+              </div>
+            )}
           </>
         ) : (
           <LoadingPage />

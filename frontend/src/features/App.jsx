@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loadAsyncExercises } from '../store/Exercises/exerciseSlice';
+import {
+  loadAsyncExercises,
+  loadAllFavoriteExrcisesAsync,
+} from '../store/exercisesSlice/exerciseSlice';
+import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
@@ -19,12 +23,15 @@ import OneArticlePage from './ArticlesPage/OneArticlePage';
 import ChatsPage from './Chats/ChatsPage';
 import AddChatPage from './Chats/AddChatPage';
 import './App.css';
+import UserDiary from './UserDiary/UserDiary';
 
 function App() {
   // Alinas's part start
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAsyncExercises());
+    dispatch(loadAllFavoriteExrcisesAsync());
+    dispatch(loadUserDiaryNotesAsync());
     dispatch(loadAsyncArticles());
     dispatch(loadUser());
     dispatch(loadSmiley());
@@ -45,6 +52,7 @@ function App() {
         <Route path="/articles/:id" element={<OneArticlePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/chats" element={<ChatsPage />} />
+        <Route path="/userdiary" element={<UserDiary />} />
         <Route path="/chats/addchat" element={<AddChatPage />} />
 
         {/* <Route path="/registration" element={<Registration />} />
