@@ -11,9 +11,13 @@ import {
 } from '../store/exercisesSlice/exerciseSlice';
 import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
+<<<<<<< HEAD
+import { loadSmiley } from '../store/moodSlice/moodSlice';
+=======
 import { loadUser } from '../store/userSlice/userSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
+>>>>>>> ce32f0f5ff51d28fadd0bd79f5616e9fbf6325c6
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
@@ -43,6 +47,28 @@ function App() {
     dispatch(loadAsyncArticles());
     dispatch(loadUser());
     dispatch(loadSmiley());
+<<<<<<< HEAD
+  }, []);
+  // Alinas's part end
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/lk" element={<UserPage />} />
+        <Route path="home" element={<Main />} />
+        <Route path="mood" element={<Mood />} />
+        <Route path="/exercises" element={<Exercises />} />
+        <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/notfound" element={<Error404 />} />
+        <Route path="*" element={<Error404 />} /> */}
+      </Route>
+    </Routes>
+=======
     dispatch(addSmiley());
     dispatch(loadChats());
   }, []);
@@ -75,6 +101,7 @@ function App() {
         </Routes>
       )}
     </>
+>>>>>>> ce32f0f5ff51d28fadd0bd79f5616e9fbf6325c6
   );
 }
 

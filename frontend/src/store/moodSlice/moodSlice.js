@@ -14,7 +14,7 @@ const loadSmiley = createAsyncThunk('mood/loadSmiley', async () => {
     },
   });
   const data = await res.json();
-
+  console.log(data);
   if (data.error) {
     throw new Error(data.error);
   } else {
@@ -37,6 +37,10 @@ const addSmiley = createAsyncThunk('mood/addSmiley', async (smiley) => {
   return data.data;
   // }
 });
+// const loadSmileyUserLk = createAsyncThunk(
+//   'mood/loadSmileyUserLk',
+//   async () => {}
+// );
 
 const moodSlice = createSlice({
   name: 'mood',
