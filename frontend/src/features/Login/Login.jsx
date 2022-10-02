@@ -33,7 +33,7 @@ function Login({ setLogin }) {
 
   useEffect(() => {
     if (isUser) {
-      navigate('/exercises');
+      navigate('/welcome');
     }
   }, [isUser, navigate]);
 
@@ -88,12 +88,6 @@ function Login({ setLogin }) {
             <Link to={1} onClick={() => setLogin((login) => !login)}>Зарегистрируйся</Link>
           </div>
         </form>
-        {/* <div>
-          Если ты не зареган, ну хули
-          {' '}
-          <button type="button" onClick={() => setLogin((login) => !login)}>Зарегайся</button>
-          , Ёпта!
-        </div> */}
       </div>
     </div>
   );

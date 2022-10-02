@@ -34,7 +34,7 @@ function Registration({ setLogin }) {
 
   useEffect(() => {
     if (isUser) {
-      navigate('/exercises');
+      navigate('/welcome');
     }
   }, [isUser, navigate]);
 

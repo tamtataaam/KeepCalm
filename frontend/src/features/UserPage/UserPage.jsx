@@ -39,8 +39,8 @@ function userPage() {
       })
     // return el;
   );
-  console.log(moodOfUser, 'moodOfUser');
-  console.log(moodOfUserDate, 'moodOfUserDate');
+  // console.log(moodOfUser, 'moodOfUser');
+  // console.log(moodOfUserDate, 'moodOfUserDate');
   // { x: 1, y: moodOfUser.flat()[0] },
   // { x: 2, y: moodOfUser.flat()[1] },
   // { x: 3, y: moodOfUser.flat()[2] },
@@ -74,7 +74,7 @@ function userPage() {
     setData(data);
   }, [data]);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div>
