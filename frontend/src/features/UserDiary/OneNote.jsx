@@ -15,54 +15,49 @@ function OneNote({ note }) {
   const [flagChange, setFlagChange] = useState(true);
 
   return (
-    <>
-      <div className={style.note_container}>
-        <div
-          key={note.id}
-          id={note.id}
-          onClick={() => setFlag((prev) => !prev)}
-        >
-          <div>Дата создания: {note.createdAt.slice(0, 10)}</div>
-          <div
-            style={!flagChange ? { display: 'none' } : { display: 'inline' }}
-          >
-            Название: {note.title}
-          </div>
-        </div>
-
-        <div
-          className={style.note}
-          style={
-            flag || !flagChange ? { display: 'none' } : { display: 'inline' }
-          }
-        >
-          Текст: {note.content}
+    <div className={style.note_container}>
+      <div key={note.id} id={note.id} onClick={() => setFlag((prev) => !prev)}>
+        <div>Дата создания: {note.createdAt.slice(0, 10)}</div>
+        <div style={!flagChange ? { display: 'none' } : { display: 'inline' }}>
+          Название: {note.title}
         </div>
       </div>
+
+      <div
+        className={style.note}
+        style={
+          flag || !flagChange ? { display: 'none' } : { display: 'inline' }
+        }
+      >
+        Текст: {note.content}
+      </div>
+
       <ChangeForm
         note={note}
         flagChange={flagChange}
         setFlagChange={setFlagChange}
       />
-      <button
-        className={style.delete_button}
-        type="button"
-        onClick={() => {
-          dispatch(deleteOneNoteAsync({ noteId: note.id, userId }));
-        }}
-        style={!flagChange ? { display: 'none' } : { display: 'inline' }}
-      >
-        Удалить
-      </button>
-      <button
-        type="button"
-        className={style.delete_button}
-        onClick={() => setFlagChange((prev) => !prev)}
-        style={!flagChange ? { display: 'none' } : { display: 'inline' }}
-      >
-        Изменить
-      </button>
-    </>
+      <div className={style.buttons_container}>
+        <button
+          className={style.delete_button}
+          type="button"
+          onClick={() => {
+            dispatch(deleteOneNoteAsync({ noteId: note.id, userId }));
+          }}
+          style={!flagChange ? { display: 'none' } : { display: 'inline' }}
+        >
+          Удалить
+        </button>
+        <button
+          type="button"
+          className={style.delete_button}
+          onClick={() => setFlagChange((prev) => !prev)}
+          style={!flagChange ? { display: 'none' } : { display: 'inline' }}
+        >
+          Изменить
+        </button>
+      </div>
+    </div>
   );
 }
 
