@@ -18,7 +18,7 @@ const loadUser = createAsyncThunk('user/loadUser', () =>
       if (!body.isUser) {
         throw new Error(body.isUser);
       }
-      return body.user;
+      return body.loadUser;
     })
 );
 
@@ -91,7 +91,9 @@ const userSlice = createSlice({
       })
       .addCase(loadUser.fulfilled, (state, action) => {
         state.isUser = true;
-        state.data = action.payload;
+        state.data.id = action.payload.id;
+        state.data.name = action.payload.name;
+        state.data.email = action.payload.email;
       })
       .addCase(regUser.rejected, (state, action) => {
         state.helpMessage = action.error.message;

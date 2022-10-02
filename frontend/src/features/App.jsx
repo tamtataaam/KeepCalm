@@ -24,11 +24,12 @@ import ArticlesPage from './ArticlesPage/ArticlesPage';
 import OneArticlePage from './ArticlesPage/OneArticlePage';
 import ChatsPage from './Chats/ChatsPage';
 import MainAuth from './Main/MainAuth';
-import './App.css';
 import AddChatPage from './Chats/AddChatPage';
 import UserDiary from './UserDiary/UserDiary';
 import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import Meditation from './Meditation/Meditation';
+import WelcomePage from './WelcomePage/WelcomePage';
+import './App.css';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -50,14 +51,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             {/* <Route index element={<Main />} /> */}
-            <Route index element={<Exercises />} />
-            <Route path="/lk" element={<UserPage />} />
+            {/* <Route index element={<Exercises />} /> */}
+            <Route index element={<WelcomePage />} />
             <Route path="/mood" element={<Mood />} />
+            <Route path="/lk" element={<UserPage />} />
             <Route path="/exercises" element={<Exercises />} />
-            <Route
-              path="/exercises/:id"
-              element={<ExerciseFullInformation />}
-            />
+            <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/articles" element={<ArticlesPage />} />
             <Route path="/articles/:id" element={<OneArticlePage />} />
@@ -72,8 +71,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainAuth />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/registration" element={<Registration />} />
+            {/* <Route path="/login" element={<Login />} />
+            <Route path="/registration" element={<Registration />} /> */}
           </Route>
         </Routes>
       )}

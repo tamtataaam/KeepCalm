@@ -19,8 +19,7 @@ import style from './Header.module.scss';
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((store) => store.user.isUser);
-  // console.log(user);
+  const user = useSelector((store) => store.user.data);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -43,7 +42,7 @@ function Header() {
           KeepCalm
         </Link>
       </div>
-      {!user
+      {!user.name
         ? (
           <div className={style.button_nav}>
             {/* <a href="/" className={style.nav_btn}>Войти</a>
@@ -53,7 +52,7 @@ function Header() {
         : (
           <div className={style.button_nav}>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-              <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>Sanya</Typography>
+              <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>{user.name}</Typography>
               <Tooltip title="Account settings">
                 <IconButton
                   onClick={handleClick}
@@ -63,7 +62,7 @@ function Header() {
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
                 >
-                  <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                  <Avatar />
                 </IconButton>
               </Tooltip>
             </Box>
