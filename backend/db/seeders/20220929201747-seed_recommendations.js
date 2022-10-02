@@ -64,6 +64,24 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        conditionId: 4,
+        recommendation: 'Recommendation 1',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        conditionId: 4,
+        recommendation: 'Recommendation 2',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        conditionId: 4,
+        recommendation: 'Recommendation 3',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 

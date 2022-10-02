@@ -11,7 +11,9 @@ import {
   addSmiley,
   loadSmileyUserLk,
 } from '../store/moodSlice/moodSlice';
+import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
+import { loadCondsitionAsync } from '../store/welcomeTestSlice/welcomeTestSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
@@ -26,11 +28,11 @@ import ChatsPage from './Chats/ChatsPage';
 import MainAuth from './Main/MainAuth';
 import AddChatPage from './Chats/AddChatPage';
 import UserDiary from './UserDiary/UserDiary';
-import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import Meditation from './Meditation/Meditation';
 import WelcomePage from './WelcomePage/WelcomePage';
 import './App.css';
 import WelcomeTest from './WelcomeTest/WelcomeTest';
+import Recommendations from './WelcomeTest/Recommendations';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -44,6 +46,7 @@ function App() {
     dispatch(addSmiley());
     dispatch(loadChats());
     dispatch(loadSmileyUserLk());
+    dispatch(loadCondsitionAsync());
   }, []);
 
   return (
@@ -71,6 +74,10 @@ function App() {
           </Route>
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/welcometest" element={<WelcomeTest />} />
+          <Route
+            path="/welcometest/recommendations"
+            element={<Recommendations />}
+          />
         </Routes>
       ) : (
         <Routes>
