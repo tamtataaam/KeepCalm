@@ -30,6 +30,7 @@ import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice'
 import Meditation from './Meditation/Meditation';
 import WelcomePage from './WelcomePage/WelcomePage';
 import './App.css';
+import WelcomeTest from './WelcomeTest/WelcomeTest';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -56,7 +57,10 @@ function App() {
             <Route path="/mood" element={<Mood />} />
             <Route path="/lk" element={<UserPage />} />
             <Route path="/exercises" element={<Exercises />} />
-            <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
+            <Route
+              path="/exercises/:id"
+              element={<ExerciseFullInformation />}
+            />
             <Route path="/registration" element={<Registration />} />
             <Route path="/articles" element={<ArticlesPage />} />
             <Route path="/articles/:id" element={<OneArticlePage />} />
@@ -66,6 +70,7 @@ function App() {
             <Route path="/userdiary" element={<UserDiary />} />
           </Route>
           <Route path="/meditation" element={<Meditation />} />
+          <Route path="/welcometest" element={<WelcomeTest />} />
         </Routes>
       ) : (
         <Routes>
