@@ -15,6 +15,7 @@ export const loadCondsitionAsync = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
+      console.log(data);
       return data;
     }
   }
@@ -48,7 +49,11 @@ const welcomeTestSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(loadCondsitionAsync.fulfilled, (state, action) => {
-        state.conditions = action.payload;
+        if (action.payload.status) {
+          state.conditions = action.payload.condition;
+        } else {
+          state.conditions = false;
+        }
       })
       .addCase(addScoreAsync.rejected, (state, action) => {
         state.error = action.error.message;
@@ -58,7 +63,5 @@ const welcomeTestSlice = createSlice({
       });
   },
 });
-
-console.log(initialState);
 
 export default welcomeTestSlice.reducer;

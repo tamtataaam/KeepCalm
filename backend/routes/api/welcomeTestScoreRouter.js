@@ -6,10 +6,19 @@ const {
 } = require('../../db/models');
 
 module.exports = welcometestScoreRouter
-  .get('/', async (res, req) => {
+  .get('/', async (req, res) => {
     try {
-      const allConditions = await WelcomeTestScore.findAll({});
-      req.json(allConditions);
+      const { id } = req.session.user;
+      const allConditions = await WelcomeTestScore.findAll({
+        where: { userId: id },
+      });
+      const lastCondition = allConditions[allConditions.length - 1];
+      if (lastCondition) {
+        const condition = await Condition.findByPk(lastCondition.conditionId);
+        res.json({ condition, status: true });
+      } else {
+        res.json({ status: false });
+      }
     } catch (error) {
       res.status(500).send(`${error.message}`);
     }
@@ -17,7 +26,6 @@ module.exports = welcometestScoreRouter
   .post('/', async (req, res) => {
     try {
       const { userId, score } = req.body;
-      console.log(userId, score);
       if (score <= 17) {
         await WelcomeTestScore.create({
           userId,
