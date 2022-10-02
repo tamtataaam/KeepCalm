@@ -3,10 +3,11 @@ const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 
-authRouter.get('/', (req, res) => {
+authRouter.get('/', async (req, res) => {
   const { user } = req.session;
   if (user) {
-    res.json({ isUser: true, user });
+    const loadUser = await User.findOne({ where: { id: user.id } });
+    res.json({ isUser: true, loadUser });
   } else {
     res.json({ isUser: false });
   }
@@ -14,13 +15,15 @@ authRouter.get('/', (req, res) => {
 
 authRouter.post('/registration', async (req, res) => {
   try {
-    const { name, email, password, repeatPassword } = req.body;
+    const {
+      name, email, password, repeatPassword,
+    } = req.body;
 
     if (
-      name.length < 1 ||
-      email.length < 1 ||
-      password.length < 1 ||
-      repeatPassword.length < 1
+      name.length < 1
+      || email.length < 1
+      || password.length < 1
+      || repeatPassword.length < 1
     ) {
       return res.json({ message: 'Заполните все поля' });
     }
