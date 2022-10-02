@@ -56,11 +56,10 @@
   width: 300px;
 }
 
-
 .h1 {
   font-family: 'Nunito';
   font-size: 40px;
-  color: #3F414E;
+  color: #3f414e;
   margin-bottom: 5px;
   // margin-left: 550px;
 }
@@ -68,7 +67,13 @@
 .h2 {
   font-family: 'Nunito';
   font-size: 30px;
-  color: #A1A4B2;
+  color: #a1a4b2;
   margin-top: 5px;
   // margin-left: 550px;
+}
+.like_img {
+  width: 40px;
+  position: relative;
+  top: 35px;
+  left: 170px;
 }

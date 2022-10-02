@@ -55,6 +55,29 @@ export const addOneNoteAsync = createAsyncThunk(
   }
 );
 
+export const changeOneNoteAsync = createAsyncThunk(
+  'allnotes/changeOneNoteAsync',
+  async ({ userId, noteId, changeInputTitle, changeInputContent }) => {
+    const response = await fetch('/userdiary/note', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId,
+        noteId,
+        changeInputTitle,
+        changeInputContent,
+      }),
+    });
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
+
 const userDiarySlice = createSlice({
   name: 'allnotes',
   initialState,
@@ -82,6 +105,14 @@ const userDiarySlice = createSlice({
       })
       .addCase(addOneNoteAsync.fulfilled, (state, action) => {
         state.allnotes = state.allnotes.push(action.payload);
+      })
+      .addCase(changeOneNoteAsync.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(changeOneNoteAsync.fulfilled, (state, action) => {
+        state.allnotes = state.allnotes.map((note) =>
+          note.id === action.payload.id ? action.payload : note
+        );
       });
   },
 });
