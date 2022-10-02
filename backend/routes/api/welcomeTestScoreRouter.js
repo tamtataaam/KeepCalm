@@ -54,7 +54,7 @@ module.exports = welcometestScoreRouter
           conditionId: 3,
           testScore: score,
         });
-        const condition = await Condition.findByPk(2);
+        const condition = await Condition.findByPk(3);
         const recommendations = await Recommendation.findAll({
           where: { conditionId: 3 },
         });
@@ -65,7 +65,7 @@ module.exports = welcometestScoreRouter
           conditionId: 4,
           testScore: score,
         });
-        const condition = await Condition.findByPk(2);
+        const condition = await Condition.findByPk(4);
         const recommendations = await Recommendation.findAll({
           where: { conditionId: 4 },
         });
