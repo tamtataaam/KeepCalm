@@ -32,7 +32,7 @@ function OneArticlePage() {
         }
       </div>
       <div className="article_comments">
-        <h3>Комментарии</h3>
+        <h3>Комментарии:</h3>
         <div>
           {comments.length === 0
             ? <p className="comments_info">Нет комментариев</p>

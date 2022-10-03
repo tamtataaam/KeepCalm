@@ -1,8 +1,17 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 
-function Comments() {
+function Comments({ comment }) {
   return (
-    <div>Здесь когда-то будут комменты, отвечаю</div>
+    <>
+      {comment
+        && (
+        <div className="comment_container">
+          <span className="comment_autor">{comment.User.name}</span>
+          <div className="comment_content">{comment.commentText}</div>
+        </div>
+        )}
+    </>
   );
 }
 
