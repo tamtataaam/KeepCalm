@@ -11,7 +11,9 @@ import style from './Exercises.module.scss';
 
 function FavoriteButton({ exercise }) {
   const userId = useSelector((store) => store.user.data.id);
-  const [flag, setFlag] = useState(true);
+  // const { favoriteExercise } = useSelector((state) => state.exercises);
+  // console.log(favoriteExercise);
+  const [flag, setFlag] = useState(false);
   const dispatch = useDispatch();
 
   return (

@@ -3,7 +3,10 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadAsyncExercises } from '../store/exercisesSlice/exerciseSlice';
+import {
+  loadAsyncExercises,
+  loadAllFavoriteExrcisesAsync,
+} from '../store/exercisesSlice/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import {
@@ -11,7 +14,9 @@ import {
   addSmiley,
   loadSmileyUserLk,
 } from '../store/moodSlice/moodSlice';
+import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
+import { loadCondsitionAsync } from '../store/welcomeTestSlice/welcomeTestSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
@@ -26,10 +31,11 @@ import ChatsPage from './Chats/ChatsPage';
 import MainAuth from './Main/MainAuth';
 import AddChatPage from './Chats/AddChatPage';
 import UserDiary from './UserDiary/UserDiary';
-import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import Meditation from './Meditation/Meditation';
 import WelcomePage from './WelcomePage/WelcomePage';
 import './App.css';
+import WelcomeTest from './WelcomeTest/WelcomeTest';
+import Recommendations from './WelcomeTest/Recommendations';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -43,6 +49,8 @@ function App() {
     dispatch(addSmiley());
     dispatch(loadChats());
     dispatch(loadSmileyUserLk());
+    dispatch(loadCondsitionAsync());
+    dispatch(loadAllFavoriteExrcisesAsync());
   }, []);
 
   return (
@@ -56,7 +64,10 @@ function App() {
             <Route path="/mood" element={<Mood />} />
             <Route path="/lk" element={<UserPage />} />
             <Route path="/exercises" element={<Exercises />} />
-            <Route path="/exercises/:id" element={<ExerciseFullInformation />} />
+            <Route
+              path="/exercises/:id"
+              element={<ExerciseFullInformation />}
+            />
             <Route path="/registration" element={<Registration />} />
             <Route path="/articles" element={<ArticlesPage />} />
             <Route path="/articles/:id" element={<OneArticlePage />} />
@@ -66,6 +77,11 @@ function App() {
             <Route path="/userdiary" element={<UserDiary />} />
           </Route>
           <Route path="/meditation" element={<Meditation />} />
+          <Route path="/welcometest" element={<WelcomeTest />} />
+          <Route
+            path="/welcometest/recommendations"
+            element={<Recommendations />}
+          />
         </Routes>
       ) : (
         <Routes>
