@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   moodSmiley: [],
   moodSmileyGraph: [],
-  moodSmileyGraphFromBD: [],
+  userMood: null,
   error: null,
 };
 
@@ -15,13 +15,13 @@ const loadSmiley = createAsyncThunk('mood/loadSmiley', async () => {
     },
   });
   const data = await res.json();
-  // console.log(data);
   if (data.error) {
     throw new Error(data.error);
   } else {
     return data.data;
   }
 });
+
 const addSmiley = createAsyncThunk('mood/addSmiley', async (smiley) => {
   const response = await fetch('/mood', {
     method: 'POST',
@@ -38,6 +38,7 @@ const addSmiley = createAsyncThunk('mood/addSmiley', async (smiley) => {
     return data.data;
   }
 });
+
 const loadSmileyUserLk = createAsyncThunk('mood/loadSmileyUserLk', async () => {
   const res = await fetch('/lk');
   const data = await res.json();
@@ -69,7 +70,7 @@ const moodSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(loadSmileyUserLk.fulfilled, (state, action) => {
-        state.moodSmileyGraphFromBD.push(action.payload);
+        state.userMood = action.payload;
       });
   },
 });

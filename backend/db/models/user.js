@@ -1,4 +1,5 @@
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -18,16 +19,16 @@ module.exports = (sequelize, DataTypes) => {
       FavoriteExercise,
       Exercise,
       UserDiary,
+      Recommendation,
+      PersonalRecomendationStore,
     }) {
       User.belongsToMany(Condition, {
         through: WelcomeTestScore,
         foreignKey: 'userId',
         otherKey: 'conditionId',
       });
-      User.belongsToMany(Article, {
-        through: Comment,
+      User.Comments = User.hasMany(Comment, {
         foreignKey: 'userId',
-        otherKey: 'articleId',
       });
       User.belongsToMany(Article, {
         through: Like,
@@ -44,6 +45,11 @@ module.exports = (sequelize, DataTypes) => {
         through: FavoriteExercise,
         foreignKey: 'userId',
         otherKey: 'exerciseId',
+      });
+      User.belongsToMany(Recommendation, {
+        through: PersonalRecomendationStore,
+        foreignKey: 'userId',
+        otherKey: 'recommendationId',
       });
       User.hasMany(UserDiary, { foreignKey: 'userId' });
     }
@@ -93,7 +99,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'User',
       tableName: 'Users',
-    }
+    },
   );
   return User;
 };
