@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  recomendations: [],
+  recommendations: [],
   conditions: [],
+  lastCondition: null,
   error: null,
 };
 
 export const loadCondsitionAsync = createAsyncThunk(
-  'score/loadCondsitionAsync',
+  'conditions/loadCondsitionAsync',
   async () => {
     const response = await fetch('/welcometest');
     if (response.status >= 400) {
@@ -15,7 +16,19 @@ export const loadCondsitionAsync = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
-      console.log(data);
+      return data;
+    }
+  }
+);
+export const loadRecomendationsAsync = createAsyncThunk(
+  'recomendations/loadRecomendationsAsync ',
+  async () => {
+    const response = await fetch('/userrecomendationsstore');
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
       return data;
     }
   }
@@ -39,6 +52,36 @@ export const addScoreAsync = createAsyncThunk(
   }
 );
 
+export const loadLastConditionAsync = createAsyncThunk(
+  'conditions/loadLastConditionAsync',
+  async () => {
+    const response = await fetch('/userrecomendationsstore/lastcondition');
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
+
+export const loadLastRecommendationsAsync = createAsyncThunk(
+  'recomendations/loadLastRecomendationsAsync ',
+  async () => {
+    const response = await fetch(
+      '/userrecomendationsstore/currentrecomendations'
+    );
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
+
 const welcomeTestSlice = createSlice({
   name: 'allnotes',
   initialState,
@@ -50,16 +93,32 @@ const welcomeTestSlice = createSlice({
       })
       .addCase(loadCondsitionAsync.fulfilled, (state, action) => {
         if (action.payload.status) {
-          state.conditions = action.payload.condition;
+          state.conditions = action.payload.allConditions;
         } else {
           state.conditions = false;
         }
       })
-      .addCase(addScoreAsync.rejected, (state, action) => {
+      .addCase(loadRecomendationsAsync.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(addScoreAsync.fulfilled, (state, action) => {
-        state.recomendations = action.payload.recomendations;
+      .addCase(loadRecomendationsAsync.fulfilled, (state, action) => {
+        state.recomendations = action.payload;
+      })
+      .addCase(loadLastConditionAsync.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadLastConditionAsync.fulfilled, (state, action) => {
+        if (action.payload.status) {
+          state.lastCondition = action.payload.findLast;
+        } else {
+          state.lastCondition = false;
+        }
+      })
+      .addCase(loadLastRecommendationsAsync.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadLastRecommendationsAsync.fulfilled, (state, action) => {
+        state.recommendations = action.payload;
       });
   },
 });
