@@ -1,4 +1,5 @@
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -26,10 +27,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         otherKey: 'conditionId',
       });
-      User.belongsToMany(Article, {
-        through: Comment,
+      User.Comments = User.hasMany(Comment, {
         foreignKey: 'userId',
-        otherKey: 'articleId',
       });
       User.belongsToMany(Article, {
         through: Like,
@@ -100,7 +99,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'User',
       tableName: 'Users',
-    }
+    },
   );
   return User;
 };
