@@ -82,7 +82,7 @@ module.exports = articlesRouter
       });
       res.json({
         data: {
-          updatedComment,
+          ...updatedComment[1][0].dataValues,
           User: {
             name: req.session.user.name,
           },
