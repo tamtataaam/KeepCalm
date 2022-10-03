@@ -13,6 +13,7 @@ function FavoriteButton({ exercise }) {
   const userId = useSelector((store) => store.user.data.id);
   const [flag, setFlag] = useState(true);
   const dispatch = useDispatch();
+
   return (
     <>
       {flag ? (
