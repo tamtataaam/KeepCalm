@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       FavoriteExercise,
       Exercise,
       UserDiary,
+      Recommendation,
+      PersonalRecomendationStore,
     }) {
       User.belongsToMany(Condition, {
         through: WelcomeTestScore,
@@ -44,6 +46,11 @@ module.exports = (sequelize, DataTypes) => {
         through: FavoriteExercise,
         foreignKey: 'userId',
         otherKey: 'exerciseId',
+      });
+      User.belongsToMany(Recommendation, {
+        through: PersonalRecomendationStore,
+        foreignKey: 'userId',
+        otherKey: 'recommendationId',
       });
       User.hasMany(UserDiary, { foreignKey: 'userId' });
     }

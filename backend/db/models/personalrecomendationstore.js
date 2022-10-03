@@ -1,21 +1,16 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Recommendation extends Model {
+  class PersonalRecomendationStore extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Condition, PersonalRecomendationStore, User }) {
-      Recommendation.belongsTo(Condition, { foreignKey: 'conditionId' });
-      Recommendation.belongsToMany(User, {
-        through: PersonalRecomendationStore,
-        foreignKey: 'recommendationId',
-        otherKey: 'userId',
-      });
+    static associate() {
+      // define association here
     }
   }
-  Recommendation.init(
+  PersonalRecomendationStore.init(
     {
       id: {
         allowNull: false,
@@ -23,16 +18,17 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      conditionId: {
+      userId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         references: {
-          model: 'Conditions',
+          model: 'Users',
         },
       },
-      recommendation: {
-        type: DataTypes.TEXT,
-        allowNull: false,
+      recommendationId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Recommendations',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -45,9 +41,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Recommendation',
-      tableName: 'Recommendations',
+      modelName: 'PersonalRecomendationStore',
+      tableName: 'PersonalRecomendationStores',
     }
   );
-  return Recommendation;
+  return PersonalRecomendationStore;
 };
