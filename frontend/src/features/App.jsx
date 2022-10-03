@@ -62,8 +62,6 @@ function App() {
       {isUser ? (
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* <Route index element={<Main />} /> */}
-            {/* <Route index element={<Exercises />} /> */}
             <Route index element={<WelcomePage />} />
             <Route path="/mood" element={<Mood />} />
             <Route path="/lk" element={<UserPage />} />

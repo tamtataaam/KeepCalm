@@ -11,7 +11,7 @@ const userMoodrout = require('./routes/api/userMood');
 const exercisesRouter = require('./routes/api/exercisesRouter');
 const favoriteExercisesRouter = require('./routes/api/favoriteExerciseRouter');
 const articlesRouter = require('./routes/api/articlesRouter');
-const userLkRouter = require('./routes/api/userRouter');
+const userLkRouter = require('./routes/api/userLkRouter');
 
 const chatsRouter = require('./routes/api/chatsRouter');
 const userDiaryRouter = require('./routes/api/userDiaryRouter');

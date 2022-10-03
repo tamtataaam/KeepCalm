@@ -1,5 +1,5 @@
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     /**
      * Add seed commands here.
      *
@@ -29,6 +29,48 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        userId: 1,
+        moodId: 3,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 1,
+        moodId: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 1,
+        moodId: 3,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 1,
+        moodId: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 1,
+        moodId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 1,
+        moodId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 1,
+        moodId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
         userId: 2,
         moodId: 3,
         createdAt: new Date(),
@@ -49,7 +91,7 @@ module.exports = {
     ]);
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     /**
      * Add commands to revert seed here.
      *
