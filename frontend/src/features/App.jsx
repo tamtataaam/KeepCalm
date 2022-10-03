@@ -16,7 +16,10 @@ import {
 } from '../store/moodSlice/moodSlice';
 import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
-import { loadCondsitionAsync } from '../store/welcomeTestSlice/welcomeTestSlice';
+import {
+  loadCondsitionAsync,
+  loadRecomendationsAsync,
+} from '../store/welcomeTestSlice/welcomeTestSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
@@ -51,6 +54,7 @@ function App() {
     dispatch(loadSmileyUserLk());
     dispatch(loadCondsitionAsync());
     dispatch(loadAllFavoriteExrcisesAsync());
+    dispatch(loadRecomendationsAsync());
   }, []);
 
   return (
@@ -75,13 +79,13 @@ function App() {
             <Route path="/chats" element={<ChatsPage />} />
             <Route path="/addchat" element={<AddChatPage />} />
             <Route path="/userdiary" element={<UserDiary />} />
+            <Route path="/welcometest" element={<WelcomeTest />} />
+            <Route
+              path="/welcometest/recommendations"
+              element={<Recommendations />}
+            />
           </Route>
           <Route path="/meditation" element={<Meditation />} />
-          <Route path="/welcometest" element={<WelcomeTest />} />
-          <Route
-            path="/welcometest/recommendations"
-            element={<Recommendations />}
-          />
         </Routes>
       ) : (
         <Routes>
