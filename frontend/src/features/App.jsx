@@ -39,6 +39,7 @@ import WelcomePage from './WelcomePage/WelcomePage';
 import './App.css';
 import WelcomeTest from './WelcomeTest/WelcomeTest';
 import Recommendations from './WelcomeTest/Recommendations';
+import BreathExercise from './BreathExercise/BreathExercise';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -82,6 +83,7 @@ function App() {
               path="/welcometest/recommendations"
               element={<Recommendations />}
             />
+            <Route path="/breath" element={<BreathExercise />} />
           </Route>
           <Route path="/meditation" element={<Meditation />} />
         </Routes>
