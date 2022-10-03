@@ -25,7 +25,7 @@ module.exports = welcometestScoreRouter
   .post('/', async (req, res) => {
     try {
       const { userId, score } = req.body;
-      if (score <= 17) {
+      if (score <= 23) {
         await WelcomeTestScore.create({
           userId,
           conditionId: 1,
@@ -44,7 +44,7 @@ module.exports = welcometestScoreRouter
         };
         const newRec = recommendations.map(writeRec);
         res.json({ status: true });
-      } else if (score > 17 && score <= 25) {
+      } else if (score > 23 && score <= 31) {
         await WelcomeTestScore.create({
           userId,
           conditionId: 2,
@@ -63,7 +63,7 @@ module.exports = welcometestScoreRouter
         };
         const newRec = recommendations.map(writeRec);
         res.json({ status: true });
-      } else if (score > 15 && score <= 37) {
+      } else if (score > 31 && score <= 43) {
         await WelcomeTestScore.create({
           userId,
           conditionId: 3,
