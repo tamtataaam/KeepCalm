@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 // import LineChart from 'react-linechart';
 import { useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
@@ -13,6 +13,7 @@ import {
   PointElement,
 } from 'chart.js';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import style from './MoodGraph.module.scss';
 
 ChartJS.register(
   Title,
@@ -26,10 +27,10 @@ ChartJS.register(
 
 function MoodGraph() {
   const userMood = useSelector((state) => state.mood.userMood);
-  const userMoodDate = userMood?.map((el) => el.createdAt.slice(0, 10));
+  const userMoodDate = userMood?.map((el) => el.createdAt.slice(5, 10));
   const userMoodId = userMood?.map((el) => el.moodId);
 
-  const [data, setData] = useState({
+  const mydata = {
     labels: userMoodDate,
     datasets: [
       {
@@ -38,29 +39,45 @@ function MoodGraph() {
         backgroundColor: '#8E97FD',
       },
     ],
-    // options: {
-    //   showLines: false,
-    //   scales: {
-    //     yAxes: [{
-    //       ticks: {
-    //         beginAtZero: true
-    //       }
-    //     }]
-    //   }
-    // }
-  });
+  };
 
-  useEffect(() => {
-    setData(data);
-  }, [data]);
+  const options = {
+    // maintainAspectRatio: true,
+    showLines: false,
+    // animations: {
+    //   tension: {
+    //     duration: 1000,
+    //     easing: 'linear',
+    //     from: 1,
+    //     to: 0,
+    //     loop: true
+    //   }
+    // },
+    scales: {
+      y: {
+        ticks: {
+          stepSize: 1,
+        }
+      }
+    }
+  };
 
   return (
-    <div>
-      {userMoodDate && userMoodId ? (
-        <Line data={data} />
-      ) : (
-        <LoadingPage />
-      )}
+    <div className={style.main_container}>
+      <div className={style.graph}>
+        {(userMoodDate && userMoodId) ? (
+          <Line data={mydata} options={options} />
+        ) : (
+          <LoadingPage />
+        )}
+        <div className={style.smiles_container}>
+          <img src="1.svg" alt="super" className={style.superSm} />
+          <img src="2.svg" alt="super" />
+          <img src="3.svg" alt="super" />
+          <img src="4.svg" alt="super" />
+          <img src="5.svg" alt="super" />
+        </div>
+      </div>
     </div>
   );
 }

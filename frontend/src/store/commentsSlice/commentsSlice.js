@@ -8,7 +8,7 @@ const initialState = {
 
 const loadComments = createAsyncThunk(
   'comments/loadComments',
-  (id) => fetch(`/api/place/${id}/comments`)
+  (id) => fetch(`/articles/${id}/comments`)
     .then((response) => response.json())
     .then((body) => {
       if (body.error) {

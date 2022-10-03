@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const articlesRouter = require('express').Router();
 
 const { Article, Comment, User } = require('../../db/models');
@@ -38,9 +39,8 @@ module.exports = articlesRouter
           },
         ],
       });
-      res.json({
-        data: comments,
-      });
+      const data = comments.map((comment) => comment.dataValues);
+      res.json({ data });
     } catch (error) {
       res.json({
         error: error.message,
@@ -82,10 +82,26 @@ module.exports = articlesRouter
       });
       res.json({
         data: {
-          updatedComment,
+          ...updatedComment[1][0].dataValues,
           User: {
             name: req.session.user.name,
           },
+        },
+      });
+    } catch (error) {
+      res.json({
+        error: error.message,
+      });
+    }
+  })
+
+  .delete('/:id/comments', async (req, res) => {
+    const { commentId } = req.body;
+    try {
+      await Comment.destroy({ where: { id: commentId } });
+      res.json({
+        data: {
+          commentId,
         },
       });
     } catch (error) {

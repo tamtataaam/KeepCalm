@@ -3,10 +3,10 @@ const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
 
-const passUserFromSession = require('../middleware/passUserFromSession');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const cookieParser = require('cookie-parser');
+const passUserFromSession = require('../middleware/passUserFromSession');
 
 const corsOptions = {
   origin: ['http://localhost:3000'],
@@ -25,7 +25,7 @@ const sessionConfig = {
 };
 
 module.exports = function serverConfig(app) {
-  app.disable("x-powered-by");
+  app.disable('x-powered-by');
   app.use(cors(corsOptions));
   app.use(morgan('dev'));
   app.use(express.json());
