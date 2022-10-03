@@ -6,7 +6,14 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate() {}
+    static associate({ Exercise, User }) {
+      FavoriteExercise.Exercise = FavoriteExercise.belongs(Exercise, {
+        foreignKey: 'exerciseId',
+      });
+      FavoriteExercise.User = FavoriteExercise.belongs(User, {
+        foreignKey: 'userId',
+      });
+    }
   }
   FavoriteExercise.init(
     {
