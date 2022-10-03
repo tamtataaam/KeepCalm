@@ -54,12 +54,13 @@ function Registration({ setLogin }) {
 
           <div>
             <HiUserCircle className={style.icon_user} />
-            <input type="text" name="name" id="nameInput" placeholder="Имя" required />
+            <input className={style.input} type="text" name="name" id="nameInput" placeholder="Имя" required />
           </div>
 
           <div>
             <MdOutlineAlternateEmail className={style.icon_email} />
             <input
+              className={style.input}
               type="email"
               name="email"
               id="emailInput"
@@ -73,6 +74,7 @@ function Registration({ setLogin }) {
           <div>
             <AiTwotoneLock className={style.icon_lock} />
             <input
+              className={style.input}
               type={state ? 'text' : 'password'}
               name="password"
               id="passwordInput"
@@ -89,6 +91,7 @@ function Registration({ setLogin }) {
           <div>
             <AiTwotoneLock className={style.icon_lock} />
             <input
+              className={style.input}
               type={state2 ? 'text' : 'password'}
               name="repeatPassword"
               id="repeatPasswordInput"
