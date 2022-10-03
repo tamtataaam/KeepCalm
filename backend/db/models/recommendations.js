@@ -8,11 +8,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Condition, PersonalRecomendationStore, User }) {
       Recommendation.belongsTo(Condition, { foreignKey: 'conditionId' });
-      Recommendation.belongsToMany(User, {
-        through: PersonalRecomendationStore,
-        foreignKey: 'recommendationId',
-        otherKey: 'userId',
-      });
+      Recommendation.PersonalRecomendationStore = Recommendation.hasMany(
+        PersonalRecomendationStore,
+        {
+          foreignKey: 'recommendationId',
+        }
+      );
     }
   }
   Recommendation.init(

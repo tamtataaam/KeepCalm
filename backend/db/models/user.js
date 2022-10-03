@@ -8,50 +8,36 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({
       WelcomeTestScore,
-      Condition,
-      Article,
       Comment,
       Like,
       Chat,
       UserMood,
-      Mood,
       FavoriteExercise,
-      Exercise,
       UserDiary,
-      Recommendation,
       PersonalRecomendationStore,
     }) {
-      User.belongsToMany(Condition, {
-        through: WelcomeTestScore,
+      User.WelcomeTestScore = User.hasMany(WelcomeTestScore, {
         foreignKey: 'userId',
-        otherKey: 'conditionId',
       });
-      User.belongsToMany(Article, {
-        through: Comment,
+      User.Comment = User.hasMany(Comment, {
         foreignKey: 'userId',
-        otherKey: 'articleId',
       });
-      User.belongsToMany(Article, {
-        through: Like,
+      User.Like = User.hasMany(Like, {
         foreignKey: 'userId',
-        otherKey: 'likeId',
       });
       User.hasMany(Chat, { foreignKey: 'userId' });
-      User.belongsToMany(Mood, {
-        through: UserMood,
+      User.UserModd = User.hasMany(UserMood, {
         foreignKey: 'userId',
-        otherKey: 'moodId',
       });
-      User.belongsToMany(Exercise, {
-        through: FavoriteExercise,
+      User.FavoriteExercise = User.hasMany(FavoriteExercise, {
         foreignKey: 'userId',
-        otherKey: 'exerciseId',
       });
-      User.belongsToMany(Recommendation, {
-        through: PersonalRecomendationStore,
-        foreignKey: 'userId',
-        otherKey: 'recommendationId',
-      });
+      User.PersonalRecomendationStore = User.hasMany(
+        PersonalRecomendationStore,
+        {
+          foreignKey: 'userId',
+        }
+      );
       User.hasMany(UserDiary, { foreignKey: 'userId' });
     }
   }

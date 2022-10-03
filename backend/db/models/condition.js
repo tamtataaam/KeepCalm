@@ -6,12 +6,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ WelcomeTestScore, Recommendation, User }) {
+    static associate({ WelcomeTestScore, Recommendation }) {
       Condition.hasMany(Recommendation, { foreignKey: 'conditionId' });
-      Condition.belongsToMany(User, {
-        through: WelcomeTestScore,
+      Condition.WelcomeTestScore = Condition.hasmany(WelcomeTestScore, {
         foreignKey: 'conditionId',
-        otherKey: 'userId',
       });
     }
   }
