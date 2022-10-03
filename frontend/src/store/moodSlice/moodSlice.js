@@ -64,7 +64,7 @@ const moodSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addSmiley.fulfilled, (state, action) => {
-        state.moodSmileyGraph.push(action.payload);
+        state.userMood.push(action.payload);
       })
       .addCase(loadSmileyUserLk.rejected, (state, action) => {
         state.error = action.error.message;

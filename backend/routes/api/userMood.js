@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const userMoodrout = require('express').Router();
 const { Mood, UserMood } = require('../../db/models');
 

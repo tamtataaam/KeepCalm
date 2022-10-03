@@ -8,6 +8,7 @@ userLkRouter.get('/', async (req, res) => {
       where: { userId: user.id },
       raw: true,
     });
+
     res.json(personSmiley);
   } catch (error) {
     res.json(error.message);
