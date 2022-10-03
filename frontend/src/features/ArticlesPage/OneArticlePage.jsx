@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { oneArticleAsyncInfo } from '../../store/articlesSlice/articlesSlice';
+import { loadComments } from '../../store/commentsSlice/commentsSlice';
 import Comments from '../Comments/Comments';
 import AddComment from '../Comments/AddComment';
 
@@ -11,7 +12,7 @@ function OneArticlePage() {
 
   useEffect(() => {
     dispatch(oneArticleAsyncInfo(id));
-    // dispatch(loadComments(id));
+    dispatch(loadComments(id));
   }, []);
 
   const { oneArticleInfo } = useSelector((store) => store.articles);

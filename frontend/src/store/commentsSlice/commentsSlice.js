@@ -6,6 +6,18 @@ const initialState = {
   error: null,
 };
 
+const loadComments = createAsyncThunk(
+  'comments/loadComments',
+  (id) => fetch(`/api/place/${id}/comments`)
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.data;
+    }),
+);
+
 const addComment = createAsyncThunk(
   'comments/addComment',
   (data) => fetch(`/articles/${data.articleId}/comments`, {
@@ -18,7 +30,6 @@ const addComment = createAsyncThunk(
       if (body.error) {
         throw new Error(body.error);
       }
-      // console.log(body.data);
       return body.data;
     }),
 );
@@ -28,6 +39,14 @@ const commentsSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      .addCase(loadComments.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(loadComments.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
       .addCase(addComment.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
@@ -41,4 +60,4 @@ const commentsSlice = createSlice({
 
 export default commentsSlice.reducer;
 
-export { addComment };
+export { addComment, loadComments };

@@ -1,6 +1,6 @@
 const articlesRouter = require('express').Router();
 
-const { Article, Comment } = require('../../db/models');
+const { Article, Comment, User } = require('../../db/models');
 
 module.exports = articlesRouter
   .get('/', async (req, res) => {
@@ -18,6 +18,30 @@ module.exports = articlesRouter
       res.json(oneArticle);
     } catch (error) {
       res.status(500).send(`${error.message}`);
+    }
+  })
+  .get('/:id/comments', async (req, res) => {
+    const articleId = Number(req.params.id);
+    try {
+      const comments = await Comment.findAll({
+        where: { articleId },
+        order: [['createdAt', 'ASC']],
+        include: [
+          {
+            model: User,
+            attributes: [
+              'name',
+            ],
+          },
+        ],
+      });
+      res.json({
+        data: comments,
+      });
+    } catch (error) {
+      res.json({
+        error: error.message,
+      });
     }
   })
   .post('/:id/comments', async (req, res) => {
