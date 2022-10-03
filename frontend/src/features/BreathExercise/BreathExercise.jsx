@@ -1,11 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import style from './BreathExercise.module.scss';
+import Instructions from './Instructions';
+import Text from './Text';
 
 function BreathExercise() {
+  const navigate = useNavigate();
   return (
     <div className={style.breath_container}>
-      {/* <div className={style.clt} />
-       */}
+      <Instructions />
       <svg viewBox="0 0 200 200" className={style.circle}>
         <defs>
           <linearGradient
@@ -84,6 +87,14 @@ function BreathExercise() {
           mask="url(#mask--colors-transparency)"
         />
       </svg>
+      <Text />
+      <button
+        type="button"
+        onClick={() => navigate('/exercises')}
+        className={style.breath_button_back}
+      >
+        Перейти ко всем заданиям
+      </button>
     </div>
   );
 }
