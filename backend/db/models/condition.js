@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ WelcomeTestScore, Recommendation }) {
       Condition.hasMany(Recommendation, { foreignKey: 'conditionId' });
-      Condition.WelcomeTestScore = Condition.hasmany(WelcomeTestScore, {
+      Condition.WelcomeTestScore = Condition.hasMany(WelcomeTestScore, {
         foreignKey: 'conditionId',
       });
     }
