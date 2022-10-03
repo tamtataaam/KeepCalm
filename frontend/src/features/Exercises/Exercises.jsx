@@ -11,9 +11,6 @@ import FavoriteButton from './FavoriteButton';
 
 function Exercises() {
   const { allExercises } = useSelector((store) => store.exercises);
-  // const { favoriteExercise } = useSelector((state) => state.exercises);
-  // const userId = useSelector((store) => store.user.data.id);
-  // console.log(favoriteExercise);
 
   return (
     <div className={style.container}>
@@ -27,7 +24,6 @@ function Exercises() {
               <FavoriteButton
                 className={style.favorite_button}
                 exercise={exercise}
-                // favorite={favorite}
               />
               <ExerciseItem exercise={exercise} />
             </div>

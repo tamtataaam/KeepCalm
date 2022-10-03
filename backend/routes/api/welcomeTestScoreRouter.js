@@ -3,6 +3,7 @@ const {
   WelcomeTestScore,
   Condition,
   Recommendation,
+  PersonalRecomendationStore,
 } = require('../../db/models');
 
 module.exports = welcometestScoreRouter
@@ -12,10 +13,8 @@ module.exports = welcometestScoreRouter
       const allConditions = await WelcomeTestScore.findAll({
         where: { userId: id },
       });
-      const lastCondition = allConditions[allConditions.length - 1];
-      if (lastCondition) {
-        const condition = await Condition.findByPk(lastCondition.conditionId);
-        res.json({ condition, status: true });
+      if (allConditions) {
+        res.json({ allConditions, status: true });
       } else {
         res.json({ status: false });
       }
@@ -36,7 +35,15 @@ module.exports = welcometestScoreRouter
         const recommendations = await Recommendation.findAll({
           where: { conditionId: 1 },
         });
-        res.json({ condition, recommendations });
+        const writeRec = async (rec) => {
+          const result = await PersonalRecomendationStore.create({
+            userId,
+            recommendationId: rec.id,
+          });
+          return result;
+        };
+        const newRec = recommendations.map(writeRec);
+        res.json({ status: true });
       } else if (score > 17 && score <= 25) {
         await WelcomeTestScore.create({
           userId,
@@ -47,7 +54,15 @@ module.exports = welcometestScoreRouter
         const recommendations = await Recommendation.findAll({
           where: { conditionId: 2 },
         });
-        res.json({ condition, recommendations });
+        const writeRec = async (rec) => {
+          const result = await PersonalRecomendationStore.create({
+            userId,
+            recommendationId: rec.id,
+          });
+          return result;
+        };
+        const newRec = recommendations.map(writeRec);
+        res.json({ status: true });
       } else if (score > 15 && score <= 37) {
         await WelcomeTestScore.create({
           userId,
@@ -58,7 +73,15 @@ module.exports = welcometestScoreRouter
         const recommendations = await Recommendation.findAll({
           where: { conditionId: 3 },
         });
-        res.json({ condition, recommendations });
+        const writeRec = async (rec) => {
+          const result = await PersonalRecomendationStore.create({
+            userId,
+            recommendationId: rec.id,
+          });
+          return result;
+        };
+        const newRec = recommendations.map(writeRec);
+        res.json({ status: true });
       } else {
         await WelcomeTestScore.create({
           userId,
@@ -69,7 +92,15 @@ module.exports = welcometestScoreRouter
         const recommendations = await Recommendation.findAll({
           where: { conditionId: 4 },
         });
-        res.json({ condition, recommendations });
+        const writeRec = async (rec) => {
+          const result = await PersonalRecomendationStore.create({
+            userId,
+            recommendationId: rec.id,
+          });
+          return result;
+        };
+        const newRec = recommendations.map(writeRec);
+        res.json({ status: true });
       }
     } catch (error) {
       res.status(500).send(`${error.message}`);
