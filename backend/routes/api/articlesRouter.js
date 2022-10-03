@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const articlesRouter = require('express').Router();
 
 const { Article, Comment, User } = require('../../db/models');
@@ -38,9 +39,8 @@ module.exports = articlesRouter
           },
         ],
       });
-      res.json({
-        data: comments,
-      });
+      const data = comments.map((comment) => comment.dataValues);
+      res.json({ data });
     } catch (error) {
       res.json({
         error: error.message,
