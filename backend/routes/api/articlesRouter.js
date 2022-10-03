@@ -28,7 +28,14 @@ module.exports = articlesRouter
         articleId,
         commentText,
       });
-      res.json(newComment);
+      res.json({
+        data: {
+          ...newComment.dataValues,
+          User: {
+            name: req.session.user.name,
+          },
+        },
+      });
     } catch (error) {
       res.json({
         error: error.message,
