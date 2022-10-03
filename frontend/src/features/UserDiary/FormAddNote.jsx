@@ -11,6 +11,7 @@ function FormAddNote() {
   const userId = useSelector((store) => store.user.data.id);
   return (
     <form
+      className={style.form}
       onSubmit={(event) => {
         event.preventDefault();
         dispatch(
@@ -20,27 +21,30 @@ function FormAddNote() {
             userId,
           })
         );
+        event.target.reset();
       }}
     >
-      <h2>Добавить новую запись</h2>
-      <div>Введи название</div>
+      <h2>Добавь новую запись</h2>
+
       <input
+        className={style.input}
         type="text"
         name="title"
-        placeholder="добавить название"
+        placeholder="Название записи..."
         required
         autoComplete="off"
       />
-      <div>Введи текст</div>
-      <input
-        className={style.input}
+
+      <textarea
+        className={style.textarea}
+        placeholder="Текст записи..."
         name="content"
         required
         autoComplete="off"
       />
       <button type="submit" className={style.delete_button}>
         {' '}
-        добавить
+        Добавить
       </button>
     </form>
   );

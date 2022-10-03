@@ -94,7 +94,7 @@ const userDiarySlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(deleteOneNoteAsync.fulfilled, (state, action) => {
-        if (action.payload.data) {
+        if (action.payload.id) {
           state.allnotes = state.allnotes.filter(
             (note) => note.id !== Number(action.payload.id)
           );
@@ -104,7 +104,7 @@ const userDiarySlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addOneNoteAsync.fulfilled, (state, action) => {
-        state.allnotes = state.allnotes.push(action.payload);
+        state.allnotes.push(action.payload);
       })
       .addCase(changeOneNoteAsync.rejected, (state, action) => {
         state.error = action.error.message;

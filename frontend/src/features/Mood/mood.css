@@ -33,7 +33,6 @@
 } */
 
 .mood_h1 {
-  font-family: 'Nunito';
   font-style: normal;
   font-weight: 500;
   font-size: 40px;
@@ -43,7 +42,6 @@
 }
 
 .mood_h2 {
-  font-family: 'Nunito';
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
@@ -55,7 +53,6 @@
   cursor: pointer;
   margin: 50px 0;
   font-size: 22px;
-  font-family: 'Nunito';
   border: none;
   background-color: #EBEAEC ;
   border-radius: 25px;

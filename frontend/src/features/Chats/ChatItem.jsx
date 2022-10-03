@@ -25,7 +25,7 @@ function ChatItem({ chat }) {
           rel="noreferrer"
           className={style.text}
         >
-          Перейти...
+          Перейти→
         </a>
       </div>
     </div>
