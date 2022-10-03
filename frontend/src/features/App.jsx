@@ -3,7 +3,10 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadAsyncExercises } from '../store/exercisesSlice/exerciseSlice';
+import {
+  loadAsyncExercises,
+  loadAllFavoriteExrcisesAsync,
+} from '../store/exercisesSlice/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import {
@@ -47,6 +50,7 @@ function App() {
     dispatch(loadChats());
     dispatch(loadSmileyUserLk());
     dispatch(loadCondsitionAsync());
+    dispatch(loadAllFavoriteExrcisesAsync());
   }, []);
 
   return (
