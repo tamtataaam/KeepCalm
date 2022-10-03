@@ -50,7 +50,7 @@ function Login({ setLogin }) {
           <div>
             <MdOutlineAlternateEmail className={style.icon_email} />
             <input
-              className="font_caption"
+              className={style.input}
               type="email"
               name="email"
               id="emailInput"
@@ -64,7 +64,7 @@ function Login({ setLogin }) {
           <div className="password_input">
             <AiTwotoneLock className={style.icon_lock} />
             <input
-              className="font_caption"
+              className={style.input}
               type={state ? 'text' : 'password'}
               name="password"
               id="passwordInput"
