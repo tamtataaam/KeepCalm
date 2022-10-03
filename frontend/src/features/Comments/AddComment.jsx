@@ -1,10 +1,27 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { addComment } from '../../store/commentsSlice/commentsSlice';
 
 function AddComment() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const commentText = e.target.commentText.value;
+    const data = {
+      articleId: Number(id),
+      commentText,
+    };
+    dispatch(addComment(data));
+    e.target.reset();
+  }
+
   return (
-    <form>
-      <textarea type="text" name="content" placeholder="Введите комментарий" rows="3" required />
-      <button className="font_caption_small" type="submit">Добавить комментарий</button>
+    <form onSubmit={handleSubmit}>
+      <textarea type="text" name="commentText" placeholder="Введите комментарий" rows="3" required />
+      <button type="submit">Добавить комментарий</button>
     </form>
   );
 }
