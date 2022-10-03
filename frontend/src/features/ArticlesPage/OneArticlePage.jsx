@@ -13,7 +13,7 @@ function OneArticlePage() {
   useEffect(() => {
     dispatch(oneArticleAsyncInfo(id));
     dispatch(loadComments(id));
-  }, []);
+  }, [dispatch, id]);
 
   const { oneArticleInfo } = useSelector((store) => store.articles);
   const comments = useSelector((state) => state.comments.data);

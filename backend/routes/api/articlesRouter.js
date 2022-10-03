@@ -93,4 +93,20 @@ module.exports = articlesRouter
         error: error.message,
       });
     }
+  })
+
+  .delete('/:id/comments', async (req, res) => {
+    const { commentId } = req.body;
+    try {
+      await Comment.destroy({ where: { id: commentId } });
+      res.json({
+        data: {
+          commentId,
+        },
+      });
+    } catch (error) {
+      res.json({
+        error: error.message,
+      });
+    }
   });
