@@ -11,7 +11,8 @@ function ChangeForm({ note, flagChange, setFlagChange }) {
   return (
     <form
       style={flagChange ? { display: 'none' } : { display: 'inline' }}
-      onSubmit={() => {
+      onSubmit={(e) => {
+        e.preventDefault();
         setFlagChange((prev) => !prev);
         dispatch(
           changeOneNoteAsync({
@@ -23,14 +24,16 @@ function ChangeForm({ note, flagChange, setFlagChange }) {
         );
       }}
     >
-      <div>Название</div>
+
       <input
+        className={style.change_input}
         type="text"
         value={changeInputTitle}
         onChange={(event) => setChangeIputTitle(event.target.value)}
       />
-      <div>Текст</div>
-      <input
+
+      <textarea
+        className={style.change_textarea}
         type="text"
         value={changeInputContent}
         onChange={(event) => setChangeInputContent(event.target.value)}
