@@ -1,4 +1,5 @@
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Mood extends Model {
     /**
@@ -43,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Mood',
       tableName: 'Moods',
-    }
+    },
   );
   return Mood;
 };

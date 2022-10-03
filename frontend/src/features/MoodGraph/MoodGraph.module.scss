@@ -1,0 +1,23 @@
+.smiles_container {
+  width: 84px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -475px;
+  left: -62px;
+}
+
+.graph {
+  margin: 50px;
+  margin-left: 80px;
+  width: 950px;
+}
+
+.main_container {
+  background-color: white;
+  // width: 1200px;
+  height: 650px;
+  border-radius: 20px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
