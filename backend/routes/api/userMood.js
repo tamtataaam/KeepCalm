@@ -23,15 +23,15 @@ userMoodrout
       const findActualSmile = findAlllSmiles.filter(
         (elem) => elem.createdAt.toString().slice(0, 15) === dateNow
       );
-      if (findActualSmile) {
-        await UserMood.destroy({
-          where: { userId: user.id, moodId: findActualSmile[0].moodId },
-        });
-      }
       const newSmiley = await UserMood.create({
         userId: user.id,
         moodId: smiley,
       });
+      if (findActualSmile.length === 1) {
+        await UserMood.destroy({
+          where: { userId: user.id, id: findActualSmile[0].id },
+        });
+      }
       res.json({ data: newSmiley });
     } catch (error) {
       res.json({ error: error.message });
