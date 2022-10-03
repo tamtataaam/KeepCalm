@@ -1,5 +1,5 @@
 .mood_container {
-  background-color: #8E97FD;
+  background-color: #8e97fd;
   width: 100%;
   height: 92vh;
   text-align: center;
@@ -38,31 +38,53 @@
   font-size: 40px;
   margin-top: 0;
   padding-top: 100px;
-  color: #EBEAEC;
+  color: #ebeaec;
 }
 
 .mood_h2 {
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
-  color: #EBEAEC;
+  color: #ebeaec;
   margin-bottom: 80px;
 }
 
-.mood_btn{
+.mood_btn1 {
   cursor: pointer;
   margin: 50px 0;
-  font-size: 22px;
+  font-size: 18px;
   border: none;
-  background-color: #EBEAEC ;
+  background-color: #ebeaec;
+  border-radius: 25px;
+  width: 400px;
+  height: 50px;
+  transition: 0.4s;
+  color: #3f414e;
+}
+.mood_btn1:hover {
+  font-size: 20px;
+  box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
+  background-color: #d3d2d2;
+}
+.mood_btn2 {
+  cursor: pointer;
+  margin: 50px 0;
+  font-size: 18px;
+  border: none;
+  background-color: #ebeaec;
   border-radius: 25px;
   width: 240px;
   height: 50px;
   transition: 0.4s;
-  color: #3F414E;
+  color: #3f414e;
 }
-.mood_btn:hover{
-  font-size: 24px;
+.mood_btn2:hover {
+  font-size: 20px;
   box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
-  background-color: #d3d2d2 ;
+  background-color: #d3d2d2;
+}
+.button_box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
