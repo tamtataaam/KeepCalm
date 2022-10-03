@@ -8,7 +8,7 @@ const initialState = {
 
 const addComment = createAsyncThunk(
   'comments/addComment',
-  (data) => fetch('/comments', {
+  (data) => fetch(`/articles/${data.articleId}/comments`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -18,6 +18,7 @@ const addComment = createAsyncThunk(
       if (body.error) {
         throw new Error(body.error);
       }
+      // console.log(body.data);
       return body.data;
     }),
 );
