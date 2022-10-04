@@ -76,6 +76,33 @@ const logoutUser = createAsyncThunk(
     }),
 );
 
+const EditInfo = createAsyncThunk('user/EditInfo',
+  async (info) => {
+    const response = await fetch('/useredit/info', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(info)
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
+  });
+
+const passwordEdit = createAsyncThunk('user/passwordEdit',
+  async (pass) => {
+    const response = await fetch('useredit/password', {
+      method: 'PUT',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(pass)
+    });
+    const data = await response.json();
+    console.log(data);
+    if (data.message) {
+      throw new Error(data.message);
+    }
+    return data.status;
+  });
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -121,12 +148,25 @@ const userSlice = createSlice({
           name: null,
           email: null,
         };
+      })
+      .addCase(EditInfo.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(EditInfo.fulfilled, (state, action) => {
+        state.data.name = action.payload.name;
+        state.data.email = action.payload.email;
+      })
+      .addCase(passwordEdit.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(passwordEdit.fulfilled, (state) => {
+        state.helpMessage = 'Пароль успешно изменён!';
       });
-  },
+  }
 });
 
 export default userSlice.reducer;
 
 export const { disableHelpMessage } = userSlice.actions;
 
-export { loadUser, regUser, logUser, logoutUser };
+export { loadUser, regUser, logUser, logoutUser, EditInfo, passwordEdit };

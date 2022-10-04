@@ -17,6 +17,7 @@ const chatsRouter = require('./routes/api/chatsRouter');
 const userDiaryRouter = require('./routes/api/userDiaryRouter');
 const welcometestScoreRouter = require('./routes/api/welcomeTestScoreRouter');
 const userrecomendationsstoreRouter = require('./routes/api/userrecomendationsstoreRouter');
+const userEditRouter = require('./routes/api/userEditRouter');
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -35,6 +36,7 @@ app.use('/chats', chatsRouter);
 app.use('/userdiary', userDiaryRouter);
 app.use('/welcometest', welcometestScoreRouter);
 app.use('/userrecomendationsstore', userrecomendationsstoreRouter);
+app.use('/useredit', userEditRouter);
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {
