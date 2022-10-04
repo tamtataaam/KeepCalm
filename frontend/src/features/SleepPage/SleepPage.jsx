@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 // import { BsArrowRightShort } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,6 +24,7 @@ function SleepPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userName = useSelector((store) => store.user.data.name);
+  const [flagtext, setFlagtext] = useState(true);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -38,6 +39,9 @@ function SleepPage() {
   const logout = () => {
     dispatch(logoutUser());
     navigate('/');
+  };
+  const change = (value) => {
+    setFlagtext(value);
   };
   return (
     <>
@@ -113,12 +117,22 @@ function SleepPage() {
           </Menu>
         </div>
       </div>
+
       <div className={style.mainaudioPlayer_container}>
         {musick.map((composition) => (
           <div key={composition.name}>
-            <CompositionPage composition={composition} />
+            <CompositionPage composition={composition} change={change} />
           </div>
         ))}
+      </div>
+      <div>
+        <div
+          className={style.instruction}
+          style={!flagtext ? { display: 'none' } : {}}
+        >
+          Выберите тот звук, который наиболее вам приятен и погрузитесь в
+          безмятежность
+        </div>
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import { FaPlay, FaPause } from 'react-icons/fa';
 import { test } from './test';
 import style from './SleepPage.module.scss';
 
-function CompositionPage({ composition }) {
+function CompositionPage({ composition, change }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioPlayer = useRef(); // reference our audio component
 
@@ -32,7 +32,10 @@ function CompositionPage({ composition }) {
         </audio>
         <button
           type="button"
-          onClick={togglePlayPause}
+          onClick={() => {
+            togglePlayPause();
+            change(isPlaying);
+          }}
           className={style.playPause_sounds}
         >
           {isPlaying ? <FaPause /> : <FaPlay className={style.play} />}

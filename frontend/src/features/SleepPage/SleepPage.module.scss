@@ -1,10 +1,22 @@
+.instruction {
+  color: #ebeaec;
+  position: relative;
+  top: -350px;
+  left: 0px;
+  font-size: 40px;
+  text-align: center;
+}
+
 .mainaudioPlayer_container {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   padding-top: 130px;
   background-color: #8e97fd;
-  width: 100%;
-  height: 705px;
+  width: 90%;
+  height: 675px;
+  gap: 150px;
+  padding-left: 150px;
+  color: #ebeaec;
 }
 
 .audioPlayer_sounds {
@@ -12,7 +24,7 @@
   display: flex;
   align-content: center;
   // position: absolute;
-  --secondary: #48127e;
+  --secondary: #ebeaec;
   justify-content: center;
   // border: 5px solid black;
   flex-wrap: wrap;
@@ -21,10 +33,11 @@
 .audioPlayer_container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
   margin: 0;
   padding: 0;
-  width: 500px;
+  // width: 500px;
+  gap: 20px;
 }
 .video {
   z-index: 0;
@@ -62,9 +75,9 @@
   right: 23%;
 }
 
-// .audio {
-//   display: none;
-// }
+.audio {
+  display: none;
+}
 
 .playPause_sounds {
   background: var(--primary);
