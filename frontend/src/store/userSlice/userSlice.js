@@ -12,7 +12,7 @@ const initialState = {
 };
 
 const loadUser = createAsyncThunk('user/loadUser', () =>
-  fetch('/auth')
+  fetch('/api/auth')
     .then((response) => response.json())
     .then((body) => {
       if (!body.isUser) {
@@ -23,7 +23,7 @@ const loadUser = createAsyncThunk('user/loadUser', () =>
 );
 
 const regUser = createAsyncThunk('user/regUser', (data) =>
-  fetch('/auth/registration', {
+  fetch('/api/auth/registration', {
     method: 'post',
     headers: {
       'Content-type': 'application/json',
@@ -43,7 +43,7 @@ const regUser = createAsyncThunk('user/regUser', (data) =>
 );
 
 const logUser = createAsyncThunk('user/logUser', (data) =>
-  fetch('/auth/login', {
+  fetch('/api/auth/login', {
     method: 'post',
     headers: {
       'Content-type': 'application/json',
@@ -64,7 +64,7 @@ const logUser = createAsyncThunk('user/logUser', (data) =>
 
 const logoutUser = createAsyncThunk(
   'user/logoutUser',
-  () => fetch('/auth/logout', {
+  () => fetch('/api/auth/logout', {
     method: 'delete',
   })
     .then((response) => response.json())
@@ -78,25 +78,23 @@ const logoutUser = createAsyncThunk(
 
 const EditInfo = createAsyncThunk('user/EditInfo',
   async (info) => {
-    const response = await fetch('/useredit/info', {
+    const response = await fetch('/api/useredit/info', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(info)
     });
     const data = await response.json();
-    console.log(data);
     return data;
   });
 
 const passwordEdit = createAsyncThunk('user/passwordEdit',
   async (pass) => {
-    const response = await fetch('useredit/password', {
+    const response = await fetch('/api/useredit/password', {
       method: 'PUT',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(pass)
     });
     const data = await response.json();
-    console.log(data);
     if (data.message) {
       throw new Error(data.message);
     }

@@ -13,7 +13,7 @@ const initialState = {
 export const loadAsyncArticles = createAsyncThunk(
   'articles/loadAsyncArticles',
   async () => {
-    const response = await fetch('/articles');
+    const response = await fetch('/api/articles');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -27,7 +27,7 @@ export const loadAsyncArticles = createAsyncThunk(
 export const oneArticleAsyncInfo = createAsyncThunk(
   'oneArticleInfo/oneArticleAsyncInfo',
   async (articleId) => {
-    const response = await fetch(`/articles/${articleId}`);
+    const response = await fetch(`/api/articles/${articleId}`);
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -41,7 +41,7 @@ export const oneArticleAsyncInfo = createAsyncThunk(
 export const loadLikes = createAsyncThunk(
   'articles/loadLikes',
   async () => {
-    const response = await fetch('/favoritearticles');
+    const response = await fetch('/api/favoritearticles');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -55,7 +55,7 @@ export const loadLikes = createAsyncThunk(
 export const toggleLike = createAsyncThunk(
   'articles/toggleLike',
   async ({ userId, articleId }) => {
-    const response = await fetch('/favoritearticles', {
+    const response = await fetch('/api/favoritearticles', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId, articleId }),

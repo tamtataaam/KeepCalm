@@ -8,7 +8,7 @@ const initialState = {
 export const loadUserDiaryNotesAsync = createAsyncThunk(
   'allnotes/loadUserDiaryArticlesAsync',
   async () => {
-    const response = await fetch('/userdiary');
+    const response = await fetch('/api/userdiary');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -22,7 +22,7 @@ export const loadUserDiaryNotesAsync = createAsyncThunk(
 export const deleteOneNoteAsync = createAsyncThunk(
   'allnotes/deleteOneNoteAsync',
   async ({ noteId, userId }) => {
-    const response = await fetch(`/userdiary/${noteId}`, {
+    const response = await fetch(`/api/userdiary/${noteId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId }),
@@ -40,7 +40,7 @@ export const deleteOneNoteAsync = createAsyncThunk(
 export const addOneNoteAsync = createAsyncThunk(
   'allnotes/addOneNoteAsync',
   async ({ title, content, userId }) => {
-    const response = await fetch('/userdiary/newnote', {
+    const response = await fetch('/api/userdiary/newnote', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, content, userId }),
@@ -58,7 +58,7 @@ export const addOneNoteAsync = createAsyncThunk(
 export const changeOneNoteAsync = createAsyncThunk(
   'allnotes/changeOneNoteAsync',
   async ({ userId, noteId, changeInputTitle, changeInputContent }) => {
-    const response = await fetch('/userdiary/note', {
+    const response = await fetch('/api/userdiary/note', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

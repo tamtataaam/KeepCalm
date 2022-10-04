@@ -8,7 +8,7 @@ const initialState = {
 const loadChats = createAsyncThunk(
   'chats/loadChats',
   async () => {
-    const response = await fetch('/chats');
+    const response = await fetch('/api/chats');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -22,7 +22,7 @@ const loadChats = createAsyncThunk(
 const addChat = createAsyncThunk(
   'chats/addChats',
   async (data) => {
-    const response = await fetch('/chats/addchat', {
+    const response = await fetch('/api/chats/addchat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),

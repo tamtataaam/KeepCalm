@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const loadSmiley = createAsyncThunk('mood/loadSmiley', async () => {
-  const res = await fetch('/mood', {
+  const res = await fetch('/api/mood', {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
@@ -23,7 +23,7 @@ const loadSmiley = createAsyncThunk('mood/loadSmiley', async () => {
 });
 
 const addSmiley = createAsyncThunk('mood/addSmiley', async (smiley) => {
-  const response = await fetch('/mood', {
+  const response = await fetch('/api/mood', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -40,7 +40,7 @@ const addSmiley = createAsyncThunk('mood/addSmiley', async (smiley) => {
 });
 
 const loadSmileyUserLk = createAsyncThunk('mood/loadSmileyUserLk', async () => {
-  const res = await fetch('/lk');
+  const res = await fetch('/api/lk');
   const data = await res.json();
   if (res.status >= 400) {
     const { error } = await res.json();

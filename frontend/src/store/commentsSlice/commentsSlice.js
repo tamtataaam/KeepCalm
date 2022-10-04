@@ -8,7 +8,7 @@ const initialState = {
 
 const loadComments = createAsyncThunk(
   'comments/loadComments',
-  (id) => fetch(`/articles/${id}/comments`)
+  (id) => fetch(`/api/articles/${id}/comments`)
     .then((response) => response.json())
     .then((body) => {
       if (body.error) {
@@ -20,7 +20,7 @@ const loadComments = createAsyncThunk(
 
 const addComment = createAsyncThunk(
   'comments/addComment',
-  (data) => fetch(`/articles/${data.articleId}/comments`, {
+  (data) => fetch(`/api/articles/${data.articleId}/comments`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -36,7 +36,7 @@ const addComment = createAsyncThunk(
 
 const deleteComment = createAsyncThunk(
   'comments/deleteComment',
-  (data) => fetch(`/articles/${data.articleId}/comments`, {
+  (data) => fetch(`/api/articles/${data.articleId}/comments`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -52,7 +52,7 @@ const deleteComment = createAsyncThunk(
 
 const changeComment = createAsyncThunk(
   'comments/changeComment',
-  (data) => fetch(`/articles/${data.articleId}/comments`, {
+  (data) => fetch(`/api/articles/${data.articleId}/comments`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),

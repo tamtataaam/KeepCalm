@@ -10,7 +10,7 @@ const initialState = {
 export const loadCondsitionAsync = createAsyncThunk(
   'conditions/loadCondsitionAsync',
   async () => {
-    const response = await fetch('/welcometest');
+    const response = await fetch('/api/welcometest');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -23,7 +23,7 @@ export const loadCondsitionAsync = createAsyncThunk(
 export const loadRecomendationsAsync = createAsyncThunk(
   'recomendations/loadRecomendationsAsync ',
   async () => {
-    const response = await fetch('/userrecomendationsstore');
+    const response = await fetch('/api/userrecomendationsstore');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -37,7 +37,7 @@ export const loadRecomendationsAsync = createAsyncThunk(
 export const addScoreAsync = createAsyncThunk(
   'score/addScoreAsync',
   async ({ score, userId }) => {
-    const response = await fetch('/welcometest', {
+    const response = await fetch('/api/welcometest', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ score, userId }),
@@ -55,7 +55,7 @@ export const addScoreAsync = createAsyncThunk(
 export const loadLastConditionAsync = createAsyncThunk(
   'conditions/loadLastConditionAsync',
   async () => {
-    const response = await fetch('/userrecomendationsstore/lastcondition');
+    const response = await fetch('/api/userrecomendationsstore/lastcondition');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -70,7 +70,7 @@ export const loadLastRecommendationsAsync = createAsyncThunk(
   'recomendations/loadLastRecomendationsAsync ',
   async () => {
     const response = await fetch(
-      '/userrecomendationsstore/currentrecomendations'
+      '/api/userrecomendationsstore/currentrecomendations'
     );
     if (response.status >= 400) {
       const { error } = await response.json();

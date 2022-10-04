@@ -14,7 +14,7 @@ const initialState = {
 export const loadAsyncExercises = createAsyncThunk(
   'exercises/loadAsyncExercises',
   async () => {
-    const response = await fetch('/exercises');
+    const response = await fetch('/api/exercises');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -28,7 +28,7 @@ export const loadAsyncExercises = createAsyncThunk(
 export const oneExerciseAsyncInfo = createAsyncThunk(
   'oneExerciseInfo/oneExerciseAsyncInfo',
   async (exerciseId) => {
-    const response = await fetch(`/exercises/${exerciseId}`);
+    const response = await fetch(`/api/exercises/${exerciseId}`);
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -41,7 +41,7 @@ export const oneExerciseAsyncInfo = createAsyncThunk(
 export const loadAllFavoriteExrcisesAsync = createAsyncThunk(
   'favoriteExercise/loadAllFavoriteExrcisesAsync',
   async () => {
-    const response = await fetch('/allfavorite');
+    const response = await fetch('/api/allfavorite');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -55,7 +55,7 @@ export const loadAllFavoriteExrcisesAsync = createAsyncThunk(
 export const addToFavoriteAsync = createAsyncThunk(
   'favoriteExercise/addToFavoriteAsync',
   async ({ userId, exerciseId }) => {
-    const response = await fetch('/allfavorite', {
+    const response = await fetch('/api/allfavorite', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId, exerciseId }),
