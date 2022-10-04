@@ -2,6 +2,7 @@ require('dotenv').config();
 const http = require('node:http');
 const express = require('express');
 const socketIO = require('socket.io');
+const path = require('node:path');
 
 const serverConfig = require('./config/server.config');
 const testDatabaseConnection = require('./src/testDatabaseConnection');
@@ -19,13 +20,16 @@ const userrecomendationsstoreRouter = require('./routes/api/userrecomendationsst
 const userEditRouter = require('./routes/api/userEditRouter');
 const likesRouter = require('./routes/api/likesRouter');
 
-
 const app = express();
 const httpServer = http.createServer(app);
 const wsServer = new socketIO.Server(httpServer);
 const PORT = process.env.PORT ?? 4000;
 
 serverConfig(app);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
 
 app.use('/lk', userLkRouter);
 app.use('/auth', authRouter);
@@ -39,7 +43,6 @@ app.use('/welcometest', welcometestScoreRouter);
 app.use('/userrecomendationsstore', userrecomendationsstoreRouter);
 app.use('/useredit', userEditRouter);
 app.use('/favoritearticles', likesRouter);
-
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {
