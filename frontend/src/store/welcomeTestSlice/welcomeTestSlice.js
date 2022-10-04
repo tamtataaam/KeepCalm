@@ -66,22 +66,6 @@ export const loadLastConditionAsync = createAsyncThunk(
   }
 );
 
-export const loadLastRecommendationsAsync = createAsyncThunk(
-  'recomendations/loadLastRecomendationsAsync ',
-  async () => {
-    const response = await fetch(
-      '/userrecomendationsstore/currentrecomendations'
-    );
-    if (response.status >= 400) {
-      const { error } = await response.json();
-      throw error;
-    } else {
-      const data = await response.json();
-      return data;
-    }
-  }
-);
-
 const welcomeTestSlice = createSlice({
   name: 'allnotes',
   initialState,
@@ -110,15 +94,10 @@ const welcomeTestSlice = createSlice({
       .addCase(loadLastConditionAsync.fulfilled, (state, action) => {
         if (action.payload.status) {
           state.lastCondition = action.payload.findLast;
+          state.recommendations = action.payload.recomendations;
         } else {
           state.lastCondition = false;
         }
-      })
-      .addCase(loadLastRecommendationsAsync.rejected, (state, action) => {
-        state.error = action.error.message;
-      })
-      .addCase(loadLastRecommendationsAsync.fulfilled, (state, action) => {
-        state.recommendations = action.payload;
       });
   },
 });

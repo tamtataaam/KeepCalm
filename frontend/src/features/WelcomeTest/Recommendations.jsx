@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {
-  loadLastConditionAsync,
-  loadLastRecommendationsAsync,
-} from '../../store/welcomeTestSlice/welcomeTestSlice';
+import { loadLastConditionAsync } from '../../store/welcomeTestSlice/welcomeTestSlice';
 import style from './WelcomeTest.module.scss';
 
 function Recommendations() {
@@ -12,12 +9,12 @@ function Recommendations() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadLastConditionAsync());
-    dispatch(loadLastRecommendationsAsync());
   }, []);
 
-  const { lastCondition } = useSelector((state) => state.welcomeTest);
-  const { recommendations } = useSelector((state) => state.welcomeTest);
-  console.log(recommendations);
+  const { lastCondition, recommendations } = useSelector(
+    (state) => state.welcomeTest
+  );
+
   return (
     <div className={style.main_container}>
       <div>
