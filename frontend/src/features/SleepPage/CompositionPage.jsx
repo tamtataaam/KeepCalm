@@ -20,7 +20,7 @@ function CompositionPage({ composition, change }) {
   return (
     <>
       <div className={style.audioPlayer_container}>
-        <h3>{composition.name}</h3>
+        <h3 style={{ zIndex: '1' }}>{composition.name}</h3>
         <div className={style.audioPlayer_sounds}>
           <audio
             ref={audioPlayer}

@@ -118,21 +118,28 @@ function SleepPage() {
         </div>
       </div>
 
+      <div
+        className={style.instruction}
+        style={!flagtext ? { display: 'none' } : {}}
+      >
+        Выберите тот звук, который наиболее вам приятен и погрузитесь в
+        безмятежность
+      </div>
+      <div
+        className={style.instruction}
+        style={!flagtext ? { color: '#8e97fd' } : { display: 'none' }}
+      >
+        {' '}
+        Выберите тот звук, который наиболее вам приятен и погрузитесь в
+        безмятежность
+      </div>
+
       <div className={style.mainaudioPlayer_container}>
         {musick.map((composition) => (
           <div key={composition.name}>
             <CompositionPage composition={composition} change={change} />
           </div>
         ))}
-      </div>
-      <div>
-        <div
-          className={style.instruction}
-          style={!flagtext ? { display: 'none' } : {}}
-        >
-          Выберите тот звук, который наиболее вам приятен и погрузитесь в
-          безмятежность
-        </div>
       </div>
     </>
   );
