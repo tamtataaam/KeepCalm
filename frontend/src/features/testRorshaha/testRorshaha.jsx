@@ -12,7 +12,6 @@ function TestRorshaha() {
     (el) => +el.id === nextQuestion
   );
   const displayRorshahaImg = nextImgDisplay.map((el) => el.img);
-  console.log(displayRorshahaImg);
   if (!displayRorshahaImg.length) {
     return (
       <div>
@@ -46,7 +45,12 @@ function TestRorshaha() {
             </>
           ) : (
             <div>
-              <img src={displayRorshahaImg} alt="изображение 1" />
+              <h1 className={style.h1}>Что видите на изображении?</h1>
+              <img
+                className={style.img_from_test}
+                src={displayRorshahaImg}
+                alt="изображение 1"
+              />
 
               <input type="text" />
               <button

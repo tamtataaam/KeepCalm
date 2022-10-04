@@ -81,7 +81,6 @@ function App() {
             <Route path="/userdiary" element={<UserDiary />} />
             <Route path="/welcometest" element={<WelcomeTest />} />
             <Route path="/testrorshaha" element={<TestRorshaha />} />
-            {/* <Route path="/testrorshaha/:id" element={<TestRorshahaQuestion />} /> */}
 
             <Route
               path="/welcometest/recommendations"
