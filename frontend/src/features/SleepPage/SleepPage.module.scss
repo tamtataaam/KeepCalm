@@ -5,18 +5,22 @@
   left: 0px;
   font-size: 40px;
   text-align: center;
+  z-index: 1;
+  margin: 0;
 }
 
 .mainaudioPlayer_container {
   display: flex;
+  justify-content: center;
   // flex-direction: column;
   padding-top: 130px;
   background-color: #8e97fd;
-  width: 90%;
-  height: 675px;
+  width: 100%;
+  height: 100vh;
   gap: 150px;
-  padding-left: 150px;
   color: #ebeaec;
+  z-index: 1;
+  margin: 0;
 }
 
 .audioPlayer_sounds {
@@ -38,10 +42,15 @@
   padding: 0;
   // width: 500px;
   gap: 20px;
+  z-index: 1;
 }
 .video {
   z-index: 0;
   width: 100%;
+  // height: 100vh;
+  position: absolute;
+  top: 0%;
+  left: 0%;
 }
 .logo_nav {
   z-index: 1;
@@ -56,6 +65,7 @@
 
 .avatar_nav {
   margin: 0 15px;
+  z-index: 1;
 }
 .nav_btn {
   // position: absolute;
@@ -64,6 +74,7 @@
   top: 7px;
   font-size: 20px;
   margin: 0 10px;
+  z-index: 1;
 }
 
 .button_nav {
@@ -88,11 +99,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .play {
   position: relative;
   left: 5px;
+  z-index: 1;
 }
 
 .play_pause_div {
@@ -106,6 +119,7 @@
   height: 100px;
   left: 8vw;
   bottom: 90px;
+  z-index: 1;
 }
 
 .rewind_icon {
@@ -113,8 +127,10 @@
   font-size: 60px;
   left: 40px;
   color: #ebeaec;
+  z-index: 1;
 }
 .rewind_div {
   position: relative;
   right: 30px;
+  z-index: 1;
 }
