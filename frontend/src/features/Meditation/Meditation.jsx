@@ -35,13 +35,9 @@ function Meditation() {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(currentTime);
     progressBar.current.max = seconds;
-    // TimerNull();
-  }, [
-    audioPlayer?.current?.loadedmetadata,
-    audioPlayer?.current?.readyState,
-    progressBar?.current?.value,
-  ]);
-  // const TimerNull = () => audioPlayer.current.duration - progressBar.current.value;
+  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
+  const TimerNull = () => audioPlayer.current.duration - progressBar.current.value;
+
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
@@ -91,10 +87,6 @@ function Meditation() {
     progressBar.current.value = Number(progressBar.current.value + 30);
     changeRange();
   };
-
-  // console.log(TimerNull());
-  // console.log(Math.floor(audioPlayer.current.duration));
-  // console.log(Number(progressBar.current.value));
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -188,13 +180,8 @@ function Meditation() {
         </div>
       </div>
       <div className={style.audioPlayer}>
-        {/* <p>{ audioPlayer.current.duration ? calculateTime(TimerNull()) : '00:00'}</p> */}
-        <audio
-          ref={audioPlayer}
-          className={style.audio}
-          controls
-          src="Meditation.mp3"
-        >
+        <p>{ audioPlayer.current ? calculateTime(TimerNull()) : '24:06'}</p>
+        <audio ref={audioPlayer} className={style.audio} controls src="Meditation.mp3">
           <track kind="captions" />
         </audio>
         <div className={style.play_pause_div}>
