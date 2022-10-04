@@ -21,7 +21,6 @@ module.exports = likesRouter
       });
       if (isLiked) {
         await Like.destroy({ where: { id: isLiked.id } });
-        // console.log(isLiked.id);
         res.json(isLiked.id);
       } else {
         const likeCreate = await Like.create({ userId, articleId });

@@ -65,7 +65,6 @@ export const toggleLike = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
-      // console.log(data);
       return data;
     }
   }
