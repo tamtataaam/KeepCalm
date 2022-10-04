@@ -41,6 +41,8 @@ import WelcomeTest from './WelcomeTest/WelcomeTest';
 import Recommendations from './WelcomeTest/Recommendations';
 import BreathExercise from './BreathExercise/BreathExercise';
 import TestRorshaha from './testRorshaha/testRorshaha';
+import SleepPage from './SleepPage/SleepPage';
+import PsychologistPage from './PsychologistPage/PsychologistPage';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -86,9 +88,11 @@ function App() {
               path="/welcometest/recommendations"
               element={<Recommendations />}
             />
+            <Route path="/psychologist" element={<PsychologistPage />} />
             <Route path="/breath" element={<BreathExercise />} />
           </Route>
           <Route path="/meditation" element={<Meditation />} />
+          <Route path="/sleep" element={<SleepPage />} />
         </Routes>
       ) : (
         <Routes>
