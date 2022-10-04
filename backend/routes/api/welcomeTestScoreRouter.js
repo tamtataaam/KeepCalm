@@ -25,82 +25,86 @@ module.exports = welcometestScoreRouter
   .post('/', async (req, res) => {
     try {
       const { userId, score } = req.body;
-      if (score <= 48) {
-        await WelcomeTestScore.create({
-          userId,
-          conditionId: 1,
-          testScore: score,
-        });
-        const condition = await Condition.findByPk(1);
-        const recommendations = await Recommendation.findAll({
-          where: { conditionId: 1 },
-        });
-        const writeRec = async (rec) => {
-          const result = await PersonalRecomendationStore.create({
+      if (userId === req.session.user.id) {
+        if (score <= 48) {
+          await WelcomeTestScore.create({
             userId,
-            recommendationId: rec.id,
+            conditionId: 1,
+            testScore: score,
           });
-          return result;
-        };
-        const newRec = recommendations.map(writeRec);
-        res.json({ status: true });
-      } else if (score > 48 && score <= 60) {
-        await WelcomeTestScore.create({
-          userId,
-          conditionId: 2,
-          testScore: score,
-        });
-        const condition = await Condition.findByPk(2);
-        const recommendations = await Recommendation.findAll({
-          where: { conditionId: 2 },
-        });
-        const writeRec = async (rec) => {
-          const result = await PersonalRecomendationStore.create({
+          const condition = await Condition.findByPk(1);
+          const recommendations = await Recommendation.findAll({
+            where: { conditionId: 1 },
+          });
+          const writeRec = async (rec) => {
+            const result = await PersonalRecomendationStore.create({
+              userId,
+              recommendationId: rec.id,
+            });
+            return result;
+          };
+          const newRec = recommendations.map(writeRec);
+          res.json({ status: true });
+        } else if (score > 48 && score <= 60) {
+          await WelcomeTestScore.create({
             userId,
-            recommendationId: rec.id,
+            conditionId: 2,
+            testScore: score,
           });
-          return result;
-        };
-        const newRec = recommendations.map(writeRec);
-        res.json({ status: true });
-      } else if (score > 61 && score <= 72) {
-        await WelcomeTestScore.create({
-          userId,
-          conditionId: 3,
-          testScore: score,
-        });
-        const condition = await Condition.findByPk(3);
-        const recommendations = await Recommendation.findAll({
-          where: { conditionId: 3 },
-        });
-        const writeRec = async (rec) => {
-          const result = await PersonalRecomendationStore.create({
+          const condition = await Condition.findByPk(2);
+          const recommendations = await Recommendation.findAll({
+            where: { conditionId: 2 },
+          });
+          const writeRec = async (rec) => {
+            const result = await PersonalRecomendationStore.create({
+              userId,
+              recommendationId: rec.id,
+            });
+            return result;
+          };
+          const newRec = recommendations.map(writeRec);
+          res.json({ status: true });
+        } else if (score > 61 && score <= 72) {
+          await WelcomeTestScore.create({
             userId,
-            recommendationId: rec.id,
+            conditionId: 3,
+            testScore: score,
           });
-          return result;
-        };
-        const newRec = recommendations.map(writeRec);
-        res.json({ status: true });
+          const condition = await Condition.findByPk(3);
+          const recommendations = await Recommendation.findAll({
+            where: { conditionId: 3 },
+          });
+          const writeRec = async (rec) => {
+            const result = await PersonalRecomendationStore.create({
+              userId,
+              recommendationId: rec.id,
+            });
+            return result;
+          };
+          const newRec = recommendations.map(writeRec);
+          res.json({ status: true });
+        } else {
+          await WelcomeTestScore.create({
+            userId,
+            conditionId: 4,
+            testScore: score,
+          });
+          const condition = await Condition.findByPk(4);
+          const recommendations = await Recommendation.findAll({
+            where: { conditionId: 4 },
+          });
+          const writeRec = async (rec) => {
+            const result = await PersonalRecomendationStore.create({
+              userId,
+              recommendationId: rec.id,
+            });
+            return result;
+          };
+          const newRec = recommendations.map(writeRec);
+          res.json({ status: true });
+        }
       } else {
-        await WelcomeTestScore.create({
-          userId,
-          conditionId: 4,
-          testScore: score,
-        });
-        const condition = await Condition.findByPk(4);
-        const recommendations = await Recommendation.findAll({
-          where: { conditionId: 4 },
-        });
-        const writeRec = async (rec) => {
-          const result = await PersonalRecomendationStore.create({
-            userId,
-            recommendationId: rec.id,
-          });
-          return result;
-        };
-        const newRec = recommendations.map(writeRec);
-        res.json({ status: true });
+        res.json({ status: false });
       }
     } catch (error) {
       res.status(500).send(`${error.message}`);

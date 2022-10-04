@@ -31,8 +31,12 @@ module.exports = userDiaryRouter
   .post('/newnote', async (req, res) => {
     try {
       const { title, content, userId } = req.body;
-      const newnote = await UserDiary.create({ title, content, userId });
-      res.json(newnote);
+      if (userId === req.session.user.id) {
+        const newnote = await UserDiary.create({ title, content, userId });
+        res.json(newnote);
+      } else {
+        res.json({ status: false });
+      }
     } catch (error) {
       res.status(500).send(`${error.message}`);
     }
