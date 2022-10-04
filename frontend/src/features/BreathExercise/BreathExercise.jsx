@@ -91,9 +91,9 @@ function BreathExercise() {
       <button
         type="button"
         onClick={() => navigate('/exercises')}
-        className={style.breath_button_back}
+        className={style.button}
       >
-        Перейти ко всем заданиям
+        ← Вернуться к заданиям
       </button>
     </div>
   );
