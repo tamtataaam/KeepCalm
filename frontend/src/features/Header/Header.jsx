@@ -38,84 +38,84 @@ function Header() {
   return (
     <header className={style.header}>
       <div>
-        <Link className={style.logo_nav} to="/">
+        <Link className={style.logo_nav} to="/exercises">
           KeepCalm
         </Link>
       </div>
-      {!user.name
-        ? (
-          <div className={style.button_nav}>
-            {/* <a href="/" className={style.nav_btn}>Войти</a>
+      {!user.name ? (
+        <div className={style.button_nav}>
+          {/* <a href="/" className={style.nav_btn}>Войти</a>
             <a href="/" className={style.nav_btn}>Регистрация</a> */}
-          </div>
-        )
-        : (
-          <div className={style.button_nav}>
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-              <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>{user.name}</Typography>
-              <Tooltip title="Account settings">
-                <IconButton
-                  onClick={handleClick}
-                  size="small"
-                  sx={{ ml: 2 }}
-                  aria-controls={open ? 'account-menu' : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined}
-                >
-                  <Avatar />
-                </IconButton>
-              </Tooltip>
-            </Box>
-            <Menu
-              anchorEl={anchorEl}
-              id="account-menu"
-              open={open}
-              onClose={handleClose}
-              onClick={handleClose}
-              PaperProps={{
-                elevation: 0,
-                sx: {
-                  overflow: 'visible',
-                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                  mt: 1.5,
-                  '& .MuiAvatar-root': {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
-                  '&:before': {
-                    content: '""',
-                    display: 'block',
-                    position: 'absolute',
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: 'background.paper',
-                    transform: 'translateY(-50%) rotate(45deg)',
-                    zIndex: 0,
-                  },
-                },
-              }}
-              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-            >
-              <MenuItem onClick={() => navigate('/lk')}>
+        </div>
+      ) : (
+        <div className={style.button_nav}>
+          <Box
+            sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
+          >
+            <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>
+              {user.name}
+            </Typography>
+            <Tooltip title="Account settings">
+              <IconButton
+                onClick={handleClick}
+                size="small"
+                sx={{ ml: 2 }}
+                aria-controls={open ? 'account-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+              >
                 <Avatar />
-                {' '}
-                Мой аккаунт
-              </MenuItem>
-              <Divider />
-              <MenuItem onClick={logout}>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                Выйти
-              </MenuItem>
-            </Menu>
-          </div>
-        )}
+              </IconButton>
+            </Tooltip>
+          </Box>
+          <Menu
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            PaperProps={{
+              elevation: 0,
+              sx: {
+                overflow: 'visible',
+                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                mt: 1.5,
+                '& .MuiAvatar-root': {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+                '&:before': {
+                  content: '""',
+                  display: 'block',
+                  position: 'absolute',
+                  top: 0,
+                  right: 14,
+                  width: 10,
+                  height: 10,
+                  bgcolor: 'background.paper',
+                  transform: 'translateY(-50%) rotate(45deg)',
+                  zIndex: 0,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          >
+            <MenuItem onClick={() => navigate('/lk')}>
+              <Avatar /> Мой аккаунт
+            </MenuItem>
+            <Divider />
+            <MenuItem onClick={logout}>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              Выйти
+            </MenuItem>
+          </Menu>
+        </div>
+      )}
     </header>
   );
 }
