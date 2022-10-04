@@ -5,6 +5,7 @@ import { oneArticleAsyncInfo } from '../../store/articlesSlice/articlesSlice';
 import { loadComments } from '../../store/commentsSlice/commentsSlice';
 import Comments from '../Comments/Comments';
 import AddComment from '../Comments/AddComment';
+import LikeButton from './LikeButton';
 
 function OneArticlePage() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function OneArticlePage() {
             <>
               <h3>{oneArticleInfo.title}</h3>
               <img src={oneArticleInfo.img} alt="article" />
+              <LikeButton
+                oneArticleInfo={oneArticleInfo}
+              />
               <p>{oneArticleInfo.content}</p>
             </>
           ) : null
