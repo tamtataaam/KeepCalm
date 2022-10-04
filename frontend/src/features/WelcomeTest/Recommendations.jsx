@@ -17,16 +17,27 @@ function Recommendations() {
 
   const { lastCondition } = useSelector((state) => state.welcomeTest);
   const { recommendations } = useSelector((state) => state.welcomeTest);
+  console.log(recommendations);
   return (
     <div className={style.main_container}>
       <div>
         {!lastCondition ? (
           <div className={style.container}>
-            <h1 className={style.h1}>Чтобы узнать ваше состояние пройдите тест</h1>
-            <button className={style.resBnt} type="button" onClick={() => navigate('/welcometest')}>
+            <h1 className={style.h1}>
+              Чтобы узнать ваше состояние пройдите тест
+            </h1>
+            <button
+              className={style.resBnt}
+              type="button"
+              onClick={() => navigate('/welcometest')}
+            >
               Пройти тест
             </button>
-            <button className={style.resBnt} type="button" onClick={() => navigate('/exercises')}>
+            <button
+              className={style.resBnt}
+              type="button"
+              onClick={() => navigate('/exercises')}
+            >
               Перейти к упражнениям
             </button>
           </div>
@@ -37,7 +48,11 @@ function Recommendations() {
             {recommendations.map((recommendation) => (
               <div key={recommendation.id}>{recommendation.recommendation}</div>
             ))}
-            <button className={style.resBnt} type="button" onClick={() => navigate('/exercises')}>
+            <button
+              className={style.resBnt}
+              type="button"
+              onClick={() => navigate('/exercises')}
+            >
               Перейти к упражнениям
             </button>
           </div>
