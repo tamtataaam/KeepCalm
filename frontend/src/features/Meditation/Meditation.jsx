@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 import React, { useState, useRef, useEffect } from 'react';
@@ -12,7 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { BsArrowRightShort } from 'react-icons/bs';
 import { RiArrowGoBackFill, RiArrowGoForwardFill } from 'react-icons/ri';
 import { FaPlay, FaPause } from 'react-icons/fa';
@@ -23,6 +24,7 @@ function Meditation() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const userName = useSelector((store) => store.user.data.name);
 
   // references
   const audioPlayer = useRef(); // reference our audio component
@@ -34,7 +36,11 @@ function Meditation() {
     setDuration(currentTime);
     progressBar.current.max = seconds;
     // TimerNull();
-  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState, progressBar?.current?.value]);
+  }, [
+    audioPlayer?.current?.loadedmetadata,
+    audioPlayer?.current?.readyState,
+    progressBar?.current?.value,
+  ]);
   // const TimerNull = () => audioPlayer.current.duration - progressBar.current.value;
 
   const calculateTime = (secs) => {
@@ -69,7 +75,10 @@ function Meditation() {
   };
 
   const changePlayerCurrentTime = () => {
-    progressBar.current.style.setProperty('--seek-before-width', `${(progressBar.current.value / duration) * 100}%`);
+    progressBar.current.style.setProperty(
+      '--seek-before-width',
+      `${(progressBar.current.value / duration) * 100}%`
+    );
     setCurrentTime(progressBar.current.value);
   };
 
@@ -107,12 +116,16 @@ function Meditation() {
   return (
     <div className={style.meditation_container}>
       <div>
-        <Link className={style.logo_nav} to="/">
+        <Link className={style.logo_nav} to="/exercises">
           KeepCalm
         </Link>
         <div className={style.button_nav}>
-          <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-            <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>Sanya</Typography>
+          <Box
+            sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
+          >
+            <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>
+              {userName}
+            </Typography>
             <Tooltip title="Account settings">
               <IconButton
                 onClick={handleClick}
@@ -162,9 +175,7 @@ function Meditation() {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={() => navigate('/lk')}>
-              <Avatar />
-              {' '}
-              Мой аккаунт
+              <Avatar /> Мой аккаунт
             </MenuItem>
             <Divider />
             <MenuItem onClick={logout}>
@@ -178,31 +189,50 @@ function Meditation() {
       </div>
       <div className={style.audioPlayer}>
         {/* <p>{ audioPlayer.current.duration ? calculateTime(TimerNull()) : '00:00'}</p> */}
-        <audio ref={audioPlayer} className={style.audio} controls src="Meditation.mp3">
+        <audio
+          ref={audioPlayer}
+          className={style.audio}
+          controls
+          src="Meditation.mp3"
+        >
           <track kind="captions" />
         </audio>
         <div className={style.play_pause_div}>
           <div className={style.rewind_div}>
-            <button type="button" className={style.forwardBackward} onClick={backThirty}>
-              <RiArrowGoBackFill className={style.rewind_icon} />
-              {' '}
-              30
+            <button
+              type="button"
+              className={style.forwardBackward}
+              onClick={backThirty}
+            >
+              <RiArrowGoBackFill className={style.rewind_icon} /> 30
             </button>
           </div>
-          <button type="button" onClick={togglePlayPause} className={style.playPause}>
+          <button
+            type="button"
+            onClick={togglePlayPause}
+            className={style.playPause}
+          >
             {isPlaying ? <FaPause /> : <FaPlay className={style.play} />}
           </button>
           <div className={style.rewind_div}>
-            <button type="button" className={style.forwardBackward} onClick={forwardThirty}>
-              <RiArrowGoForwardFill className={style.rewind_icon} />
-              {' '}
-              30
+            <button
+              type="button"
+              className={style.forwardBackward}
+              onClick={forwardThirty}
+            >
+              <RiArrowGoForwardFill className={style.rewind_icon} /> 30
             </button>
           </div>
         </div>
 
         <div className={style.currentTime}>{calculateTime(currentTime)}</div>
-        <input type="range" className={style.progressBar} ref={progressBar} defaultValue="0" onChange={changeRange} />
+        <input
+          type="range"
+          className={style.progressBar}
+          ref={progressBar}
+          defaultValue="0"
+          onChange={changeRange}
+        />
       </div>
 
       <video className={style.video} autoPlay muted loop id="myVideo">
