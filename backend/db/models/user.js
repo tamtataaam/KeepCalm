@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
       });
       User.hasMany(Chat, { foreignKey: 'userId' });
-      User.UserModd = User.hasMany(UserMood, {
+      User.UserMood = User.hasMany(UserMood, {
         foreignKey: 'userId',
       });
       User.FavoriteExercise = User.hasMany(FavoriteExercise, {

@@ -4,6 +4,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   articles: null,
+  favoriteArticles: [],
+  favoriteArticlesActual: {},
   oneArticleInfo: null,
   error: null,
 };
@@ -36,6 +38,21 @@ export const oneArticleAsyncInfo = createAsyncThunk(
   }
 );
 
+export const loadLikes = createAsyncThunk(
+  'articles/loadLikes',
+  async () => {
+    const response = await fetch('/favoritearticles');
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      console.log(data);
+      return data;
+    }
+  }
+);
+
 const articlesSlice = createSlice({
   name: 'articles',
   initialState,
@@ -45,15 +62,20 @@ const articlesSlice = createSlice({
       .addCase(loadAsyncArticles.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(
-        loadAsyncArticles.fulfilled, (state, action) => {
-          state.articles = action.payload;
-        })
+      .addCase(loadAsyncArticles.fulfilled, (state, action) => {
+        state.articles = action.payload;
+      })
       .addCase(oneArticleAsyncInfo.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(oneArticleAsyncInfo.fulfilled, (state, action) => {
         state.oneArticleInfo = action.payload;
+      })
+      .addCase(loadLikes.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadLikes.fulfilled, (state, action) => {
+        state.favoriteArticles = action.payload;
       });
   },
 });

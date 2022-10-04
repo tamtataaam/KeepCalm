@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { oneArticleAsyncInfo } from '../../store/articlesSlice/articlesSlice';
+import { loadLikes, oneArticleAsyncInfo } from '../../store/articlesSlice/articlesSlice';
 import { loadComments } from '../../store/commentsSlice/commentsSlice';
 import Comments from '../Comments/Comments';
 import AddComment from '../Comments/AddComment';
@@ -14,9 +14,12 @@ function OneArticlePage() {
   useEffect(() => {
     dispatch(oneArticleAsyncInfo(id));
     dispatch(loadComments(id));
+    dispatch(loadLikes());
   }, [dispatch, id]);
 
   const { oneArticleInfo } = useSelector((store) => store.articles);
+  const { favoriteArticles } = useSelector((state) => state.articles);
+  const allArticleLikes = favoriteArticles.filter((el) => el.articleId === oneArticleInfo.id);
   const comments = useSelector((state) => state.comments.data);
 
   return (
@@ -28,6 +31,11 @@ function OneArticlePage() {
             <>
               <h3>{oneArticleInfo.title}</h3>
               <img src={oneArticleInfo.img} alt="article" />
+              <p>
+                Нравится:
+                {' '}
+                {allArticleLikes.length}
+              </p>
               <LikeButton
                 oneArticleInfo={oneArticleInfo}
               />
