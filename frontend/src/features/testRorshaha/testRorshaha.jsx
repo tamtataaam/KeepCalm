@@ -1,25 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './testRorshaha.module.scss';
+import { testRorshahaImg } from './testRorshahaIMG';
 
-function testRorshaha() {
+function TestRorshaha() {
+  console.log(testRorshahaImg);
+  const [nextQustion, setQuestion] = useState(true);
   return (
     <div>
       <div className={style.main_container}>
         <div className={style.container}>
-          <div className={style.img_face_test}>
-            <img src="https://testometrika.com/upload/uf/3ce/3cecd2c79d3224c1df1c1bf982778abf.svg" />
-          </div>
-          {/* <img src="1Rorshar.jpeg" alt="1 вопрос" /> */}
-          <h1 className={style.h1}>
-            Чернильные пятна Роршаха: все ли в порядке с вашей психикой?
-          </h1>
-          <button type="button" className={style.button}>
-            Пройти тест
-          </button>
+          {nextQustion ? (
+            <>
+              <div className={style.img_face_test}>
+                <img
+                  src="https://testometrika.com/upload/uf/3ce/3cecd2c79d3224c1df1c1bf982778abf.svg"
+                  alt="img"
+                />
+              </div>
+              {/* <img src="1Rorshar.jpeg" alt="1 вопрос" /> */}
+              <h1 className={style.h1}>
+                Чернильные пятна Роршаха: все ли в порядке с вашей психикой?
+              </h1>
+              <button
+                type="button"
+                onClick={() => setQuestion(!nextQustion)}
+                className={style.button}
+              >
+                Пройти тест
+              </button>
+            </>
+          ) : (
+            <div>следующий вопрос</div>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-export default testRorshaha;
+export default TestRorshaha;
