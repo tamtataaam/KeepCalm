@@ -14,24 +14,24 @@ function Exercises() {
 
   return (
     <div className={style.container}>
-    <h1 className={style.h1}>Чем хочешь заняться?</h1>
-    <h2 className={style.h2}>Выбери упражнение:</h2>
+      <h1 className={style.h1}>Чем хочешь заняться?</h1>
+      <h2 className={style.h2}>Выбери упражнение:</h2>
 
-    <div className={style.exercises_container}>
-      {allExercises.length ? (
-        allExercises.map((exercise) => (
-          <div key={exercise.id} className={style.exercise_item}>
-            <FavoriteButton
-              className={style.favorite_button}
-              exercise={exercise}
-            />
-            <ExerciseItem exercise={exercise} />
-          </div>
-        ))
-      ) : (
-        <LoadingPage />
-      )}
-    </div>
+      <div className={style.exercises_container}>
+        {allExercises.length ? (
+          allExercises.map((exercise) => (
+            <div key={exercise.id} className={style.exercise_item}>
+              <FavoriteButton
+                className={style.favorite_button}
+                exercise={exercise}
+              />
+              <ExerciseItem exercise={exercise} />
+            </div>
+          ))
+        ) : (
+          <LoadingPage />
+        )}
+      </div>
     </div>
   );
 }

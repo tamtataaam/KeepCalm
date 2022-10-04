@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { oneExerciseAsyncInfo } from '../../store/exercisesSlice/exerciseSlice';
 import style from './Exercises.module.scss';
 import LoadingPage from '../LoadingPage/LoadingPage';
 
 function ExerciseFullInformation() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -17,53 +18,56 @@ function ExerciseFullInformation() {
     (store) => store.exercises.oneExerciseInfo
   );
 
-  const navigate = useNavigate();
-
   return (
     <div className={style.exercise_container_main_for_individual}>
       <div className={style.exercise_container_button_individual}>
+        <Link to="/exercises" className={style.link}>
+          ← Вернуться к заданиям
+        </Link>
         {oneExerciseInfo !== null ? (
           <>
             <div key={id} className={style.exercise_container_individual}>
-              <h2>{oneExerciseInfo.title}</h2>
+              {/* <h2 className={style.ex_h2}>{oneExerciseInfo.title}</h2> */}
               <img
                 className={style.exercise_img_individual}
-                src={oneExerciseInfo.imageUrl}
-                alt="..."
+                src={`/${oneExerciseInfo.imageUrl}`}
+                alt={oneExerciseInfo.title}
               />
               <div className={style.diary_discription}>
                 {oneExerciseInfo.description}
               </div>
-            </div>
-            {oneExerciseInfo.id !== 1 ? (
+
               <button
+                className={style.button}
                 type="button"
                 onClick={() => {
-                  navigate(-1);
+                  navigate(oneExerciseInfo.url);
                 }}
               >
-                back to all exercises
+                Приступить
               </button>
+            </div>
+
+            {/* {oneExerciseInfo.id !== 1 ? (
+              <Link to="/exercises">
+                ← Вернуться к заданиям
+              </Link>
             ) : (
               <div className={style.diary_buttons}>
+                <Link to="/exercises">
+                  ← Вернуться к заданиям
+                </Link>
                 <button
-                  type="button"
-                  onClick={() => {
-                    navigate(-1);
-                  }}
-                >
-                  back to all exercises
-                </button>
-                <button
+                  className={style.button}
                   type="button"
                   onClick={() => {
                     navigate('/userdiary');
                   }}
                 >
-                  Go to your Diary
+                  Приступить
                 </button>
               </div>
-            )}
+            )} */}
           </>
         ) : (
           <LoadingPage />

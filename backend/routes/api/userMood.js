@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const userMoodrout = require('express').Router();
 const { Mood, UserMood } = require('../../db/models');
 
@@ -14,10 +15,23 @@ userMoodrout
     try {
       const { user } = req.session;
       const { smiley } = req.body;
+
+      const findAlllSmiles = await UserMood.findAll({
+        where: { userId: user.id },
+      });
+      const dateNow = new Date().toString().slice(0, 15);
+      const findActualSmile = findAlllSmiles.filter(
+        (elem) => elem.createdAt.toString().slice(0, 15) === dateNow
+      );
       const newSmiley = await UserMood.create({
         userId: user.id,
         moodId: smiley,
       });
+      if (findActualSmile.length === 1) {
+        await UserMood.destroy({
+          where: { userId: user.id, id: findActualSmile[0].id },
+        });
+      }
       res.json({ data: newSmiley });
     } catch (error) {
       res.json({ error: error.message });

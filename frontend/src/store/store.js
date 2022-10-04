@@ -6,6 +6,7 @@ import articlesSlice from './articlesSlice/articlesSlice';
 import chatsSliceReducer from './chatsSlice/chatsSlice';
 import userDiarySlice from './userDiarySlice/userDiarySlice';
 import commentsSliceReducer from './commentsSlice/commentsSlice';
+import welcomeTestSlice from './welcomeTestSlice/welcomeTestSlice';
 
 const store = configureStore({
   reducer: {
@@ -15,7 +16,8 @@ const store = configureStore({
     articles: articlesSlice,
     chats: chatsSliceReducer,
     userDiary: userDiarySlice,
-    comments: commentsSliceReducer
+    comments: commentsSliceReducer,
+    welcomeTest: welcomeTestSlice,
   },
 });
 

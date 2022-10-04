@@ -3,7 +3,10 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadAsyncExercises } from '../store/exercisesSlice/exerciseSlice';
+import {
+  loadAsyncExercises,
+  loadAllFavoriteExrcisesAsync,
+} from '../store/exercisesSlice/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import {
@@ -11,7 +14,12 @@ import {
   addSmiley,
   loadSmileyUserLk,
 } from '../store/moodSlice/moodSlice';
+import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
+import {
+  loadCondsitionAsync,
+  loadRecomendationsAsync,
+} from '../store/welcomeTestSlice/welcomeTestSlice';
 import Layout from './Layout/Layout';
 import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
@@ -24,11 +32,14 @@ import ArticlesPage from './ArticlesPage/ArticlesPage';
 import OneArticlePage from './ArticlesPage/OneArticlePage';
 import ChatsPage from './Chats/ChatsPage';
 import MainAuth from './Main/MainAuth';
-import './App.css';
 import AddChatPage from './Chats/AddChatPage';
 import UserDiary from './UserDiary/UserDiary';
-import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import Meditation from './Meditation/Meditation';
+import WelcomePage from './WelcomePage/WelcomePage';
+import './App.css';
+import WelcomeTest from './WelcomeTest/WelcomeTest';
+import Recommendations from './WelcomeTest/Recommendations';
+import BreathExercise from './BreathExercise/BreathExercise';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -42,6 +53,9 @@ function App() {
     dispatch(addSmiley());
     dispatch(loadChats());
     dispatch(loadSmileyUserLk());
+    dispatch(loadCondsitionAsync());
+    dispatch(loadAllFavoriteExrcisesAsync());
+    dispatch(loadRecomendationsAsync());
   }, []);
 
   return (
@@ -49,10 +63,9 @@ function App() {
       {isUser ? (
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* <Route index element={<Main />} /> */}
-            <Route index element={<Exercises />} />
-            <Route path="/lk" element={<UserPage />} />
+            <Route index element={<WelcomePage />} />
             <Route path="/mood" element={<Mood />} />
+            <Route path="/lk" element={<UserPage />} />
             <Route path="/exercises" element={<Exercises />} />
             <Route
               path="/exercises/:id"
@@ -65,6 +78,12 @@ function App() {
             <Route path="/chats" element={<ChatsPage />} />
             <Route path="/addchat" element={<AddChatPage />} />
             <Route path="/userdiary" element={<UserDiary />} />
+            <Route path="/welcometest" element={<WelcomeTest />} />
+            <Route
+              path="/welcometest/recommendations"
+              element={<Recommendations />}
+            />
+            <Route path="/breath" element={<BreathExercise />} />
           </Route>
           <Route path="/meditation" element={<Meditation />} />
         </Routes>
@@ -72,8 +91,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainAuth />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/registration" element={<Registration />} />
+            {/* <Route path="/login" element={<Login />} />
+            <Route path="/registration" element={<Registration />} /> */}
           </Route>
         </Routes>
       )}

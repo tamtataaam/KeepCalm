@@ -7,24 +7,25 @@ import ChatItem from './ChatItem';
 function ChatsPage() {
   const navigate = useNavigate();
   const { allChats } = useSelector((store) => store.chats);
-  const isUser = useSelector((state) => state.user.isUser);
 
   return (
     <>
-      <div className={style.chats_container}>
-        {allChats.length
-          ? allChats.map((chat) => (
-            <ChatItem key={chat.id} chat={chat} />
-          ))
-          : null}
+      <h1>Обсуждения:</h1>
+      <input type="text" placeholder="Поиск обсуждения..." />
+      <button className={style.button} type="button">Найти</button>
+      <div className={style.container}>
+        <div className={style.chats_container}>
+          {allChats.length
+            ? allChats.map((chat) => (
+              <ChatItem key={chat.id} chat={chat} />
+            ))
+            : null}
+        </div>
+
+        <div className={style.addchat_button_container}>
+          <button className={style.button} type="button" onClick={() => navigate('/addchat')}>+ Добавить обсуждение</button>
+        </div>
       </div>
-      {isUser
-        ? (
-          <div className={style.addchat_button_container}>
-            <button type="button" onClick={() => navigate('/addchat')}>Создать чат</button>
-          </div>
-        )
-        : null }
     </>
   );
 }

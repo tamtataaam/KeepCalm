@@ -6,8 +6,14 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Condition }) {
+    static associate({ Condition, PersonalRecomendationStore, User }) {
       Recommendation.belongsTo(Condition, { foreignKey: 'conditionId' });
+      Recommendation.PersonalRecomendationStore = Recommendation.hasMany(
+        PersonalRecomendationStore,
+        {
+          foreignKey: 'recommendationId',
+        }
+      );
     }
   }
   Recommendation.init(

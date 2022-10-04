@@ -1,4 +1,5 @@
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Condition extends Model {
     /**
@@ -6,12 +7,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ WelcomeTestScore, Recommendation, User }) {
+    static associate({ WelcomeTestScore, Recommendation }) {
       Condition.hasMany(Recommendation, { foreignKey: 'conditionId' });
-      Condition.belongsToMany(User, {
-        through: WelcomeTestScore,
+      Condition.WelcomeTestScore = Condition.hasMany(WelcomeTestScore, {
         foreignKey: 'conditionId',
-        otherKey: 'userId',
       });
     }
   }
@@ -41,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Condition',
       tableName: 'Conditions',
-    }
+    },
   );
   return Condition;
 };

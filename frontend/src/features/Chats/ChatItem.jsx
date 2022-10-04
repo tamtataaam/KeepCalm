@@ -11,13 +11,21 @@ function ChatItem({ chat }) {
       id={chat.id}
     >
       <div className={style.chat_info}>
+        <h3 className={style.text}>
+          Название:
+          {' '}
+          {chat.title}
+        </h3>
+
+        <h3 className={style.text}>Описание:</h3>
+
         <a
           href={`${chat.telegramUrl}`}
           target="_blank"
           rel="noreferrer"
-          className={style.tg_link}
+          className={style.text}
         >
-          {chat.title}
+          Перейти→
         </a>
       </div>
     </div>

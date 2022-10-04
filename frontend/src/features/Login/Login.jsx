@@ -33,7 +33,7 @@ function Login({ setLogin }) {
 
   useEffect(() => {
     if (isUser) {
-      navigate('/exercises');
+      navigate('/welcome');
     }
   }, [isUser, navigate]);
 
@@ -50,7 +50,7 @@ function Login({ setLogin }) {
           <div>
             <MdOutlineAlternateEmail className={style.icon_email} />
             <input
-              className="font_caption"
+              className={style.input}
               type="email"
               name="email"
               id="emailInput"
@@ -64,7 +64,7 @@ function Login({ setLogin }) {
           <div className="password_input">
             <AiTwotoneLock className={style.icon_lock} />
             <input
-              className="font_caption"
+              className={style.input}
               type={state ? 'text' : 'password'}
               name="password"
               id="passwordInput"
@@ -88,12 +88,6 @@ function Login({ setLogin }) {
             <Link to={1} onClick={() => setLogin((login) => !login)}>Зарегистрируйся</Link>
           </div>
         </form>
-        {/* <div>
-          Если ты не зареган, ну хули
-          {' '}
-          <button type="button" onClick={() => setLogin((login) => !login)}>Зарегайся</button>
-          , Ёпта!
-        </div> */}
       </div>
     </div>
   );

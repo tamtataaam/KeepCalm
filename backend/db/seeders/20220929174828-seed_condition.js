@@ -11,17 +11,24 @@ module.exports = {
      */
     await queryInterface.bulkInsert('Conditions', [
       {
-        condition: 'Deep depression',
+        condition:
+          'Депрессивных симптомов нет. С вашим психическим здоровьем всё в порядке.',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        condition: 'Neutral',
+        condition: 'Вероятна лёгкая депрессия (субдепрессия).',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        condition: 'Extra exided',
+        condition: 'Умеренная депрессия.',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        condition:
+          'Тяжёлая депрессия (29-63 балла), Состояние тем сложнее, чем больше количество баллов.',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
