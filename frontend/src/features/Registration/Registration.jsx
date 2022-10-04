@@ -104,7 +104,7 @@ function Registration({ setLogin }) {
           </div>
 
           { helpMessage && <div className="helpText">{helpMessage}</div>}
-          <button className={style.registration_button} type="submit">Зарегистрироваться</button>
+          <button className={style.button} type="submit">Зарегистрироваться</button>
           <div className={style.link}>
             Уже есть аккаунт?
             {' '}
