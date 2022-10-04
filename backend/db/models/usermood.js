@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       UserMood.User = UserMood.belongsTo(User, {
         foreignKey: 'userId',
       });
-      UserMood.Mood = UserMood.belongsToy(Mood, {
+      UserMood.Mood = UserMood.belongsTo(Mood, {
         foreignKey: 'moodId',
       });
     }

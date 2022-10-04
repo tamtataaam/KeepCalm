@@ -1,4 +1,5 @@
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Condition extends Model {
     /**
@@ -8,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ WelcomeTestScore, Recommendation }) {
       Condition.hasMany(Recommendation, { foreignKey: 'conditionId' });
-      Condition.WelcomeTestScore = Condition.hasmany(WelcomeTestScore, {
+      Condition.WelcomeTestScore = Condition.hasMany(WelcomeTestScore, {
         foreignKey: 'conditionId',
       });
     }
@@ -39,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Condition',
       tableName: 'Conditions',
-    }
+    },
   );
   return Condition;
 };
