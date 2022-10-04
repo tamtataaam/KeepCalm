@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+// import { useParams } from 'react-router-dom';
 import style from './testRorshaha.module.scss';
 import { testRorshahaImg } from './testRorshahaIMG';
 
 function TestRorshaha() {
-  console.log(testRorshahaImg);
+  // console.log(testRorshahaImg);
   const [nextQustion, setQuestion] = useState(true);
+  // const { id } = useParams();
   return (
     <div>
       <div className={style.main_container}>
@@ -30,7 +32,18 @@ function TestRorshaha() {
               </button>
             </>
           ) : (
-            <div>следующий вопрос</div>
+            <div>
+              {testRorshahaImg.map((el) => (
+                <img src={el.img} alt="изображение 1" />
+              ))}
+              <button
+                type="button"
+                onClick={() => setQuestion(!nextQustion)}
+                className={style.button}
+              >
+                Следующий вопрос
+              </button>
+            </div>
           )}
         </div>
       </div>
