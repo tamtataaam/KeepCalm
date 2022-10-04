@@ -2,16 +2,29 @@ import React, { useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import style from './testRorshaha.module.scss';
 import { testRorshahaImg } from './testRorshahaIMG';
+import TaskPsih from './TaskPsih';
 
 function TestRorshaha() {
-  // console.log(testRorshahaImg);
-  const [nextQustion, setQuestion] = useState(true);
-  // const { id } = useParams();
+  const [startQustion, setQuestion] = useState(true);
+  const [nextQuestion, setQuestionNext] = useState(1);
+
+  const nextImgDisplay = testRorshahaImg.filter(
+    (el) => +el.id === nextQuestion
+  );
+  const displayRorshahaImg = nextImgDisplay.map((el) => el.img);
+  console.log(displayRorshahaImg);
+  if (!displayRorshahaImg.length) {
+    return (
+      <div>
+        <TaskPsih />
+      </div>
+    );
+  }
   return (
     <div>
       <div className={style.main_container}>
         <div className={style.container}>
-          {nextQustion ? (
+          {startQustion ? (
             <>
               <div className={style.img_face_test}>
                 <img
@@ -25,7 +38,7 @@ function TestRorshaha() {
               </h1>
               <button
                 type="button"
-                onClick={() => setQuestion(!nextQustion)}
+                onClick={() => setQuestion(!startQustion)}
                 className={style.button}
               >
                 Пройти тест
@@ -33,12 +46,12 @@ function TestRorshaha() {
             </>
           ) : (
             <div>
-              {testRorshahaImg.map((el) => (
-                <img src={el.img} alt="изображение 1" />
-              ))}
+              <img src={displayRorshahaImg} alt="изображение 1" />
+
+              <input type="text" />
               <button
                 type="button"
-                onClick={() => setQuestion(!nextQustion)}
+                onClick={() => setQuestionNext((prev) => prev + 1)}
                 className={style.button}
               >
                 Следующий вопрос
