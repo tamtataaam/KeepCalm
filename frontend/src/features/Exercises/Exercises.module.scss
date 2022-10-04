@@ -1,8 +1,16 @@
+.container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
 .exercises_container {
   display: flex;
-  justify-content: space-around;
-  width: 1000px;
+  flex-direction: column;
   flex-wrap: wrap;
+  // justify-content: space-between;
+  align-self: flex-start;
+  width: 1000px;
+  height: 450px;
   margin: 0 auto;
   margin-top: 50px;
   gap: 20px;
@@ -91,4 +99,14 @@
 
 .link:hover {
   color: #d3d2d2;
+}
+
+
+@media (min-width: 350px) and (max-width: 700px) {
+  .exercise_img_individual {
+    width: 70vw;
+  }
+  .diary_discription {
+    width: 90vw;
+  }
 }

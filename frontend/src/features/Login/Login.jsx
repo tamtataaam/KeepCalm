@@ -79,7 +79,7 @@ function Login({ setLogin }) {
           </div>
 
           {helpMessage && <div className="helpText">{helpMessage}</div>}
-          <button className={style.login_button} type="submit">
+          <button className={style.button} type="submit">
             Войти
           </button>
           <div className={style.link}>
