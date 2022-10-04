@@ -36,8 +36,8 @@ function Meditation() {
     setDuration(currentTime);
     progressBar.current.max = seconds;
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
-  const TimerNull = () => audioPlayer.current.duration - progressBar.current.value;
-
+  const TimerNull = () =>
+    audioPlayer.current.duration - progressBar.current.value;
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60);
@@ -180,8 +180,13 @@ function Meditation() {
         </div>
       </div>
       <div className={style.audioPlayer}>
-        <p>{ audioPlayer.current ? calculateTime(TimerNull()) : '24:06'}</p>
-        <audio ref={audioPlayer} className={style.audio} controls src="Meditation.mp3">
+        <p>{audioPlayer.current ? calculateTime(TimerNull()) : '24:06'}</p>
+        <audio
+          ref={audioPlayer}
+          className={style.audio}
+          controls
+          src="Meditation.mp3"
+        >
           <track kind="captions" />
         </audio>
         <div className={style.play_pause_div}>

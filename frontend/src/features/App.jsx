@@ -88,7 +88,7 @@ function App() {
               path="/welcometest/recommendations"
               element={<Recommendations />}
             />
-            <Route path="/psychologist" element={<PsychologistPage />} />
+            <Route path="/search" element={<PsychologistPage />} />
             <Route path="/breath" element={<BreathExercise />} />
           </Route>
           <Route path="/meditation" element={<Meditation />} />
