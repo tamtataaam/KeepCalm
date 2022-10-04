@@ -19,10 +19,10 @@ function Likes({ oneArticleInfo }) {
       <div>
         {allArticleLikes.length === 0
           ? <p>Поставьте лайк первым</p>
-          : allArticleLikes.length === 1
-            ? <p>Нравится 1 человеку</p>
-            : allArticleLikes.length === 1 && articleLikedByUser.length
-              ? <p>Нравится вам</p>
+          : allArticleLikes.length === 1 && articleLikedByUser.length
+            ? <p>Нравится вам</p>
+            : allArticleLikes.length === 1
+              ? <p>Нравится 1 человеку</p>
               : allArticleLikes.length === 2 && articleLikedByUser.length
                 ? (
                   <p>
