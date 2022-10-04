@@ -4,7 +4,7 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 // import { BsArrowRightShort } from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
@@ -23,6 +23,7 @@ import CompositionPage from './CompositionPage';
 function SleepPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const userName = useSelector((store) => store.user.data.name);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -41,7 +42,7 @@ function SleepPage() {
   return (
     <>
       <div>
-        <Link className={style.logo_nav} to="/">
+        <Link className={style.logo_nav} to="/exercises">
           KeepCalm
         </Link>
         <div className={style.button_nav}>
@@ -49,7 +50,7 @@ function SleepPage() {
             sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
           >
             <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>
-              Sanya
+              {userName}
             </Typography>
             <Tooltip title="Account settings">
               <IconButton

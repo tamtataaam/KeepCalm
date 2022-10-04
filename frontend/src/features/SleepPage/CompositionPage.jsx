@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
+// import { videos } from './videoFile';
+import { test } from './test';
 import style from './SleepPage.module.scss';
 
 function CompositionPage({ composition }) {
@@ -35,6 +37,12 @@ function CompositionPage({ composition }) {
         >
           {isPlaying ? <FaPause /> : <FaPlay className={style.play} />}
         </button>
+        <div style={!isPlaying ? { display: 'none' } : {}}>
+          {test[composition.index].path}
+        </div>
+        {/* <video className={style.video} autoPlay muted loop id="myVideo">
+          <source src={`${videos[composition.index].path}`} type="video/mp4" />
+        </video> */}
       </div>
     </div>
   );
