@@ -1,4 +1,6 @@
+/* eslint-disable max-len */
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class PersonalRecomendationStore extends Model {
     /**
@@ -11,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         User,
         {
           foreignKey: 'userId',
-        }
+        },
       );
       PersonalRecomendationStore.Recommendation =
         PersonalRecomendationStore.belongsTo(Recommendation, {
@@ -52,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'PersonalRecomendationStore',
       tableName: 'PersonalRecomendationStores',
-    }
+    },
   );
   return PersonalRecomendationStore;
 };

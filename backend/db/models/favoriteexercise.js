@@ -1,4 +1,5 @@
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class FavoriteExercise extends Model {
     /**
@@ -59,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'FavoriteExercise',
       tableName: 'FavoriteExercises',
-    }
+    },
   );
   return FavoriteExercise;
 };
