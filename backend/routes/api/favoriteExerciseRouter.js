@@ -18,23 +18,27 @@ module.exports = favoriteExercisesRouter
       const findFavorite = await FavoriteExercise.findOne({
         where: { userId, exerciseId },
       });
-      if (findFavorite) {
-        if (findFavorite.status) {
-          findFavorite.status = false;
-          await findFavorite.save();
-          res.json(findFavorite);
+      if (userId === req.session.user.id) {
+        if (findFavorite) {
+          if (findFavorite.status) {
+            findFavorite.status = false;
+            await findFavorite.save();
+            res.json(findFavorite);
+          } else {
+            findFavorite.status = true;
+            await findFavorite.save();
+            res.json(findFavorite);
+          }
         } else {
-          findFavorite.status = true;
-          await findFavorite.save();
-          res.json(findFavorite);
+          const favoriteExercise = await FavoriteExercise.create({
+            userId,
+            exerciseId,
+            status: true,
+          });
+          res.json(favoriteExercise);
         }
       } else {
-        const favoriteExercise = await FavoriteExercise.create({
-          userId,
-          exerciseId,
-          status: true,
-        });
-        res.json(favoriteExercise);
+        res.json({ status: false });
       }
     } catch (error) {
       res.status(500).send(`${error.message}`);
