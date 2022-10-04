@@ -32,7 +32,7 @@ function Mood() {
               </div>
             ))}
           </div>
-          <button className="mood_btn" type="button" onClick={() => navigate('/exercises')}>Готово</button>
+          <button className="mood_btn" type="button" onClick={() => navigate('/welcometest')}>Перейти к тесту</button>
         </>
       ) : (
         <LoadingPage />

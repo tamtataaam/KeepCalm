@@ -15,9 +15,10 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: 'userId',
         },
       );
-      PersonalRecomendationStore.Recommendation = PersonalRecomendationStore.belongsTo(Recommendation, {
-        foreignKey: 'recommendationId',
-      });
+      PersonalRecomendationStore.Recommendation =
+        PersonalRecomendationStore.belongsTo(Recommendation, {
+          foreignKey: 'recommendationId',
+        });
     }
   }
   PersonalRecomendationStore.init(

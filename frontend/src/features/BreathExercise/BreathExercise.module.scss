@@ -27,7 +27,7 @@
   top: -115px;
   color: #ebeaec;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .circle {
@@ -41,25 +41,21 @@
   top: -170px;
 }
 
-.breath_button_back {
+.button{
   cursor: pointer;
-  left: 18%;
-  margin: 15px 0;
-  font-size: 14px;
+  margin: 10px 0;
+  font-size: 20px;
   border: none;
-  background-color: #6e76ce;
-  border-radius: 20px;
-  width: 130px;
-  height: 40px;
+  background-color: #EBEAEC ;
+  border-radius: 25px;
+  width: 320px;
+  height: 55px;
   transition: 0.4s;
-  color: white;
-  position: relative;
-  top: -70px;
-  left: 0px;
+  color: #3F414E;
 }
-.breath_button_back:hover {
+.button:hover{
   box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
-  background-color: #8e97fd;
+  background-color: #d3d2d2;
 }
 
 @-webkit-keyframes pulsing {
