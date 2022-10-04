@@ -65,6 +65,7 @@ export const toggleLike = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
+      // console.log(data);
       return data;
     }
   }
@@ -98,12 +99,12 @@ const articlesSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(toggleLike.fulfilled, (state, action) => {
-        if (action.payload.toggle === 'liked') {
-          state.favoritePlaces.push(action.payload.place);
+        if (action.payload.data) {
+          state.favoriteArticles.push(action.payload.data);
           return;
         }
-        state.favoritePlaces = state.favoritePlaces
-          .filter((favoritePlace) => favoritePlace.id !== action.payload.place.id);
+        state.favoriteArticles = state.favoriteArticles
+          .filter((favoriteArticle) => favoriteArticle.id !== action.payload);
       });
   },
 });

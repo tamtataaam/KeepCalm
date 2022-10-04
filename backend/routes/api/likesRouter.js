@@ -21,11 +21,11 @@ module.exports = likesRouter
       });
       if (isLiked) {
         await Like.destroy({ where: { id: isLiked.id } });
-        res.json({ data: 'disliked' });
+        // console.log(isLiked.id);
+        res.json(isLiked.id);
       } else {
-        const likeCreated = await Like.create({ userId, articleId });
-        console.log(likeCreated);
-        res.json(likeCreated);
+        const likeCreate = await Like.create({ userId, articleId });
+        res.json({ data: likeCreate.dataValues });
       }
     } catch (error) {
       res.json({ error: error.message });
