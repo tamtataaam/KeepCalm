@@ -47,7 +47,24 @@ export const loadLikes = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
-      console.log(data);
+      return data;
+    }
+  }
+);
+
+export const toggleLike = createAsyncThunk(
+  'articles/toggleLike',
+  async ({ userId, articleId }) => {
+    const response = await fetch('/favoritearticles', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, articleId }),
+    });
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
       return data;
     }
   }
@@ -76,6 +93,17 @@ const articlesSlice = createSlice({
       })
       .addCase(loadLikes.fulfilled, (state, action) => {
         state.favoriteArticles = action.payload;
+      })
+      .addCase(toggleLike.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(toggleLike.fulfilled, (state, action) => {
+        if (action.payload.toggle === 'liked') {
+          state.favoritePlaces.push(action.payload.place);
+          return;
+        }
+        state.favoritePlaces = state.favoritePlaces
+          .filter((favoritePlace) => favoritePlace.id !== action.payload.place.id);
       });
   },
 });

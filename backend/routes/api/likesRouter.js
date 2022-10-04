@@ -2,6 +2,7 @@ const likesRouter = require('express').Router();
 const { Like } = require('../../db/models');
 
 module.exports = likesRouter
+
   .get('/', async (req, res) => {
     try {
       const allLikes = await Like.findAll();
@@ -9,5 +10,24 @@ module.exports = likesRouter
       res.json(allLikes);
     } catch (error) {
       res.status(500).send(`${error.message}`);
+    }
+  })
+
+  .post('/', async (req, res) => {
+    try {
+      const { userId, articleId } = req.body;
+      const isLiked = await Like.findOne({
+        where: { userId, articleId },
+      });
+      if (isLiked) {
+        await Like.destroy({ where: { id: isLiked.id } });
+        res.json({ data: 'disliked' });
+      } else {
+        const likeCreated = await Like.create({ userId, articleId });
+        console.log(likeCreated);
+        res.json(likeCreated);
+      }
+    } catch (error) {
+      res.json({ error: error.message });
     }
   });
