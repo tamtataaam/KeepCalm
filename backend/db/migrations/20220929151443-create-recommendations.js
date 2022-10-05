@@ -14,7 +14,11 @@ module.exports = {
           model: 'Conditions',
         },
       },
-      recommendation: {
+      recommendationTitle: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      recommendationBody: {
         type: Sequelize.TEXT,
         allowNull: false,
       },

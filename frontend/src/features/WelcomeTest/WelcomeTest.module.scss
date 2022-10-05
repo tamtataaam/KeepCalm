@@ -1,12 +1,20 @@
 .main_container {
-  background-color: #8E97FD;
-  height: 100vh;
+  background-color: #8e97fd;
+  height: 100%;
+  padding-bottom: 100px;
+  margin: 0;
 }
 
 .container {
   width: 800px;
   margin: auto;
   text-align: center;
+  color: #ebeaec;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .test_description {
@@ -14,7 +22,9 @@
   padding-top: 50px;
   // color: #EBEAEC;
 }
-
+.rec_text {
+  font-size: 23px;
+}
 .test_preview {
   font-size: 25px;
   padding-top: 150px;
@@ -27,37 +37,50 @@
   padding-top: 50px;
 }
 
-.button{
+.button {
   cursor: pointer;
   margin: 10px 0;
   font-size: 20px;
   border: none;
-  background-color: #EBEAEC ;
+  background-color: #ebeaec;
   border-radius: 25px;
   width: 700px;
   height: 55px;
   transition: 0.4s;
-  color: #3F414E;
+  color: #3f414e;
 }
-.button:hover{
+.button:hover {
   box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
   background-color: #d3d2d2;
 }
-
-.resBnt{
+.button_more {
+  cursor: pointer;
+  margin: 10px 0;
+  margin-left: 500px;
+  font-size: 16px;
+  color: #3f414e;
+}
+.button_more:hover {
+  color: #ebeaec;
+}
+.resBnt {
   cursor: pointer;
   margin: 10px 0;
   font-size: 20px;
   border: none;
-  background-color: #EBEAEC ;
+  background-color: #ebeaec;
   border-radius: 25px;
   width: 400px;
   height: 55px;
   transition: 0.4s;
-  color: #3F414E;
+  color: #3f414e;
 }
-.resBnt:hover{
+.resBnt:hover {
   box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
   background-color: #d3d2d2;
 }
 
+.btn_container {
+  display: flex;
+  gap: 20px;
+}
