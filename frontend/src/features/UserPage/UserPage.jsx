@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadSmileyUserLk } from '../../store/moodSlice/moodSlice';
 
 import MoodGraph from '../MoodGraph/MoodGraph';
+import LastRecommend from './LastRecommend';
 import UserEdit from './UserEdit';
 import UserInfo from './UserInfo';
+// import Recommendations from '../WelcomeTest/Recommendations';
 import style from './UserPage.module.scss';
 
 function UserPage() {
@@ -27,6 +29,9 @@ function UserPage() {
             </div>
             <div className={style.graph_container}>
               <MoodGraph />
+            </div>
+            <div className={style.rec_and_fav_div}>
+              <LastRecommend />
             </div>
           </>
         ) : (

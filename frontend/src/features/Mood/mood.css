@@ -57,7 +57,7 @@
   border: none;
   background-color: #ebeaec;
   border-radius: 25px;
-  width: 400px;
+  width: 430px;
   height: 50px;
   transition: 0.4s;
   color: #3f414e;
@@ -74,7 +74,7 @@
   border: none;
   background-color: #ebeaec;
   border-radius: 25px;
-  width: 240px;
+  width: 260px;
   height: 50px;
   transition: 0.4s;
   color: #3f414e;
@@ -115,7 +115,7 @@
     margin-top: 50px;
     font-size: 15px;
     width: 270px;
-    height: 40px;
+    height: 50px;
   }
   .mood_btn2 {
     margin: 0;

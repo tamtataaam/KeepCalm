@@ -11,7 +11,7 @@ function WelcomePage() {
   const user = useSelector((store) => store.user.data);
   const navigate = useNavigate();
   // const dispatch = useDispatch();
-  console.log(user);
+  // console.log(user);
   // useEffect(() => {
   //   dispatch(loadUser());
   // }, [user]);

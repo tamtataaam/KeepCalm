@@ -42,7 +42,7 @@ function Mood() {
               type="button"
               onClick={() => navigate('/exercises')}
             >
-              Пропустить всё и перейти к упражениям
+              Пропустить и перейти к упражениям
             </button>
           </div>
         </>

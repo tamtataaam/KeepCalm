@@ -23,7 +23,7 @@ import CompositionPage from './CompositionPage';
 function SleepPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userName = useSelector((store) => store.user.data.name);
+  const user = useSelector((store) => store.user.data);
   const [flagtext, setFlagtext] = useState(true);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -54,7 +54,7 @@ function SleepPage() {
             sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
           >
             <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>
-              {userName}
+              {user.name}
             </Typography>
             <Tooltip title="Account settings">
               <IconButton
@@ -65,7 +65,8 @@ function SleepPage() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
               >
-                <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                <Avatar src={user.avatar} />
+
               </IconButton>
             </Tooltip>
           </Box>
