@@ -3,11 +3,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  loadAsyncExercises,
-  loadAllFavoriteExrcisesAsync,
-} from '../store/exercisesSlice/exerciseSlice';
-import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
+import { loadAllFavoriteExrcisesAsync } from '../store/exercisesSlice/exerciseSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import {
   loadSmiley,
@@ -43,14 +39,15 @@ import BreathExercise from './BreathExercise/BreathExercise';
 import TestRorshaha from './testRorshaha/testRorshaha';
 import SleepPage from './SleepPage/SleepPage';
 import PsychologistPage from './PsychologistPage/PsychologistPage';
-import LoadingPage from './LoadingPage/LoadingPage';
+// import LoadingPage from './LoadingPage/LoadingPage';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
+  // const { loading } = useSelector((store) => store.exercises);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadAsyncExercises());
-    dispatch(loadAsyncArticles());
+    // dispatch(loadAsyncExercises());
+    // dispatch(loadAsyncArticles());
     dispatch(loadUserDiaryNotesAsync());
     dispatch(loadUser());
     dispatch(loadSmiley());
@@ -61,6 +58,10 @@ function App() {
     dispatch(loadAllFavoriteExrcisesAsync());
     dispatch(loadRecomendationsAsync());
   }, []);
+
+  // if (loading) {
+  //   return <LoadingPage />;
+  // }
 
   return (
     <>
@@ -94,7 +95,6 @@ function App() {
           </Route>
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/sleep" element={<SleepPage />} />
-          <Route path="/loading" element={<LoadingPage />} />
         </Routes>
       ) : (
         <Routes>
@@ -102,7 +102,6 @@ function App() {
             <Route index element={<MainAuth />} />
             {/* <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} /> */}
-            <Route path="/loading" element={<LoadingPage />} />
           </Route>
         </Routes>
       )}

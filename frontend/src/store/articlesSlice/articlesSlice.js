@@ -7,6 +7,7 @@ const initialState = {
   favoriteArticles: [],
   favoriteArticlesActual: {},
   oneArticleInfo: null,
+  loading: true,
   error: null,
 };
 
@@ -77,27 +78,41 @@ const articlesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadAsyncArticles.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
+      .addCase(loadAsyncArticles.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(loadAsyncArticles.fulfilled, (state, action) => {
+        state.loading = false;
         state.articles = action.payload;
       })
       .addCase(oneArticleAsyncInfo.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
+      .addCase(oneArticleAsyncInfo.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(oneArticleAsyncInfo.fulfilled, (state, action) => {
+        state.loading = false;
         state.oneArticleInfo = action.payload;
       })
       .addCase(loadLikes.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
       .addCase(loadLikes.fulfilled, (state, action) => {
+        state.loading = false;
         state.favoriteArticles = action.payload;
       })
       .addCase(toggleLike.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
       .addCase(toggleLike.fulfilled, (state, action) => {
+        state.loading = false;
         if (action.payload.data) {
           state.favoriteArticles.push(action.payload.data);
           return;
