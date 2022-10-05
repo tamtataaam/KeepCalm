@@ -14,7 +14,7 @@ function PsychologistPage() {
               <a href="https://alter.ru/">
                 <img
                   className={style.img}
-                  src="https://hh.ru/employer-logo/3090361.png"
+                  src="/PsyhoPic/alter.png"
                   alt="..."
                 />
               </a>
@@ -27,7 +27,7 @@ function PsychologistPage() {
               <a href="https://bemeta.co/">
                 <img
                   className={style.img}
-                  src="https://thumb.tildacdn.com/tild6265-6437-4635-b039-393834316665/-/resize/300x/-/format/webp/_.jpg"
+                  src="/PsyhoPic/meta.webp"
                   alt="..."
                 />
               </a>
@@ -41,7 +41,7 @@ function PsychologistPage() {
               <a href="https://yasno.live/">
                 <img
                   className={style.img}
-                  src="https://assets.yasno.live/assets/logo-v2-de6780d553eeeefda3f75d92c1dd1261fea955ab39847ae64d7bdfdc475496f1.svg"
+                  src="/PsyhoPic/yasno.svg"
                   alt="..."
                 />
               </a>
@@ -60,7 +60,7 @@ function PsychologistPage() {
               <a href="https://youtalk.ru/">
                 <img
                   className={style.img}
-                  src="https://youtalk.ru/img/icons/home-decor/home-decor.svg"
+                  src="/PsyhoPic/youtalk.svg"
                   alt="..."
                 />
               </a>
@@ -77,7 +77,7 @@ function PsychologistPage() {
                 <img
                   style={{ paddingTop: '50px', borderRadius: '0px' }}
                   className={style.img}
-                  src="https://static.tildacdn.com/tild6365-3331-4639-b262-353931663031/logo_main_1.svg"
+                  src="/PsyhoPic/zigmund.svg"
                   alt="..."
                 />
               </a>
@@ -93,7 +93,7 @@ function PsychologistPage() {
                 <img
                   style={{ paddingTop: '90px', borderRadius: '0px' }}
                   className={style.img}
-                  src="https://psypsy.online/wp-content/themes/psypsy/images/tild3862-6538-4163-b361-376131663766__photo.png"
+                  src="/PsyhoPic/psy.png"
                   alt="..."
                 />
               </a>

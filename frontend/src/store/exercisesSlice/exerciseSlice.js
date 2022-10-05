@@ -8,6 +8,7 @@ const initialState = {
   favoriteExercise: [],
   favoriteExerciseActual: {},
   oneExerciseInfo: null,
+  loading: true,
   error: null,
 };
 
@@ -77,27 +78,38 @@ const exercisesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadAsyncExercises.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
+      .addCase(loadAsyncExercises.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(loadAsyncExercises.fulfilled, (state, action) => {
+        state.loading = false;
         state.allExercises = action.payload;
       })
       .addCase(oneExerciseAsyncInfo.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
       .addCase(oneExerciseAsyncInfo.fulfilled, (state, action) => {
+        state.loading = false;
         state.oneExerciseInfo = action.payload;
       })
       .addCase(loadAllFavoriteExrcisesAsync.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
       .addCase(loadAllFavoriteExrcisesAsync.fulfilled, (state, action) => {
+        state.loading = false;
         state.favoriteExercise = action.payload;
       })
       .addCase(addToFavoriteAsync.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
       .addCase(addToFavoriteAsync.fulfilled, (state, action) => {
+        state.loading = false;
         if (action.payload.status) {
           state.favoriteExercise.push(action.payload);
           state.favoriteExerciseActual = action.payload;

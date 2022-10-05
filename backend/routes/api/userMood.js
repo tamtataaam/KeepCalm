@@ -32,7 +32,7 @@ userMoodrout
           where: { userId: user.id, id: findActualSmile[0].id },
         });
       }
-      res.json({ data: newSmiley });
+      res.json(newSmiley);
     } catch (error) {
       res.json({ error: error.message });
     }

@@ -26,9 +26,7 @@ function UserEdit({ user, setInfo }) {
   };
   const photoAdd = async (e) => {
     const picturesData = [...e.target.files];
-    // console.log(picturesData);
     const data = new FormData();
-
     picturesData.forEach((img) => {
       data.append('homesImg', img);
     });
