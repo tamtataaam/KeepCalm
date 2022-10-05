@@ -83,7 +83,7 @@ function App() {
             <Route path="/addchat" element={<AddChatPage />} />
             <Route path="/userdiary" element={<UserDiary />} />
             <Route path="/welcometest" element={<WelcomeTest />} />
-            <Route path="/testrorshaha" element={<TestRorshaha />} />
+            <Route path="/rorschachtest" element={<TestRorshaha />} />
 
             <Route
               path="/welcometest/recommendations"
