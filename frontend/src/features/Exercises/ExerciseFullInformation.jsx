@@ -25,50 +25,26 @@ function ExerciseFullInformation() {
           ← Вернуться к заданиям
         </Link>
         {oneExerciseInfo !== null ? (
-          <>
-            <div key={id} className={style.exercise_container_individual}>
-              {/* <h2 className={style.ex_h2}>{oneExerciseInfo.title}</h2> */}
-              <img
-                className={style.exercise_img_individual}
-                src={`/${oneExerciseInfo.imageUrl}`}
-                alt={oneExerciseInfo.title}
-              />
-              <div className={style.diary_discription}>
-                {oneExerciseInfo.description}
-              </div>
-
-              <button
-                className={style.button}
-                type="button"
-                onClick={() => {
-                  navigate(oneExerciseInfo.url);
-                }}
-              >
-                Приступить
-              </button>
+          <div key={id} className={style.exercise_container_individual}>
+            <img
+              className={style.exercise_img_individual}
+              src={`/${oneExerciseInfo.imageUrl}`}
+              alt={oneExerciseInfo.title}
+            />
+            <div className={style.diary_discription}>
+              {oneExerciseInfo.description}
             </div>
 
-            {/* {oneExerciseInfo.id !== 1 ? (
-              <Link to="/exercises">
-                ← Вернуться к заданиям
-              </Link>
-            ) : (
-              <div className={style.diary_buttons}>
-                <Link to="/exercises">
-                  ← Вернуться к заданиям
-                </Link>
-                <button
-                  className={style.button}
-                  type="button"
-                  onClick={() => {
-                    navigate('/userdiary');
-                  }}
-                >
-                  Приступить
-                </button>
-              </div>
-            )} */}
-          </>
+            <button
+              className={style.button}
+              type="button"
+              onClick={() => {
+                navigate(oneExerciseInfo.url);
+              }}
+            >
+              Приступить
+            </button>
+          </div>
         ) : (
           <LoadingPage />
         )}
