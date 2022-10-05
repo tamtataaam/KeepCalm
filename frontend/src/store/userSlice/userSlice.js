@@ -103,6 +103,17 @@ const passwordEdit = createAsyncThunk('user/passwordEdit',
     return data.status;
   });
 
+const addPhoto = createAsyncThunk('user/photo',
+  async (photo) => {
+    console.log(photo);
+    const response = await fetch('useredit/photo', {
+      method: 'PUT',
+      body: photo,
+    });
+    const data = await response.json();
+    console.log(data);
+  });
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -169,4 +180,4 @@ export default userSlice.reducer;
 
 export const { disableHelpMessage } = userSlice.actions;
 
-export { loadUser, regUser, logUser, logoutUser, EditInfo, passwordEdit };
+export { loadUser, regUser, logUser, logoutUser, EditInfo, passwordEdit, addPhoto };
