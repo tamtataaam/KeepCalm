@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   moodSmiley: [],
   moodSmileyGraph: [],
-  userMood: null,
+  userMood: [],
   error: null,
 };
 
