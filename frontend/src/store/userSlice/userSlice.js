@@ -86,8 +86,7 @@ const EditInfo = createAsyncThunk('user/EditInfo',
     });
     const data = await response.json();
     return data;
-});
-
+  });
 
 const passwordEdit = createAsyncThunk('user/passwordEdit',
   async (pass) => {
@@ -101,8 +100,7 @@ const passwordEdit = createAsyncThunk('user/passwordEdit',
       throw new Error(data.message);
     }
     return data.status;
-});
-
+  });
 
 const addPhoto = createAsyncThunk('user/photo',
   async (photo) => {
@@ -112,8 +110,7 @@ const addPhoto = createAsyncThunk('user/photo',
     });
     const data = await response.json();
     return data.avatar;
-});
-
+  });
 
 const userSlice = createSlice({
   name: 'user',

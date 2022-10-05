@@ -27,7 +27,6 @@ ChartJS.register(
 
 function MoodGraph() {
   const userMood = useSelector((state) => state.mood.userMood);
-  console.log(userMood);
   const userMoodDate = userMood?.map((el) => el.createdAt.slice(5, 10));
   const userMoodId = userMood?.map((el) => el.moodId);
 

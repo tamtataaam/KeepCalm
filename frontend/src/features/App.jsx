@@ -82,6 +82,7 @@ function App() {
             <Route path="/userdiary" element={<UserDiary />} />
             <Route path="/welcometest" element={<WelcomeTest />} />
             <Route path="/rorschachtest" element={<TestRorshaha />} />
+            <Route path="*" element={<ErrorPage />} />
 
             <Route
               path="/welcometest/recommendations"
@@ -93,13 +94,12 @@ function App() {
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/sleep" element={<SleepPage />} />
           <Route path="/testpreview" element={<TestPreview />} />
-          <Route path="*" element={<ErrorPage />} />
         </Routes>
       ) : (
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainAuth />} />
-            <Route path="*" element={<ErrorPage />} />
+            {/* <Route path="*" element={<ErrorPage />} /> */}
             {/* <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} /> */}
           </Route>

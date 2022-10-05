@@ -7,7 +7,7 @@ const storage = async (file) => {
 
   const extension = path.extname(fileName);
 
-  const allowedExtensions = /png|jpeg|jpg|gif|webp/;
+  const allowedExtensions = /png|jpeg|jpg|gif|webp/gi;
 
   if (!allowedExtensions.test(extension)) throw new Error('Unsupported extension !');
 
