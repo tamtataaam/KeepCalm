@@ -43,6 +43,7 @@ import BreathExercise from './BreathExercise/BreathExercise';
 import TestRorshaha from './testRorshaha/testRorshaha';
 import SleepPage from './SleepPage/SleepPage';
 import PsychologistPage from './PsychologistPage/PsychologistPage';
+import LoadingPage from './LoadingPage/LoadingPage';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
@@ -98,6 +99,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainAuth />} />
+            <Route path="/loading" element={<LoadingPage />} />
             {/* <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} /> */}
           </Route>
