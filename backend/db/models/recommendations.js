@@ -31,7 +31,11 @@ module.exports = (sequelize, DataTypes) => {
           model: 'Conditions',
         },
       },
-      recommendation: {
+      recommendationTitle: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      recommendationBody: {
         type: DataTypes.TEXT,
         allowNull: false,
       },

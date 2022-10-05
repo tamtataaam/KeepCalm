@@ -1,7 +1,10 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loadLastConditionAsync } from '../../store/welcomeTestSlice/welcomeTestSlice';
+import LoadingPage from '../LoadingPage/LoadingPage';
+import RecommendationOne from './RecommendationOne';
 import style from './WelcomeTest.module.scss';
 
 function Recommendations() {
@@ -19,31 +22,13 @@ function Recommendations() {
     <div className={style.main_container}>
       <div>
         {!lastCondition ? (
-          <div className={style.container}>
-            <h1 className={style.h1}>
-              Чтобы узнать ваше состояние пройдите тест
-            </h1>
-            <button
-              className={style.resBnt}
-              type="button"
-              onClick={() => navigate('/welcometest')}
-            >
-              Пройти тест
-            </button>
-            <button
-              className={style.resBnt}
-              type="button"
-              onClick={() => navigate('/exercises')}
-            >
-              Перейти к упражнениям
-            </button>
-          </div>
+          <LoadingPage />
         ) : (
           <div className={style.container}>
             <h1 className={style.h1}>Ваш последний результат</h1>
             <h2>{lastCondition.condition}</h2>
             {recommendations.map((recommendation) => (
-              <div key={recommendation.id}>{recommendation.recommendation}</div>
+              <RecommendationOne recommendation={recommendation} />
             ))}
             <button
               className={style.resBnt}
