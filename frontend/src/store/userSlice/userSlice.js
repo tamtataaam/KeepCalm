@@ -84,7 +84,7 @@ const EditInfo = createAsyncThunk('user/EditInfo',
       body: JSON.stringify(info)
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
   });
 
@@ -96,7 +96,7 @@ const passwordEdit = createAsyncThunk('user/passwordEdit',
       body: JSON.stringify(pass)
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (data.message) {
       throw new Error(data.message);
     }
@@ -105,7 +105,7 @@ const passwordEdit = createAsyncThunk('user/passwordEdit',
 
 const addPhoto = createAsyncThunk('user/photo',
   async (photo) => {
-    console.log(photo);
+    // console.log(photo);
     const response = await fetch('useredit/photo', {
       method: 'PUT',
       body: photo,

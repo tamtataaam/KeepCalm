@@ -94,14 +94,15 @@ function App() {
           </Route>
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/sleep" element={<SleepPage />} />
+          <Route path="/loading" element={<LoadingPage />} />
         </Routes>
       ) : (
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainAuth />} />
-            <Route path="/loading" element={<LoadingPage />} />
             {/* <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} /> */}
+            <Route path="/loading" element={<LoadingPage />} />
           </Route>
         </Routes>
       )}

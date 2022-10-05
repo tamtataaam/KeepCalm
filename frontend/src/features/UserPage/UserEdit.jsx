@@ -29,8 +29,8 @@ function UserEdit({ user, setInfo }) {
     const picturesData = [...e.target.files];
     const data = new FormData();
     data.append('homesImg', picturesData);
-    console.log(picturesData);
-    console.log(data);
+    // console.log(picturesData);
+    // console.log(data);
     dispatch(addPhoto(data));
     // fetch('/photos', {
     //   method: 'POST',
