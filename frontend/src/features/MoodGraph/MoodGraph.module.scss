@@ -3,19 +3,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   background-color: white;
   border-radius: 20px;
+  height: 440px;
   // margin: 15px ;
 }
 
 .graph {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 50vw;
-  min-width: 330px;
-  
+  // align-items: center;
+  // min-width: 330px;
+  width: 700px;
 }
 
 .smiles_container {

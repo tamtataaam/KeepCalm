@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Avatar from '@mui/material/Avatar';
 import { EditInfo, passwordEdit, addPhoto } from '../../store/userSlice/userSlice';
-import style from './UserPage.module.scss';
+// import style from './UserPage.module.scss';
 
 function UserEdit({ setInfo }) {
   const helpMessage = useSelector((state) => state.user.helpMessage);
@@ -41,7 +42,9 @@ function UserEdit({ setInfo }) {
     <div>
       <div>
 
-        <img className={style.userPhoto} src={user.avatar} alt="avatar" />
+        <Avatar src={user.avatar} sx={{ width: '250px', height: '250px' }} />
+
+        {/* <img className={style.userPhoto} src={user.avatar} alt="avatar" /> */}
 
         <div className="divPhotos">
           <input className="file-path validate" onChange={photoAdd} type="file" multiple autoComplete="off" />
