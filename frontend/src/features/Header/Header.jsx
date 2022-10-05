@@ -52,7 +52,7 @@ function Header() {
           <Box
             sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
           >
-            <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>
+            <Typography className={style.user_name} style={{ color: 'white' }} sx={{ minWidth: 10 }}>
               {user.name}
             </Typography>
             <Tooltip title="Account settings">
