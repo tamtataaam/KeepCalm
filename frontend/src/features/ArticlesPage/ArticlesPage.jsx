@@ -1,10 +1,21 @@
 /* eslint-disable max-len */
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Article from './Article';
+import { loadAsyncArticles } from '../../store/articlesSlice/articlesSlice';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 function ArticlesPage() {
-  const { articles } = useSelector((store) => store.articles);
+  const { articles, loading } = useSelector((store) => store.articles);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadAsyncArticles());
+  }, []);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <>

@@ -76,39 +76,44 @@ const logoutUser = createAsyncThunk('user/logoutUser', () =>
     })
 );
 
-const EditInfo = createAsyncThunk('user/EditInfo', async (info) => {
-  const response = await fetch('/useredit/info', {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(info),
-  });
-  const data = await response.json();
-  console.log(data);
-  return data;
+const EditInfo = createAsyncThunk('user/EditInfo',
+  async (info) => {
+    const response = await fetch('/useredit/info', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(info)
+    });
+    const data = await response.json();
+    // console.log(data);
+    return data;
 });
 
-const passwordEdit = createAsyncThunk('user/passwordEdit', async (pass) => {
-  const response = await fetch('useredit/password', {
-    method: 'PUT',
-    headers: { 'Content-type': 'application/json' },
-    body: JSON.stringify(pass),
-  });
-  const data = await response.json();
 
-  if (data.message) {
-    throw new Error(data.message);
-  }
-  return data.status;
+const passwordEdit = createAsyncThunk('user/passwordEdit',
+  async (pass) => {
+    const response = await fetch('useredit/password', {
+      method: 'PUT',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(pass)
+    });
+    const data = await response.json();
+    // console.log(data);
+    if (data.message) {
+      throw new Error(data.message);
+    }
+    return data.status;
 });
 
-const addPhoto = createAsyncThunk('user/photo', async (photo) => {
-  console.log(photo);
-  const response = await fetch('useredit/photo', {
-    method: 'PUT',
-    body: photo,
-  });
-  const data = await response.json();
-  console.log(data);
+
+const addPhoto = createAsyncThunk('user/photo',
+  async (photo) => {
+    // console.log(photo);
+    const response = await fetch('useredit/photo', {
+      method: 'PUT',
+      body: photo,
+    });
+    const data = await response.json();
+    console.log(data);
 });
 
 const userSlice = createSlice({

@@ -3,11 +3,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  loadAsyncExercises,
-  loadAllFavoriteExrcisesAsync,
-} from '../store/exercisesSlice/exerciseSlice';
-import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
+import { loadAllFavoriteExrcisesAsync } from '../store/exercisesSlice/exerciseSlice';
 import { loadUser } from '../store/userSlice/userSlice';
 import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
 import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
@@ -39,14 +35,17 @@ import BreathExercise from './BreathExercise/BreathExercise';
 import TestRorshaha from './testRorshaha/testRorshaha';
 import SleepPage from './SleepPage/SleepPage';
 import PsychologistPage from './PsychologistPage/PsychologistPage';
-import LoadingPage from './LoadingPage/LoadingPage';
+import TestPreview from './WelcomeTest/TestPreview';
+import ErrorPage from './ErrorPage/ErrorPage';
+// import LoadingPage from './LoadingPage/LoadingPage';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
+  // const { loading } = useSelector((store) => store.exercises);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadAsyncExercises());
-    dispatch(loadAsyncArticles());
+    // dispatch(loadAsyncExercises());
+    // dispatch(loadAsyncArticles());
     dispatch(loadUserDiaryNotesAsync());
     dispatch(loadUser());
     dispatch(loadSmiley());
@@ -56,6 +55,10 @@ function App() {
     dispatch(loadAllFavoriteExrcisesAsync());
     dispatch(loadRecomendationsAsync());
   }, []);
+
+  // if (loading) {
+  //   return <LoadingPage />;
+  // }
 
   return (
     <>
@@ -89,12 +92,14 @@ function App() {
           </Route>
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/sleep" element={<SleepPage />} />
+          <Route path="/testpreview" element={<TestPreview />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       ) : (
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainAuth />} />
-            <Route path="/loading" element={<LoadingPage />} />
+            <Route path="*" element={<ErrorPage />} />
             {/* <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} /> */}
           </Route>
