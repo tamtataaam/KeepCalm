@@ -41,9 +41,13 @@ module.exports = userrecomendationsstoreRouter
             order: [['id', 'DESC']],
             raw: true,
           });
-        const recommendationsLast = allRecomendationsForUser
-          .slice(0, 3)
-          .map((el) => el.recommendationId);
+        let recommendationsLast;
+
+        setTimeout(() => {
+          recommendationsLast = allRecomendationsForUser
+            .slice(0, 3)
+            .map((el) => el.recommendationId);
+        }, 500);
         const recomendations = await Recommendation.findAll({
           where: {
             id: {
