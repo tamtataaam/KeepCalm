@@ -120,16 +120,8 @@ function SleepPage() {
 
       <div
         className={style.instruction}
-        style={!flagtext ? { display: 'none' } : {}}
+        style={!flagtext ? { color: '#8e97fd' } : { color: '#ebeaec' }}
       >
-        Выберите тот звук, который наиболее вам приятен и погрузитесь в
-        безмятежность
-      </div>
-      <div
-        className={style.instruction}
-        style={!flagtext ? { color: '#8e97fd' } : { display: 'none' }}
-      >
-        {' '}
         Выберите тот звук, который наиболее вам приятен и погрузитесь в
         безмятежность
       </div>

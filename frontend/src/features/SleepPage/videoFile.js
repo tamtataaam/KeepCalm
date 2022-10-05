@@ -5,7 +5,7 @@ export const videos = [
     path: 'SleepVideos/lyaguhi.mp4',
   },
   {
-    path: 'SleepVideos/sverchki.mp4',
+    path: 'SleepVideos/dozd.mp4',
   },
   {
     path: 'SleepVideos/sverchki.mp4',
