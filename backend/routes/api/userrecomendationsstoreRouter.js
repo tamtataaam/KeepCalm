@@ -35,37 +35,28 @@ module.exports = userrecomendationsstoreRouter
         const lastCondition =
           allConditionsUser[allConditionsUser.length - 1].conditionId;
         const findLast = await Condition.findByPk(lastCondition);
-        res.json({ findLast, status: true });
+        const allRecomendationsForUser =
+          await PersonalRecomendationStore.findAll({
+            where: { userId: id },
+            order: [['id', 'DESC']],
+            raw: true,
+          });
+        const recommendationsLast = allRecomendationsForUser
+          .slice(0, 3)
+          .map((el) => el.recommendationId);
+        const recomendations = await Recommendation.findAll({
+          where: {
+            id: {
+              [Op.in]: recommendationsLast,
+            },
+          },
+          raw: true,
+        });
+
+        res.json({ findLast, recomendations, status: true });
       } else {
         res.json({ status: false });
       }
-    } catch (error) {
-      res.status(500).send(`${error.message}`);
-    }
-  })
-  .get('/currentrecomendations', async (req, res) => {
-    try {
-      const { id } = req.session.user;
-      const allRecomendationsForUser = await PersonalRecomendationStore.findAll(
-        {
-          where: { userId: id },
-          order: [['id', 'DESC']],
-          raw: true,
-        }
-      );
-      const recommendationsLast = allRecomendationsForUser
-        .slice(0, 3)
-        .map((el) => el.recommendationId);
-      const recomendations = await Recommendation.findAll({
-        where: {
-          id: {
-            [Op.in]: recommendationsLast,
-          },
-        },
-        raw: true,
-      });
-
-      res.json(recomendations);
     } catch (error) {
       res.status(500).send(`${error.message}`);
     }

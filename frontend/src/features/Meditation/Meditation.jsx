@@ -35,7 +35,6 @@ function Meditation() {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(currentTime);
     progressBar.current.max = seconds;
-    // TimerNull();
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState, progressBar?.current?.value]);
 
   const TimerNull = () => audioPlayer.current.duration - progressBar.current.value;

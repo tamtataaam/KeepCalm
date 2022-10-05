@@ -29,6 +29,15 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        name: 'Admin',
+        email: 'admin2@admin.ru',
+        password:
+          '$2b$10$6RQVQVrtEUn9NFmVpCF2o./Qcrv0sEZYOHMqQHDWCLdTAZj1pBYBm',
+        secretWord: 'user',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 

@@ -104,7 +104,7 @@ const userDiarySlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addOneNoteAsync.fulfilled, (state, action) => {
-        state.allnotes.push(action.payload);
+        state.allnotes.unshift(action.payload);
       })
       .addCase(changeOneNoteAsync.rejected, (state, action) => {
         state.error = action.error.message;
