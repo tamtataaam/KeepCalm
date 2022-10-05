@@ -9,11 +9,7 @@ import {
 } from '../store/exercisesSlice/exerciseSlice';
 import { loadAsyncArticles } from '../store/articlesSlice/articlesSlice';
 import { loadUser } from '../store/userSlice/userSlice';
-import {
-  loadSmiley,
-  addSmiley,
-  loadSmileyUserLk,
-} from '../store/moodSlice/moodSlice';
+import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
 import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
 import {
@@ -56,7 +52,6 @@ function App() {
     dispatch(loadSmiley());
     dispatch(addSmiley());
     dispatch(loadChats());
-    dispatch(loadSmileyUserLk());
     dispatch(loadCondsitionAsync());
     dispatch(loadAllFavoriteExrcisesAsync());
     dispatch(loadRecomendationsAsync());

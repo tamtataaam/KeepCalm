@@ -27,6 +27,7 @@ ChartJS.register(
 
 function MoodGraph() {
   const userMood = useSelector((state) => state.mood.userMood);
+  console.log(userMood);
   const userMoodDate = userMood?.map((el) => el.createdAt.slice(5, 10));
   const userMoodId = userMood?.map((el) => el.moodId);
 
@@ -57,15 +58,15 @@ function MoodGraph() {
       y: {
         ticks: {
           stepSize: 1,
-        }
-      }
-    }
+        },
+      },
+    },
   };
 
   return (
     <div className={style.main_container}>
       <div className={style.graph}>
-        {(userMoodDate && userMoodId) ? (
+        {userMoodDate.length && userMoodId.length ? (
           <Line data={mydata} options={options} />
         ) : (
           <LoadingPage />

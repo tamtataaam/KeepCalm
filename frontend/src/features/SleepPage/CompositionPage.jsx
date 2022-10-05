@@ -5,11 +5,12 @@ import { videos } from './videoFile';
 import style from './SleepPage.module.scss';
 
 function CompositionPage({ composition, change }) {
+  const [id, setIndex] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioPlayer = useRef(); // reference our audio component
 
   const togglePlayPause = () => {
-    const prevValue = isPlaying;
+    const prevValue = id;
     setIsPlaying(!prevValue);
     if (!prevValue) {
       audioPlayer.current.play();
@@ -36,6 +37,7 @@ function CompositionPage({ composition, change }) {
             onClick={() => {
               togglePlayPause();
               change(isPlaying);
+              setIndex(composition.id);
             }}
             className={style.playPause_sounds}
           >

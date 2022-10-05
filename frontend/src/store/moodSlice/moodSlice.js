@@ -2,8 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   moodSmiley: [],
-  moodSmileyGraph: [],
-  userMood: null,
+  userMood: [],
   error: null,
 };
 
@@ -35,6 +34,7 @@ const addSmiley = createAsyncThunk('mood/addSmiley', async (smiley) => {
     throw error;
   } else {
     const data = await response.json();
+
     return data.data;
   }
 });
@@ -62,9 +62,6 @@ const moodSlice = createSlice({
       })
       .addCase(addSmiley.rejected, (state, action) => {
         state.error = action.error.message;
-      })
-      .addCase(addSmiley.fulfilled, (state, action) => {
-        state.userMood.push(action.payload);
       })
       .addCase(loadSmileyUserLk.rejected, (state, action) => {
         state.error = action.error.message;
