@@ -178,7 +178,10 @@ function Meditation() {
         </div>
       </div>
       <div className={style.audioPlayer}>
-        <p>{ audioPlayer.current ? calculateTime(TimerNull()) : '00:00'}</p>
+        <h1 className={style.timerH1}>
+          { audioPlayer.current
+            ? calculateTime(TimerNull()) : '24:06'}
+        </h1>
         <audio ref={audioPlayer} className={style.audio} controls src="Meditation.mp3">
           <track kind="captions" />
         </audio>
@@ -210,7 +213,7 @@ function Meditation() {
           </div>
         </div>
 
-        <div className={style.currentTime}>{calculateTime(currentTime)}</div>
+        {/* <div className={style.currentTime}>{calculateTime(currentTime)}</div> */}
         <input
           type="range"
           className={style.progressBar}
