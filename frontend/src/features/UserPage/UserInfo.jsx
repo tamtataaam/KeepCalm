@@ -1,4 +1,5 @@
 import React from 'react';
+// , { useState }
 // import { NavLink } from 'react-router-dom';
 import style from './UserPage.module.scss';
 
@@ -6,9 +7,7 @@ function UserInfo({ user, setInfo }) {
   return (
     <div className={style.user_info_container}>
       <div>
-        {(user && user.photo)
-          ? <img src={user.photo} alt="avatar" />
-          : <img src="no_avatar.webp" alt="avatar" />}
+        <img src={user.avatar} alt="avatar" />
       </div>
 
       <div>

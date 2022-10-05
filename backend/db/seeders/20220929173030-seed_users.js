@@ -17,6 +17,7 @@ module.exports = {
         password:
           '$2b$10$rhbXKBH97asPOBEIbQobAeYSW/RfdqPCfA5Op1hepLohq1GqyqmeC',
         secretWord: 'user',
+        avatar: 'no_avatar.webp',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -26,6 +27,7 @@ module.exports = {
         password:
           '$2b$10$rhbXKBH97asPOBEIbQobAeYSW/RfdqPCfA5Op1hepLohq1GqyqmeC',
         secretWord: 'user',
+        avatar: 'no_avatar.webp',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -35,6 +37,7 @@ module.exports = {
         password:
           '$2b$10$6RQVQVrtEUn9NFmVpCF2o./Qcrv0sEZYOHMqQHDWCLdTAZj1pBYBm',
         secretWord: 'user',
+        avatar: 'no_avatar.webp',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

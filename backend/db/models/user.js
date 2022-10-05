@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         PersonalRecomendationStore,
         {
           foreignKey: 'userId',
-        }
+        },
       );
       User.hasMany(UserDiary, { foreignKey: 'userId' });
     }
@@ -73,6 +73,10 @@ module.exports = (sequelize, DataTypes) => {
       status: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
+      },
+      avatar: {
+        type: DataTypes.TEXT,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
