@@ -50,13 +50,13 @@ userEditRouter.put('/password', async (req, res) => {
   }
 });
 
-userEditRouter.put('/photo', async (req, res) => {
-  const file = req.body;
-  console.log(req.body);
+userEditRouter.put('/photo/:id', async (req, res) => {
+  const { id } = req.params;
+  const file = req.files;
   const url = await storageFileupload(file);
-
-  const newPhoto = await User.create({ name: url });
-  res.json(newPhoto);
+  await User.update({ avatar: url }, { where: { id } });
+  const user = await User.findOne({ where: { id }, raw: true });
+  res.json(user);
 });
 
 module.exports = userEditRouter;

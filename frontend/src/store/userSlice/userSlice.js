@@ -5,6 +5,7 @@ const initialState = {
     id: null,
     name: null,
     email: null,
+    avatar: null,
   },
   isUser: null,
   helpMessage: null,
@@ -84,7 +85,6 @@ const EditInfo = createAsyncThunk('user/EditInfo',
       body: JSON.stringify(info)
     });
     const data = await response.json();
-    console.log(data);
     return data;
   });
 
@@ -96,7 +96,6 @@ const passwordEdit = createAsyncThunk('user/passwordEdit',
       body: JSON.stringify(pass)
     });
     const data = await response.json();
-    console.log(data);
     if (data.message) {
       throw new Error(data.message);
     }
@@ -105,13 +104,12 @@ const passwordEdit = createAsyncThunk('user/passwordEdit',
 
 const addPhoto = createAsyncThunk('user/photo',
   async (photo) => {
-    console.log(photo);
-    const response = await fetch('useredit/photo', {
+    const response = await fetch(`useredit/photo/${photo.id}`, {
       method: 'PUT',
-      body: photo,
+      body: photo.file,
     });
     const data = await response.json();
-    console.log(data);
+    return data.avatar;
   });
 
 const userSlice = createSlice({
@@ -132,6 +130,7 @@ const userSlice = createSlice({
         state.data.id = action.payload.id;
         state.data.name = action.payload.name;
         state.data.email = action.payload.email;
+        state.data.avatar = action.payload.avatar;
       })
       .addCase(regUser.rejected, (state, action) => {
         state.helpMessage = action.error.message;
@@ -148,6 +147,7 @@ const userSlice = createSlice({
         state.data.id = action.payload.id;
         state.data.name = action.payload.name;
         state.data.email = action.payload.email;
+        state.data.avatar = action.payload.avatar;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.error = action.error.message;
@@ -172,6 +172,12 @@ const userSlice = createSlice({
       })
       .addCase(passwordEdit.fulfilled, (state) => {
         state.helpMessage = 'Пароль успешно изменён!';
+      })
+      .addCase(addPhoto.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(addPhoto.fulfilled, (state, action) => {
+        state.data.avatar = action.payload;
       });
   }
 });

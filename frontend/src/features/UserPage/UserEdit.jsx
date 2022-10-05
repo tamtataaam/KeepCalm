@@ -7,7 +7,6 @@ function UserEdit({ user, setInfo }) {
   const dispatch = useDispatch();
   const EditUser = (e) => {
     e.preventDefault();
-
     const info = {
       name: e.target.name.value,
       email: e.target.email.value,
@@ -27,25 +26,21 @@ function UserEdit({ user, setInfo }) {
   };
   const photoAdd = async (e) => {
     const picturesData = [...e.target.files];
+    // console.log(picturesData);
     const data = new FormData();
-    data.append('homesImg', picturesData);
-    console.log(picturesData);
-    console.log(data);
-    dispatch(addPhoto(data));
-    // fetch('/photos', {
-    //   method: 'POST',
-    //   body: data
-    // })
-    //   .then((res) => res.json())
-    //   .then((r) => dispatch(addPhoto(r)));
+
+    picturesData.forEach((img) => {
+      data.append('homesImg', img);
+    });
+    dispatch(addPhoto({ file: data, id: user.id }));
   };
 
   return (
     <>
       <div>
-        {(user && user.photo)
-          ? <img src={user.photo} alt="avatar" />
-          : <img src="no_avatar.webp" alt="avatar" />}
+
+        <img src={user.avatar} alt="avatar" />
+
         <div className="divPhotos">
           <input className="file-path validate" onChange={photoAdd} type="file" multiple autoComplete="off" />
         </div>

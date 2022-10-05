@@ -2,9 +2,9 @@ const path = require('path');
 const util = require('util');
 
 const storage = async (file) => {
-  const fileName = file.name;
-  console.log(fileName);
-  const size = file.data;
+  const fileName = file.homesImg.name;
+  const size = file.homesImg.data;
+
   const extension = path.extname(fileName);
 
   const allowedExtensions = /png|jpeg|jpg|gif|webp/;
@@ -15,10 +15,10 @@ const storage = async (file) => {
     throw new Error('File must be less than 5MB');
   }
 
-  const { md5 } = file;
+  const { md5 } = file.homesImg;
 
   const URL = `/photos/${md5}${extension}`;
-  await util.promisify(file.mv)(`./public${URL}`);
+  await util.promisify(file.homesImg.mv)(`./public${URL}`);
   return URL;
 };
 
