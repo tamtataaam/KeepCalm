@@ -8,6 +8,13 @@ function TestRorshaha() {
   const [startQustion, setQuestion] = useState(true);
   const [nextQuestion, setQuestionNext] = useState(1);
 
+  const testRorshahaSubmit = (event) => {
+    event.preventDefault();
+    const answerUser = event.target.answerUser.value;
+    console.log(answerUser);
+    event.target.reset();
+  };
+
   const nextImgDisplay = testRorshahaImg.filter(
     (el) => +el.id === nextQuestion
   );
@@ -51,15 +58,16 @@ function TestRorshaha() {
                 src={displayRorshahaImg}
                 alt="изображение 1"
               />
-
-              <input type="text" />
-              <button
-                type="button"
-                onClick={() => setQuestionNext((prev) => prev + 1)}
-                className={style.button}
-              >
-                Следующий вопрос
-              </button>
+              <form onSubmit={testRorshahaSubmit}>
+                <input type="text" name="answerUser" />
+                <button
+                  type="submit"
+                  onClick={() => setQuestionNext((prev) => prev + 1)}
+                  className={style.button}
+                >
+                  Следующий вопрос
+                </button>
+              </form>
             </div>
           )}
         </div>
