@@ -58,7 +58,7 @@ function App() {
       dispatch(loadAllFavoriteExrcisesAsync());
       dispatch(loadRecomendationsAsync());
     }
-  }, [dispatch, isUser]);
+  }, [isUser]);
 
   if (isUser === null) {
     return <LoadingPage />;
@@ -86,6 +86,7 @@ function App() {
             <Route path="/userdiary" element={<UserDiary />} />
             <Route path="/welcometest" element={<WelcomeTest />} />
             <Route path="/rorschachtest" element={<TestRorshaha />} />
+            <Route path="/testpreview" element={<TestPreview />} />
             <Route path="*" element={<ErrorPage />} />
 
             <Route
@@ -97,7 +98,6 @@ function App() {
           </Route>
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/sleep" element={<SleepPage />} />
-          <Route path="/testpreview" element={<TestPreview />} />
         </Routes>
       ) : (
         <Routes>
