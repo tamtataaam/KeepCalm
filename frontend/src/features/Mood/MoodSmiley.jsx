@@ -38,13 +38,6 @@ function Mood() {
           <div className="button_box">
             {' '}
             <button
-              className="mood_btn2"
-              type="button"
-              onClick={() => navigate('/testpreview')}
-            >
-              Далее
-            </button>
-            <button
               className="mood_btn1"
               type="button"
               onClick={() => navigate('/exercises')}
