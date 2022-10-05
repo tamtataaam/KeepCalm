@@ -55,7 +55,7 @@ export const addScoreAsync = createAsyncThunk(
 export const loadLastConditionAsync = createAsyncThunk(
   'conditions/loadLastConditionAsync',
   async () => {
-    const response = await fetch('/welcometest/recommendations');
+    const response = await fetch('/api/welcometest/recommendations');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;

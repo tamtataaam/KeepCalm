@@ -120,15 +120,13 @@ module.exports = welcometestScoreRouter
         raw: true,
       });
       if (allConditionsUser) {
-        const lastCondition =
-          allConditionsUser[allConditionsUser.length - 1].conditionId;
+        const lastCondition = allConditionsUser[allConditionsUser.length - 1].conditionId;
         const findLast = await Condition.findByPk(lastCondition);
-        const allRecomendationsForUser =
-          await PersonalRecomendationStore.findAll({
-            where: { userId: id },
-            order: [['id', 'DESC']],
-            raw: true,
-          });
+        const allRecomendationsForUser = await PersonalRecomendationStore.findAll({
+          where: { userId: id },
+          order: [['id', 'DESC']],
+          raw: true,
+        });
         let recommendationsLast;
         setTimeout(() => {
           recommendationsLast = allRecomendationsForUser

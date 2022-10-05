@@ -66,7 +66,7 @@ const logUser = createAsyncThunk('user/logUser', (data) =>
 );
 
 const logoutUser = createAsyncThunk('user/logoutUser', () =>
-  fetch('/auth/logout', {
+  fetch('/api/auth/logout', {
     method: 'delete',
   })
     .then((response) => response.json())
@@ -79,7 +79,7 @@ const logoutUser = createAsyncThunk('user/logoutUser', () =>
 );
 
 const EditInfo = createAsyncThunk('user/EditInfo', async (info) => {
-  const response = await fetch('/useredit/info', {
+  const response = await fetch('/api/useredit/info', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(info),
@@ -89,7 +89,7 @@ const EditInfo = createAsyncThunk('user/EditInfo', async (info) => {
 });
 
 const passwordEdit = createAsyncThunk('user/passwordEdit', async (pass) => {
-  const response = await fetch('useredit/password', {
+  const response = await fetch('/api/useredit/password', {
     method: 'PUT',
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(pass),
@@ -102,7 +102,7 @@ const passwordEdit = createAsyncThunk('user/passwordEdit', async (pass) => {
 });
 
 const addPhoto = createAsyncThunk('user/photo', async (photo) => {
-  const response = await fetch(`useredit/photo/${photo.id}`, {
+  const response = await fetch(`/api/useredit/photo/${photo.id}`, {
     method: 'PUT',
     body: photo.file,
   });
