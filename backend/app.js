@@ -19,7 +19,6 @@ const userrecomendationsstoreRouter = require('./routes/api/userrecomendationsst
 const userEditRouter = require('./routes/api/userEditRouter');
 const likesRouter = require('./routes/api/likesRouter');
 
-
 const app = express();
 const httpServer = http.createServer(app);
 const wsServer = new socketIO.Server(httpServer);
@@ -39,7 +38,6 @@ app.use('/welcometest', welcometestScoreRouter);
 app.use('/userrecomendationsstore', userrecomendationsstoreRouter);
 app.use('/useredit', userEditRouter);
 app.use('/favoritearticles', likesRouter);
-
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {

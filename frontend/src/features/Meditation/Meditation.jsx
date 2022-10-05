@@ -69,7 +69,6 @@ function Meditation() {
     audioPlayer.current.currentTime = progressBar.current.value;
     changePlayerCurrentTime();
   };
-
   const changePlayerCurrentTime = () => {
     progressBar.current.style.setProperty(
       '--seek-before-width',
@@ -84,10 +83,9 @@ function Meditation() {
   };
 
   const forwardThirty = () => {
-    progressBar.current.value = Number(progressBar.current.value + 30);
+    progressBar.current.value = Number(progressBar.current.value) + 30;
     changeRange();
   };
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

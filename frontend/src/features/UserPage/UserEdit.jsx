@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { EditInfo, passwordEdit } from '../../store/userSlice/userSlice';
+import { EditInfo, passwordEdit, addPhoto } from '../../store/userSlice/userSlice';
 
 function UserEdit({ user, setInfo }) {
   const helpMessage = useSelector((state) => state.user.helpMessage);
@@ -17,13 +17,27 @@ function UserEdit({ user, setInfo }) {
     setInfo((prev) => !prev);
   };
   const EditPassword = (e) => {
+    e.preventDefault();
     const pass = {
       password: e.target.password.value,
       repeatPassword: e.target.repeatPassword.value,
       userid: user.id
     };
     dispatch(passwordEdit(pass));
-    e.preventDefault();
+  };
+  const photoAdd = async (e) => {
+    const picturesData = [...e.target.files];
+    const data = new FormData();
+    data.append('homesImg', picturesData);
+    console.log(picturesData);
+    console.log(data);
+    dispatch(addPhoto(data));
+    // fetch('/photos', {
+    //   method: 'POST',
+    //   body: data
+    // })
+    //   .then((res) => res.json())
+    //   .then((r) => dispatch(addPhoto(r)));
   };
 
   return (
@@ -32,6 +46,9 @@ function UserEdit({ user, setInfo }) {
         {(user && user.photo)
           ? <img src={user.photo} alt="avatar" />
           : <img src="no_avatar.webp" alt="avatar" />}
+        <div className="divPhotos">
+          <input className="file-path validate" onChange={photoAdd} type="file" multiple autoComplete="off" />
+        </div>
       </div>
       <form onSubmit={EditUser}>
         <input type="text" name="name" defaultValue={user.name} required />
