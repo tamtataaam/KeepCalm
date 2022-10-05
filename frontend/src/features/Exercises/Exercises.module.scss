@@ -9,16 +9,21 @@
   flex-wrap: wrap;
   // justify-content: space-between;
   align-self: flex-start;
-  width: 1000px;
-  height: 450px;
+  width: 1200px;
+  height: 550px;
   margin: 0 auto;
-  margin-top: 50px;
-  gap: 20px;
+  margin-left: -50px;
+  // margin-top: 50px;
+  // gap: 20px;
 }
 
 .exercise_img {
-  width: 200px;
+  width: 250px;
 }
+
+// .exercise_item {
+//   margin: 0;
+// }
 
 .exercise_container_main_for_individual {
   display: flex;
@@ -56,6 +61,7 @@
   font-size: 40px;
   color: #3f414e;
   margin-bottom: 5px;
+  margin-top: 50px;
 }
 
 .h2 {

@@ -25,9 +25,9 @@ function AddChatPage() {
   return (
     <div className={style.addchat_container}>
       <form onSubmit={handleSubmit} className={style.form}>
-        <input type="text" name="title" placeholder="Название обсуждения" required />
-        <input type="text" name="telegramUrl" placeholder="Ссылка в telegram" required />
-        <button className={style.addchat_button} type="submit">Добавить</button>
+        <input className={style.input} type="text" name="title" placeholder="Название обсуждения" required />
+        <input className={style.input} type="text" name="telegramUrl" placeholder="Ссылка в telegram" required />
+        <button className={style.button} type="submit">+ Добавить обсуждение</button>
       </form>
     </div>
   );
