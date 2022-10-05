@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
       Like.User = Like.belongsTo(User, {
         foreignKey: 'userId',
       });
-      Like.Condition = Like.belongsTo(Article, {
-        foreignKey: 'conditionId',
+      Like.Article = Like.belongsTo(Article, {
+        foreignKey: 'articleId',
       });
     }
   }
