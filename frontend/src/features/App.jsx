@@ -5,11 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadAllFavoriteExrcisesAsync } from '../store/exercisesSlice/exerciseSlice';
 import { loadUser } from '../store/userSlice/userSlice';
-import {
-  loadSmiley,
-  addSmiley,
-  loadSmileyUserLk,
-} from '../store/moodSlice/moodSlice';
+import { loadSmiley, addSmiley } from '../store/moodSlice/moodSlice';
 import { loadUserDiaryNotesAsync } from '../store/userDiarySlice/userDiarySlice';
 import { loadChats } from '../store/chatsSlice/chatsSlice';
 import {
@@ -55,7 +51,6 @@ function App() {
     dispatch(loadSmiley());
     dispatch(addSmiley());
     dispatch(loadChats());
-    dispatch(loadSmileyUserLk());
     dispatch(loadCondsitionAsync());
     dispatch(loadAllFavoriteExrcisesAsync());
     dispatch(loadRecomendationsAsync());

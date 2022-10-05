@@ -15,7 +15,7 @@ function Mood() {
   const moodSm = useSelector((prev) => prev.mood.moodSmiley);
 
   const getSmiley = (id) => {
-    dispatch(addSmiley(id));
+    dispatch(addSmiley(Number(id)));
     return navigate('/testpreview');
   };
   // useEffect(() => {

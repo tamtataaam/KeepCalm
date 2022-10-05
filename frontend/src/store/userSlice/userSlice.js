@@ -9,6 +9,7 @@ const initialState = {
   isUser: null,
   helpMessage: null,
   error: null,
+  nowPlaying: false,
 };
 
 const loadUser = createAsyncThunk('user/loadUser', () =>
@@ -62,9 +63,8 @@ const logUser = createAsyncThunk('user/logUser', (data) =>
     })
 );
 
-const logoutUser = createAsyncThunk(
-  'user/logoutUser',
-  () => fetch('/auth/logout', {
+const logoutUser = createAsyncThunk('user/logoutUser', () =>
+  fetch('/auth/logout', {
     method: 'delete',
   })
     .then((response) => response.json())
@@ -73,7 +73,7 @@ const logoutUser = createAsyncThunk(
         throw new Error(body.error);
       }
       return body.message;
-    }),
+    })
 );
 
 const EditInfo = createAsyncThunk('user/EditInfo',
@@ -86,7 +86,8 @@ const EditInfo = createAsyncThunk('user/EditInfo',
     const data = await response.json();
     // console.log(data);
     return data;
-  });
+});
+
 
 const passwordEdit = createAsyncThunk('user/passwordEdit',
   async (pass) => {
@@ -101,7 +102,8 @@ const passwordEdit = createAsyncThunk('user/passwordEdit',
       throw new Error(data.message);
     }
     return data.status;
-  });
+});
+
 
 const addPhoto = createAsyncThunk('user/photo',
   async (photo) => {
@@ -112,7 +114,7 @@ const addPhoto = createAsyncThunk('user/photo',
     });
     const data = await response.json();
     console.log(data);
-  });
+});
 
 const userSlice = createSlice({
   name: 'user',
@@ -120,6 +122,9 @@ const userSlice = createSlice({
   reducers: {
     disableHelpMessage: (state) => {
       state.helpMessage = null;
+    },
+    changePlayingId: (state, action) => {
+      state.nowPlaying = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -173,11 +178,19 @@ const userSlice = createSlice({
       .addCase(passwordEdit.fulfilled, (state) => {
         state.helpMessage = 'Пароль успешно изменён!';
       });
-  }
+  },
 });
 
 export default userSlice.reducer;
 
-export const { disableHelpMessage } = userSlice.actions;
+export const { disableHelpMessage, changePlayingId } = userSlice.actions;
 
-export { loadUser, regUser, logUser, logoutUser, EditInfo, passwordEdit, addPhoto };
+export {
+  loadUser,
+  regUser,
+  logUser,
+  logoutUser,
+  EditInfo,
+  passwordEdit,
+  addPhoto,
+};

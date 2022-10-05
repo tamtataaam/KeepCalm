@@ -67,7 +67,7 @@ export const loadLastConditionAsync = createAsyncThunk(
 );
 
 const welcomeTestSlice = createSlice({
-  name: 'allnotes',
+  name: 'conditions',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
