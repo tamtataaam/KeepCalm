@@ -31,6 +31,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },
+      avatar: {
+        type: Sequelize.TEXT,
+        defaultValue: 'photos/no_avatar.webp',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

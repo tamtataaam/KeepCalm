@@ -1,14 +1,18 @@
-import React from 'react';
-// import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loadUser } from '../../store/userSlice/userSlice';
 import style from './UserPage.module.scss';
 
 function UserInfo({ user, setInfo }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadUser());
+  }, []);
+
   return (
     <div className={style.user_info_container}>
       <div>
-        {(user && user.photo)
-          ? <img src={user.photo} alt="avatar" />
-          : <img src="no_avatar.webp" alt="avatar" />}
+        <img className={style.userPhoto} src={user.avatar} alt="avatar" />
       </div>
 
       <div>

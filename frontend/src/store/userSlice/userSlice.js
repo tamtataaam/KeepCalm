@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -5,10 +6,12 @@ const initialState = {
     id: null,
     name: null,
     email: null,
+    avatar: null,
   },
   isUser: null,
   helpMessage: null,
   error: null,
+  nowPlaying: false,
 };
 
 const loadUser = createAsyncThunk('user/loadUser', () =>
@@ -62,9 +65,8 @@ const logUser = createAsyncThunk('user/logUser', (data) =>
     })
 );
 
-const logoutUser = createAsyncThunk(
-  'user/logoutUser',
-  () => fetch('/api/auth/logout', {
+const logoutUser = createAsyncThunk('user/logoutUser', () =>
+  fetch('/auth/logout', {
     method: 'delete',
   })
     .then((response) => response.json())
@@ -73,33 +75,40 @@ const logoutUser = createAsyncThunk(
         throw new Error(body.error);
       }
       return body.message;
-    }),
+    })
 );
 
-const EditInfo = createAsyncThunk('user/EditInfo',
-  async (info) => {
-    const response = await fetch('/api/useredit/info', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(info)
-    });
-    const data = await response.json();
-    return data;
+const EditInfo = createAsyncThunk('user/EditInfo', async (info) => {
+  const response = await fetch('/useredit/info', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(info),
   });
+  const data = await response.json();
+  return data;
+});
 
-const passwordEdit = createAsyncThunk('user/passwordEdit',
-  async (pass) => {
-    const response = await fetch('/api/useredit/password', {
-      method: 'PUT',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(pass)
-    });
-    const data = await response.json();
-    if (data.message) {
-      throw new Error(data.message);
-    }
-    return data.status;
+const passwordEdit = createAsyncThunk('user/passwordEdit', async (pass) => {
+  const response = await fetch('useredit/password', {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify(pass),
   });
+  const data = await response.json();
+  if (data.message) {
+    throw new Error(data.message);
+  }
+  return data.status;
+});
+
+const addPhoto = createAsyncThunk('user/photo', async (photo) => {
+  const response = await fetch(`useredit/photo/${photo.id}`, {
+    method: 'PUT',
+    body: photo.file,
+  });
+  const data = await response.json();
+  return data.avatar;
+});
 
 const userSlice = createSlice({
   name: 'user',
@@ -107,6 +116,9 @@ const userSlice = createSlice({
   reducers: {
     disableHelpMessage: (state) => {
       state.helpMessage = null;
+    },
+    changePlayingId: (state, action) => {
+      state.nowPlaying = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -119,6 +131,7 @@ const userSlice = createSlice({
         state.data.id = action.payload.id;
         state.data.name = action.payload.name;
         state.data.email = action.payload.email;
+        state.data.avatar = action.payload.avatar;
       })
       .addCase(regUser.rejected, (state, action) => {
         state.helpMessage = action.error.message;
@@ -135,6 +148,7 @@ const userSlice = createSlice({
         state.data.id = action.payload.id;
         state.data.name = action.payload.name;
         state.data.email = action.payload.email;
+        state.data.avatar = action.payload.avatar;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.error = action.error.message;
@@ -159,12 +173,26 @@ const userSlice = createSlice({
       })
       .addCase(passwordEdit.fulfilled, (state) => {
         state.helpMessage = 'Пароль успешно изменён!';
+      })
+      .addCase(addPhoto.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(addPhoto.fulfilled, (state, action) => {
+        state.data.avatar = action.payload;
       });
-  }
+  },
 });
 
 export default userSlice.reducer;
 
-export const { disableHelpMessage } = userSlice.actions;
+export const { disableHelpMessage, changePlayingId } = userSlice.actions;
 
-export { loadUser, regUser, logUser, logoutUser, EditInfo, passwordEdit };
+export {
+  loadUser,
+  regUser,
+  logUser,
+  logoutUser,
+  EditInfo,
+  passwordEdit,
+  addPhoto,
+};

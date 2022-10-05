@@ -1,6 +1,7 @@
 const userEditRouter = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
+const storageFileupload = require('../../storage/storageFileupload');
 
 userEditRouter.put('/info', async (req, res) => {
   try {
@@ -49,8 +50,13 @@ userEditRouter.put('/password', async (req, res) => {
   }
 });
 
-// userEditRouter.put('/photo', (req, res) => {
-
-// });
+userEditRouter.put('/photo/:id', async (req, res) => {
+  const { id } = req.params;
+  const file = req.files;
+  const url = await storageFileupload(file);
+  await User.update({ avatar: url }, { where: { id } });
+  const user = await User.findOne({ where: { id }, raw: true });
+  res.json(user);
+});
 
 module.exports = userEditRouter;

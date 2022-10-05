@@ -27,6 +27,10 @@ const PORT = process.env.PORT ?? 4000;
 
 serverConfig(app);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
+
 app.use('/api/lk', userLkRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/mood', userMoodrout);
@@ -39,10 +43,6 @@ app.use('/api/welcometest', welcometestScoreRouter);
 app.use('/api/userrecomendationsstore', userrecomendationsstoreRouter);
 app.use('/api/useredit', userEditRouter);
 app.use('/api/favoritearticles', likesRouter);
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-});
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {

@@ -1,13 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { EditInfo, passwordEdit } from '../../store/userSlice/userSlice';
+import { EditInfo, passwordEdit, addPhoto } from '../../store/userSlice/userSlice';
+import style from './UserPage.module.scss';
 
-function UserEdit({ user, setInfo }) {
+function UserEdit({ setInfo }) {
   const helpMessage = useSelector((state) => state.user.helpMessage);
+  const user = useSelector((store) => store.user.data);
+
   const dispatch = useDispatch();
   const EditUser = (e) => {
     e.preventDefault();
-
     const info = {
       name: e.target.name.value,
       email: e.target.email.value,
@@ -17,21 +19,33 @@ function UserEdit({ user, setInfo }) {
     setInfo((prev) => !prev);
   };
   const EditPassword = (e) => {
+    e.preventDefault();
     const pass = {
       password: e.target.password.value,
       repeatPassword: e.target.repeatPassword.value,
       userid: user.id
     };
     dispatch(passwordEdit(pass));
-    e.preventDefault();
+  };
+  const photoAdd = async (e) => {
+    const picturesData = [...e.target.files];
+    const data = new FormData();
+    picturesData.forEach((img) => {
+      data.append('homesImg', img);
+    });
+    dispatch(addPhoto({ file: data, id: user.id }));
   };
 
   return (
-    <>
+
+    <div>
       <div>
-        {(user && user.photo)
-          ? <img src={user.photo} alt="avatar" />
-          : <img src="no_avatar.webp" alt="avatar" />}
+
+        <img className={style.userPhoto} src={user.avatar} alt="avatar" />
+
+        <div className="divPhotos">
+          <input className="file-path validate" onChange={photoAdd} type="file" multiple autoComplete="off" />
+        </div>
       </div>
       <form onSubmit={EditUser}>
         <input type="text" name="name" defaultValue={user.name} required />
@@ -57,7 +71,7 @@ function UserEdit({ user, setInfo }) {
         <button type="submit">Изменить пароль</button>
       </form>
       { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
-    </>
+    </div>
   );
 }
 export default UserEdit;

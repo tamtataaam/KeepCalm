@@ -6,10 +6,13 @@ import { loadComments } from '../../store/commentsSlice/commentsSlice';
 import Comments from '../Comments/Comments';
 import AddComment from '../Comments/AddComment';
 import Likes from './Likes';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 function OneArticlePage() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const { oneArticleInfo, loading } = useSelector((store) => store.articles);
+  const comments = useSelector((state) => state.comments.data);
 
   useEffect(() => {
     dispatch(oneArticleAsyncInfo(id));
@@ -17,8 +20,9 @@ function OneArticlePage() {
     dispatch(loadLikes());
   }, [dispatch, id]);
 
-  const { oneArticleInfo } = useSelector((store) => store.articles);
-  const comments = useSelector((state) => state.comments.data);
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <>

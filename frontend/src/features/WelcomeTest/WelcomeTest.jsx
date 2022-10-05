@@ -20,15 +20,21 @@ function WelcomeTest() {
   return (
     <div className={style.main_container}>
       <div className={style.container}>
-        <h1 className={style.h1}>Тест</h1>
-        <div className={style.test_description}>
+        <h1 className={style.h1} style={index < 23 ? { color: '#EBEAEC' } : { color: '#8E97FD' }}>
+          Вопрос:
+          {' '}
+          {index}
+          {' '}
+          из 22
+        </h1>
+        {/* <div className={style.test_description}>
           В этом опроснике содержатся группы утверждений. Внимательно прочитайте
           каждую группу утверждений. Затем определите в каждой группе одно
           утверждение, которое лучше всего соответствует тому, как Вы себя
           чувствовали НА ЭТОЙ НЕДЕЛЕ И СЕГОДНЯ. Выберите утверждение. Прежде, чем
           сделать свой выбор, убедитесь, что Вы прочли все утверждения в каждой
           группе.
-        </div>
+        </div> */}
 
         <div className={style.answers_container}>
           <h2 className={style.h2}>Выбери один из вариантов:</h2>

@@ -57,26 +57,27 @@ function MoodGraph() {
       y: {
         ticks: {
           stepSize: 1,
-        }
-      }
-    }
+        },
+      },
+    },
   };
 
   return (
-    <div className={style.main_container}>
+    <div className={style.main_div_container}>
+      <div className={style.smiles_container}>
+        <img src="1.svg" alt="super" className={style.superSm} />
+        <img src="2.svg" alt="super" />
+        <img src="3.svg" alt="super" />
+        <img src="4.svg" alt="super" />
+        <img src="5.svg" alt="super" />
+      </div>
       <div className={style.graph}>
-        {(userMoodDate && userMoodId) ? (
+        {userMoodDate.length && userMoodId.length ? (
           <Line data={mydata} options={options} />
         ) : (
           <LoadingPage />
         )}
-        <div className={style.smiles_container}>
-          <img src="1.svg" alt="super" className={style.superSm} />
-          <img src="2.svg" alt="super" />
-          <img src="3.svg" alt="super" />
-          <img src="4.svg" alt="super" />
-          <img src="5.svg" alt="super" />
-        </div>
+
       </div>
     </div>
   );

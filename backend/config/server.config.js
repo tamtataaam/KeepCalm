@@ -6,6 +6,7 @@ const cors = require('cors');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
 const passUserFromSession = require('../middleware/passUserFromSession');
 
 const corsOptions = {
@@ -35,4 +36,5 @@ module.exports = function serverConfig(app) {
   // app.use(express.static(path.resolve('public')));
   app.use(express.static(path.join(__dirname, '../../frontend/build')));
   app.use(express.urlencoded({ extended: true }));
+  app.use(fileUpload());
 };

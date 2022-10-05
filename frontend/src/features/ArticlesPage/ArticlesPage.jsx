@@ -1,16 +1,35 @@
 /* eslint-disable max-len */
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Article from './Article';
+import { loadAsyncArticles } from '../../store/articlesSlice/articlesSlice';
+import LoadingPage from '../LoadingPage/LoadingPage';
+import style from './Articles.module.scss';
 
 function ArticlesPage() {
-  const { articles } = useSelector((store) => store.articles);
+  const { articles, loading } = useSelector((store) => store.articles);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadAsyncArticles());
+  }, []);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
-    <>
-      <h3>Статьи</h3>
-      {articles && articles.map((article) => <Article key={article.id} article={article} />)}
-    </>
+    <div className={style.container}>
+      <h1 className={style.h1}>Статьи:</h1>
+      <div className={style.articles_container}>
+        {articles
+          && articles.map((article) => (
+            <div key={article.id} className={style.articles_item}>
+              <Article article={article} />
+            </div>
+          ))}
+      </div>
+    </div>
   );
 }
 

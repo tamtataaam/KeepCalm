@@ -55,23 +55,7 @@ export const addScoreAsync = createAsyncThunk(
 export const loadLastConditionAsync = createAsyncThunk(
   'conditions/loadLastConditionAsync',
   async () => {
-    const response = await fetch('/api/userrecomendationsstore/lastcondition');
-    if (response.status >= 400) {
-      const { error } = await response.json();
-      throw error;
-    } else {
-      const data = await response.json();
-      return data;
-    }
-  }
-);
-
-export const loadLastRecommendationsAsync = createAsyncThunk(
-  'recomendations/loadLastRecomendationsAsync ',
-  async () => {
-    const response = await fetch(
-      '/api/userrecomendationsstore/currentrecomendations'
-    );
+    const response = await fetch('/welcometest/recommendations');
     if (response.status >= 400) {
       const { error } = await response.json();
       throw error;
@@ -83,7 +67,7 @@ export const loadLastRecommendationsAsync = createAsyncThunk(
 );
 
 const welcomeTestSlice = createSlice({
-  name: 'allnotes',
+  name: 'conditions',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -110,15 +94,10 @@ const welcomeTestSlice = createSlice({
       .addCase(loadLastConditionAsync.fulfilled, (state, action) => {
         if (action.payload.status) {
           state.lastCondition = action.payload.findLast;
+          state.recommendations = action.payload.recomendations;
         } else {
           state.lastCondition = false;
         }
-      })
-      .addCase(loadLastRecommendationsAsync.rejected, (state, action) => {
-        state.error = action.error.message;
-      })
-      .addCase(loadLastRecommendationsAsync.fulfilled, (state, action) => {
-        state.recommendations = action.payload;
       });
   },
 });
