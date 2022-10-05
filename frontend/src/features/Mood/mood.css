@@ -17,6 +17,7 @@
   margin-top: 100px;
   height: 250px;
   margin: 10px;
+  cursor: pointer;
   transition: 0.4s;
 }
 

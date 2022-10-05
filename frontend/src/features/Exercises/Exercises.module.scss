@@ -1,29 +1,31 @@
 .container {
   width: 1000px;
-  margin: 0 auto;
+  margin-left: 330px;
 }
 
 .exercises_container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  // justify-content: space-between;
   align-self: flex-start;
   width: 1200px;
-  height: 550px;
+  height: 560px;
   margin: 0 auto;
-  margin-left: -50px;
-  // margin-top: 50px;
-  // gap: 20px;
 }
 
 .exercise_img {
-  width: 250px;
+  cursor: pointer;
+  width: 280px;
 }
 
-// .exercise_item {
-//   margin: 0;
-// }
+.exercise_item {
+  transition: 0.4s;
+  transform: scale(0.95);
+}
+
+.exercise_item:hover {
+  transform: scale(1);
+}
 
 .exercise_container_main_for_individual {
   display: flex;
@@ -73,8 +75,9 @@
 .like_img {
   width: 30px;
   position: relative;
-  top: 45px;
-  left: 160px;
+  top: 50px;
+  left: 230px;
+  z-index: 10;
 }
 
 .button {
@@ -115,5 +118,33 @@
   }
   .diary_discription {
     width: 90vw;
+  }
+
+  .h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    margin-top: 30px;
+  }
+  .h2 {
+    font-size: 25px;
+    margin-top: 5px;
+  }
+
+  .container {
+    width: 400px;
+    margin-left: 0px;
+  }
+  .exercise_img {
+    cursor: pointer;
+    width: 160px;
+  }
+  .exercises_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-self: flex-start;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
   }
 }
