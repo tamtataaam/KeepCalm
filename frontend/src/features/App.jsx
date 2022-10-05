@@ -39,6 +39,7 @@ import BreathExercise from './BreathExercise/BreathExercise';
 import TestRorshaha from './testRorshaha/testRorshaha';
 import SleepPage from './SleepPage/SleepPage';
 import PsychologistPage from './PsychologistPage/PsychologistPage';
+import TestPreview from './WelcomeTest/TestPreview';
 // import LoadingPage from './LoadingPage/LoadingPage';
 
 function App() {
@@ -95,6 +96,7 @@ function App() {
           </Route>
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/sleep" element={<SleepPage />} />
+          <Route path="/testpreview" element={<TestPreview />} />
         </Routes>
       ) : (
         <Routes>

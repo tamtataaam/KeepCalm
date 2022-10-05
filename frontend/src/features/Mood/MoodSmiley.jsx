@@ -16,7 +16,7 @@ function Mood() {
 
   const getSmiley = (id) => {
     dispatch(addSmiley(id));
-    return navigate('/welcometest');
+    return navigate('/testpreview');
   };
   // useEffect(() => {
   //   dispatch(loadSmiley());
@@ -38,18 +38,18 @@ function Mood() {
           <div className="button_box">
             {' '}
             <button
+              className="mood_btn2"
+              type="button"
+              onClick={() => navigate('/testpreview')}
+            >
+              Далее
+            </button>
+            <button
               className="mood_btn1"
               type="button"
               onClick={() => navigate('/exercises')}
             >
-              Пропустить и перейти на упражения
-            </button>
-            <button
-              className="mood_btn2"
-              type="button"
-              onClick={() => navigate('/welcometest')}
-            >
-              Перейти на тест
+              Пропустить всё и перейти к упражениям
             </button>
           </div>
         </>
