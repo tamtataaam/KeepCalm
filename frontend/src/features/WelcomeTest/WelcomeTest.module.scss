@@ -1,6 +1,6 @@
 .main_container {
   background-color: #8e97fd;
-  height: 100%;
+  height: 100vh;
   padding-bottom: 100px;
   margin: 0;
 }
@@ -16,7 +16,10 @@
   align-items: center;
   gap: 10px;
 }
-
+.button_container {
+  display: flex;
+  gap: 20px;
+}
 .test_description {
   font-size: 20px;
   padding-top: 50px;
@@ -32,15 +35,15 @@
 }
 
 .h1 {
-  color: #EBEAEC;
+  color: #ebeaec;
   margin: 0;
   padding-top: 50px;
 }
 .h2 {
-  color: #EBEAEC;
+  color: #ebeaec;
 }
 .h3 {
-  color: #EBEAEC;
+  color: #ebeaec;
   font-size: 25px;
 }
 
