@@ -20,7 +20,13 @@ function WelcomeTest() {
   return (
     <div className={style.main_container}>
       <div className={style.container}>
-        <h1 className={style.h1}>Тест</h1>
+        <h1 className={style.h1} style={index < 23 ? { color: '#EBEAEC' } : { color: '#8E97FD' }}>
+          Вопрос:
+          {' '}
+          {index}
+          {' '}
+          из 22
+        </h1>
         {/* <div className={style.test_description}>
           В этом опроснике содержатся группы утверждений. Внимательно прочитайте
           каждую группу утверждений. Затем определите в каждой группе одно
