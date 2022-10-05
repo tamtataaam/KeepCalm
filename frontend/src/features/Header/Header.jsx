@@ -64,7 +64,7 @@ function Header() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
               >
-                <Avatar />
+                <Avatar src={user.avatar} />
               </IconButton>
             </Tooltip>
           </Box>
@@ -104,7 +104,7 @@ function Header() {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={() => navigate('/lk')}>
-              <Avatar /> Мой аккаунт
+              <Avatar src={user.avatar} /> Мой аккаунт
             </MenuItem>
             <Divider />
             <MenuItem onClick={logout}>
