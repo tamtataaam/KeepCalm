@@ -18,19 +18,21 @@ function UserPage() {
 
   const [info, setInfo] = useState(true);
   return (
-    <div className={style.main_container}>
-      {info ? (
-        <>
-          <div>
-            <UserInfo user={user} setInfo={setInfo} />
-          </div>
-          <div className={style.graph_container}>
-            <MoodGraph />
-          </div>
-        </>
-      ) : (
-        <UserEdit user={user} setInfo={setInfo} />
-      )}
+    <div className={style.grand_main_container}>
+      <div className={style.main_container}>
+        {info ? (
+          <>
+            <div className={style.lk_user_page}>
+              <UserInfo user={user} setInfo={setInfo} />
+            </div>
+            <div className={style.graph_container}>
+              <MoodGraph />
+            </div>
+          </>
+        ) : (
+          <UserEdit user={user} setInfo={setInfo} />
+        )}
+      </div>
     </div>
   );
 }

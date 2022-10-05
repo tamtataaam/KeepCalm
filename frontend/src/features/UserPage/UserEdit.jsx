@@ -37,7 +37,8 @@ function UserEdit({ setInfo }) {
   };
 
   return (
-    <>
+
+    <div>
       <div>
 
         <img className={style.userPhoto} src={user.avatar} alt="avatar" />
@@ -70,7 +71,7 @@ function UserEdit({ setInfo }) {
         <button type="submit">Изменить пароль</button>
       </form>
       { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
-    </>
+    </div>
   );
 }
 export default UserEdit;
