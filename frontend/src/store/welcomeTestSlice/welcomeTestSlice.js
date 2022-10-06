@@ -38,6 +38,7 @@ export const loadRecomendationsAsync = createAsyncThunk(
 export const addScoreAsync = createAsyncThunk(
   'score/addScoreAsync',
   async ({ score, userId }) => {
+    // console.log(score, userId);
     const response = await fetch('/welcometest', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -14,11 +14,12 @@ function WelcomeTest() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // console.log(userId, score);
     setIndex((prev) => prev + 1);
     // console.log(index, '1');
     // console.log(score, '2');
     // console.log(welcomeTestQuestions.length, '3');
-    if (index === welcomeTestQuestions.length + 1) {
+    if (index + 1 === welcomeTestQuestions.length) {
       dispatch(addScoreAsync({ userId, score }));
     }
   }, [score]);
