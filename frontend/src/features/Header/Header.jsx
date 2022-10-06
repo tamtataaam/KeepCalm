@@ -37,11 +37,11 @@ function Header() {
 
   return (
     <header className={style.header}>
-      <div>
-        <Link className={style.logo_nav} to="/exercises">
-          KeepCalm
-        </Link>
-      </div>
+      {/* <div> */}
+      <Link className={style.logo_nav} to="/exercises">
+        KeepCalm
+      </Link>
+      {/* </div> */}
       {!user.name ? (
         <div className={style.button_nav}>
           {/* <a href="/" className={style.nav_btn}>Войти</a>
