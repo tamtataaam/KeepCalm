@@ -1,4 +1,5 @@
 const welcometestScoreRouter = require('express').Router();
+const { Op } = require('sequelize');
 const {
   WelcomeTestScore,
   Condition,
@@ -103,6 +104,54 @@ module.exports = welcometestScoreRouter
           const newRec = recommendations.map(writeRec);
           res.json({ status: true });
         }
+      } else {
+        res.json({ status: false });
+      }
+    } catch (error) {
+      res.status(500).send(`${error.message}`);
+    }
+  })
+  .get('/recommendations', async (req, res) => {
+    try {
+      const { id } = req.session.user;
+      const allConditionsUser = await WelcomeTestScore.findAll({
+        where: { userId: id },
+        order: [['id', 'ASC']],
+        raw: true,
+      });
+      if (allConditionsUser) {
+        const lastCondition =
+          allConditionsUser[allConditionsUser.length - 1].conditionId;
+        const findLast = await Condition.findByPk(lastCondition);
+        const allRecomendationsForUser =
+          await PersonalRecomendationStore.findAll({
+            where: { userId: id },
+            order: [['id', 'DESC']],
+            raw: true,
+          });
+        let recommendationsLast;
+        setTimeout(() => {
+          recommendationsLast = allRecomendationsForUser
+            .slice(0, 3)
+            .map((el) => el.recommendationId);
+        }, 50);
+
+        let recomendations;
+
+        setTimeout(async () => {
+          recomendations = await Recommendation.findAll({
+            where: {
+              id: {
+                [Op.in]: recommendationsLast,
+              },
+            },
+            raw: true,
+          });
+        }, 100);
+
+        setTimeout(() => {
+          res.json({ findLast, recomendations, status: true });
+        }, 150);
       } else {
         res.json({ status: false });
       }

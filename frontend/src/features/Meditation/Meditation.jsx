@@ -24,7 +24,7 @@ function Meditation() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const userName = useSelector((store) => store.user.data.name);
+  const user = useSelector((store) => store.user.data);
 
   // references
   const audioPlayer = useRef(); // reference our audio component
@@ -114,7 +114,7 @@ function Meditation() {
             sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
           >
             <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>
-              {userName}
+              {user.name}
             </Typography>
             <Tooltip title="Account settings">
               <IconButton
@@ -125,7 +125,8 @@ function Meditation() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
               >
-                <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                <Avatar src={user.avatar} />
+
               </IconButton>
             </Tooltip>
           </Box>

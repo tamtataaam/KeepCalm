@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Article from './Article';
 import { loadAsyncArticles } from '../../store/articlesSlice/articlesSlice';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import style from './Articles.module.scss';
 
 function ArticlesPage() {
   const { articles, loading } = useSelector((store) => store.articles);
@@ -18,10 +19,17 @@ function ArticlesPage() {
   }
 
   return (
-    <>
-      <h3>Статьи</h3>
-      {articles && articles.map((article) => <Article key={article.id} article={article} />)}
-    </>
+    <div className={style.container}>
+      <h1 className={style.h1}>Статьи:</h1>
+      <div className={style.articles_container}>
+        {articles
+          && articles.map((article) => (
+            <div key={article.id} className={style.articles_item}>
+              <Article article={article} />
+            </div>
+          ))}
+      </div>
+    </div>
   );
 }
 

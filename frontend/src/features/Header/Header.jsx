@@ -37,11 +37,11 @@ function Header() {
 
   return (
     <header className={style.header}>
-      <div>
-        <Link className={style.logo_nav} to="/exercises">
-          KeepCalm
-        </Link>
-      </div>
+      {/* <div> */}
+      <Link className={style.logo_nav} to="/exercises">
+        KeepCalm
+      </Link>
+      {/* </div> */}
       {!user.name ? (
         <div className={style.button_nav}>
           {/* <a href="/" className={style.nav_btn}>Войти</a>
@@ -52,7 +52,7 @@ function Header() {
           <Box
             sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
           >
-            <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>
+            <Typography className={style.user_name} style={{ color: 'white' }} sx={{ minWidth: 10 }}>
               {user.name}
             </Typography>
             <Tooltip title="Account settings">
@@ -64,7 +64,7 @@ function Header() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
               >
-                <Avatar />
+                <Avatar src={user.avatar} />
               </IconButton>
             </Tooltip>
           </Box>
@@ -104,7 +104,7 @@ function Header() {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={() => navigate('/lk')}>
-              <Avatar /> Мой аккаунт
+              <Avatar src={user.avatar} /> Мой аккаунт
             </MenuItem>
             <Divider />
             <MenuItem onClick={logout}>

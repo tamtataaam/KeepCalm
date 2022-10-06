@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -77,40 +78,37 @@ const logoutUser = createAsyncThunk('user/logoutUser', () =>
     })
 );
 
-const EditInfo = createAsyncThunk('user/EditInfo',
-  async (info) => {
-    const response = await fetch('/useredit/info', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(info)
-    });
-    const data = await response.json();
-    return data;
+const EditInfo = createAsyncThunk('user/EditInfo', async (info) => {
+  const response = await fetch('/useredit/info', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(info),
   });
+  const data = await response.json();
+  return data;
+});
 
-const passwordEdit = createAsyncThunk('user/passwordEdit',
-  async (pass) => {
-    const response = await fetch('useredit/password', {
-      method: 'PUT',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(pass)
-    });
-    const data = await response.json();
-    if (data.message) {
-      throw new Error(data.message);
-    }
-    return data.status;
+const passwordEdit = createAsyncThunk('user/passwordEdit', async (pass) => {
+  const response = await fetch('useredit/password', {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify(pass),
   });
+  const data = await response.json();
+  if (data.message) {
+    throw new Error(data.message);
+  }
+  return data.status;
+});
 
-const addPhoto = createAsyncThunk('user/photo',
-  async (photo) => {
-    const response = await fetch(`useredit/photo/${photo.id}`, {
-      method: 'PUT',
-      body: photo.file,
-    });
-    const data = await response.json();
-    return data.avatar;
+const addPhoto = createAsyncThunk('user/photo', async (photo) => {
+  const response = await fetch(`useredit/photo/${photo.id}`, {
+    method: 'PUT',
+    body: photo.file,
   });
+  const data = await response.json();
+  return data.avatar;
+});
 
 const userSlice = createSlice({
   name: 'user',
@@ -120,6 +118,7 @@ const userSlice = createSlice({
       state.helpMessage = null;
     },
     changePlayingId: (state, action) => {
+      console.log('====>', action.payload);
       state.nowPlaying = action.payload;
     },
   },

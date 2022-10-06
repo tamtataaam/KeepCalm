@@ -16,11 +16,18 @@ function CompositionPage({ composition, change }) {
     if (composition.id === nowPlaying) {
       audioPlayer.current.pause();
       dispatch(changePlayingId(null));
+      // console.log('in 1st if', nowPlaying);
+      // console.log('in id', composition.id);
     } else {
-      dispatch(changePlayingId(null));
+      // console.log('before clear', nowPlaying);
+      // console.log('in id', composition.id);
+
       dispatch(changePlayingId(id));
+      // console.log('in else', nowPlaying);
+      // console.log('in id', composition.id);
 
       if (nowPlaying === composition.id) {
+        // console.log(111111);
         audioPlayer.current.play();
       } else {
         audioPlayer.current.pause();
@@ -71,5 +78,4 @@ function CompositionPage({ composition, change }) {
     </>
   );
 }
-
 export default CompositionPage;

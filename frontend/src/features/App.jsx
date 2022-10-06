@@ -37,6 +37,7 @@ import SleepPage from './SleepPage/SleepPage';
 import PsychologistPage from './PsychologistPage/PsychologistPage';
 import TestPreview from './WelcomeTest/TestPreview';
 import ErrorPage from './ErrorPage/ErrorPage';
+import LoadingPage from './LoadingPage/LoadingPage';
 // import LoadingPage from './LoadingPage/LoadingPage';
 
 function App() {
@@ -44,21 +45,24 @@ function App() {
   // const { loading } = useSelector((store) => store.exercises);
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(loadAsyncExercises());
-    // dispatch(loadAsyncArticles());
-    dispatch(loadUserDiaryNotesAsync());
     dispatch(loadUser());
-    dispatch(loadSmiley());
-    dispatch(addSmiley());
-    dispatch(loadChats());
-    dispatch(loadCondsitionAsync());
-    dispatch(loadAllFavoriteExrcisesAsync());
-    dispatch(loadRecomendationsAsync());
   }, []);
 
-  // if (loading) {
-  //   return <LoadingPage />;
-  // }
+  useEffect(() => {
+    if (isUser) {
+      dispatch(loadUserDiaryNotesAsync());
+      dispatch(loadSmiley());
+      dispatch(addSmiley());
+      dispatch(loadChats());
+      dispatch(loadCondsitionAsync());
+      dispatch(loadAllFavoriteExrcisesAsync());
+      dispatch(loadRecomendationsAsync());
+    }
+  }, [isUser]);
+
+  if (isUser === null) {
+    return <LoadingPage />;
+  }
 
   return (
     <>
@@ -84,6 +88,7 @@ function App() {
             <Route path="/rorschachtest" element={<TestRorshaha />} />
             <Route path="*" element={<ErrorPage />} />
 
+            <Route path="/testpreview" element={<TestPreview />} />
             <Route
               path="/welcometest/recommendations"
               element={<Recommendations />}
@@ -93,7 +98,6 @@ function App() {
           </Route>
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/sleep" element={<SleepPage />} />
-          <Route path="/testpreview" element={<TestPreview />} />
         </Routes>
       ) : (
         <Routes>

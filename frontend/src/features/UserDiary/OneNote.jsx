@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-alert */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -16,7 +19,12 @@ function OneNote({ note }) {
 
   return (
     <div className={style.note_container}>
-      <div key={note.id} id={note.id} onClick={() => setFlag((prev) => !prev)}>
+      <div
+        className={style.title_info}
+        key={note.id}
+        id={note.id}
+        onClick={() => setFlag((prev) => !prev)}
+      >
         <div>Дата создания: {note.createdAt.slice(0, 10)}</div>
         <div style={!flagChange ? { display: 'none' } : { display: 'inline' }}>
           Название: {note.title}
@@ -24,12 +32,12 @@ function OneNote({ note }) {
       </div>
 
       <div
-        className={style.note}
+        className={style.title_info}
         style={
           flag || !flagChange ? { display: 'none' } : { display: 'inline' }
         }
       >
-        Текст: {note.content}
+        Содержание: {note.content}
       </div>
 
       <ChangeForm
@@ -42,7 +50,9 @@ function OneNote({ note }) {
           className={style.delete_button}
           type="button"
           onClick={() => {
-            dispatch(deleteOneNoteAsync({ noteId: note.id, userId }));
+            const isTrue = confirm(`Вы точно хотите удалить запись ${note.title}?`);
+            isTrue
+              ? dispatch(deleteOneNoteAsync({ noteId: note.id, userId })) : null;
           }}
           style={!flagChange ? { display: 'none' } : { display: 'inline' }}
         >

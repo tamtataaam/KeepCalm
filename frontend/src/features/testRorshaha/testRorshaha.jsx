@@ -55,7 +55,7 @@ function TestRorshaha() {
               </button>
             </>
           ) : (
-            <div>
+            <div className={style.testQuest}>
               <h1 className={style.h1}>Что видите на изображении?</h1>
               <img
                 className={style.img_from_test}
