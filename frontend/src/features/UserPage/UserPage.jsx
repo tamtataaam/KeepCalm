@@ -22,21 +22,19 @@ function UserPage() {
   return (
     <div className={style.grand_main_container}>
       <div className={style.main_container}>
-        {info ? (
-          <>
-            <div className={style.lk_user_page}>
-              <UserInfo user={user} setInfo={setInfo} />
-            </div>
-            <div className={style.graph_container}>
-              <MoodGraph />
-            </div>
-            <div className={style.rec_and_fav_div}>
-              <LastRecommend />
-            </div>
-          </>
-        ) : (
-          <UserEdit user={user} setInfo={setInfo} />
-        )}
+        <div className={style.lk_user_page}>
+          {info ? (
+            <UserEdit user={user} setInfo={setInfo} />
+          ) : (
+            <UserInfo user={user} setInfo={setInfo} />
+          )}
+        </div>
+        <div className={style.graph_container}>
+          <MoodGraph />
+        </div>
+        <div className={style.rec_and_fav_div}>
+          <LastRecommend />
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import { EditInfo, passwordEdit, addPhoto } from '../../store/userSlice/userSlice';
-// import style from './UserPage.module.scss';
+// import { style } from '@mui/system';
+import style from './UserPage.module.scss';
+// import { style } from '@mui/system';
 
 function UserEdit({ setInfo }) {
   const helpMessage = useSelector((state) => state.user.helpMessage);
@@ -36,44 +38,52 @@ function UserEdit({ setInfo }) {
     });
     dispatch(addPhoto({ file: data, id: user.id }));
   };
-
+  const fileRef = useRef();
+  //   const allowedExtensions = /png|jpeg|jpg|gif|webp/gi;
+  const ClickInput = () => {
+    fileRef.current.click();
+  };
   return (
 
     <div>
       <div>
+        <div className={style.userPhoto}>
+          <Avatar src={user.avatar} sx={{ width: '250px', height: '250px' }} />
+        </div>
 
-        <Avatar src={user.avatar} sx={{ width: '250px', height: '250px' }} />
-
-        {/* <img className={style.userPhoto} src={user.avatar} alt="avatar" /> */}
-
-        <div className="divPhotos">
-          <input className="file-path validate" onChange={photoAdd} type="file" multiple autoComplete="off" />
+        <div className={style.div_btn_photo}>
+          <input className={style.file_input} onChange={photoAdd} type="file" multiple autoComplete="off" ref={fileRef} accept="image/jpeg,image/png,image/gif" />
+          <button className={style.btn_file} type="button" onClick={ClickInput}>Изменить фото</button>
         </div>
       </div>
-      <form onSubmit={EditUser}>
-        <input type="text" name="name" defaultValue={user.name} required />
-        <input
-          type="email"
-          name="email"
-          defaultValue={user.email}
-          pattern="^\S+@\S+\.\S+$"
-          title="Почта должна быть указана в формате email@mail.com"
-          required
-        />
-        <button type="submit">Изменить</button>
-      </form>
+      <div className={style.info_edit_div}>
+        <form onSubmit={EditUser}>
+          <input className={style.input} type="text" name="name" defaultValue={user.name} required />
+          <input
+            className={style.input}
+            type="email"
+            name="email"
+            defaultValue={user.email}
+            pattern="^\S+@\S+\.\S+$"
+            title="Почта должна быть указана в формате email@mail.com"
+            required
+          />
+          <button type="submit">Изменить</button>
+        </form>
 
-      <form onSubmit={EditPassword}>
-        <input
-          type="password"
-          name="password"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
-        />
-        <input type="password" name="repeatPassword" />
-        <button type="submit">Изменить пароль</button>
-      </form>
-      { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
+        <form onSubmit={EditPassword}>
+          <input
+            className={style.input}
+            type="password"
+            name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
+          />
+          <input className={style.input} type="password" name="repeatPassword" />
+          <button type="submit">Изменить пароль</button>
+        </form>
+        { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
+      </div>
     </div>
   );
 }
