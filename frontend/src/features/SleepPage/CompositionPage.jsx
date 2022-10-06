@@ -71,5 +71,4 @@ function CompositionPage({ composition, change }) {
     </>
   );
 }
-
 export default CompositionPage;
