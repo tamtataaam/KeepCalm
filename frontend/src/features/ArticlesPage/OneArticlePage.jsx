@@ -69,7 +69,7 @@ function OneArticlePage() {
                   </p>
                 )}
         </div>
-        <div>
+        <div className={style.comments}>
           {comments.map(
             (comment) => (
               <Comments
