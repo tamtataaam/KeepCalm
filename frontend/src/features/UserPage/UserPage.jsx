@@ -23,7 +23,7 @@ function UserPage() {
     <div className={style.grand_main_container}>
       <div className={style.main_container}>
         <div className={style.lk_user_page}>
-          {info ? (
+          {!info ? (
             <UserEdit user={user} setInfo={setInfo} />
           ) : (
             <UserInfo user={user} setInfo={setInfo} />

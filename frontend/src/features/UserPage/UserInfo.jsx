@@ -12,21 +12,22 @@ function UserInfo({ user, setInfo }) {
 
   return (
     <div className={style.user_info_container}>
-      <div className={style.userPhoto}>
-        <Avatar src={user.avatar} sx={{ width: '250px', height: '250px' }} />
+      <div className={style.userPhoto_info}>
+        <Avatar src={user.avatar} sx={{ width: '300px', height: '300px' }} />
         {/* <img className={style.userPhoto} src={user.avatar} alt="avatar" /> */}
       </div>
-
-      <div>
-        <h4 className={style.h4}>Мои данные:</h4>
+      <div className={style.my_info}>
+        <div>
+          <h2 className={style.h4}>Мои данные:</h2>
+        </div>
+        <div>
+          {user && user.name}
+        </div>
+        <div>
+          {user && user.email}
+        </div>
       </div>
-      <div>
-        {user && user.name}
-      </div>
-      <div>
-        {user && user.email}
-      </div>
-      <button type="button" className={style.button} onClick={() => setInfo((prev) => !prev)}>Редактировать ✐</button>
+      <button type="button" className={style.button_edit_page} onClick={() => setInfo((prev) => !prev)}>Редактировать ✐</button>
     </div>
   );
 }
