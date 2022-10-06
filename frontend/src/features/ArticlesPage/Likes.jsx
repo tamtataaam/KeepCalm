@@ -16,7 +16,7 @@ function Likes({ oneArticleInfo }) {
 
   return (
     <>
-      <div>
+      <div className={style.likes_info}>
         {allArticleLikes.length === 0
           ? <p>Поставьте лайк первым</p>
           : allArticleLikes.length === 1 && articleLikedByUser.length
