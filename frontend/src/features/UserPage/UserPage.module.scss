@@ -43,9 +43,9 @@
 
 
 .userPhoto {
-  // width: 250px;
-  // border-radius: 50%;
-  // margin: 20px;
+display: flex;
+justify-content: center;
+  margin: 20px;
 }
 
 .h4 {
@@ -129,4 +129,27 @@
 .info_edit_div{
 display: flex;
 justify-content: baseline;
+}
+
+.button{
+  cursor: pointer;
+  left: 18%;
+  margin: 15px 0 10px;
+  font-size: 14px;
+  border: none;
+  background-color: #8E97FD ;
+  border-radius: 20px;
+  width: 140px;
+  height: 30px;
+  transition: 0.4s;
+  color: white;
+}
+.button:hover{
+  font-size: 15px;
+  box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
+  background-color: #6e76ce ;
+}
+.rec_and_fav_div{
+  display: flex;
+  justify-content: center;
 }

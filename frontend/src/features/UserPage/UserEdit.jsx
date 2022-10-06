@@ -68,7 +68,7 @@ function UserEdit({ setInfo }) {
             title="Почта должна быть указана в формате email@mail.com"
             required
           />
-          <button type="submit">Изменить</button>
+          <button className={style.button} type="submit">Изменить</button>
         </form>
 
         <form onSubmit={EditPassword}>
@@ -80,7 +80,7 @@ function UserEdit({ setInfo }) {
             title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
           />
           <input className={style.input} type="password" name="repeatPassword" />
-          <button type="submit">Изменить пароль</button>
+          <button className={style.button} type="submit">Изменить пароль</button>
         </form>
         { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
       </div>
