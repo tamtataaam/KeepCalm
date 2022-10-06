@@ -134,7 +134,7 @@ module.exports = welcometestScoreRouter
           recommendationsLast = allRecomendationsForUser
             .slice(0, 3)
             .map((el) => el.recommendationId);
-        }, 10);
+        }, 50);
 
         let recomendations;
 
@@ -147,11 +147,11 @@ module.exports = welcometestScoreRouter
             },
             raw: true,
           });
-        }, 20);
+        }, 100);
 
         setTimeout(() => {
           res.json({ findLast, recomendations, status: true });
-        }, 30);
+        }, 150);
       } else {
         res.json({ status: false });
       }

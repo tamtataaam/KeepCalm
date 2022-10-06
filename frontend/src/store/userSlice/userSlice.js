@@ -118,6 +118,7 @@ const userSlice = createSlice({
       state.helpMessage = null;
     },
     changePlayingId: (state, action) => {
+      console.log('====>', action.payload);
       state.nowPlaying = action.payload;
     },
   },

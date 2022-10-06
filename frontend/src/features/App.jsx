@@ -46,7 +46,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (isUser) {
@@ -88,6 +88,7 @@ function App() {
             <Route path="/rorschachtest" element={<TestRorshaha />} />
             <Route path="*" element={<ErrorPage />} />
 
+            <Route path="/testpreview" element={<TestPreview />} />
             <Route
               path="/welcometest/recommendations"
               element={<Recommendations />}
@@ -97,7 +98,6 @@ function App() {
           </Route>
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/sleep" element={<SleepPage />} />
-          <Route path="/testpreview" element={<TestPreview />} />
         </Routes>
       ) : (
         <Routes>
