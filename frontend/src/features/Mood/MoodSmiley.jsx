@@ -4,6 +4,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addSmiley } from '../../store/moodSlice/moodSlice';
+
 import LoadingPage from '../LoadingPage/LoadingPage';
 import './mood.css';
 
@@ -18,9 +19,6 @@ function Mood() {
     dispatch(addSmiley(Number(id)));
     return navigate('/testpreview');
   };
-  // useEffect(() => {
-  //   dispatch(loadSmiley());
-  // }, []);
 
   return (
     <div className="mood_container">
@@ -40,7 +38,7 @@ function Mood() {
             <button
               className="mood_btn1"
               type="button"
-              onClick={() => navigate('/exercises')}
+              onClick={() => { navigate('/exercises'); }}
             >
               Пропустить и перейти к упражениям
             </button>

@@ -71,7 +71,12 @@ export const loadLastConditionAsync = createAsyncThunk(
 const welcomeTestSlice = createSlice({
   name: 'conditions',
   initialState,
-  reducers: {},
+  reducers: {
+    clearlastCondition: (state) => {
+      state.recommendations = [];
+      state.lastCondition = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadCondsitionAsync.rejected, (state, action) => {
@@ -103,5 +108,5 @@ const welcomeTestSlice = createSlice({
       });
   },
 });
-
+export const { clearlastCondition } = welcomeTestSlice.actions;
 export default welcomeTestSlice.reducer;

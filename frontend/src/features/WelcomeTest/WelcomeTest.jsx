@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { welcomeTestQuestions } from './WelcomeTestQuestions';
-import { addScoreAsync } from '../../store/welcomeTestSlice/welcomeTestSlice';
+import { addScoreAsync, clearlastCondition } from '../../store/welcomeTestSlice/welcomeTestSlice';
 import style from './WelcomeTest.module.scss';
 
 function WelcomeTest() {
@@ -12,6 +12,9 @@ function WelcomeTest() {
   const [index, setIndex] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(clearlastCondition());
+  }, []);
 
   useEffect(() => {
     // console.log(userId, score);
