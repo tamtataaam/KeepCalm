@@ -39,7 +39,7 @@ app.use('/welcometest', welcometestScoreRouter);
 app.use('/userrecomendationsstore', userrecomendationsstoreRouter);
 app.use('/useredit', userEditRouter);
 app.use('/favoritearticles', likesRouter);
-app.use('rorschachtest', testRorshahaRouter);
+app.use('/rorschachtest', testRorshahaRouter);
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {

@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 // import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import style from './testRorshaha.module.scss';
 import { testRorshahaImg } from './testRorshahaIMG';
 import TaskPsih from './TaskPsih';
+import { addAnswerTestRorshaha } from '../../store/testRorshahaSlice/testRorshahaSlice';
 
 function TestRorshaha() {
   const [startQustion, setQuestion] = useState(true);
   const [nextQuestion, setQuestionNext] = useState(1);
-
-  const testRorshahaSubmit = (event) => {
+  const dispatch = useDispatch();
+  // eslint-disable-next-line max-len
+  // const answer = useSelector((prev) => prev.testRorshaha.answer);  вытаскиваем все ответы юзера писал для проверки.
+  function testRorshahaSubmit(event) {
     event.preventDefault();
     const answerUser = event.target.answerUser.value;
-    console.log(answerUser);
+    dispatch(addAnswerTestRorshaha(answerUser));
     event.target.reset();
-  };
+  }
 
   const nextImgDisplay = testRorshahaImg.filter(
     (el) => +el.id === nextQuestion

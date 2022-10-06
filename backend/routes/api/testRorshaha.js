@@ -1,7 +1,7 @@
 const testRorshahaRouter = require('express').Router();
 const { TestRorshaha } = require('../../db/models');
 
-testRorshahaRouter.post('/rorschachtest', async (req, res) => {
+testRorshahaRouter.post('/', async (req, res) => {
   try {
     const { user } = req.session;
     const { answerUser } = req.body;
