@@ -43,8 +43,8 @@
 
 
 .userPhoto {
-  // width: 250px;
-  // border-radius: 50%;
+display: flex;
+justify-content: center;
   margin: 20px;
 }
 
@@ -59,7 +59,7 @@
  justify-content: center;
  background-color: rgb(255, 255, 255);
  border-radius: 20px;
- width: 300px;
+ width: 350px;
  min-height: 150px;
  height: 450px;
 }
@@ -90,4 +90,66 @@
   height: 450px;
   background-color: white;
   // margin-top: 10px;
+}
+.file_input{
+  // background-color: #8E97FD;
+ display: none;
+}
+.btn_file{
+  border: none;
+  background-color: #8E97FD;
+  border-radius: 20px;
+  width: 200px;
+  height: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.div_btn_photo{
+  margin: 5px;
+}
+
+.input {
+  border: 1px solid rgb(83, 82, 82);
+  border-radius: 10px;
+  width: 130px;
+  height: 20px;
+  margin: 5px;
+  padding-left: 30px;
+  font-size: 15px;
+  transition: 0.4s;
+  // outline: 1px solid #5e6cff;
+}
+.input:hover {
+  border: 1px solid #5e6cff;
+}
+.input:focus {
+  outline: 1px solid #5e6cff;
+}
+
+.info_edit_div{
+display: flex;
+justify-content: baseline;
+}
+
+.button{
+  cursor: pointer;
+  left: 18%;
+  margin: 15px 0 10px;
+  font-size: 14px;
+  border: none;
+  background-color: #8E97FD ;
+  border-radius: 20px;
+  width: 140px;
+  height: 30px;
+  transition: 0.4s;
+  color: white;
+}
+.button:hover{
+  font-size: 15px;
+  box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
+  background-color: #6e76ce ;
+}
+.rec_and_fav_div{
+  display: flex;
+  justify-content: center;
 }

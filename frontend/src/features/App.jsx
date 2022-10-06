@@ -58,7 +58,7 @@ function App() {
       dispatch(loadAllFavoriteExrcisesAsync());
       dispatch(loadRecomendationsAsync());
     }
-  }, [dispatch, isUser]);
+  }, [isUser]);
 
   if (isUser === null) {
     return <LoadingPage />;
