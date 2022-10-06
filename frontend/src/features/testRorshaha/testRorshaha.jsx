@@ -63,7 +63,7 @@ function TestRorshaha() {
                 alt="изображение 1"
               />
               <form onSubmit={testRorshahaSubmit}>
-                <input type="text" name="answerUser" />
+                <input placeholder="Ответ" type="text" name="answerUser" />
                 <button
                   type="submit"
                   onClick={() => setQuestionNext((prev) => prev + 1)}
