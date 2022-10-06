@@ -74,7 +74,11 @@ export const toggleLike = createAsyncThunk(
 const articlesSlice = createSlice({
   name: 'articles',
   initialState,
-  reducers: {},
+  reducers: {
+    clearlastArticle: (state) => {
+      state.oneArticleInfo = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadAsyncArticles.rejected, (state, action) => {
@@ -124,3 +128,4 @@ const articlesSlice = createSlice({
 });
 
 export default articlesSlice.reducer;
+export const { clearlastArticle } = articlesSlice.actions;

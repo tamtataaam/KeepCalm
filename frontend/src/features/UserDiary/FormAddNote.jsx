@@ -9,6 +9,7 @@ import style from './UserDiary.module.scss';
 function FormAddNote() {
   const dispatch = useDispatch();
   const userId = useSelector((store) => store.user.data.id);
+
   return (
     <form
       className={style.form}

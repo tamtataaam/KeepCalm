@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { welcomeTestQuestions } from './WelcomeTestQuestions';
-import { addScoreAsync } from '../../store/welcomeTestSlice/welcomeTestSlice';
+import { addScoreAsync, clearlastCondition } from '../../store/welcomeTestSlice/welcomeTestSlice';
 import style from './WelcomeTest.module.scss';
 
 function WelcomeTest() {
@@ -12,13 +12,17 @@ function WelcomeTest() {
   const [index, setIndex] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(clearlastCondition());
+  }, []);
 
   useEffect(() => {
+    // console.log(userId, score);
     setIndex((prev) => prev + 1);
     // console.log(index, '1');
     // console.log(score, '2');
     // console.log(welcomeTestQuestions.length, '3');
-    if (index === welcomeTestQuestions.length + 1) {
+    if (index + 1 === welcomeTestQuestions.length) {
       dispatch(addScoreAsync({ userId, score }));
     }
   }, [score]);
@@ -43,9 +47,9 @@ function WelcomeTest() {
         </div> */}
 
         <div className={style.answers_container}>
-          <h2 className={style.h2}>Выбери один из вариантов:</h2>
           {welcomeTestQuestions.length !== index ? (
             <>
+              <h2 className={style.h2}>Выбери один из вариантов:</h2>
               <button className={style.button} type="button" onClick={() => setScore((prev) => prev + 1)}>
                 {welcomeTestQuestions[index]['1']}
               </button>

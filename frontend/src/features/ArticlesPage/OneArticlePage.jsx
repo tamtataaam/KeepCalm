@@ -6,24 +6,25 @@ import { loadComments } from '../../store/commentsSlice/commentsSlice';
 import Comments from '../Comments/Comments';
 import AddComment from '../Comments/AddComment';
 import Likes from './Likes';
-import LoadingPage from '../LoadingPage/LoadingPage';
+// import LoadingPage from '../LoadingPage/LoadingPage';
 import style from './ArticlesPage.module.scss';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 function OneArticlePage() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { oneArticleInfo, loading } = useSelector((store) => store.articles);
+  const { oneArticleInfo } = useSelector((store) => store.articles);
   const comments = useSelector((state) => state.comments.data);
 
   useEffect(() => {
     dispatch(oneArticleAsyncInfo(id));
     dispatch(loadComments(id));
     dispatch(loadLikes());
-  }, [dispatch, id]);
+  }, [id]);
 
-  if (loading) {
-    return <LoadingPage />;
-  }
+  // if (loading) {
+  //   return <LoadingPage />;
+  // }
 
   return (
     <div className={style.article_container}>
@@ -70,7 +71,7 @@ function OneArticlePage() {
                 )}
         </div>
         <div className={style.comments}>
-          {comments.map(
+          { oneArticleInfo && comments.length ? comments.map(
             (comment) => (
               <Comments
                 key={comment.id}
@@ -78,7 +79,7 @@ function OneArticlePage() {
                 oneArticleInfo={oneArticleInfo}
               />
             ),
-          )}
+          ) : <LoadingPage /> }
         </div>
       </div>
       <div>

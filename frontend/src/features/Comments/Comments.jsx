@@ -10,6 +10,7 @@ function Comments({ comment, oneArticleInfo }) {
   const [showEditCom, setShowEditCom] = useState(false);
   const userId = useSelector((state) => state.user.data.id);
   const dispatch = useDispatch();
+
   const data = {
     commentId: comment.id,
     articleId: oneArticleInfo.id,

@@ -38,6 +38,7 @@ export const loadRecomendationsAsync = createAsyncThunk(
 export const addScoreAsync = createAsyncThunk(
   'score/addScoreAsync',
   async ({ score, userId }) => {
+    // console.log(score, userId);
     const response = await fetch('/welcometest', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -70,7 +71,12 @@ export const loadLastConditionAsync = createAsyncThunk(
 const welcomeTestSlice = createSlice({
   name: 'conditions',
   initialState,
-  reducers: {},
+  reducers: {
+    clearlastCondition: (state) => {
+      state.recommendations = [];
+      state.lastCondition = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadCondsitionAsync.rejected, (state, action) => {
@@ -102,5 +108,5 @@ const welcomeTestSlice = createSlice({
       });
   },
 });
-
+export const { clearlastCondition } = welcomeTestSlice.actions;
 export default welcomeTestSlice.reducer;

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Article from './Article';
-import { loadAsyncArticles } from '../../store/articlesSlice/articlesSlice';
+import { loadAsyncArticles, clearlastArticle } from '../../store/articlesSlice/articlesSlice';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import style from './Articles.module.scss';
 
@@ -11,8 +11,11 @@ function ArticlesPage() {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log(11111);
     dispatch(loadAsyncArticles());
-  }, []);
+
+    return () => dispatch(clearlastArticle());
+  }, [dispatch]);
 
   if (loading) {
     return <LoadingPage />;
