@@ -4,14 +4,15 @@ import { FaPlay, FaPause } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 // import { videos } from './videoFile';
 import { videos } from './videoFile';
-// import { musick } from './musickFile';
 import style from './SleepPage.module.scss';
 import { changePlayingId } from '../../store/userSlice/userSlice';
 
 function CompositionPage({ composition, change }) {
   const { nowPlaying } = useSelector((store) => store.user);
+  // console.log(nowPlaying, 'a/sdsafasfasg');
   const dispatch = useDispatch();
   const audioPlayer = useRef(); // reference our audio component
+
   const togglePlayPause = (id) => {
     if (composition.id === nowPlaying) {
       audioPlayer.current.pause();
@@ -26,11 +27,9 @@ function CompositionPage({ composition, change }) {
       // console.log('in else', nowPlaying);
       // console.log('in id', composition.id);
 
-      if (nowPlaying === composition.id) {
+      if (id === composition.id) {
         // console.log(111111);
         audioPlayer.current.play();
-      } else {
-        audioPlayer.current.pause();
       }
     }
   };
