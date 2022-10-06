@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
 // import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import style from './testRorshaha.module.scss';
 import { testRorshahaImg } from './testRorshahaIMG';
 import TaskPsih from './TaskPsih';
+import { addAnswerTestRorshaha } from '../../store/testRorshahaSlice/testRorshahaSlice';
 
 function TestRorshaha() {
   const [startQustion, setQuestion] = useState(true);
   const [nextQuestion, setQuestionNext] = useState(1);
+  const dispatch = useDispatch();
+  // eslint-disable-next-line max-len
+  // const answer = useSelector((prev) => prev.testRorshaha.answer);  вытаскиваем все ответы юзера писал для проверки.
+  function testRorshahaSubmit(event) {
+    event.preventDefault();
+    const answerUser = event.target.answerUser.value;
+    dispatch(addAnswerTestRorshaha(answerUser));
+    event.target.reset();
+  }
 
   const nextImgDisplay = testRorshahaImg.filter(
     (el) => +el.id === nextQuestion
@@ -51,15 +62,16 @@ function TestRorshaha() {
                 src={displayRorshahaImg}
                 alt="изображение 1"
               />
-
-              <input className={style.input} type="text" placeholder="Что ты видишь?" required />
-              <button
-                type="button"
-                onClick={() => setQuestionNext((prev) => prev + 1)}
-                className={style.button}
-              >
-                Следующий вопрос
-              </button>
+              <form onSubmit={testRorshahaSubmit}>
+                <input placeholder="Ответ" type="text" name="answerUser" />
+                <button
+                  type="submit"
+                  onClick={() => setQuestionNext((prev) => prev + 1)}
+                  className={style.button}
+                >
+                  Следующий вопрос
+                </button>
+              </form>
             </div>
           )}
         </div>
