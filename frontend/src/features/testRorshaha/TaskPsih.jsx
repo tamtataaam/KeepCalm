@@ -9,7 +9,7 @@ function TaskPsih() {
     <div className={style.container}>
       <h1>Ваши данные будут переданы специалисту</h1>
       <button
-        className={style.buttonn}
+        className={style.button}
         onClick={() => navigate('/')}
         type="button"
       >

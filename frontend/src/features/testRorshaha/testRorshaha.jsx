@@ -7,7 +7,7 @@ import TaskPsih from './TaskPsih';
 import { addAnswerTestRorshaha } from '../../store/testRorshahaSlice/testRorshahaSlice';
 
 function TestRorshaha() {
-  const [startQustion, setQuestion] = useState(true);
+  // const [startQustion, setQuestion] = useState(true);
   const [nextQuestion, setQuestionNext] = useState(1);
   const dispatch = useDispatch();
   // eslint-disable-next-line max-len
@@ -34,46 +34,26 @@ function TestRorshaha() {
     <div>
       <div className={style.main_container}>
         <div className={style.container}>
-          {startQustion ? (
-            <>
-              <div className={style.img_face_test}>
-                <img
-                  src="https://testometrika.com/upload/uf/3ce/3cecd2c79d3224c1df1c1bf982778abf.svg"
-                  alt="img"
-                />
-              </div>
-              {/* <img src="1Rorshar.jpeg" alt="1 вопрос" /> */}
-              <h1 className={style.h1}>
-                Чернильные пятна Роршаха: все ли в порядке с вашей психикой?
-              </h1>
+
+          <div className={style.testQuest}>
+            <h1 className={style.h1}>Что видите на изображении?</h1>
+            <img
+              className={style.img_from_test}
+              src={displayRorshahaImg}
+              alt="изображение 1"
+            />
+            <form onSubmit={testRorshahaSubmit}>
+              <input className={style.input} placeholder="Ответ" type="text" name="answerUser" required />
               <button
-                type="button"
-                onClick={() => setQuestion(!startQustion)}
+                type="submit"
+                onClick={() => setQuestionNext((prev) => prev + 1)}
                 className={style.button}
               >
-                Пройти тест
+                Следующий вопрос
               </button>
-            </>
-          ) : (
-            <div className={style.testQuest}>
-              <h1 className={style.h1}>Что видите на изображении?</h1>
-              <img
-                className={style.img_from_test}
-                src={displayRorshahaImg}
-                alt="изображение 1"
-              />
-              <form onSubmit={testRorshahaSubmit}>
-                <input placeholder="Ответ" type="text" name="answerUser" />
-                <button
-                  type="submit"
-                  onClick={() => setQuestionNext((prev) => prev + 1)}
-                  className={style.button}
-                >
-                  Следующий вопрос
-                </button>
-              </form>
-            </div>
-          )}
+            </form>
+          </div>
+
         </div>
       </div>
     </div>

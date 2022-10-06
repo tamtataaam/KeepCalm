@@ -50,9 +50,7 @@ function OneNote({ note }) {
           className={style.delete_button}
           type="button"
           onClick={() => {
-            const isTrue = confirm(`Вы точно хотите удалить запись ${note.title}?`);
-            isTrue
-              ? dispatch(deleteOneNoteAsync({ noteId: note.id, userId })) : null;
+            dispatch(deleteOneNoteAsync({ noteId: note.id, userId }));
           }}
           style={!flagChange ? { display: 'none' } : { display: 'inline' }}
         >

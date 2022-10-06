@@ -47,9 +47,9 @@ function WelcomeTest() {
         </div> */}
 
         <div className={style.answers_container}>
-          <h2 className={style.h2}>Выбери один из вариантов:</h2>
           {welcomeTestQuestions.length !== index ? (
             <>
+              <h2 className={style.h2}>Выбери один из вариантов:</h2>
               <button className={style.button} type="button" onClick={() => setScore((prev) => prev + 1)}>
                 {welcomeTestQuestions[index]['1']}
               </button>
