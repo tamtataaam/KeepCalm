@@ -29,6 +29,7 @@ function ChangeForm({ note, flagChange, setFlagChange }) {
         className={style.change_input}
         type="text"
         value={changeInputTitle}
+        placeholder="Название записи..."
         onChange={(event) => setChangeIputTitle(event.target.value)}
       />
 
@@ -41,7 +42,7 @@ function ChangeForm({ note, flagChange, setFlagChange }) {
       <div className={style.buttons_container}>
         <div>
           <button type="submit" className={style.save_changes_button}>
-            Сохранить изменения
+            Сохранить
           </button>
         </div>
         <div>

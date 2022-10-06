@@ -24,7 +24,7 @@ function FormAddNote() {
         event.target.reset();
       }}
     >
-      <h2>Добавь новую запись</h2>
+      <h2 className={style.h2}>Добавь новую запись</h2>
 
       <input
         className={style.input}
@@ -42,9 +42,9 @@ function FormAddNote() {
         required
         autoComplete="off"
       />
-      <button type="submit" className={style.delete_button}>
+      <button type="submit" className={style.add_button}>
         {' '}
-        Добавить
+        + Добавить
       </button>
     </form>
   );
