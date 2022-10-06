@@ -7,6 +7,7 @@ import Comments from '../Comments/Comments';
 import AddComment from '../Comments/AddComment';
 import Likes from './Likes';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import style from './ArticlesPage.module.scss';
 
 function OneArticlePage() {
   const dispatch = useDispatch();
@@ -25,24 +26,22 @@ function OneArticlePage() {
   }
 
   return (
-    <>
-      <div>
-        {
+    <div className={style.article_container}>
+      {
         oneArticleInfo
           ? (
             <>
-              <h3>{oneArticleInfo.title}</h3>
-              <img src={oneArticleInfo.img} alt="article" />
+              <h2 className={style.article_title}>{oneArticleInfo.title}</h2>
+              <img className={style.article_image} src={oneArticleInfo.img} alt="article" />
               <Likes
                 oneArticleInfo={oneArticleInfo}
               />
-              <p>{oneArticleInfo.content}</p>
+              <p className={style.article_content}>{oneArticleInfo.content}</p>
             </>
           ) : null
         }
-      </div>
       <div className="article_comments">
-        <h3>Комментарии:</h3>
+        {/* <h3>Комментарии:</h3> */}
         <div>
           {comments.length === 0
             ? <p className="comments_info">Нет комментариев</p>
@@ -51,7 +50,7 @@ function OneArticlePage() {
                 <p className="comments_info">
                   {comments.length}
                   {' '}
-                  комментарий
+                  комментарий:
                 </p>
               )
               : comments.length > 1 && comments.length < 5
@@ -59,14 +58,14 @@ function OneArticlePage() {
                   <p className="comments_info">
                     {comments.length}
                     {' '}
-                    комментария
+                    комментария:
                   </p>
                 )
                 : (
                   <p className="comments_info">
                     {comments.length}
                     {' '}
-                    комментариев
+                    комментариев:
                   </p>
                 )}
         </div>
@@ -85,7 +84,7 @@ function OneArticlePage() {
       <div>
         <AddComment />
       </div>
-    </>
+    </div>
   );
 }
 
