@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { EditInfo, passwordEdit, addPhoto } from '../../store/userSlice/userSlice';
 // import { style } from '@mui/system';
 import style from './UserPage.module.scss';
@@ -43,6 +44,10 @@ function UserEdit({ setInfo }) {
   const ClickInput = () => {
     fileRef.current.click();
   };
+  const [state, setState] = useState(false);
+  const toggleBtn = () => {
+    setState((prev) => !prev);
+  };
   return (
 
     <div>
@@ -58,7 +63,7 @@ function UserEdit({ setInfo }) {
       </div>
       <div className={style.info_edit_div}>
         <form onSubmit={EditUser}>
-          <input className={style.input} type="text" name="name" defaultValue={user.name} required />
+          <input className={style.input} type="text" name="name" defaultValue={user.name} placeholder="Имя" required />
           <input
             className={style.input}
             type="email"
@@ -66,23 +71,31 @@ function UserEdit({ setInfo }) {
             defaultValue={user.email}
             pattern="^\S+@\S+\.\S+$"
             title="Почта должна быть указана в формате email@mail.com"
+            placeholder="Email"
             required
           />
-          <button className={style.button} type="submit">Изменить</button>
+          <button className={style.button_edit_profile} type="submit">Изменить профиль</button>
         </form>
 
-        <form onSubmit={EditPassword}>
+        <form className={style.form_password} onSubmit={EditPassword}>
           <input
             className={style.input}
             type="password"
             name="password"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
+            placeholder="Пароль"
           />
-          <input className={style.input} type="password" name="repeatPassword" />
-          <button className={style.button} type="submit">Изменить пароль</button>
+          <button type="button" onClick={toggleBtn} className={style.password_button}>
+            { state ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
+          </button>
+          <input className={style.input} type="password" name="repeatPassword" placeholder="Повторите пароль" />
+          <button type="button" onClick={toggleBtn} className={style.password_button}>
+            { state ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
+          </button>
+          { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
+          <button className={style.button_password} type="submit">Изменить пароль</button>
         </form>
-        { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
       </div>
     </div>
   );
