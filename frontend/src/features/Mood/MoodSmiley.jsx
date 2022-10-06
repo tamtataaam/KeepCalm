@@ -30,7 +30,7 @@ function Mood() {
           <h2 className="mood_h2">Выбери свое настроение на сегодня</h2>
           <div className="smile_container">
             {moodSm.map((el) => (
-              <div onClick={() => getSmiley(el.id)}>
+              <div key={el.id} onClick={() => getSmiley(el.id)}>
                 <img className="smile_img" src={el.moodUrl} alt="smile" />
               </div>
             ))}

@@ -28,7 +28,7 @@ function Recommendations() {
             <h1 className={style.h1}>Ваш последний результат</h1>
             <h2>{lastCondition.condition}</h2>
             {recommendations.map((recommendation) => (
-              <RecommendationOne recommendation={recommendation} />
+              <RecommendationOne recommendation={recommendation} key={recommendation.id} />
             ))}
             <button
               className={style.resBnt}

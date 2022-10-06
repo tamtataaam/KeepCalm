@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   recommendations: [],
+  recomendations: [],
   conditions: [],
   lastCondition: null,
   error: null,

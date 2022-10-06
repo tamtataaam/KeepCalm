@@ -15,6 +15,12 @@ function WelcomeTest() {
 
   useEffect(() => {
     setIndex((prev) => prev + 1);
+    // console.log(index, '1');
+    // console.log(score, '2');
+    // console.log(welcomeTestQuestions.length, '3');
+    if (index === welcomeTestQuestions.length + 1) {
+      dispatch(addScoreAsync({ userId, score }));
+    }
   }, [score]);
 
   return (
@@ -57,11 +63,7 @@ function WelcomeTest() {
             <button
               className={style.resBnt}
               type="button"
-              onClick={() =>
-                dispatch(
-                  addScoreAsync({ userId, score }),
-                  navigate('/welcometest/recommendations')
-                )
+              onClick={() => navigate('/welcometest/recommendations')
             }
             >
               Узнать рекомендации

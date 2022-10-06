@@ -119,43 +119,38 @@ module.exports = welcometestScoreRouter
         order: [['id', 'ASC']],
         raw: true,
       });
+      console.log(allConditionsUser, '1');
       if (allConditionsUser) {
-        const lastCondition =
-          allConditionsUser[allConditionsUser.length - 1].conditionId;
+        const lastCondition = allConditionsUser[allConditionsUser.length - 1].conditionId;
         const findLast = await Condition.findByPk(lastCondition);
-        const allRecomendationsForUser =
-          await PersonalRecomendationStore.findAll({
-            where: { userId: id },
-            order: [['id', 'DESC']],
-            raw: true,
-          });
-        let recommendationsLast;
-        setTimeout(() => {
-          recommendationsLast = allRecomendationsForUser
-            .slice(0, 3)
-            .map((el) => el.recommendationId);
-        }, 50);
-
-        let recomendations;
-
-        setTimeout(async () => {
-          recomendations = await Recommendation.findAll({
-            where: {
-              id: {
-                [Op.in]: recommendationsLast,
-              },
+        const allRecomendationsForUser = await PersonalRecomendationStore.findAll({
+          where: { userId: id },
+          order: [['id', 'DESC']],
+          raw: true,
+        });
+        console.log(lastCondition, '2');
+        console.log(findLast, '3');
+        console.log(allRecomendationsForUser, '4');
+        const recommendationsLast = allRecomendationsForUser
+          .slice(0, 3)
+          .map((el) => el.recommendationId);
+        console.log(recommendationsLast, '5');
+        const recomendations = await Recommendation.findAll({
+          where: {
+            id: {
+              [Op.in]: recommendationsLast,
             },
-            raw: true,
-          });
-        }, 100);
-
-        setTimeout(() => {
-          res.json({ findLast, recomendations, status: true });
-        }, 150);
+          },
+          raw: true,
+        });
+        console.log(recomendations, '6');
+        res.status(200).json({ findLast, recomendations, status: true });
       } else {
-        res.json({ status: false });
+        console.log('7');
+        res.status(200).json({ status: false });
       }
     } catch (error) {
+      console.log(`${error.message}`, '=============================');
       res.status(500).send(`${error.message}`);
     }
   });
