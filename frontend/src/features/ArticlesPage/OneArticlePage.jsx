@@ -44,10 +44,10 @@ function OneArticlePage() {
         {/* <h3>Комментарии:</h3> */}
         <div>
           {comments.length === 0
-            ? <p className="comments_info">Нет комментариев</p>
+            ? <p className={style.comments_info}>Нет комментариев</p>
             : comments.length === 1
               ? (
-                <p className="comments_info">
+                <p className={style.comments_info}>
                   {comments.length}
                   {' '}
                   комментарий:
@@ -55,14 +55,14 @@ function OneArticlePage() {
               )
               : comments.length > 1 && comments.length < 5
                 ? (
-                  <p className="comments_info">
+                  <p className={style.comments_info}>
                     {comments.length}
                     {' '}
                     комментария:
                   </p>
                 )
                 : (
-                  <p className="comments_info">
+                  <p className={style.comments_info}>
                     {comments.length}
                     {' '}
                     комментариев:
