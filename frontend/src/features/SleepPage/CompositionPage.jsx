@@ -13,30 +13,28 @@ function CompositionPage({ composition, change }) {
   const dispatch = useDispatch();
   const audioPlayer = useRef(); // reference our audio component
 
+  const play = () => {
+    audioPlayer.current.play();
+  };
+
+  const pause = () => {
+    if (audioPlayer.current) {
+      audioPlayer.current.pause();
+    }
+  };
+
   const togglePlayPause = (id) => {
     if (composition.id === nowPlaying) {
-      audioPlayer.current.pause();
       dispatch(changePlayingId(null));
-      // console.log('in 1st if', nowPlaying);
-      // console.log('in id', composition.id);
     } else {
-      // console.log('before clear', nowPlaying);
-      // console.log('in id', composition.id);
-
       dispatch(changePlayingId(id));
-      // console.log('in else', nowPlaying);
-      // console.log('in id', composition.id);
-
-      if (id === composition.id) {
-        // console.log(111111);
-        audioPlayer.current.play();
-      }
     }
   };
 
   return (
     <>
       <div className={style.audioPlayer_container}>
+        {composition.id === nowPlaying ? play() : pause()}
         <h3 style={{ zIndex: '1' }}>{composition.name}</h3>
         <div className={style.audioPlayer_sounds}>
           <audio

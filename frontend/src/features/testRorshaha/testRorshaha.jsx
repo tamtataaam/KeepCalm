@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useParams } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 import style from './testRorshaha.module.scss';
 import { testRorshahaImg } from './testRorshahaIMG';

@@ -7,13 +7,13 @@ function TaskPsih() {
   return (
     // <div className={style.main_container}>
     <div className={style.container}>
-      <h1>Ваши данные будут переданы специалисту</h1>
+      <h1 className={style.h1}>Ваши данные будут переданы специалисту</h1>
       <button
         className={style.button}
-        onClick={() => navigate('/')}
+        onClick={() => navigate('/exercises')}
         type="button"
       >
-        На главную
+        Вернуться к упражнениям
       </button>
     </div>
     // </div>

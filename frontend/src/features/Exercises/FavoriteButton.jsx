@@ -6,7 +6,7 @@
 /* eslint-disable react/jsx-curly-newline */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToFavoriteAsync } from '../../store/exercisesSlice/exerciseSlice';
+import { addToFavoriteAsync, deleteToFavoriteAsync } from '../../store/exercisesSlice/exerciseSlice';
 import style from './Exercises.module.scss';
 
 function FavoriteButton({ exercise }) {
@@ -14,11 +14,12 @@ function FavoriteButton({ exercise }) {
   const { favoriteExercise } = useSelector((state) => state.exercises);
   const userFav = favoriteExercise.filter((el) => el.userId === userId);
   const currentEx = userFav.filter((el) => el.exerciseId === exercise.id);
+  // console.log(userFav);
   const dispatch = useDispatch();
 
   return (
     <>
-      {!currentEx[0]?.status ? (
+      {!currentEx.length ? (
         <img
           className={style.like_img}
           src="heartBlack.png"
@@ -32,7 +33,7 @@ function FavoriteButton({ exercise }) {
           className={style.like_img}
           src="heart.png"
           onClick={() =>
-            dispatch(addToFavoriteAsync({ userId, exerciseId: exercise.id }))
+            dispatch(deleteToFavoriteAsync({ userId, exerciseId: exercise.id }))
           }
           alt="..."
         />

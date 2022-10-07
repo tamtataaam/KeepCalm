@@ -1,5 +1,6 @@
 import React from 'react';
 // import LineChart from 'react-linechart';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
 import {
@@ -29,6 +30,7 @@ function MoodGraph() {
   const userMood = useSelector((state) => state.mood.userMood);
   const userMoodDate = userMood?.map((el) => el.createdAt.slice(5, 10));
   const userMoodId = userMood?.map((el) => el.moodId);
+  const navigate = useNavigate();
 
   const mydata = {
     labels: userMoodDate,
@@ -79,6 +81,7 @@ function MoodGraph() {
         )}
 
       </div>
+      <button className={style.button} type="button" onClick={() => navigate('/mood')}>Изменить настроение</button>
     </div>
   );
 }

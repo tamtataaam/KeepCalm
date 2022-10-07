@@ -82,6 +82,11 @@
   z-index: 10;
 }
 
+.like_img:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
 .button {
   cursor: pointer;
   margin: 50px 0;
