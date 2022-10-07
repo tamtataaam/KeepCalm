@@ -16,16 +16,18 @@ function ChatsPage() {
 
   return (
     <>
-      <h1>Обсуждения:</h1>
-      <input
-        onChange={(event) => setValue(event.target.value.toLowerCase().trim())}
-        className={style.input}
-        type="text"
-        placeholder="Поиск обсуждения..."
-      />
-      <button className={style.button} type="button">
-        Найти
-      </button>
+      <div className={style.search_container}>
+        <h1>Обсуждения:</h1>
+        <input
+          onChange={(event) => setValue(event.target.value.toLowerCase().trim())}
+          className={style.input}
+          type="text"
+          placeholder="Поиск обсуждения..."
+        />
+        <button className={style.button} type="button">
+          Найти
+        </button>
+      </div>
       <div className={style.container}>
         <div className={style.chats_container}>
           {filteredChatsTitle.length ? (

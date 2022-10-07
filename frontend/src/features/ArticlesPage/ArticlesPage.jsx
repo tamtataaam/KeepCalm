@@ -11,7 +11,6 @@ function ArticlesPage() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(11111);
     dispatch(loadAsyncArticles());
 
     return () => dispatch(clearlastArticle());

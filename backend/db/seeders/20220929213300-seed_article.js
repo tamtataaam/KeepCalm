@@ -42,38 +42,6 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-      {
-        title: '',
-        description: '',
-        content: 'Lorem ipsum',
-        img: 'Lorem ipsum',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        title: '',
-        description: '',
-        content: 'Lorem ipsum',
-        img: 'Lorem ipsum',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        title: '',
-        description: '',
-        content: 'Lorem ipsum',
-        img: 'Lorem ipsum',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        title: '',
-        description: '',
-        content: 'Lorem ipsum',
-        img: 'Lorem ipsum',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
     ]);
   },
 

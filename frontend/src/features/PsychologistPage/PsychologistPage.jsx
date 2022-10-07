@@ -11,7 +11,7 @@ function PsychologistPage() {
         <div className={style.container_reccomendations}>
           <div className={style.reccomendations}>
             <div className={style.one_reccomendation}>
-              <a href="https://alter.ru/">
+              <a href="https://alter.ru/" target="_blank" rel="noreferrer">
                 <img
                   className={style.img}
                   src="/PsyhoPic/alter.png"
@@ -24,7 +24,7 @@ function PsychologistPage() {
               </div>
             </div>
             <div className={style.one_reccomendation}>
-              <a href="https://bemeta.co/">
+              <a href="https://bemeta.co/" target="_blank" rel="noreferrer">
                 <img
                   className={style.img}
                   src="/PsyhoPic/meta.webp"
@@ -38,7 +38,7 @@ function PsychologistPage() {
               </div>
             </div>
             <div className={style.one_reccomendation}>
-              <a href="https://yasno.live/">
+              <a href="https://yasno.live/" target="_blank" rel="noreferrer">
                 <img
                   className={style.img}
                   src="/PsyhoPic/yasno.svg"
@@ -57,7 +57,7 @@ function PsychologistPage() {
           <div>
             {' '}
             <div className={style.one_reccomendation}>
-              <a href="https://youtalk.ru/">
+              <a href="https://youtalk.ru/" target="_blank" rel="noreferrer">
                 <img
                   className={style.img}
                   src="/PsyhoPic/youtalk.svg"
@@ -73,7 +73,7 @@ function PsychologistPage() {
               </div>
             </div>
             <div className={style.one_reccomendation}>
-              <a href="https://zigmund.online/offer">
+              <a href="https://zigmund.online/offer" target="_blank" rel="noreferrer">
                 <img
                   style={{ paddingTop: '50px', borderRadius: '0px' }}
                   className={style.img}
@@ -89,7 +89,7 @@ function PsychologistPage() {
               </div>
             </div>
             <div className={style.one_reccomendation}>
-              <a href="https://psypsy.online/">
+              <a href="https://psypsy.online/" target="_blank" rel="noreferrer">
                 <img
                   style={{ paddingTop: '90px', borderRadius: '0px' }}
                   className={style.img}

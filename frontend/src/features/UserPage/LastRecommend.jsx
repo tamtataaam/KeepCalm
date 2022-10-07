@@ -23,7 +23,7 @@ function LastRecommend() {
           <LoadingPage />
         ) : (
           <div className={style.container_recomendation_div}>
-            <h1 className={style.h1}>Ваш последний результат</h1>
+            <h1 className={style.h1}>Ваш последний результат теста:</h1>
             <h2 className={style.h1}>{lastCondition.condition}</h2>
             {recommendations.map((recommendation) => (
               <UserRecommendationOne recommendation={recommendation} />
