@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useParams } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 import style from './testRorshaha.module.scss';
 import { testRorshahaImg } from './testRorshahaIMG';
@@ -42,7 +42,7 @@ function TestRorshaha() {
               src={displayRorshahaImg}
               alt="изображение 1"
             />
-            <form onSubmit={testRorshahaSubmit}>
+            <form className={style.form} onSubmit={testRorshahaSubmit}>
               <input className={style.input} placeholder="Ответ" type="text" name="answerUser" required />
               <button
                 type="submit"

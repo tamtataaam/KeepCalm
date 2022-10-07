@@ -1,11 +1,11 @@
 .main_container {
   background-color: #8e97fd;
-  height: 100vh;
+  height: 100%;
 }
 
 .container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   margin: auto;
   text-align: center;
   background-color: #8e97fd;
@@ -23,8 +23,9 @@
 }
 .h1 {
   color: #EBEAEC;
-  // margin-bottom: 15px;
-  padding-top: 50px;
+  margin: 0;
+  padding: 60px;
+
 }
 .button {
   cursor: pointer;
@@ -37,6 +38,7 @@
   height: 42px;
   transition: 0.4s;
   color: #3f414e;
+  margin-bottom: 200px;
 }
 .button:hover {
   box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
@@ -79,6 +81,12 @@
 
 
 .testQuest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -10,7 +10,7 @@ function ChatItem({ chat }) {
       <div className={style.chat_info}>
         <h3 className={style.text}>Название: {chat.title}</h3>
 
-        <h3 className={style.text}>Описание: {chat.description}</h3>
+        {/* <h3 className={style.text}>Описание: {chat.description}</h3> */}
 
         <a
           href={`${chat.telegramUrl}`}

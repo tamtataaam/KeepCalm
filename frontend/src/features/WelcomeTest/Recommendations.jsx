@@ -19,7 +19,7 @@ function Recommendations() {
   );
 
   return (
-    <div className={style.main_container}>
+    <div className={style.recom_container}>
       <div>
         {!lastCondition ? (
           <LoadingPage />

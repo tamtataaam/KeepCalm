@@ -74,7 +74,7 @@ function UserEdit({ setInfo }) {
             placeholder="Email"
             required
           />
-          <button className={style.button_edit_profile} type="submit">Изменить профиль</button>
+          <button className={style.button_edit_profile} type="submit">Сохранить изменения</button>
         </form>
 
         <form className={style.form_password} onSubmit={EditPassword}>

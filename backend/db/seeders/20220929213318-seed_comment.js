@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     /**
      * Add seed commands here.
      *
@@ -13,30 +11,65 @@ module.exports = {
      */
     await queryInterface.bulkInsert('Comments', [
       {
-        userId: 1,
-        articleId: 2,
-        commentText: 'Comment 1',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userId: 1,
+        userId: 3,
         articleId: 1,
-        commentText: 'Comment 1',
+        commentText: 'Крутая статья! Она мне очень помогла)',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        userId: 1,
+        userId: 2,
         articleId: 2,
-        commentText: 'Comment 2',
+        commentText: 'Все равно хочу в окно(((',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        userId: 4,
+        articleId: 3,
+        commentText: 'Лучшая статья',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 2,
+        articleId: 4,
+        commentText: 'Статья так себе, мне не зашло(',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      // {
+      //   userId: 4,
+      //   articleId: 5,
+      //   commentText: 'Крутая статья! Она мне очень помогла)',
+      //   createdAt: new Date(),
+      //   updatedAt: new Date(),
+      // },
+      // {
+      //   userId: 2,
+      //   articleId: 6,
+      //   commentText: 'Все равно хочу в окно(((',
+      //   createdAt: new Date(),
+      //   updatedAt: new Date(),
+      // },
+      // {
+      //   userId: 3,
+      //   articleId: 7,
+      //   commentText: 'Лучшая статья',
+      //   createdAt: new Date(),
+      //   updatedAt: new Date(),
+      // },
+      // {
+      //   userId: 2,
+      //   articleId: 8,
+      //   commentText: 'Статья так себе, мне не зашло(',
+      //   createdAt: new Date(),
+      //   updatedAt: new Date(),
+      // },
     ]);
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     /**
      * Add commands to revert seed here.
      *

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { loadSmileyUserLk } from '../../store/moodSlice/moodSlice';
-
 import MoodGraph from '../MoodGraph/MoodGraph';
 import LastRecommend from './LastRecommend';
 import UserEdit from './UserEdit';
