@@ -21,10 +21,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  // padding-top: 20px;
+  // align-items: center;
   // text-align: center;
   border-radius: 20px;
-  width: 800px;
+  width: 900px;
   height: 650px;
 
   background-color: white;
@@ -90,7 +91,7 @@
 
 .rec_and_fav_div {
   border-radius: 20px;
-  width: 1280px;
+  width: 1380px;
   min-height: 450px;
   padding: 60px 0px;
   background-color: white;
@@ -208,7 +209,7 @@
     background-color: #8E97FD ;
     border-radius: 20px;
     position: relative;
-    top: 50px;
+    top: 30px;
     width: 330px;
     height: 40px;
     transition: 0.4s;

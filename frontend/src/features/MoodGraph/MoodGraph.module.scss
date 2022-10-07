@@ -6,15 +6,16 @@
   background-color: white;
   border-radius: 20px;
   height: 440px;
+  padding-top: 30px;
   // margin: 15px ;
 }
 
 .graph {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  // min-width: 300px;
-  width: 700px;
+  text-align: center;
+  width: 750px;
 }
 
 .smiles_container {
@@ -34,7 +35,7 @@
 .button{
     cursor: pointer;
     left: 18%;
-    margin: 25px 0 10px;
+    margin: 70px 15px 10px;
     font-size: 18px;
     border: none;
     background-color: #8E97FD ;
@@ -48,4 +49,8 @@
     font-size: 19px;
     box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
     background-color: #6e76ce ;
+}
+
+.h2 {
+  margin-top: 5px;
 }

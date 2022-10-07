@@ -74,6 +74,7 @@ function MoodGraph() {
         <img src="5.svg" alt="super" />
       </div> */}
       <div className={style.graph}>
+        <h1 className={style.h2}>График настроения</h1>
         {userMoodDate.length && userMoodId.length ? (
           <Line data={mydata} options={options} />
         ) : (
@@ -82,6 +83,8 @@ function MoodGraph() {
 
       </div>
       <button className={style.button} type="button" onClick={() => navigate('/mood')}>Изменить настроение</button>
+      <button className={style.button} type="button" onClick={() => navigate('/welcometest')}>Пройти тест</button>
+
     </div>
   );
 }
