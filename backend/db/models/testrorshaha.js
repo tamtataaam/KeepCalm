@@ -1,16 +1,17 @@
 const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class Chat extends Model {
+  class TestRorshaha extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ User }) {
-      Chat.belongsTo(User, { foreignKey: 'userId' });
+    static associate() {
+      // define association here
     }
   }
-  Chat.init(
+  TestRorshaha.init(
     {
       id: {
         allowNull: false,
@@ -18,24 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
+      answerUser: {
+        type: DataTypes.TEXT,
+      },
       userId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Users',
-        },
-      },
-      title: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
-      // description: {
-      //   type: DataTypes.TEXT,
-      //   allowNull: false,
-      // },
-      telegramUrl: {
-        type: DataTypes.TEXT,
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -48,9 +36,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Chat',
-      tableName: 'Chats',
+      modelName: 'TestRorshaha',
     }
   );
-  return Chat;
+  return TestRorshaha;
 };

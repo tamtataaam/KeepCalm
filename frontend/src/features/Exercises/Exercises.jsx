@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import style from './Exercises.module.scss';
 
-import { loadAsyncExercises } from '../../store/exercisesSlice/exerciseSlice';
+import { loadAsyncExercises, clearlastExercise } from '../../store/exercisesSlice/exerciseSlice';
 import ExerciseItem from './ExerciseItem';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import FavoriteButton from './FavoriteButton';
@@ -15,6 +15,7 @@ function Exercises() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAsyncExercises());
+    return () => dispatch(clearlastExercise());
   }, []);
 
   if (loading) {

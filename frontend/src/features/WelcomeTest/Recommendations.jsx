@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +18,7 @@ function Recommendations() {
   );
 
   return (
-    <div className={style.main_container}>
+    <div className={style.recom_container}>
       <div>
         {!lastCondition ? (
           <LoadingPage />
@@ -28,7 +27,7 @@ function Recommendations() {
             <h1 className={style.h1}>Ваш последний результат</h1>
             <h2>{lastCondition.condition}</h2>
             {recommendations.map((recommendation) => (
-              <RecommendationOne recommendation={recommendation} />
+              <RecommendationOne recommendation={recommendation} key={recommendation.id} />
             ))}
             <button
               className={style.resBnt}

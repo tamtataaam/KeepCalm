@@ -1,9 +1,5 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-// import { BsArrowRightShort } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -23,7 +19,7 @@ import CompositionPage from './CompositionPage';
 function SleepPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userName = useSelector((store) => store.user.data.name);
+  const user = useSelector((store) => store.user.data);
   const [flagtext, setFlagtext] = useState(true);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -54,7 +50,7 @@ function SleepPage() {
             sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}
           >
             <Typography style={{ color: 'white' }} sx={{ minWidth: 10 }}>
-              {userName}
+              {user.name}
             </Typography>
             <Tooltip title="Account settings">
               <IconButton
@@ -65,7 +61,8 @@ function SleepPage() {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
               >
-                <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                <Avatar src={user.avatar} />
+
               </IconButton>
             </Tooltip>
           </Box>
@@ -105,7 +102,9 @@ function SleepPage() {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={() => navigate('/lk')}>
-              <Avatar /> Мой аккаунт
+              <Avatar />
+              {' '}
+              Мой аккаунт
             </MenuItem>
             <Divider />
             <MenuItem onClick={logout}>

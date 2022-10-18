@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Avatar from '@mui/material/Avatar';
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { EditInfo, passwordEdit, addPhoto } from '../../store/userSlice/userSlice';
 import style from './UserPage.module.scss';
 
@@ -35,42 +37,67 @@ function UserEdit({ setInfo }) {
     });
     dispatch(addPhoto({ file: data, id: user.id }));
   };
-
+  const fileRef = useRef();
+  const ClickInput = () => {
+    fileRef.current.click();
+  };
+  const [state, setState] = useState(false);
+  const [state2, setState2] = useState(false);
+  const toggleBtn = () => {
+    setState((prev) => !prev);
+  };
+  const toggleBtn2 = () => {
+    setState2((prev) => !prev);
+  };
   return (
 
     <div>
       <div>
+        <div className={style.userPhoto}>
+          <Avatar src={user.avatar} sx={{ width: '250px', height: '250px' }} />
+        </div>
 
-        <img className={style.userPhoto} src={user.avatar} alt="avatar" />
-
-        <div className="divPhotos">
-          <input className="file-path validate" onChange={photoAdd} type="file" multiple autoComplete="off" />
+        <div className={style.div_btn_photo}>
+          <input className={style.file_input} onChange={photoAdd} type="file" multiple autoComplete="off" ref={fileRef} accept="image/jpeg,image/png,image/gif" />
+          <button className={style.btn_file} type="button" onClick={ClickInput}>Изменить фото</button>
         </div>
       </div>
-      <form onSubmit={EditUser}>
-        <input type="text" name="name" defaultValue={user.name} required />
-        <input
-          type="email"
-          name="email"
-          defaultValue={user.email}
-          pattern="^\S+@\S+\.\S+$"
-          title="Почта должна быть указана в формате email@mail.com"
-          required
-        />
-        <button type="submit">Изменить</button>
-      </form>
+      <div className={style.info_edit_div}>
+        <form onSubmit={EditUser}>
+          <input className={style.input} type="text" name="name" defaultValue={user.name} placeholder="Имя" required />
+          <input
+            className={style.input}
+            type="email"
+            name="email"
+            defaultValue={user.email}
+            pattern="^\S+@\S+\.\S+$"
+            title="Почта должна быть указана в формате email@mail.com"
+            placeholder="Email"
+            required
+          />
+          <button className={style.button_edit_profile} type="submit">Сохранить изменения</button>
+        </form>
 
-      <form onSubmit={EditPassword}>
-        <input
-          type="password"
-          name="password"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
-        />
-        <input type="password" name="repeatPassword" />
-        <button type="submit">Изменить пароль</button>
-      </form>
-      { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
+        <form className={style.form_password} onSubmit={EditPassword}>
+          <input
+            className={style.input}
+            type={state ? 'text' : 'password'}
+            name="password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
+            placeholder="Пароль"
+          />
+          <button type="button" onClick={toggleBtn} className={style.password_button}>
+            { state ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
+          </button>
+          <input className={style.input} type={state2 ? 'text' : 'password'} name="repeatPassword" placeholder="Повторите пароль" />
+          <button type="button" onClick={toggleBtn2} className={style.password_button}>
+            { state2 ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
+          </button>
+          { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
+          <button className={style.button_password} type="submit">Изменить пароль</button>
+        </form>
+      </div>
     </div>
   );
 }

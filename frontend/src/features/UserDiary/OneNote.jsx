@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteOneNoteAsync } from '../../store/userDiarySlice/userDiarySlice';
@@ -16,20 +15,33 @@ function OneNote({ note }) {
 
   return (
     <div className={style.note_container}>
-      <div key={note.id} id={note.id} onClick={() => setFlag((prev) => !prev)}>
-        <div>Дата создания: {note.createdAt.slice(0, 10)}</div>
+      <div
+        className={style.title_info}
+        key={note.id}
+        id={note.id}
+        onClick={() => setFlag((prev) => !prev)}
+      >
+        <div>
+          Дата создания:
+          {' '}
+          {note.createdAt.slice(0, 10)}
+        </div>
         <div style={!flagChange ? { display: 'none' } : { display: 'inline' }}>
-          Название: {note.title}
+          Название:
+          {' '}
+          {note.title}
         </div>
       </div>
 
       <div
-        className={style.note}
+        className={style.title_info}
         style={
           flag || !flagChange ? { display: 'none' } : { display: 'inline' }
         }
       >
-        Текст: {note.content}
+        Содержание:
+        {' '}
+        {note.content}
       </div>
 
       <ChangeForm

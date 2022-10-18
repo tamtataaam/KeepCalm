@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const articlesRouter = require('express').Router();
 
 const { Article, Comment, User } = require('../../db/models');

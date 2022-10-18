@@ -1,7 +1,14 @@
 .main_container {
   background-color: #8e97fd;
-  height: 100%;
+  height: 100vh;
   padding-bottom: 100px;
+  margin: 0;
+}
+
+.recom_container {
+  background-color: #8e97fd;
+  height: 100%;
+  padding-bottom: 150px;
   margin: 0;
 }
 
@@ -20,14 +27,13 @@
 .test_description {
   font-size: 20px;
   padding-top: 50px;
-  // color: #EBEAEC;
 }
 .rec_text {
   font-size: 23px;
 }
 .test_preview {
   font-size: 25px;
-  padding-top: 150px;
+  padding-top: 50px;
   padding-bottom: 50px;
 }
 
@@ -90,4 +96,16 @@
 .btn_container {
   display: flex;
   gap: 20px;
+}
+
+.link {
+  margin: 20px;
+  color: #EBEAEC;
+  text-decoration: none;
+  font-size: 24px;
+  transition: 0.4s;
+}
+
+.link:hover {
+  color: #d3d2d2;
 }

@@ -1,5 +1,3 @@
-/* eslint-disable no-return-assign */
-/* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -74,7 +72,11 @@ export const toggleLike = createAsyncThunk(
 const articlesSlice = createSlice({
   name: 'articles',
   initialState,
-  reducers: {},
+  reducers: {
+    clearlastArticle: (state) => {
+      state.oneArticleInfo = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadAsyncArticles.rejected, (state, action) => {
@@ -124,3 +126,4 @@ const articlesSlice = createSlice({
 });
 
 export default articlesSlice.reducer;
+export const { clearlastArticle } = articlesSlice.actions;

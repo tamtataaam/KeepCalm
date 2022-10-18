@@ -3,11 +3,8 @@ body {
 
   header {
     height: 80px;
-    width: 100%;
     background-color: #8e97fd;
     border-bottom: 1px;
-    // border-bottom-left-radius: 10px;
-    // border-bottom-right-radius: 10px;
     outline: none;
     background-size: 200% 100%, auto;
     background-position: 200% 0, 0 0;
@@ -16,11 +13,15 @@ body {
     .logo_nav {
       position: relative;
       text-decoration: none;
-      left: 20%;
+      padding-left: 320px;
       top: 20px;
       font-size: 200%;
       font-weight: bold;
       color: #ebeaec;
+    }
+
+    .user_name {
+      font-size: 20px;
     }
 
     .avatar_nav {
@@ -45,16 +46,18 @@ body {
   }
 }
 
-@media (min-width: 350px) and (max-width: 700px) {
-  header {
-    .logo_nav {
-      left: 2%;
-    }
-    .avatar_nav {
-       width: 10px;
-    }
-    .user_name{
-      display: none;
+@media (min-width: 320px) and (max-width: 700px) {
+  body {
+    header {
+      .logo_nav {
+        padding: 10px;
+      }
+      .avatar_nav {
+        margin: 0 15px;
+      }
+      .user_name {
+        display: none;
+      }
     }
   }
 }

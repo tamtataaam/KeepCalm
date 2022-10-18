@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { AiOutlineEyeInvisible, AiOutlineEye, AiTwotoneLock } from 'react-icons/ai';
 import { HiUserCircle } from 'react-icons/hi';
@@ -16,7 +15,6 @@ function Registration({ setLogin }) {
   const [state, setState] = useState(false);
   const [state2, setState2] = useState(false);
 
-  // Удаление helpMessage при размонтировании компонента
   useEffect(() => () => {
     dispatch(disableHelpMessage());
   }, [dispatch]);

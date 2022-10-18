@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const welcometestScoreRouter = require('express').Router();
 const { Op } = require('sequelize');
 const {
@@ -127,31 +128,20 @@ module.exports = welcometestScoreRouter
           order: [['id', 'DESC']],
           raw: true,
         });
-        let recommendationsLast;
-        setTimeout(() => {
-          recommendationsLast = allRecomendationsForUser
-            .slice(0, 3)
-            .map((el) => el.recommendationId);
-        }, 10);
-
-        let recomendations;
-
-        setTimeout(async () => {
-          recomendations = await Recommendation.findAll({
-            where: {
-              id: {
-                [Op.in]: recommendationsLast,
-              },
+        const recommendationsLast = allRecomendationsForUser
+          .slice(0, 3)
+          .map((el) => el.recommendationId);
+        const recomendations = await Recommendation.findAll({
+          where: {
+            id: {
+              [Op.in]: recommendationsLast,
             },
-            raw: true,
-          });
-        }, 20);
-
-        setTimeout(() => {
-          res.json({ findLast, recomendations, status: true });
-        }, 30);
+          },
+          raw: true,
+        });
+        res.status(200).json({ findLast, recomendations, status: true });
       } else {
-        res.json({ status: false });
+        res.status(200).json({ status: false });
       }
     } catch (error) {
       res.status(500).send(`${error.message}`);

@@ -1,4 +1,3 @@
-/* eslint-disable operator-linebreak */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {

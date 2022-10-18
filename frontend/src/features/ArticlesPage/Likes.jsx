@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleLike } from '../../store/articlesSlice/articlesSlice';
@@ -16,7 +15,7 @@ function Likes({ oneArticleInfo }) {
 
   return (
     <>
-      <div>
+      <div className={style.likes_info}>
         {allArticleLikes.length === 0
           ? <p>Поставьте лайк первым</p>
           : allArticleLikes.length === 1 && articleLikedByUser.length

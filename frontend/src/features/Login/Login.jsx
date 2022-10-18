@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { AiOutlineEyeInvisible, AiOutlineEye, AiTwotoneLock } from 'react-icons/ai';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import React, { useState, useEffect } from 'react';
@@ -14,7 +13,6 @@ function Login({ setLogin }) {
   const navigate = useNavigate();
   const [state, setState] = useState(false);
 
-  // Удаление helpMessage при размонтировании компонента
   useEffect(
     () => () => {
       dispatch(disableHelpMessage());

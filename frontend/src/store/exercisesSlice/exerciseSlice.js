@@ -1,6 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -70,11 +67,32 @@ export const addToFavoriteAsync = createAsyncThunk(
     }
   }
 );
+export const deleteToFavoriteAsync = createAsyncThunk(
+  'favoriteExercise/deleteToFavoriteAsync',
+  async ({ userId, exerciseId }) => {
+    const response = await fetch('/allfavorite', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, exerciseId }),
+    });
+    if (response.status >= 400) {
+      const { error } = await response.json();
+      throw error;
+    } else {
+      const data = await response.json();
+      return data;
+    }
+  }
+);
 
 const exercisesSlice = createSlice({
   name: 'allExercises',
   initialState,
-  reducers: {},
+  reducers: {
+    clearlastExercise: (state) => {
+      state.oneExerciseInfo = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadAsyncExercises.rejected, (state, action) => {
@@ -110,17 +128,21 @@ const exercisesSlice = createSlice({
       })
       .addCase(addToFavoriteAsync.fulfilled, (state, action) => {
         state.loading = false;
-        if (action.payload.status) {
-          state.favoriteExercise.push(action.payload);
-          state.favoriteExerciseActual = action.payload;
-        } else {
-          state.favoriteExercise = state.favoriteExercise.filter(
-            (favorite) => favorite.id !== action.payload.id
-          );
-          state.favoriteExerciseActual = action.payload;
-        }
+        state.favoriteExercise.push(action.payload.favoriteExercise);
+      })
+      .addCase(deleteToFavoriteAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(deleteToFavoriteAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.favoriteExercise = state.favoriteExercise.filter(
+          (favorite) => favorite.exerciseId !== action.payload.exerciseId
+        );
+        state.favoriteExerciseActual = action.payload;
       });
   },
 });
 
 export default exercisesSlice.reducer;
+export const { clearlastExercise } = exercisesSlice.actions;

@@ -1,6 +1,5 @@
-/* eslint-disable max-len */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import style from './WelcomeTest.module.scss';
 
 function TestPreview() {
@@ -29,6 +28,8 @@ function TestPreview() {
         >
           Пройти тест
         </button>
+
+        <Link className={style.link} to="/exercises">← Пропустить и перейти к упражнениям</Link>
       </div>
     </div>
   );

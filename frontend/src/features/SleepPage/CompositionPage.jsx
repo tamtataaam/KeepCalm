@@ -2,35 +2,37 @@
 import React, { useRef } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-// import { videos } from './videoFile';
 import { videos } from './videoFile';
-// import { musick } from './musickFile';
 import style from './SleepPage.module.scss';
 import { changePlayingId } from '../../store/userSlice/userSlice';
 
 function CompositionPage({ composition, change }) {
   const { nowPlaying } = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  const audioPlayer = useRef(); // reference our audio component
+  const audioPlayer = useRef();
+
+  const play = () => {
+    audioPlayer.current.play();
+  };
+
+  const pause = () => {
+    if (audioPlayer.current) {
+      audioPlayer.current.pause();
+    }
+  };
+
   const togglePlayPause = (id) => {
     if (composition.id === nowPlaying) {
-      audioPlayer.current.pause();
       dispatch(changePlayingId(null));
     } else {
-      dispatch(changePlayingId(null));
       dispatch(changePlayingId(id));
-
-      if (nowPlaying === composition.id) {
-        audioPlayer.current.play();
-      } else {
-        audioPlayer.current.pause();
-      }
     }
   };
 
   return (
     <>
       <div className={style.audioPlayer_container}>
+        {composition.id === nowPlaying ? play() : pause()}
         <h3 style={{ zIndex: '1' }}>{composition.name}</h3>
         <div className={style.audioPlayer_sounds}>
           <audio
@@ -71,5 +73,4 @@ function CompositionPage({ composition, change }) {
     </>
   );
 }
-
 export default CompositionPage;

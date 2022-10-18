@@ -19,6 +19,7 @@ const welcometestScoreRouter = require('./routes/api/welcomeTestScoreRouter');
 const userrecomendationsstoreRouter = require('./routes/api/userrecomendationsstoreRouter');
 const userEditRouter = require('./routes/api/userEditRouter');
 const likesRouter = require('./routes/api/likesRouter');
+const testRorshahaRouter = require('./routes/api/testRorshaha');
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -31,18 +32,19 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
 
-app.use('/api/lk', userLkRouter);
-app.use('/api/auth', authRouter);
-app.use('/api/mood', userMoodrout);
-app.use('/api/exercises', exercisesRouter);
-app.use('/api/allfavorite', favoriteExercisesRouter);
-app.use('/api/articles', articlesRouter);
-app.use('/api/chats', chatsRouter);
-app.use('/api/userdiary', userDiaryRouter);
-app.use('/api/welcometest', welcometestScoreRouter);
-app.use('/api/userrecomendationsstore', userrecomendationsstoreRouter);
-app.use('/api/useredit', userEditRouter);
-app.use('/api/favoritearticles', likesRouter);
+app.use('/lk', userLkRouter);
+app.use('/auth', authRouter);
+app.use('/mood', userMoodrout);
+app.use('/exercises', exercisesRouter);
+app.use('/allfavorite', favoriteExercisesRouter);
+app.use('/articles', articlesRouter);
+app.use('/chats', chatsRouter);
+app.use('/userdiary', userDiaryRouter);
+app.use('/welcometest', welcometestScoreRouter);
+app.use('/userrecomendationsstore', userrecomendationsstoreRouter);
+app.use('/useredit', userEditRouter);
+app.use('/favoritearticles', likesRouter);
+app.use('/rorschachtest', testRorshahaRouter);
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {

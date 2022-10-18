@@ -9,7 +9,8 @@ function Article({ article }) {
 
   return (
     <div className={style.article} onClick={() => navigate(`/articles/${article.id}`)}>
-      <h3>{article.title}</h3>
+      <img className={style.article_img} src={article.img} alt="article" />
+      <h3 className={style.article_title}>{article.title}</h3>
     </div>
   );
 }

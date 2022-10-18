@@ -3,7 +3,6 @@
   justify-content: center;
   width: 1400px;
   margin: auto;
-  // margin-left: 100px;
 }
 
 .form {
@@ -19,7 +18,7 @@
   padding: 20px;
   position: sticky;
   top: 0;
-  background-color: #e8e9ffa1;
+  background-color: #8e97fd;
   border-radius: 15px;
 }
 
@@ -32,39 +31,52 @@
   margin-top: 15px;
   resize: none;
   font-size: 18px;
+  border: 1px solid #8e97fd;
+  background-color: #ebeaec;
 }
 .textarea:hover {
-  border: 1px solid #5e6cff;
+  border: 1px solid #3240da;
 }
 .textarea:focus {
   outline: 1px solid #5e6cff;
 }
 
 .input {
-  border: 1px solid rgb(83, 82, 82);
+  border: 1px solid #8e97fd;
   border-radius: 10px;
   width: 450px;
   padding: 0 10px;
   height: 34px;
   font-size: 18px;
   transition: 0.4s;
+  background-color: #ebeaec;
 }
 .input:hover {
-  border: 1px solid #5e6cff;
+  border: 1px solid #3240da;
 }
 .input:focus {
-  outline: 1px solid #5e6cff;
+  outline: 1px solid #3240da;
 }
 
 .change_input {
   width: 600px;
-  padding: 0 10px;
-  margin: 0;
+  border: 1px solid #8e97fd;
   border-radius: 10px;
-  align-content: flex-start;
+  padding: 0 10px;
+  height: 34px;
+  font-size: 18px;
+  transition: 0.4s;
+  background-color: #ebeaec;
+}
+.change_input:hover {
+  border: 1px solid #5e6cff;
+}
+.change_input:focus {
+  outline: 1px solid #5e6cff;
 }
 
 .change_textarea {
+  font-size: 18px;
   width: 600px;
   height: 100px;
   border-radius: 10px;
@@ -72,6 +84,14 @@
   align-content: flex-start;
   margin-top: 15px;
   resize: none;
+  background-color: #ebeaec;
+  border: 1px solid #8e97fd;
+}
+.change_textarea:hover {
+  border: 1px solid #5e6cff;
+}
+.change_textarea:focus {
+  outline: 1px solid #5e6cff;
 }
 
 .diary_notes_container {
@@ -94,8 +114,8 @@
   align-content: center;
   min-width: 700px;
   box-shadow: -2px 8px 20px rgba(11, 70, 84, 0.15);
-  padding: 20px;
-  background-color: #e8e9ffa1;
+  padding: 20px 30px;
+  background-color: #8e97fd;
   border-radius: 15px;
 }
 
@@ -113,37 +133,65 @@
   display: flex;
 }
 
-.delete_button {
+.add_button {
   cursor: pointer;
-  left: 18%;
-  margin: 15px 5px;
+  margin: 18px 5px 0px;
   font-size: 18px;
   border: none;
-  background-color: #8e97fd;
+  background-color: #ebeaec;
   border-radius: 20px;
-  width: 130px;
+  width: 160px;
   height: 40px;
   transition: 0.4s;
-  color: white;
+  color: #3f414e;
+}
+.add_button:hover {
+  box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
+  background-color: #d3d2d2;
+}
+
+.delete_button {
+  cursor: pointer;
+  font-size: 18px;
+  border: none;
+  background-color: #ebeaec;
+  border-radius: 20px;
+  width: 130px;
+  height: 34px;
+  transition: 0.4s;
+  color: #3f414e;
+  margin: 18px 5px 0px;
 }
 .delete_button:hover {
   box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
-  background-color: #6e76ce;
+  background-color: #d3d2d2;
 }
+
 .save_changes_button {
   cursor: pointer;
-  left: 18%;
-  margin: 15px 0;
-  font-size: 14px;
+  // left: 18%;
+  margin: 18px 5px 0px;
+  font-size: 18px;
   border: none;
-  background-color: #8e97fd;
+  background-color: #ebeaec;
   border-radius: 20px;
   width: 130px;
-  height: 40px;
+  height: 34px;
   transition: 0.4s;
-  color: white;
+  color: #3f414e;
 }
 .save_changes_button:hover {
   box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
-  background-color: #6e76ce;
+  background-color: #d3d2d2;
+}
+
+.title_info {
+  font-size: 20px;
+  color: #ebeaec;
+}
+
+.h2 {
+  color: #ebeaec;
+  font-size: 30px;
+  margin-top: 10px;
 }

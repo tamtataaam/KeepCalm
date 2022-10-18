@@ -15,30 +15,30 @@ module.exports = favoriteExercisesRouter
   .post('/', async (req, res) => {
     try {
       const { userId, exerciseId } = req.body;
+
+      if (userId === req.session.user.id) {
+        const favoriteExercise = await FavoriteExercise.create({
+          userId,
+          exerciseId,
+          status: true,
+        });
+        res.json({ favoriteExercise });
+      }
+    } catch (error) {
+      res.status(500).send(`${error.message}`);
+    }
+  })
+  .delete('/', async (req, res) => {
+    try {
+      const { userId, exerciseId } = req.body;
       const findFavorite = await FavoriteExercise.findOne({
         where: { userId, exerciseId },
       });
       if (userId === req.session.user.id) {
         if (findFavorite) {
-          if (findFavorite.status) {
-            findFavorite.status = false;
-            await findFavorite.save();
-            res.json(findFavorite);
-          } else {
-            findFavorite.status = true;
-            await findFavorite.save();
-            res.json(findFavorite);
-          }
-        } else {
-          const favoriteExercise = await FavoriteExercise.create({
-            userId,
-            exerciseId,
-            status: true,
-          });
-          res.json(favoriteExercise);
+          await FavoriteExercise.destroy({ where: { exerciseId } });
+          res.json({ status: false, exerciseId });
         }
-      } else {
-        res.json({ status: false });
       }
     } catch (error) {
       res.status(500).send(`${error.message}`);

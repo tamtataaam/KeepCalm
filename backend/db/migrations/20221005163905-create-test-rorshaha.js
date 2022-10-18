@@ -1,31 +1,17 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Chats', {
+    await queryInterface.createTable('TestRorshahas', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      answerUser: {
+        type: Sequelize.TEXT,
+      },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Users',
-        },
-      },
-
-      title: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      // description: {
-      //   type: Sequelize.TEXT,
-      //   allowNull: false,
-      // },
-      telegramUrl: {
-        type: Sequelize.TEXT,
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -38,6 +24,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Chats');
+    await queryInterface.dropTable('TestRorshahas');
   },
 };

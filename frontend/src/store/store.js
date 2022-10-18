@@ -7,6 +7,7 @@ import chatsSliceReducer from './chatsSlice/chatsSlice';
 import userDiarySlice from './userDiarySlice/userDiarySlice';
 import commentsSliceReducer from './commentsSlice/commentsSlice';
 import welcomeTestSlice from './welcomeTestSlice/welcomeTestSlice';
+import testRorshahaSlice from './testRorshahaSlice/testRorshahaSlice';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     userDiary: userDiarySlice,
     comments: commentsSliceReducer,
     welcomeTest: welcomeTestSlice,
+    testRorshaha: testRorshahaSlice,
   },
 });
 

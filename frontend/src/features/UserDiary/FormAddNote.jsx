@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-curly-newline */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,6 +8,7 @@ import style from './UserDiary.module.scss';
 function FormAddNote() {
   const dispatch = useDispatch();
   const userId = useSelector((store) => store.user.data.id);
+
   return (
     <form
       className={style.form}
@@ -24,7 +24,7 @@ function FormAddNote() {
         event.target.reset();
       }}
     >
-      <h2>Добавь новую запись</h2>
+      <h2 className={style.h2}>Добавь новую запись</h2>
 
       <input
         className={style.input}
@@ -42,9 +42,9 @@ function FormAddNote() {
         required
         autoComplete="off"
       />
-      <button type="submit" className={style.delete_button}>
+      <button type="submit" className={style.add_button}>
         {' '}
-        Добавить
+        + Добавить
       </button>
     </form>
   );

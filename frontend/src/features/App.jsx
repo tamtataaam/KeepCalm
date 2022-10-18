@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable react/jsx-no-undef */
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,7 +16,6 @@ import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
 import Registration from './Registration/Registration';
 import Login from './Login/Login';
-// import Main from './Main/Main';
 import Exercises from './Exercises/Exercises';
 import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
 import ArticlesPage from './ArticlesPage/ArticlesPage';
@@ -38,15 +36,13 @@ import PsychologistPage from './PsychologistPage/PsychologistPage';
 import TestPreview from './WelcomeTest/TestPreview';
 import ErrorPage from './ErrorPage/ErrorPage';
 import LoadingPage from './LoadingPage/LoadingPage';
-// import LoadingPage from './LoadingPage/LoadingPage';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
-  // const { loading } = useSelector((store) => store.exercises);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (isUser) {
@@ -58,7 +54,7 @@ function App() {
       dispatch(loadAllFavoriteExrcisesAsync());
       dispatch(loadRecomendationsAsync());
     }
-  }, [dispatch, isUser]);
+  }, [isUser]);
 
   if (isUser === null) {
     return <LoadingPage />;
@@ -88,6 +84,7 @@ function App() {
             <Route path="/rorschachtest" element={<TestRorshaha />} />
             <Route path="*" element={<ErrorPage />} />
 
+            <Route path="/testpreview" element={<TestPreview />} />
             <Route
               path="/welcometest/recommendations"
               element={<Recommendations />}
@@ -97,15 +94,11 @@ function App() {
           </Route>
           <Route path="/meditation" element={<Meditation />} />
           <Route path="/sleep" element={<SleepPage />} />
-          <Route path="/testpreview" element={<TestPreview />} />
         </Routes>
       ) : (
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainAuth />} />
-            {/* <Route path="*" element={<ErrorPage />} /> */}
-            {/* <Route path="/login" element={<Login />} />
-            <Route path="/registration" element={<Registration />} /> */}
           </Route>
         </Routes>
       )}

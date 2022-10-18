@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-curly-newline */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { welcomeTestQuestions } from './WelcomeTestQuestions';
-import { addScoreAsync } from '../../store/welcomeTestSlice/welcomeTestSlice';
+import { addScoreAsync, clearlastCondition } from '../../store/welcomeTestSlice/welcomeTestSlice';
 import style from './WelcomeTest.module.scss';
 
 function WelcomeTest() {
@@ -12,9 +11,15 @@ function WelcomeTest() {
   const [index, setIndex] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(clearlastCondition());
+  }, []);
 
   useEffect(() => {
     setIndex((prev) => prev + 1);
+    if (index + 1 === welcomeTestQuestions.length) {
+      dispatch(addScoreAsync({ userId, score }));
+    }
   }, [score]);
 
   return (
@@ -27,19 +32,10 @@ function WelcomeTest() {
           {' '}
           из 22
         </h1>
-        {/* <div className={style.test_description}>
-          В этом опроснике содержатся группы утверждений. Внимательно прочитайте
-          каждую группу утверждений. Затем определите в каждой группе одно
-          утверждение, которое лучше всего соответствует тому, как Вы себя
-          чувствовали НА ЭТОЙ НЕДЕЛЕ И СЕГОДНЯ. Выберите утверждение. Прежде, чем
-          сделать свой выбор, убедитесь, что Вы прочли все утверждения в каждой
-          группе.
-        </div> */}
-
         <div className={style.answers_container}>
-          <h2 className={style.h2}>Выбери один из вариантов:</h2>
           {welcomeTestQuestions.length !== index ? (
             <>
+              <h2 className={style.h2}>Выбери один из вариантов:</h2>
               <button className={style.button} type="button" onClick={() => setScore((prev) => prev + 1)}>
                 {welcomeTestQuestions[index]['1']}
               </button>
@@ -57,12 +53,7 @@ function WelcomeTest() {
             <button
               className={style.resBnt}
               type="button"
-              onClick={() =>
-                dispatch(
-                  addScoreAsync({ userId, score }),
-                  navigate('/welcometest/recommendations')
-                )
-            }
+              onClick={() => navigate('/welcometest/recommendations')}
             >
               Узнать рекомендации
             </button>
