@@ -130,7 +130,7 @@ const userSlice = createSlice({
         state.data.id = action.payload.id;
         state.data.name = action.payload.name;
         state.data.email = action.payload.email;
-        // state.data.avatar = action.payload.avatar;
+        state.data.avatar = action.payload.avatar;
       })
       .addCase(regUser.rejected, (state, action) => {
         state.helpMessage = action.error.message;
@@ -147,7 +147,7 @@ const userSlice = createSlice({
         state.data.id = action.payload.id;
         state.data.name = action.payload.name;
         state.data.email = action.payload.email;
-        // state.data.avatar = action.payload.avatar;
+        state.data.avatar = action.payload.avatar;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.error = action.error.message;

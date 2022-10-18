@@ -7,7 +7,7 @@ module.exports = {
         password:
           '$2b$10$rhbXKBH97asPOBEIbQobAeYSW/RfdqPCfA5Op1hepLohq1GqyqmeC', // password: Qwerty12
         secretWord: 'user',
-        avatar: '',
+        avatar: 'photos/no_avatar.webp',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
