@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
 import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
 import style from './Main.module.scss';

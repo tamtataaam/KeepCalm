@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-curly-newline */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -17,11 +16,7 @@ function WelcomeTest() {
   }, []);
 
   useEffect(() => {
-    // console.log(userId, score);
     setIndex((prev) => prev + 1);
-    // console.log(index, '1');
-    // console.log(score, '2');
-    // console.log(welcomeTestQuestions.length, '3');
     if (index + 1 === welcomeTestQuestions.length) {
       dispatch(addScoreAsync({ userId, score }));
     }
@@ -37,15 +32,6 @@ function WelcomeTest() {
           {' '}
           из 22
         </h1>
-        {/* <div className={style.test_description}>
-          В этом опроснике содержатся группы утверждений. Внимательно прочитайте
-          каждую группу утверждений. Затем определите в каждой группе одно
-          утверждение, которое лучше всего соответствует тому, как Вы себя
-          чувствовали НА ЭТОЙ НЕДЕЛЕ И СЕГОДНЯ. Выберите утверждение. Прежде, чем
-          сделать свой выбор, убедитесь, что Вы прочли все утверждения в каждой
-          группе.
-        </div> */}
-
         <div className={style.answers_container}>
           {welcomeTestQuestions.length !== index ? (
             <>
@@ -67,8 +53,7 @@ function WelcomeTest() {
             <button
               className={style.resBnt}
               type="button"
-              onClick={() => navigate('/welcometest/recommendations')
-            }
+              onClick={() => navigate('/welcometest/recommendations')}
             >
               Узнать рекомендации
             </button>

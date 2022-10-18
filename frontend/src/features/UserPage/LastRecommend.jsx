@@ -1,8 +1,6 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadLastConditionAsync } from '../../store/welcomeTestSlice/welcomeTestSlice';
-import LoadingPage from '../LoadingPage/LoadingPage';
 import UserRecommendationOne from './UserRecomendationOne';
 import style from './UserRecomendation.module.scss';
 
@@ -20,7 +18,7 @@ function LastRecommend() {
     <div className={style.main_container}>
       <div>
         {!lastCondition ? (
-          <LoadingPage />
+          <h2>Пройди тест, чтобы увидеть последние рекомендации</h2>
         ) : (
           <div className={style.container_recomendation_div}>
             <h1 className={style.h1}>Ваш последний результат теста:</h1>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const welcomeTestQuestionsVar2 = [
   '0',
   '1. Ощущение онемения или покалывания в теле',

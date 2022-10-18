@@ -14,7 +14,6 @@ function UserInfo({ user, setInfo }) {
     <div className={style.user_info_container}>
       <div className={style.userPhoto_info}>
         <Avatar src={user.avatar} sx={{ width: '300px', height: '300px' }} />
-        {/* <img className={style.userPhoto} src={user.avatar} alt="avatar" /> */}
       </div>
       <div className={style.my_info}>
         <div>

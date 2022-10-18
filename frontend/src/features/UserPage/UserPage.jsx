@@ -5,7 +5,6 @@ import MoodGraph from '../MoodGraph/MoodGraph';
 import LastRecommend from './LastRecommend';
 import UserEdit from './UserEdit';
 import UserInfo from './UserInfo';
-// import Recommendations from '../WelcomeTest/Recommendations';
 import style from './UserPage.module.scss';
 
 function UserPage() {

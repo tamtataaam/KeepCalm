@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -52,8 +50,8 @@ function Comments({ comment, oneArticleInfo }) {
               ) : (<p>{comment.commentText}</p>)}
             {userId === comment.userId ? (
               <div className={style.comment_buttons}>
-                <button className={style.change_comment_button} onClick={() => setShowEditCom((prev) => !prev)}>Изменить</button>
-                <button className={style.delete_comment_button} onClick={deleteFunction}>Удалить</button>
+                <button type="button" className={style.change_comment_button} onClick={() => setShowEditCom((prev) => !prev)}>Изменить</button>
+                <button type="button" className={style.delete_comment_button} onClick={deleteFunction}>Удалить</button>
               </div>
             ) : null}
 

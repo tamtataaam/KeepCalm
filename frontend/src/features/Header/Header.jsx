@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
-// import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -37,16 +35,11 @@ function Header() {
 
   return (
     <header className={style.header}>
-      {/* <div> */}
       <Link className={style.logo_nav} to="/exercises">
         KeepCalm
       </Link>
-      {/* </div> */}
       {!user.name ? (
-        <div className={style.button_nav}>
-          {/* <a href="/" className={style.nav_btn}>Войти</a>
-            <a href="/" className={style.nav_btn}>Регистрация</a> */}
-        </div>
+        <div className={style.button_nav} />
       ) : (
         <div className={style.button_nav}>
           <Box
@@ -104,7 +97,9 @@ function Header() {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={() => navigate('/lk')}>
-              <Avatar src={user.avatar} /> Мой аккаунт
+              <Avatar src={user.avatar} />
+              {' '}
+              Мой аккаунт
             </MenuItem>
             <Divider />
             <MenuItem onClick={logout}>

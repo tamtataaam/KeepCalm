@@ -2,16 +2,14 @@
 import React, { useRef } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-// import { videos } from './videoFile';
 import { videos } from './videoFile';
 import style from './SleepPage.module.scss';
 import { changePlayingId } from '../../store/userSlice/userSlice';
 
 function CompositionPage({ composition, change }) {
   const { nowPlaying } = useSelector((store) => store.user);
-  // console.log(nowPlaying, 'a/sdsafasfasg');
   const dispatch = useDispatch();
-  const audioPlayer = useRef(); // reference our audio component
+  const audioPlayer = useRef();
 
   const play = () => {
     audioPlayer.current.play();

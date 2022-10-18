@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-restricted-syntax */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import style from './Chats.module.scss';

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
 import style from './testRorshaha.module.scss';
 import { testRorshahaImg } from './testRorshahaIMG';
@@ -7,11 +6,8 @@ import TaskPsih from './TaskPsih';
 import { addAnswerTestRorshaha } from '../../store/testRorshahaSlice/testRorshahaSlice';
 
 function TestRorshaha() {
-  // const [startQustion, setQuestion] = useState(true);
   const [nextQuestion, setQuestionNext] = useState(1);
   const dispatch = useDispatch();
-  // eslint-disable-next-line max-len
-  // const answer = useSelector((prev) => prev.testRorshaha.answer);  вытаскиваем все ответы юзера писал для проверки.
   function testRorshahaSubmit(event) {
     event.preventDefault();
     const answerUser = event.target.answerUser.value;
@@ -43,7 +39,7 @@ function TestRorshaha() {
               alt="изображение 1"
             />
             <form className={style.form} onSubmit={testRorshahaSubmit}>
-              <input className={style.input} placeholder="Ответ" type="text" name="answerUser" required />
+              <input className={style.input} placeholder="Ответ" type="text" name="answerUser" />
               <button
                 type="submit"
                 onClick={() => setQuestionNext((prev) => prev + 1)}

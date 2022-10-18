@@ -21,7 +21,7 @@ userMoodrout
       });
       const dateNow = new Date().toString().slice(0, 15);
       const findActualSmile = findAlllSmiles.filter(
-        (elem) => elem.createdAt.toString().slice(0, 15) === dateNow
+        (elem) => elem.createdAt.toString().slice(0, 15) === dateNow,
       );
       const newSmiley = await UserMood.create({
         userId: user.id,

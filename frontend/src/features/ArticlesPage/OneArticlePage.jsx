@@ -6,9 +6,7 @@ import { loadComments } from '../../store/commentsSlice/commentsSlice';
 import Comments from '../Comments/Comments';
 import AddComment from '../Comments/AddComment';
 import Likes from './Likes';
-// import LoadingPage from '../LoadingPage/LoadingPage';
 import style from './ArticlesPage.module.scss';
-import LoadingPage from '../LoadingPage/LoadingPage';
 
 function OneArticlePage() {
   const dispatch = useDispatch();
@@ -21,10 +19,6 @@ function OneArticlePage() {
     dispatch(loadComments(id));
     dispatch(loadLikes());
   }, [id]);
-
-  // if (loading) {
-  //   return <LoadingPage />;
-  // }
 
   return (
     <div className={style.article_container}>
@@ -42,7 +36,6 @@ function OneArticlePage() {
           ) : null
         }
       <div className="article_comments">
-        {/* <h3>Комментарии:</h3> */}
         <div>
           {comments.length === 0
             ? <p className={style.comments_info}>Нет комментариев</p>
@@ -79,7 +72,7 @@ function OneArticlePage() {
                 oneArticleInfo={oneArticleInfo}
               />
             ),
-          ) : <LoadingPage /> }
+          ) : null }
         </div>
       </div>
       <div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const welcometestScoreRouter = require('express').Router();
 const { Op } = require('sequelize');
 const {
@@ -26,7 +27,6 @@ module.exports = welcometestScoreRouter
   .post('/', async (req, res) => {
     try {
       const { userId, score } = req.body;
-      // console.log(req.body);
       if (userId === req.session.user.id) {
         if (score <= 48) {
           await WelcomeTestScore.create({
@@ -120,7 +120,6 @@ module.exports = welcometestScoreRouter
         order: [['id', 'ASC']],
         raw: true,
       });
-      // console.log(allConditionsUser, '1');
       if (allConditionsUser) {
         const lastCondition = allConditionsUser[allConditionsUser.length - 1].conditionId;
         const findLast = await Condition.findByPk(lastCondition);
@@ -129,13 +128,9 @@ module.exports = welcometestScoreRouter
           order: [['id', 'DESC']],
           raw: true,
         });
-        // console.log(lastCondition, '2');
-        // console.log(findLast, '3');
-        // console.log(allRecomendationsForUser, '4');
         const recommendationsLast = allRecomendationsForUser
           .slice(0, 3)
           .map((el) => el.recommendationId);
-        // console.log(recommendationsLast, '5');
         const recomendations = await Recommendation.findAll({
           where: {
             id: {
@@ -144,14 +139,11 @@ module.exports = welcometestScoreRouter
           },
           raw: true,
         });
-        // console.log(recomendations, '6');
         res.status(200).json({ findLast, recomendations, status: true });
       } else {
-        // console.log('7');
         res.status(200).json({ status: false });
       }
     } catch (error) {
-      // console.log(`${error.message}`, '=============================');
       res.status(500).send(`${error.message}`);
     }
   });

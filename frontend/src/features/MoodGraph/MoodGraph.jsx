@@ -1,5 +1,4 @@
 import React from 'react';
-// import LineChart from 'react-linechart';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
@@ -13,7 +12,6 @@ import {
   LinearScale,
   PointElement,
 } from 'chart.js';
-import LoadingPage from '../LoadingPage/LoadingPage';
 import style from './MoodGraph.module.scss';
 
 ChartJS.register(
@@ -44,17 +42,7 @@ function MoodGraph() {
   };
 
   const options = {
-    // maintainAspectRatio: true,
     showLines: false,
-    // animations: {
-    //   tension: {
-    //     duration: 1000,
-    //     easing: 'linear',
-    //     from: 1,
-    //     to: 0,
-    //     loop: true
-    //   }
-    // },
     scales: {
       y: {
         ticks: {
@@ -66,19 +54,12 @@ function MoodGraph() {
 
   return (
     <div className={style.main_div_container}>
-      {/* <div className={style.smiles_container}>
-        <img src="1.svg" alt="super" className={style.superSm} />
-        <img src="2.svg" alt="super" />
-        <img src="3.svg" alt="super" />
-        <img src="4.svg" alt="super" />
-        <img src="5.svg" alt="super" />
-      </div> */}
       <div className={style.graph}>
         <h1 className={style.h2}>График настроения</h1>
         {userMoodDate.length && userMoodId.length ? (
           <Line data={mydata} options={options} />
         ) : (
-          <LoadingPage />
+          <h4>Выбери настроение, чтобы увидеть график</h4>
         )}
 
       </div>
