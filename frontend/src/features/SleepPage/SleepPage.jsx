@@ -1,9 +1,5 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-// import { BsArrowRightShort } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -106,7 +102,9 @@ function SleepPage() {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <MenuItem onClick={() => navigate('/lk')}>
-              <Avatar /> Мой аккаунт
+              <Avatar />
+              {' '}
+              Мой аккаунт
             </MenuItem>
             <Divider />
             <MenuItem onClick={logout}>

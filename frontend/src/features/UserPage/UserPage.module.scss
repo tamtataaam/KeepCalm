@@ -1,9 +1,7 @@
 .grand_main_container{
-  // display: flex;
   justify-content: center;
   align-items: center;
   background-color:#8E97FD ;
-  // height: 100vw;
 }
 
 .main_container {
@@ -12,48 +10,28 @@
   justify-content: center;
   height: 100%;
   gap: 25px;
-  // background-color: #8E97FD;
-  // width: 100%;
-  // margin: 3vw;
 }
 
 .graph_container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  // text-align: center;
   border-radius: 20px;
-  width: 800px;
+  width: 900px;
   height: 650px;
 
   background-color: white;
-  // margin: 15px;
 }
-
-// .main_div_container {
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   background-color: white;
-//   border-radius: 20px;
-//   height: 440px;
-//   // margin: 15px ;
-// }
-
-
 
 .userPhoto {
   display: flex;
   justify-content: center;
   align-content: center;
-    // margin: 60px 50px;
 }
 
 .h4 {
   margin:10px 40px;
   font-size: 35px;
- 
 }
 
 .lk_user_page{
@@ -90,15 +68,13 @@
 
 .rec_and_fav_div {
   border-radius: 20px;
-  width: 1280px;
+  width: 1380px;
   min-height: 450px;
   padding: 60px 0px;
   background-color: white;
   margin-bottom: 60px;
-  // margin-top: 10px;
 }
 .file_input{
-  // background-color: #8E97FD;
  display: none;
 }
 .btn_file{
@@ -123,7 +99,6 @@
   padding-left: 5px;
   font-size: 15px;
   transition: 0.4s;
-  // outline: 1px solid #5e6cff;
 }
 .input:hover {
   border: 1px solid #5e6cff;
@@ -132,35 +107,6 @@
   outline: 1px solid #5e6cff;
 }
 
-.info_edit_div{
-// display: flex;
-// justify-content: baseline;
-}
-
-// .button{
-//   cursor: pointer;
-//   left: 18%;
-//   margin: 15px 0 10px;
-//   font-size: 14px;
-//   border: none;
-//   background-color: #8E97FD ;
-//   border-radius: 20px;
-//   width: 10px;
-//   height: 30px;
-//   transition: 0.4s;
-//   color: white;
-// }
-// .button:hover{
-//   font-size: 15px;
-//   box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
-//   background-color: #6e76ce ;
-// }
-// .rec_and_fav_div{
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 1180px;
-// }
 .button_edit_profile{
   position: relative;
   top: 140px;
@@ -190,7 +136,6 @@
 }
 .my_info{
   position: relative;
-  // bottom: 30px;
   font-size: 20px;
 }
 .userPhoto_info{
@@ -208,7 +153,7 @@
     background-color: #8E97FD ;
     border-radius: 20px;
     position: relative;
-    top: 50px;
+    top: 30px;
     width: 330px;
     height: 40px;
     transition: 0.4s;

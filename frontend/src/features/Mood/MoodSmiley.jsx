@@ -11,8 +11,6 @@ import './mood.css';
 function Mood() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const userIdmoodId = useSelector((prev) => prev.mood);
-  // console.log(userIdmoodId);
   const moodSm = useSelector((prev) => prev.mood.moodSmiley);
 
   const getSmiley = (id) => {

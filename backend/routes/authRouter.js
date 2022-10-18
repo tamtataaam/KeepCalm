@@ -107,11 +107,6 @@ authRouter.post('/login', async (req, res) => {
 
     req.session.user = {
       id: user.id,
-      // name: user.name,
-      // email: user.email,
-      // isAdmin: user.isAdmin,
-      // secretWord: user.secretWord,
-      // status: user.status,
     };
     res.json(user);
   } else {

@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { EditInfo, passwordEdit, addPhoto } from '../../store/userSlice/userSlice';
-// import { style } from '@mui/system';
 import style from './UserPage.module.scss';
-// import { style } from '@mui/system';
 
 function UserEdit({ setInfo }) {
   const helpMessage = useSelector((state) => state.user.helpMessage);
@@ -40,13 +38,16 @@ function UserEdit({ setInfo }) {
     dispatch(addPhoto({ file: data, id: user.id }));
   };
   const fileRef = useRef();
-  //   const allowedExtensions = /png|jpeg|jpg|gif|webp/gi;
   const ClickInput = () => {
     fileRef.current.click();
   };
   const [state, setState] = useState(false);
+  const [state2, setState2] = useState(false);
   const toggleBtn = () => {
     setState((prev) => !prev);
+  };
+  const toggleBtn2 = () => {
+    setState2((prev) => !prev);
   };
   return (
 
@@ -80,7 +81,7 @@ function UserEdit({ setInfo }) {
         <form className={style.form_password} onSubmit={EditPassword}>
           <input
             className={style.input}
-            type="password"
+            type={state ? 'text' : 'password'}
             name="password"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
@@ -89,9 +90,9 @@ function UserEdit({ setInfo }) {
           <button type="button" onClick={toggleBtn} className={style.password_button}>
             { state ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
           </button>
-          <input className={style.input} type="password" name="repeatPassword" placeholder="Повторите пароль" />
-          <button type="button" onClick={toggleBtn} className={style.password_button}>
-            { state ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
+          <input className={style.input} type={state2 ? 'text' : 'password'} name="repeatPassword" placeholder="Повторите пароль" />
+          <button type="button" onClick={toggleBtn2} className={style.password_button}>
+            { state2 ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }
           </button>
           { helpMessage ? <div className="helpText">{helpMessage}</div> : <div />}
           <button className={style.button_password} type="submit">Изменить пароль</button>

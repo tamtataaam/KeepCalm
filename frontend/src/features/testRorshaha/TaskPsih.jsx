@@ -5,7 +5,6 @@ import style from './testRorshaha.module.scss';
 function TaskPsih() {
   const navigate = useNavigate();
   return (
-    // <div className={style.main_container}>
     <div className={style.container}>
       <h1 className={style.h1}>Ваши данные будут переданы специалисту</h1>
       <button
@@ -16,7 +15,6 @@ function TaskPsih() {
         Вернуться к упражнениям
       </button>
     </div>
-    // </div>
   );
 }
 export default TaskPsih;

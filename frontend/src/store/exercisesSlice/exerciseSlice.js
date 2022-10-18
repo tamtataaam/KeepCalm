@@ -1,6 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -66,7 +63,6 @@ export const addToFavoriteAsync = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
-      // console.log(data);
       return data;
     }
   }
@@ -84,7 +80,6 @@ export const deleteToFavoriteAsync = createAsyncThunk(
       throw error;
     } else {
       const data = await response.json();
-      // console.log(data);
       return data;
     }
   }
@@ -93,7 +88,11 @@ export const deleteToFavoriteAsync = createAsyncThunk(
 const exercisesSlice = createSlice({
   name: 'allExercises',
   initialState,
-  reducers: {},
+  reducers: {
+    clearlastExercise: (state) => {
+      state.oneExerciseInfo = null;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadAsyncExercises.rejected, (state, action) => {
@@ -146,3 +145,4 @@ const exercisesSlice = createSlice({
 });
 
 export default exercisesSlice.reducer;
+export const { clearlastExercise } = exercisesSlice.actions;

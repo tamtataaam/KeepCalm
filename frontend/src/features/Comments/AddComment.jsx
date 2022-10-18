@@ -21,7 +21,7 @@ function AddComment() {
 
   return (
     <form className={style.comment_form} onSubmit={handleSubmit}>
-      <textarea className={style.comment_textarea} type="text" name="commentText" placeholder="Введите комментарий" rows="3" required />
+      <textarea className={style.comment_textarea} type="text" name="commentText" placeholder="Напиши комментарий" rows="3" required />
       <button className={style.add_comment_button} type="submit">Добавить комментарий</button>
     </form>
   );

@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable react/jsx-no-undef */
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,7 +16,6 @@ import UserPage from './UserPage/UserPage';
 import Mood from './Mood/MoodSmiley';
 import Registration from './Registration/Registration';
 import Login from './Login/Login';
-// import Main from './Main/Main';
 import Exercises from './Exercises/Exercises';
 import ExerciseFullInformation from './Exercises/ExerciseFullInformation';
 import ArticlesPage from './ArticlesPage/ArticlesPage';
@@ -38,11 +36,9 @@ import PsychologistPage from './PsychologistPage/PsychologistPage';
 import TestPreview from './WelcomeTest/TestPreview';
 import ErrorPage from './ErrorPage/ErrorPage';
 import LoadingPage from './LoadingPage/LoadingPage';
-// import LoadingPage from './LoadingPage/LoadingPage';
 
 function App() {
   const { isUser } = useSelector((store) => store.user);
-  // const { loading } = useSelector((store) => store.exercises);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());
@@ -103,9 +99,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainAuth />} />
-            {/* <Route path="*" element={<ErrorPage />} /> */}
-            {/* <Route path="/login" element={<Login />} />
-            <Route path="/registration" element={<Registration />} /> */}
           </Route>
         </Routes>
       )}
