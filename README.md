@@ -27,7 +27,7 @@ web application for people who need mental support
 </div>
 
 # Check your result and advices of exercises to feel better and go for all exercises
-*add favorite exercie tou your profile, just put like
+*add favorite exercise to your profile, just put like
 <div >
 <img width="45%" src='https://user-images.githubusercontent.com/99384151/197775577-f5b05e40-ebe8-48c5-98a0-77bde2f97603.png'/>
 <img width="47%" src='https://user-images.githubusercontent.com/99384151/197775735-1e825db6-26a2-4eb1-9035-3e65572e9432.png'/>
@@ -49,7 +49,7 @@ web application for people who need mental support
 <img width="44%" src='https://user-images.githubusercontent.com/99384151/197778297-fdae9bfb-80f1-4d11-8984-5b085f1f43f7.png'/>
 <img width="45%" src='https://user-images.githubusercontent.com/99384151/197778467-05d8191d-6499-42c0-bf2e-0f29ec6d5469.png'/>
 </div>
-<h4>Use test of Rorshakha, send your answers to system and wait raply from on-site psychologist<h4>
+<h4>Use test of Rorshakha, send your answers to system and wait reply from on-site psychologist<h4>
 <div >
 <img width="45%" src='https://user-images.githubusercontent.com/99384151/197779102-31061830-63a0-46e9-ab29-e8301bfaf7ff.png'/>
 <img width="45%" src='https://user-images.githubusercontent.com/99384151/197779379-41d34333-661f-49e1-bac9-fddc39306a7c.png'/>
@@ -59,7 +59,7 @@ web application for people who need mental support
 <img width="45%" src='https://user-images.githubusercontent.com/99384151/197780378-487b8c08-f006-40a4-bc04-4ed8edd3bb6e.png'/>
 <img width="47%" src='https://user-images.githubusercontent.com/99384151/197780608-5abc5972-60fb-47e3-8005-141c5f280342.png'/>
 </div>
-<h4>Join chats in telergamm or create new one for community to share your ideas and thougth with (you can also filter chats by naming)<h4>
+<h4>Join chats in telergam or create new one for community to share your ideas and thougth with (you can also filter chats by naming)<h4>
 <div >
 <img width="45%" src='https://user-images.githubusercontent.com/99384151/197781828-4edf93a8-65ee-45d4-a966-99dbc5214fc2.png'/>
 <img width="50%" src='https://user-images.githubusercontent.com/99384151/197782026-15863b91-220d-42a3-a4b8-5495abfdc669.png'/>
