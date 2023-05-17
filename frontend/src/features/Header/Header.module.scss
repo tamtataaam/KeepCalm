@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+
+  header {
+    height: 80px;
+    background-color: #8e97fd;
+    border-bottom: 1px;
+    outline: none;
+    background-size: 200% 100%, auto;
+    background-position: 200% 0, 0 0;
+    box-shadow: rgba(4, 4, 4, 0.282) 0 1px 0.5px;
+
+    .logo_nav {
+      position: relative;
+      text-decoration: none;
+      padding-left: 320px;
+      top: 20px;
+      font-size: 200%;
+      font-weight: bold;
+      color: #ebeaec;
+    }
+
+    .user_name {
+      font-size: 20px;
+    }
+
+    .avatar_nav {
+      margin: 0 15px;
+    }
+    .nav_btn {
+      position: relative;
+      text-decoration: none;
+      color: #ebeaec;
+      top: 7px;
+      font-size: 20px;
+      margin: 0 10px;
+    }
+
+    .button_nav {
+      position: absolute;
+      display: flex;
+      top: 21px;
+      color: black;
+      right: 23%;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+  body {
+    header {
+      .logo_nav {
+        padding: 10px;
+      }
+      .avatar_nav {
+        margin: 0 15px;
+      }
+      .user_name {
+        display: none;
+      }
+    }
+  }
+}

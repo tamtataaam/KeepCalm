@@ -1,0 +1,77 @@
+.login_form {
+  position: relative;
+  text-align: center;
+  margin-top: 70px;
+}
+
+.input {
+  border: 1px solid rgb(83, 82, 82);
+  border-radius: 10px;
+  width: 380px;
+  height: 34px;
+  margin: 5px;
+  padding-left: 30px;
+  font-size: 18px;
+  transition: 0.4s;
+}
+.input:hover {
+  border: 1px solid #5e6cff;
+}
+.input:focus {
+  outline: 1px solid #5e6cff;
+}
+
+.button{
+    cursor: pointer;
+    left: 18%;
+    margin: 25px 0 10px;
+    font-size: 18px;
+    border: none;
+    background-color: #8E97FD ;
+    border-radius: 20px;
+    width: 230px;
+    height: 40px;
+    transition: 0.4s;
+    color: white;
+}
+.button:hover{
+    font-size: 19px;
+    box-shadow: 1px 1px rgba(128, 128, 128, 0.368);
+    background-color: #6e76ce ;
+}
+
+.password_button {
+  background-color: white;
+  position: relative;
+  border: none;
+  outline: none;
+  margin-left: -50px;
+  width: 35px;
+  top: 7px;
+  padding: 0;
+  height: 25px;
+  font-size: 22px;
+  margin-right: 15px;
+}
+
+.icon_email {
+  position: relative;
+  top: 6px;
+  left: 33px;
+  height: 22px;
+  width: 22px;
+  color: rgb(104, 109, 109);
+}
+
+.icon_lock {
+  position: relative;
+  top: 6px;
+  left: 33px;
+  height: 22px;
+  width: 22px;
+  color: rgb(104, 109, 109);
+}
+
+.h2 {
+  font-size: 28px;
+}

@@ -1,0 +1,181 @@
+.video {
+  z-index: 0;
+  width: 100%;
+}
+.logo_nav {
+  z-index: 1;
+  position: absolute;
+  text-decoration: none;
+  left: 20%;
+  top: 20px;
+  font-size: 200%;
+  font-weight: bold;
+  color: #ebeaec;
+}
+
+.avatar_nav {
+  margin: 0 15px;
+}
+.nav_btn {
+  text-decoration: none;
+  color: #ebeaec;
+  top: 7px;
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.button_nav {
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  top: 21px;
+  color: black;
+  right: 23%;
+}
+
+.audio {
+  display: none;
+}
+
+.audioPlayer {
+  z-index: 1;
+  display: flex;
+  align-content: center;
+  position: absolute;
+  --secondary: #ebeaec;
+  justify-content: center;
+  flex-wrap: wrap;
+  bottom: 200px;
+}
+
+.forwardBackward {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  color: #ebeaec;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.forwardBackward:hover {
+  color: orange;
+}
+
+.playPause {
+  background: var(--primary);
+  border: none;
+  border-radius: 50%;
+  font-size: 72px;
+  color: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+.playPause:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+.play {
+  position: relative;
+  left: 5px;
+  transition: 0.5s;
+}
+.play:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+.currentTime,
+.duration {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.currentTime {
+  margin: 0 15px;
+  color: #ebeaec;
+}
+
+.progressBar {
+  --bar-bg: #ebeaec;
+  --seek-before-width: 0;
+  --seek-before-color: #ffc2a1;
+  --knobby: #9058b5;
+  --selectedKnobby: #26c9c3;
+  appearance: none;
+  background: var(--bar-bg);
+  border-radius: 10px;
+  position: relative;
+  width: 200px;
+  height: 3px;
+  outline: none;
+}
+
+
+.progressBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--knobby);
+  cursor: pointer;
+  position: relative;
+  margin: -2px 0 0 0;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.play_pause_div {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+  bottom: 90px;
+}
+
+.rewind_icon {
+  position: relative;
+  font-size: 60px;
+  left: 40px;
+  color: #ebeaec;
+  transition: 0.5s;
+}
+.rewind_icon:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+.rewind_div {
+  position: relative;
+  right: 30px;
+}
+
+.meditation_container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timerH1 {
+  color: #ebeaec;
+  z-index: 1;
+  position: absolute;
+  font-size: 220px;
+  bottom: 100px;
+}
+
+@media (min-width: 350px) and (max-width: 700px) {
+  .video {
+    width: 100vh;
+  }
+}
